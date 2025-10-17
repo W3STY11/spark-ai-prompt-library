@@ -1,0 +1,1128 @@
+/* ========================================
+   SPARK PROMPT LIBRARY - ENHANCED DESIGN SYSTEM
+   Version: 4.0 Premium Enhancement
+   ======================================== */
+
+/* ========================================
+   1. CSS VARIABLES & DESIGN TOKENS
+   ======================================== */
+
+:root {
+  /* ==================== COLOR SYSTEM ==================== */
+
+  /* Primary Brand Colors - Microsoft Blue */
+  --spark-primary-50: #e6f2ff;
+  --spark-primary-100: #b3d9ff;
+  --spark-primary-200: #80c1ff;
+  --spark-primary-300: #4da8ff;
+  --spark-primary-400: #1a90ff;
+  --spark-primary-500: #0078d4;  /* PRIMARY Microsoft Blue */
+  --spark-primary-600: #005a9e;
+  --spark-primary-700: #004578;
+  --spark-primary-800: #003052;
+  --spark-primary-900: #001b2c;
+  --spark-primary-950: #001020;
+
+  /* Accent Colors - Vibrant Blue */
+  --spark-accent-50: #eff6ff;
+  --spark-accent-100: #dbeafe;
+  --spark-accent-200: #bfdbfe;
+  --spark-accent-300: #93c5fd;
+  --spark-accent-400: #60a5fa;
+  --spark-accent-500: #3b82f6;
+  --spark-accent-600: #2563eb;
+  --spark-accent-700: #1d4ed8;
+  --spark-accent-800: #1e40af;
+  --spark-accent-900: #1e3a8a;
+
+  /* Neutral Colors - Sophisticated Gray */
+  --spark-neutral-50: #fafafa;
+  --spark-neutral-100: #f4f4f5;
+  --spark-neutral-200: #e4e4e7;
+  --spark-neutral-300: #d4d4d8;
+  --spark-neutral-400: #a1a1aa;
+  --spark-neutral-500: #71717a;
+  --spark-neutral-600: #52525b;
+  --spark-neutral-700: #3f3f46;
+  --spark-neutral-800: #27272a;
+  --spark-neutral-900: #18181b;
+  --spark-neutral-950: #09090b;
+
+  /* Premium Gradients - Microsoft Blue Theme */
+  --spark-gradient-primary: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+  --spark-gradient-accent: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --spark-gradient-vibrant: linear-gradient(135deg, #1a90ff 0%, #0078d4 100%);
+  --spark-gradient-warm: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+  --spark-gradient-cool: linear-gradient(135deg, #06b6d4 0%, #0078d4 100%);
+  --spark-gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+
+  /* Microsoft Fluent Background Gradient - MORE VISIBLE */
+  --spark-page-gradient: linear-gradient(135deg,
+    #e3f2fd 0%,     /* Light blue 50 */
+    #bbdefb 20%,    /* Light blue 100 */
+    #90caf9 40%,    /* Light blue 200 */
+    #e3f2fd 60%,    /* Light blue 50 */
+    #bbdefb 80%,    /* Light blue 100 */
+    #e3f2fd 100%    /* Light blue 50 */
+  );
+
+  /* Microsoft Fluent Dark Mode Background Gradient */
+  --spark-page-gradient-dark: linear-gradient(135deg,
+    #0d47a1 0%,     /* Dark blue 900 */
+    #1565c0 20%,    /* Dark blue 800 */
+    #1976d2 40%,    /* Dark blue 700 */
+    #0d47a1 60%,    /* Dark blue 900 */
+    #1565c0 80%,    /* Dark blue 800 */
+    #0d47a1 100%    /* Dark blue 900 */
+  );
+
+  /* Glass Morphism Effects */
+  --spark-glass-bg: rgba(255, 255, 255, 0.7);
+  --spark-glass-blur: blur(12px);
+  --spark-glass-border: rgba(255, 255, 255, 0.18);
+
+  /* Department Colors with Gradients */
+  --dept-business-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  --dept-marketing-gradient: linear-gradient(135deg, #be185d 0%, #ec4899 100%);
+  --dept-sales-gradient: linear-gradient(135deg, #047857 0%, #10b981 100%);
+  --dept-seo-gradient: linear-gradient(135deg, #6d28d9 0%, #8b5cf6 100%);
+  --dept-finance-gradient: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
+  --dept-education-gradient: linear-gradient(135deg, #0e7490 0%, #06b6d4 100%);
+  --dept-writing-gradient: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+  --dept-productivity-gradient: linear-gradient(135deg, #c2410c 0%, #f97316 100%);
+  --dept-solopreneurs-gradient: linear-gradient(135deg, #7c2d12 0%, #a855f7 100%);
+
+  /* ==================== TYPOGRAPHY ==================== */
+
+  /* Font Families - Microsoft Segoe UI */
+  --font-primary: 'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Segoe UI Variable', 'Segoe UI', -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Cascadia Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+
+  /* Font Sizes - Perfect Fourth Scale (1.333) */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.333rem;    /* 21px */
+  --text-2xl: 1.777rem;   /* 28px */
+  --text-3xl: 2.369rem;   /* 38px */
+  --text-4xl: 3.157rem;   /* 50px */
+  --text-5xl: 4.209rem;   /* 67px */
+
+  /* Font Weights */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* Line Heights - More spacious for readability */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.6;      /* Increased for breathing room */
+  --leading-relaxed: 1.8;     /* More spacious */
+  --leading-loose: 2;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+
+  /* ==================== SPACING SYSTEM (8pt Grid) ==================== */
+
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+
+  /* ==================== SHADOWS & ELEVATION ==================== */
+
+  /* Base Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* Colored Shadows */
+  --shadow-primary: 0 10px 40px -10px rgba(168, 85, 247, 0.35);
+  --shadow-accent: 0 10px 40px -10px rgba(59, 130, 246, 0.35);
+  --shadow-warm: 0 10px 40px -10px rgba(249, 115, 22, 0.25);
+
+  /* Glow Effects */
+  --glow-primary: 0 0 20px rgba(168, 85, 247, 0.5);
+  --glow-accent: 0 0 20px rgba(59, 130, 246, 0.5);
+  --glow-success: 0 0 20px rgba(16, 185, 129, 0.5);
+
+  /* ==================== ANIMATION CURVES ==================== */
+
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Animation Durations */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+
+  /* Borders & Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+}
+
+/* ========================================
+   2. BASE STYLES & RESETS
+   ======================================== */
+
+/* Smooth Scrolling & Better Defaults */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-20);
+}
+
+/* Microsoft Fluent Page Background - Subtle gradient for glassmorphism */
+body {
+  background: var(--spark-page-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Better Focus Outlines */
+*:focus-visible {
+  outline: 2px solid var(--spark-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Premium Text Selection */
+::selection {
+  background: var(--spark-primary-200);
+  color: var(--spark-primary-900);
+}
+
+/* Remove Default Transitions (Performance) */
+*,
+*::before,
+*::after {
+  transition-property: none;
+}
+
+/* Apply Transitions Only Where Needed */
+button,
+a,
+input,
+textarea,
+select,
+.card,
+.prompt-card,
+.department-card,
+.badge,
+.btn,
+[role="button"],
+.transition-all {
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* ========================================
+   3. ENHANCED TYPOGRAPHY
+   ======================================== */
+
+/* Gradient Headings */
+.heading-gradient {
+  background: var(--spark-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: var(--font-display);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Premium Headings */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+}
+
+/* Improved Body Text */
+.text-body-lg {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--spark-neutral-600);
+}
+
+/* ========================================
+   4. ENHANCED BUTTON SYSTEM
+   ======================================== */
+
+/* Premium Primary Button */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: white;
+  background: var(--spark-gradient-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all var(--duration-normal) var(--ease-in-out);
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--duration-slow) var(--ease-in-out);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+.btn-premium:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Glass Morphism Button */
+.btn-glass {
+  padding: var(--space-3) var(--space-6);
+  background: var(--spark-glass-bg);
+  backdrop-filter: var(--spark-glass-blur);
+  border: 1px solid var(--spark-glass-border);
+  border-radius: var(--radius-xl);
+  font-weight: var(--font-semibold);
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   5. ENHANCED CARD DESIGNS
+   ======================================== */
+
+/* Premium Department Card */
+.department-card-premium {
+  position: relative;
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  border: 1px solid var(--spark-neutral-200);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--spring);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Gradient Border Effect */
+.department-card-premium::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: var(--dept-gradient);
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-in-out);
+}
+
+/* Glow Effect */
+.department-card-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.1), transparent 50%);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-in-out);
+}
+
+.department-card-premium:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: var(--shadow-2xl);
+}
+
+.department-card-premium:hover::before {
+  opacity: 1;
+}
+
+.department-card-premium:hover::after {
+  opacity: 1;
+}
+
+/* Premium Prompt Card - GLASSMORPHISM (Mica-style) */
+.prompt-card-premium {
+  position: relative;
+
+  /* Frosted glass background with Mica-style effect */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+
+  /* Semi-transparent border with Microsoft blue accent */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 4px solid var(--spark-primary-500);
+
+  /* Layered soft shadow (Microsoft Fluent style) */
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 4px 8px rgba(0, 0, 0, 0.08);
+
+  transition: all var(--duration-normal) var(--ease-in-out);
+  overflow: hidden;
+
+  /* GPU acceleration for smooth animations */
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+}
+
+.prompt-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--dept-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-in-out);
+}
+
+.prompt-card-premium:hover {
+  /* Lift effect */
+  transform: translateY(-4px) translateZ(0);
+
+  /* Enhanced layered shadow */
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.12);
+
+  /* Brighter glass effect on hover */
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.5);
+  border-left-color: var(--spark-primary-600);
+}
+
+.prompt-card-premium:hover::before {
+  transform: scaleX(1);
+}
+
+/* ========================================
+   6. MICRO-ANIMATIONS
+   ======================================== */
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--duration-normal) var(--ease-out) forwards;
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scale-in {
+  animation: scaleIn var(--duration-fast) var(--ease-out) forwards;
+}
+
+/* Pulse Animation for CTAs */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+
+/* Shimmer Loading Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--spark-neutral-200) 25%,
+    var(--spark-neutral-100) 50%,
+    var(--spark-neutral-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate var(--duration-slower) linear infinite;
+}
+
+/* ========================================
+   7. ENHANCED BADGES
+   ======================================== */
+
+.badge-premium {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+/* Department Badge Variants */
+.badge-business {
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1));
+  color: #1e40af;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-marketing {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.1), rgba(236, 72, 153, 0.1));
+  color: #be185d;
+  border: 1px solid rgba(236, 72, 153, 0.2);
+}
+
+.badge-sales {
+  background: linear-gradient(135deg, rgba(4, 120, 87, 0.1), rgba(16, 185, 129, 0.1));
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-seo {
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.1), rgba(139, 92, 246, 0.1));
+  color: #6d28d9;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.badge-finance {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(245, 158, 11, 0.1));
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-education {
+  background: linear-gradient(135deg, rgba(14, 116, 144, 0.1), rgba(6, 182, 212, 0.1));
+  color: #0e7490;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.badge-writing {
+  background: linear-gradient(135deg, rgba(185, 28, 28, 0.1), rgba(239, 68, 68, 0.1));
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.badge-productivity {
+  background: linear-gradient(135deg, rgba(194, 65, 12, 0.1), rgba(249, 115, 22, 0.1));
+  color: #c2410c;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.badge-solopreneurs {
+  background: linear-gradient(135deg, rgba(124, 45, 18, 0.1), rgba(168, 85, 247, 0.1));
+  color: #7c2d12;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* ========================================
+   8. ENHANCED INPUT FIELDS
+   ======================================== */
+
+.input-premium {
+  width: 100%;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  background: white;
+  border: 2px solid var(--spark-neutral-200);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-fast) var(--ease-in-out);
+}
+
+.input-premium:hover {
+  border-color: var(--spark-neutral-300);
+}
+
+.input-premium:focus {
+  outline: none;
+  border-color: var(--spark-primary-500);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+/* Search Input with Icon */
+.search-input-premium {
+  position: relative;
+  padding-left: var(--space-12);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239333ea'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: var(--space-4) center;
+  background-size: var(--space-5);
+}
+
+/* ========================================
+   9. LOADING STATES
+   ======================================== */
+
+/* Skeleton Screen */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--spark-neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Premium Spinner */
+.spinner-premium {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+}
+
+.spinner-premium::before,
+.spinner-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: rotate var(--duration-slower) linear infinite;
+}
+
+.spinner-premium::before {
+  border-top-color: var(--spark-primary-500);
+}
+
+.spinner-premium::after {
+  border-bottom-color: var(--spark-accent-500);
+  animation-delay: 0.25s;
+}
+
+/* ========================================
+   10. HOVER EFFECTS
+   ======================================== */
+
+/* Link Underline Animation */
+.link-animated {
+  position: relative;
+  color: var(--spark-primary-600);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+}
+
+.link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--spark-gradient-primary);
+  transition: width var(--duration-fast) var(--ease-in-out);
+}
+
+.link-animated:hover::after {
+  width: 100%;
+}
+
+/* Image Zoom on Hover */
+.img-zoom {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.img-zoom img {
+  transition: transform var(--duration-slow) var(--ease-in-out);
+}
+
+.img-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* ========================================
+   11. UTILITY CLASSES
+   ======================================== */
+
+/* Gradient Text */
+.text-gradient {
+  background: var(--spark-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Text */
+.text-glow {
+  text-shadow: var(--glow-primary);
+}
+
+/* Backdrop Blur */
+.backdrop-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* No Select */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Smooth Antialiasing */
+.smooth-text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ========================================
+   12. RESPONSIVE UTILITIES
+   ======================================== */
+
+/* Hide on Mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on Desktop */
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   13. DARK MODE ENHANCEMENTS
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --spark-glass-bg: rgba(0, 0, 0, 0.7);
+    --spark-glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  .department-card-premium,
+  .prompt-card-premium {
+    background: var(--spark-neutral-800);
+    border-color: var(--spark-neutral-700);
+  }
+
+  .btn-premium {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .input-premium {
+    background: var(--spark-neutral-800);
+    border-color: var(--spark-neutral-700);
+    color: white;
+  }
+}
+
+/* Dark Mode Support for Manual Toggle */
+.dark {
+  --spark-glass-bg: rgba(0, 0, 0, 0.7);
+  --spark-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode Background Gradient */
+.dark body {
+  background: var(--spark-page-gradient-dark);
+  background-attachment: fixed;
+}
+
+.dark .department-card-premium,
+.dark .prompt-card-premium {
+  /* Dark glassmorphism effect */
+  background: rgba(30, 30, 30, 0.7);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--spark-primary-400);
+
+  /* Enhanced dark mode shadow */
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark .prompt-card-premium:hover {
+  /* Brighter glass on hover */
+  background: rgba(40, 40, 40, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  border-left-color: var(--spark-primary-300);
+
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dark .btn-premium {
+  box-shadow: var(--shadow-xl);
+}
+
+.dark .input-premium {
+  background: var(--spark-neutral-800);
+  border-color: var(--spark-neutral-700);
+  color: white;
+}
+
+/* Dark Mode Badge Styles - Critical Fix for Visibility */
+.dark .badge-business,
+.dark [class*="badge-business"] {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2));
+  color: #60a5fa !important; /* Bright blue for dark mode */
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.dark .badge-marketing,
+.dark [class*="badge-marketing"] {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
+  color: #f472b6 !important; /* Bright pink for dark mode */
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.dark .badge-sales,
+.dark [class*="badge-sales"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.2));
+  color: #34d399 !important; /* Bright green for dark mode */
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.dark .badge-seo,
+.dark [class*="badge-seo"] {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.2));
+  color: #a78bfa !important; /* Bright purple for dark mode */
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.dark .badge-finance,
+.dark [class*="badge-finance"] {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2));
+  color: #fbbf24 !important; /* Bright amber for dark mode */
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.dark .badge-education,
+.dark [class*="badge-education"] {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(34, 211, 238, 0.2));
+  color: #22d3ee !important; /* Bright cyan for dark mode */
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.dark .badge-writing,
+.dark [class*="badge-writing"] {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(248, 113, 113, 0.2));
+  color: #f87171 !important; /* Bright red for dark mode */
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.dark .badge-productivity,
+.dark [class*="badge-productivity"] {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 146, 60, 0.2));
+  color: #fb923c !important; /* Bright orange for dark mode */
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.dark .badge-solopreneurs,
+.dark [class*="badge-solopreneurs"] {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(196, 181, 253, 0.2));
+  color: #c4b5fd !important; /* Bright violet for dark mode */
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Generic badge styles for dark mode */
+.dark .badge,
+.dark .badge-primary,
+.dark .tag {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(196, 181, 253, 0.2));
+  color: #c4b5fd !important;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Ensure text-blue classes are visible in dark mode */
+.dark .text-blue-800 {
+  color: #60a5fa !important;
+}
+
+.dark .text-blue-700 {
+  color: #60a5fa !important;
+}
+
+.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+/* ========================================
+   14. ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Skip to Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--spark-primary-600);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   15. PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* GPU Acceleration for Animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize Font Loading */
+.font-display-swap {
+  font-display: swap;
+}
+
+/* ========================================
+   END OF ENHANCED STYLES
+   ======================================== *//* Dark Mode Badge Fix - Dark backgrounds for badges */
+
+/* Business badges in dark mode - dark purple background */
+.dark .badge-business,
+.dark [class*="badge-business"] {
+  background-color: #4c1d95 !important; /* Dark purple */
+  color: #e9d5ff !important; /* Light purple text */
+  border: 1px solid #6b21a8 !important;
+}
+
+/* Marketing badges in dark mode - dark orange background */
+.dark .badge-marketing,
+.dark [class*="badge-marketing"] {
+  background-color: #7c2d12 !important; /* Dark orange */
+  color: #fed7aa !important; /* Light orange text */
+  border: 1px solid #9a3412 !important;
+}
+
+/* Sales badges in dark mode - dark green background */
+.dark .badge-sales,
+.dark [class*="badge-sales"] {
+  background-color: #14532d !important; /* Dark green */
+  color: #bbf7d0 !important; /* Light green text */
+  border: 1px solid #166534 !important;
+}
+
+/* SEO badges in dark mode - dark blue background */
+.dark .badge-seo,
+.dark [class*="badge-seo"] {
+  background-color: #1e3a8a !important; /* Dark blue */
+  color: #bfdbfe !important; /* Light blue text */
+  border: 1px solid #1e40af !important;
+}
+
+/* Finance badges in dark mode - dark teal background */
+.dark .badge-finance,
+.dark [class*="badge-finance"] {
+  background-color: #134e4a !important; /* Dark teal */
+  color: #99f6e4 !important; /* Light teal text */
+  border: 1px solid #0f766e !important;
+}
+
+/* Education badges in dark mode - dark pink background */
+.dark .badge-education,
+.dark [class*="badge-education"] {
+  background-color: #831843 !important; /* Dark pink */
+  color: #fbcfe8 !important; /* Light pink text */
+  border: 1px solid #9f1239 !important;
+}
+
+/* Writing badges in dark mode - dark indigo background */
+.dark .badge-writing,
+.dark [class*="badge-writing"] {
+  background-color: #312e81 !important; /* Dark indigo */
+  color: #c7d2fe !important; /* Light indigo text */
+  border: 1px solid #4338ca !important;
+}
+
+/* Productivity badges in dark mode - dark yellow background */
+.dark .badge-productivity,
+.dark [class*="badge-productivity"] {
+  background-color: #713f12 !important; /* Dark amber */
+  color: #fde68a !important; /* Light yellow text */
+  border: 1px solid #92400e !important;
+}
+
+/* Solopreneurs badges in dark mode - dark purple background */
+.dark .badge-solopreneurs,
+.dark [class*="badge-solopreneurs"] {
+  background-color: #581c87 !important; /* Dark purple */
+  color: #e9d5ff !important; /* Light purple text */
+  border: 1px solid #6b21a8 !important;
+}
+
+/* Generic badge styles for dark mode */
+.dark .badge,
+.dark [class*="badge"] {
+  background-color: #374151 !important; /* Dark gray background */
+  color: #f3f4f6 !important; /* Light gray text */
+  border: 1px solid #4b5563 !important;
+}
+
+/* Ensure all badges in dark mode have proper visibility */
+.dark .prompt-card .badge,
+.dark .prompt-list-item .badge,
+.dark .prompt-item .badge {
+  opacity: 1 !important;
+  font-weight: 500 !important;
+}
+/* Fix for bottom tags on prompt cards - make them highly visible in dark mode */
+.dark .px-3.py-1.bg-gray-100,
+.dark .px-3.py-1.bg-gray-100.dark\:bg-gray-700,
+.dark .shimmer,
+.dark span.px-3.py-1 {
+  background-color: #4c1d95 !important; /* Dark purple background */
+  color: #e9d5ff !important; /* Light purple text */
+  border: 1px solid #6b21a8 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}

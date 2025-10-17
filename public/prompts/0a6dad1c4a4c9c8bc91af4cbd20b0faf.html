@@ -1,0 +1,758 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Analyze Content Structure and Style</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-8139-afd2-c619f63cd730" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📝</span></div><h1 class="page-title">Analyze Content Structure and Style</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-gray">Content Creation</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@June 13, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-81fa-b9d3-df5597dfa4fb"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Use this mega-prompt for ChatGPT to thoroughly analyze and reimagine content, enhancing its impact and appeal. It guides you through a detailed examination of themes, structure, and style, and aids in developing fresh content ideas with structured outlines for effective storytelling and engagement.</mark></div></figure><hr id="2733f44c-2287-81aa-b23c-e8c64b6d2a62"/><h2 id="2733f44c-2287-8145-9b84-ce987f4758a0" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><ul id="2733f44c-2287-8193-8f36-ceb2224106ff" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Analyzes the content to identify key points, arguments, or themes.</mark></li></ul><ul id="2733f44c-2287-8114-b88a-d026f1484bea" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Breaks down the content structure into key sections or components.</mark></li></ul><ul id="2733f44c-2287-8122-b485-c8327492577c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Generates outlines for three new pieces of content inspired by the original, including titles, key points, and unique insights.</mark></li></ul><h2 id="2733f44c-2287-8198-b8de-c0ba4062b1a6" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><ul id="2733f44c-2287-8170-92b6-e9acedb94ffb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Identify Core Themes: Analyze the original content to extract central themes, arguments, or key points that resonate most with the audience.</mark></li></ul><ul id="2733f44c-2287-8196-8694-fa2098f08df4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Structure Analysis: Break down the content into its fundamental sections to understand its flow and organization, which can be mirrored or altered in new creations.</mark></li></ul><ul id="2733f44c-2287-8182-9f60-ca10580410a3" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Tone and Engagement Techniques: Note the original tone, style, and engagement techniques like humor or storytelling, and consider how these can be adapted or contrasted in your new pieces.</mark></li></ul><ul id="2733f44c-2287-8118-acd6-e50b91745fb0" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Remix Core Ideas: Brainstorm ways to take the core ideas and present them through a different lens or to a different audience to add freshness.</mark></li></ul><ul id="2733f44c-2287-8143-bf1a-c9b82a0b93e8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Outline New Content: For each new piece, draft an outline that includes a catchy title, 3-5 key points, relevant examples or stories, and a unique insight or perspective to ensure it stands apart from the original.</mark></li></ul><h2 id="2733f44c-2287-8187-a284-e5891b40359a" class=""><mark class="highlight-yellow_background">📝 Content Analysis ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-811c-a851-eea08b53709c" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+You are an expert content strategist and writer tasked with analyzing a given piece of content in detail and brainstorming ideas for new, distinct pieces of content inspired by the original piece.
+
+#ROLE:
+As a content strategist and writer, your role is to thoroughly examine the provided content, identify its key elements and themes, and use those insights to generate fresh content ideas that build upon the original piece in innovative ways.
+
+#RESPONSE GUIDELINES:
+1. Summarize the key points, arguments, or themes explored in the content.
+2. Break down the structure of the content, identifying the main sections or components.
+3. Characterize the tone, style, and voice of the writing.
+4. Identify the elements that make the piece compelling or engaging to the reader.
+5. Analyze the specific writing techniques employed, such as storytelling, humor, or data.
+6. Brainstorm 3 high-level ideas for new, distinct pieces of content inspired by the original piece.
+7. Create an outline for each of the 3 new content ideas, including:
+   - A working title
+   - 3-5 key points or arguments to explore
+   - Examples or stories to illustrate the points
+   - A unique insight, perspective, or opinion on the topic
+8. Ensure the new content ideas are clearly distinct from the original piece, but riff on the same themes.
+
+#ANALYSIS CRITERIA:
+1. Focus on identifying the core elements that make the original content effective and engaging.
+2. Consider how the structure, hook, and central idea of the piece contribute to its impact.
+3. Avoid copying any content directly from the original piece when brainstorming new ideas.
+4. Aim to generate fresh perspectives or applications of the core themes or ideas.
+
+#INFORMATION ABOUT ME:
+- Original content to analyze: [INSERT CONTENT]
+
+#RESPONSE FORMAT:
+1. Content Analysis:
+   - Key Points, Arguments, or Themes
+   - Content Structure
+   - Tone, Style, and Voice
+   - Compelling or Engaging Elements
+   - Writing Techniques Employed
+2. New Content Ideas:
+   - Idea 1:
+     - Working Title
+     - Key Points or Arguments
+     - Examples or Stories
+     - Unique Insight, Perspective, or Opinion
+   - Idea 2:
+     - Working Title
+     - Key Points or Arguments 
+     - Examples or Stories
+     - Unique Insight, Perspective, or Opinion
+   - Idea 3:  
+     - Working Title
+     - Key Points or Arguments
+     - Examples or Stories 
+     - Unique Insight, Perspective, or Opinion</code></pre><h2 id="2733f44c-2287-81c0-a54f-e1b09510f09d" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><ul id="2733f44c-2287-81d0-816c-d1e82c381628" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Fill in the [INSERT CONTENT] placeholder with the specific text or content you want to analyze. Example: If you are analyzing an article about &quot;The Future of Renewable Energy,&quot; you would paste the text of that article into the [INSERT CONTENT] section.</mark></li></ul><ul id="2733f44c-2287-81d8-a3cd-e62d3e2c8fab" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Use the prompt to conduct a thorough analysis of the content, focusing on identifying key themes, the structure of the content, and the style of writing. This will help in understanding the depth and breadth of the original piece, which is crucial for creating new content that is inspired but distinct.</mark></li></ul><ul id="2733f44c-2287-8127-a116-c6572464fa05" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Leverage the analysis to brainstorm and outline three new pieces of content. Ensure each new piece maintains a unique angle or perspective on the original themes, incorporates different writing techniques, and includes fresh examples or stories, thus avoiding mere repetition of the original content.</mark></li></ul><h2 id="2733f44c-2287-81de-9c97-f7cb6de31d50" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8167-b13a-e69c827e3ae5" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- Original content to analyze: </mark></p><p id="2733f44c-2287-8182-9c88-fc6382f02953" class="">ChatGPT is my $20 data analyst.</p><p id="2733f44c-2287-81a5-9614-ca193282d4e4" class="">8 ways ChatGPT analyzes your data &amp; saves you time:</p><p id="2733f44c-2287-8177-b46d-d001502c783e" class="">(I share my prompt at the very end of this post)</p><p id="2733f44c-2287-81d1-af18-d7e47fd0723c" class="">1. Data Cleaning:</p><p id="2733f44c-2287-81eb-a6d4-e671694b1276" class="">Removing errors and inconsistencies is crucial for accurate analysis.</p><p id="2733f44c-2287-8159-b1ee-f99305558ca8" class="">ChatGPT cleans your data by identifying and correcting mistakes, standardizing formats, and filling in missing values.</p><p id="2733f44c-2287-814c-a715-cc87665ae9e1" class="">2. Data Visualization:</p><p id="2733f44c-2287-819f-84fd-e9d729e0a30c" class="">Presenting data in a visual format makes it easier to understand.</p><p id="2733f44c-2287-81ce-aa4b-e88847bf23f6" class="">ChatGPT can generate charts, graphs, and plots to help you visualize trends and patterns.</p><p id="2733f44c-2287-811b-9af6-f876e8283a6b" class="">Use it to create clear, concise visualizations that highlight key insights.</p><p id="2733f44c-2287-8160-b4de-c4b2406762c8" class="">3. Statistical Analysis:</p><p id="2733f44c-2287-81b6-aee7-de156d80baa2" class="">Understanding the numbers behind your data is essential.</p><p id="2733f44c-2287-8199-9acc-e57fb8eeea3c" class="">ChatGPT can perform various statistical tests and calculations, from basic descriptive statistics to more complex inferential analyses.</p><p id="2733f44c-2287-817d-b9cc-c7a924f73a03" class="">Leverage its capabilities to make data-driven decisions.</p><p id="2733f44c-2287-817c-a15a-da74f8197cd3" class="">4. Predictive Modeling:</p><p id="2733f44c-2287-812d-bd8f-c5d552242410" class="">Forecasting future trends can give you a competitive edge.</p><p id="2733f44c-2287-81d5-84f8-cce60ac3d3cc" class="">ChatGPT can build predictive models using historical data, helping you anticipate outcomes and plan accordingly.</p><p id="2733f44c-2287-81ef-a57d-cf2d2aa9401f" class="">Use these models to inform your strategy and stay ahead of the curve.</p><p id="2733f44c-2287-81b9-ae19-c048b4685b32" class="">5. Text Analysis:</p><p id="2733f44c-2287-8121-9069-eec45538ba69" class="">Extracting insights from text data can be challenging.</p><p id="2733f44c-2287-8129-9e7b-da5bebd87830" class="">ChatGPT can analyze text data to identify themes, sentiments, and key phrases.</p><p id="2733f44c-2287-8177-a3c2-e58ef38ee053" class="">Apply it to customer feedback, social media posts, and other textual data sources.</p><p id="2733f44c-2287-812d-9fe7-d264fb5e7ef0" class="">6. Data Integration:</p><p id="2733f44c-2287-8170-955f-c88459847990" class="">Combining data from multiple sources provides a more comprehensive view.</p><p id="2733f44c-2287-813e-932e-e002903f320f" class="">ChatGPT can help merge datasets, ensuring consistency and accuracy.</p><p id="2733f44c-2287-8157-ba07-e23ab73423b0" class="">Integrate data from different platforms to get a holistic understanding of your metrics.</p><p id="2733f44c-2287-81d1-a9ae-dab339c78bf8" class="">7. Automation:</p><p id="2733f44c-2287-812b-9ab4-d32d3450fa24" class="">Automating repetitive tasks saves time and reduces errors.</p><p id="2733f44c-2287-817a-8ab5-d17f16b22428" class="">ChatGPT can automate data entry, report generation, and other routine tasks.</p><p id="2733f44c-2287-813e-bc1c-c66ad6b8e6cc" class="">Free up your time to focus on more strategic activities.</p><p id="2733f44c-2287-8143-acef-d9040bb6adab" class="">8. Decision Support:</p><p id="2733f44c-2287-8135-9183-e1927f120c3b" class="">Making informed decisions is critical for success.</p><p id="2733f44c-2287-815f-b409-feb9334c638b" class="">ChatGPT can provide recommendations based on data analysis, helping you choose the best course of action.</p><p id="2733f44c-2287-81b1-90d5-c13c0d56b3ce" class="">Use its insights to guide your decision-making process.</p><p id="2733f44c-2287-81ec-b062-defd9ab4d39e" class="">___</p><p id="2733f44c-2287-811b-86e3-e36e12d1325a" class="">In my example on the video, I used an old form.</p><p id="2733f44c-2287-8187-a556-ccd5b87ac7fa" class="">Before launching EasyGen (my SaaS), I asked questions to 700+ people on a form.</p><p id="2733f44c-2287-81ee-b31f-df097f9b74fb" class="">But I had to analyze it. I can&#x27;t afford a data analyst.</p><p id="2733f44c-2287-8120-adcb-d65d42180402" class="">This is my prompt:</p><p id="2733f44c-2287-81a5-9709-f7e8c1e75861" class="">&quot;Act like a data analyst.</p><p id="2733f44c-2287-81ef-88eb-dd0f34695732" class="">This excel are questions I asked to my community about my SaaS &quot;EasyGen&quot;.</p><p id="2733f44c-2287-8137-a818-f79211334de0" class="">I want to know:</p><ul id="2733f44c-2287-8118-a6cd-f99fb3d63626" class="bulleted-list"><li style="list-style-type:disc">how many followers they have</li></ul><ul id="2733f44c-2287-81ad-9b48-c05c0974cfe7" class="bulleted-list"><li style="list-style-type:disc">what&#x27;s their industry</li></ul><ul id="2733f44c-2287-81c0-a231-ff2465c6d28b" class="bulleted-list"><li style="list-style-type:disc">what&#x27;s their budget</li></ul><p id="2733f44c-2287-8161-bc00-e004f3de498c" class="">And all of the correlations between each of them.</p><p id="2733f44c-2287-81e4-a14f-f78533826415" class="">Step 1: Clean all of the data.</p><p id="2733f44c-2287-81b4-a7a2-f524ce729bac" class="">Step 2: Talk about your strategy to land me a detailed report as a data analyst.</p><p id="2733f44c-2287-8115-8356-d8286a390cbe" class="">Step 3: Draw conclusions from it on what I should do, and why.</p><p id="2733f44c-2287-81d8-b312-c510623627e2" class="">Make sure to treat the 3 questions as one form, and not each of them separately.</p><p id="2733f44c-2287-814a-aa0c-cd01913e56c6" class="">Take a deep breath and work on this problem step by step.&quot;</p><p id="2733f44c-2287-81c4-af58-d392eb270692" class="">I will share the results in the comment section.</p><p id="2733f44c-2287-8147-b507-e2a68ee24578" class="">♻️ Repost this if you think ChatGPT is surprising.</p><h2 id="2733f44c-2287-8111-9350-c8f31e6c044b" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81b5-9c89-e38a7588767c" class="image"><a href="Analyze%20Content%20Structure%20and%20Style%202733f44c22878139afd2c619f63cd730/Analyze_Content_Structure_and_Style_1.png"><img style="width:1000px" src="Analyze%20Content%20Structure%20and%20Style%202733f44c22878139afd2c619f63cd730/Analyze_Content_Structure_and_Style_1.png"/></a></figure><figure id="2733f44c-2287-8163-8715-cde2f3e98011" class="image"><a href="Analyze%20Content%20Structure%20and%20Style%202733f44c22878139afd2c619f63cd730/Analyze_Content_Structure_and_Style_2.png"><img style="width:1000px" src="Analyze%20Content%20Structure%20and%20Style%202733f44c22878139afd2c619f63cd730/Analyze_Content_Structure_and_Style_2.png"/></a></figure><h2 id="2733f44c-2287-812b-9113-f1d16da81458" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-817e-92ab-fcccfa44a83a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Identify Core Themes: Analyze the original content to extract central themes, arguments, or key points that resonate most with the audience.</mark></li></ul><ul id="2733f44c-2287-8148-8a38-e112ea387cac" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Structure Analysis: Break down the content into its fundamental sections to understand its flow and organization, which can be mirrored or altered in new creations.</mark></li></ul><ul id="2733f44c-2287-8136-9833-c1e545360352" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Tone and Engagement Techniques: Note the original tone, style, and engagement techniques like humor or storytelling, and consider how these can be adapted or contrasted in your new pieces.</mark></li></ul><ul id="2733f44c-2287-8162-a9c6-fe7ebfbde461" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Remix Core Ideas: Brainstorm ways to take the core ideas and present them through a different lens or to a different audience to add freshness.</mark></li></ul><ul id="2733f44c-2287-813d-ba03-c99b9f7ac098" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Outline New Content: For each new piece, draft an outline that includes a catchy title, 3-5 key points, relevant examples or stories, and a unique insight or perspective to ensure it stands apart from the original.</mark></li></ul><p id="2733f44c-2287-8175-9f40-d295dd5b9228" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

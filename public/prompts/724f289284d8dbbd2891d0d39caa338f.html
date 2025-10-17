@@ -1,0 +1,868 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Facebook Ad Copies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-8111-9349-ff8d694d058d" class="page sans"><header><img class="page-cover-image" src="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Notion_Linear.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Create%20Facebook%20Ad%20Copies%202733f44c228781119349ff8d694d058d/Facebook_Logo_(2019).png.webp"/></div><h1 class="page-title">Create Facebook Ad Copies</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Online Marketing</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@March 1, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8147-bb8e-f523f8568066"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Use this mega-prompt to create compelling Facebook ad copies that leverage the psychological principle of Fear of Missing Out (FOMO). This guide helps in maximizing click-through rates and conversions by crafting messages that induce a sense of urgency. </div></figure><h2 id="2733f44c-2287-81a2-8c17-c06f19f71669" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>What This Mega-Prompt Does</strong></mark><mark class="highlight-yellow_background">:</mark></h2><ol type="1" id="2733f44c-2287-81e0-a6fa-dba5b2760e93" class="numbered-list" start="1"><li>Guides you in identifying your product&#x27;s unique selling proposition (USP)</li></ol><ol type="1" id="2733f44c-2287-810a-9914-c9a5a3978a4c" class="numbered-list" start="2"><li>Helps you understand and address your target audience&#x27;s desires and pain points</li></ol><ol type="1" id="2733f44c-2287-81cc-bace-cca6b9a44a65" class="numbered-list" start="3"><li>Provides a structured approach to creating ad copies with a strong call-to-action (CTA)</li></ol><h2 id="2733f44c-2287-81d9-a5e6-c514bfdd9090" class=""><mark class="highlight-yellow_background">💡 Tips:</mark></h2><ul id="2733f44c-2287-81b1-873c-e4c2f02eab94" class="bulleted-list"><li style="list-style-type:disc"><strong>Understand Your Audience</strong>: Deeply analyze your target audience&#x27;s pain points and desires. This understanding is crucial in crafting an ad copy that resonates with them emotionally and persuades them to act immediately.</li></ul><ul id="2733f44c-2287-81ee-a691-c72b3adea9eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Leverage Scarcity and Urgency</strong>: Incorporate scarcity tactics such as limited time offers or exclusive deals to create a compelling sense of urgency. This taps into the audience&#x27;s FOMO, driving them to take action to avoid missing out.</li></ul><ul id="2733f44c-2287-8124-b51a-c8d97d439ef6" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Social Proof Strategically</strong>: Include elements of social proof like customer testimonials or the number of happy customers to bolster the credibility of your offer and amplify the FOMO effect.</li></ul><h2 id="2733f44c-2287-8181-90f3-ef32ae79c049" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>FOMO Facebook Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-815f-a7eb-e18dd03151c0" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer with specialization in creating high-converting Facebook ad copies. Your task is to craft a Facebook ad copy that leverages the psychological principle of Fear of Missing Out (FOMO) to drive immediate action from the target audience. The ad should be compelling, concise, and designed to generate a sense of urgency, making the audience feel like they&#x27;re about to miss out on a fantastic opportunity if they don&#x27;t act now.
+
+#GOAL:
+You will create an ad copy that maximizes click-through rates and conversions by effectively using FOMO elements to persuade the audience.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the ad copy:
+
+1. Identify the unique selling proposition (USP) of my product/service. Highlight what makes it special and why the audience can&#x27;t find this value anywhere else.
+2. Deeply understand the desires and pain points of the target audience. Craft your message to resonate with them, emphasizing how missing this opportunity could negatively impact their goals or aspirations.
+3. Create a powerful headline that grabs attention. Use dynamic and action-oriented language that conveys urgency and the benefit of acting now.
+4. Write the body of the ad:
+    - Start with a bold statement or question that addresses the audience&#x27;s main desire or pain point.
+    - Briefly describe the offer and its unique benefits.
+    - Incorporate scarcity tactics (limited time offer, limited stock, exclusive deal) to heighten the sense of urgency.
+    - Use social proof (testimonials, number of customers, ratings) to add credibility and FOMO.
+5. Conclude with a clear, compelling call-to-action (CTA) that encourages immediate action. Use phrases like &quot;Don&#x27;t miss out,&quot; &quot;Limited time only,&quot; or &quot;Join now before it&#x27;s too late.&quot;
+6. Optional: Suggest using an eye-catching image or graphic that complements the FOMO message and enhances the overall appeal of the ad.
+
+#INFORMATION ABOUT ME:
+- My product/service: [YOUR PRODUCT/SERVICE]
+- My target audience: [TARGET AUDIENCE]
+- Unique benefits of my offer: [UNIQUE BENEFITS]
+- Scarcity element (time limit, quantity limit, etc.): [SCARCITY ELEMENT]
+- Social proof (testimonials, customer count, ratings): [SOCIAL PROOF]
+
+#OUTPUT:
+Ensure the ad copy is clear, persuasive, and optimized for creating a sense of urgency. The copy should not exceed 150 words to maintain conciseness and effectiveness for the Facebook ad platform.</code></pre><h2 id="2733f44c-2287-81c0-9cd3-f8ee9a429856" class=""><mark class="highlight-yellow_background">❓ How To Use The Prompt:</mark></h2><ul id="2733f44c-2287-8126-a382-ed9201add405" class="bulleted-list"><li style="list-style-type:disc">Fill in the placeholders with specific details about your product/service, target audience, unique benefits, scarcity element, and social proof. </li></ul><ul id="2733f44c-2287-811e-93fd-e25ce89adc6e" class="bulleted-list"><li style="list-style-type:disc">For example, &quot;My product/service: Innovative Online Course Platform, My target audience: Aspiring Entrepreneurs, Unique benefits: Access to exclusive startup strategies, Scarcity element: Enrollment closes in 72 hours, Social proof: 5000+ successful entrepreneurs.&quot;</li></ul><h2 id="2733f44c-2287-818e-bde7-d5c1e7d0222a" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-81cf-8d25-c63e3fa48dd8" class="">#INFORMATION ABOUT ME:</p><ul id="2733f44c-2287-8120-a991-fd1fda11ad10" class="bulleted-list"><li style="list-style-type:disc"><strong>My product/service:</strong> Complete AI Bundle, a comprehensive collection of easy-to-follow AI resources, prompts, and how-to guides for small business owners.</li></ul><ul id="2733f44c-2287-815a-9268-d6c0436165eb" class="bulleted-list"><li style="list-style-type:disc"><strong>My target audience:</strong> Small business owners, content creators, marketers, solopreneurs, and entrepreneurs aged 24-55 with intermediate/beginner AI knowledge.</li></ul><ul id="2733f44c-2287-812c-9563-f0482a9415f5" class="bulleted-list"><li style="list-style-type:disc"><strong>Unique benefits of my offer:</strong> Lifetime access, 14-day money-back guarantee, productivity boosts, cost savings, simple-to-follow AI guides, the largest AI resource collection.</li></ul><ul id="2733f44c-2287-81b8-85da-f70a919b5412" class="bulleted-list"><li style="list-style-type:disc"><strong>Scarcity element:</strong> Limited-time offer with exclusive bonus resources, limited stock available.</li></ul><ul id="2733f44c-2287-81b0-8ca4-c12c14f42022" class="bulleted-list"><li style="list-style-type:disc"><strong>Social proof:</strong> Over 1,000 satisfied customers, 4.8-star average rating, numerous positive testimonials.</li></ul><h2 id="2733f44c-2287-8153-bd86-dd90dec9c07f" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-812a-9d72-c896f02b670a" class="image"><a href="Create%20Facebook%20Ad%20Copies%202733f44c228781119349ff8d694d058d/Create_Facebook_Ad_Copies.png"><img style="width:707.96875px" src="Create%20Facebook%20Ad%20Copies%202733f44c228781119349ff8d694d058d/Create_Facebook_Ad_Copies.png"/></a></figure><h2 id="2733f44c-2287-81f7-ba56-c4007e0eb577" class=""><mark class="highlight-yellow_background">⚙️ More Mega-Prompts:</mark></h2><h2 id="2733f44c-2287-817e-9d32-ec2343e45b85" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>Social Proof Facebook Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-81b0-90d7-c0b4d23f619a" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer with deep expertise in crafting Facebook ad copies that effectively leverage influencer marketing and social proof strategies. Your task is to create an ad copy that promotes the product or service through the endorsement of a well-chosen influencer. This ad should incorporate psychological triggers to boost credibility and encourage user engagement, making it compelling for the target audience to try the product or service and share their positive experiences on their social networks. Utilizing specific social proof techniques and credibility boosters will enhance the persuasiveness of the ad.
+
+#GOAL:
+You will create an ad copy that strategically uses influencer endorsement and social proof to increase conversions and encourage user-generated content sharing, building a wider organic reach for the product or service.
+
+#RESPONSE GUIDELINES:
+Follow this step-by-step approach to create the ad copy:
+
+1. Tailor the ad&#x27;s tone, language, and content to resonate with the ideal customer persona, ensuring the message is relevant and engaging to this specific audience.
+2. Highlight the influencer&#x27;s endorsement right at the beginning, focusing on their genuine connection and experience with the product or service to establish trust and credibility.
+3. Craft a compelling headline that captures the essence of the influencer&#x27;s endorsement, designed to grab the audience&#x27;s attention instantly.
+4. In the body of the ad:
+    - Briefly introduce the influencer and their relevance to the target audience, emphasizing their authentic use and endorsement of the product or service.
+    - Integrate social proof techniques such as testimonials, user ratings, or a significant number of users to solidify the social proof aspect.
+    - Apply credibility boosters like awards, certifications, or exclusive features that set the product or service apart from competitors.
+    - Incorporate a clear call-to-action (CTA) encouraging the target audience to try the product or service and share their experience. Use phrases that promote community and sharing, like &quot;Join the trend&quot; or &quot;Share your story.&quot;
+5. Recommend using a visual or video featuring the influencer with the product or service to complement the text and enhance engagement.
+6. Suggest a strategy for re-engaging customers who shared their positive experiences, such as featuring their stories in future ads or offering them exclusive rewards.
+
+#INFORMATION ABOUT ME:
+My product/service: [PRODUCT/SERVICE]
+My ideal customer persona: [IDEAL CUSTOMER PERSONA]
+Type of influencer: [TYPE OF INFLUENCER]
+Social proof techniques: [SOCIAL PROOF TECHNIQUES]
+Credibility boosters: [CREDIBILITY BOOSTERS]
+
+#OUTPUT:
+The ad copy should be engaging, persuasive, and tailored to the ideal customer persona, effectively utilizing the influencer&#x27;s endorsement. It should include a compelling headline, a body that integrates specific social proof techniques and credibility boosters, and a clear CTA that encourages trying the product or service and sharing the experience. The copy should be concise, ideally not exceeding 150 words, to fit the Facebook ad format and maintain the audience&#x27;s attention.</code></pre><h2 id="2733f44c-2287-81b1-a17a-e047ef5258e9" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>Event Promotion Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-818e-a2ce-d6ef79eb7ffb" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer specialized in creating engaging and buzz-worthy Facebook ad copies. Your task is to develop an ad copy aimed at generating excitement and anticipation for an upcoming event, webinar, or product launch. This ad should speak directly to the ideal customer persona, highlighting the unique value and experiences they stand to gain by registering and participating. The copy must be crafted to capture attention, stimulate interest, and drive action, employing persuasive language, social proof, and a clear call to action.
+
+#GOAL:
+You will create an ad copy that effectively generates buzz, encourages registrations, and maximizes participation rates for the upcoming event, webinar, or product launch.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the ad copy:
+1. Clearly define the event, webinar, or launch details. Include what it is, when it will happen, and why it&#x27;s not to be missed.
+2. Identify and articulate the core value proposition or the main attraction of the event. What can participants gain from attending that they can&#x27;t get elsewhere?
+3. Understand the ideal customer persona deeply. What are their interests, pain points, and aspirations? Tailor the message to resonate with this audience, showing them how the event addresses their needs or desires.
+4. Craft a compelling headline that captures the essence of the event and speaks directly to the ideal customer persona. Use action words and benefits to grab attention.
+5. Write the body of the ad:
+Start with an engaging question or statement that relates to the audience&#x27;s key interests or challenges.
+6. Briefly describe the event and its unique selling points.
+7. Highlight any special guests, exclusive content, or once-in-a-lifetime opportunities to add allure.
+8. Use social proof (e.g., expert endorsements, anticipated attendee numbers, success stories from past events) to build credibility and FOMO.
+9. Conclude with a clear, persuasive call-to-action (CTA) that encourages immediate registration. Use urgency-driven language like &quot;Secure your spot,&quot; &quot;Register now to avoid missing out,&quot; or &quot;Limited spaces available.&quot;
+Optional: Suggest incorporating an engaging visual or video that showcases highlights or testimonials from past events, further increasing interest and credibility.
+
+#INFORMATION ABOUT ME:
+- The nature of my event/webinar/launch: [NATURE OF THE EVENT/WEBINAR/LAUNCH]
+- My ideal customer persona: [IDEAL CUSTOMER PERSONA]
+- Main attractions or unique selling points of the event: [MAIN ATTRACTIONS/UNIQUE SELLING POINTS]
+- Special guests or exclusive content available: [SPECIAL GUESTS/EXCLUSIVE CONTENT]
+- Social proof or success stories from past events: [SOCIAL PROOF/PAST SUCCESS STORIES]
+
+#OUTPUT:
+Craft the ad copy to be engaging, persuasive, and succinct, ensuring it aligns with Facebook&#x27;s best practices for ad content. The copy should not exceed 150 words to ensure it is concise and effective for the Facebook ad platform.</code></pre><h2 id="2733f44c-2287-81b2-8a13-da25d57ada04" class=""><mark class="highlight-yellow_background">⚙️ Retargeting Facebook Ad Copy</mark><mark class="highlight-yellow_background"><strong> </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-8140-b5f0-c6c0ca26412a" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer with a focus on retargeting strategies. Your task is to create a Facebook ad copy specifically designed to re-engage an ideal customer persona who has previously shown interest in a product or service but did not complete a purchase. The ad should be crafted to remind them of what they&#x27;ve considered buying, highlight any new developments or incentives, and address potential hesitations that prevented the initial conversion. The tone should be friendly and persuasive, aiming to reignite their interest and gently guide them towards making a decision.
+
+#GOAL:
+You will craft an ad copy that effectively re-engages potential customers, rekindling their interest in the product or service and encouraging them to finalize their purchase.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the ad copy:
+
+1. Start by acknowledging the customer&#x27;s previous interest. This could be a simple recognition that they&#x27;ve considered the product or service before, creating a personalized touch.
+2. Highlight any new features, updates, or special offers that have been introduced since their last visit. This might include improvements to the product/service, limited-time discounts, or exclusive bonuses for returning customers.
+3. Address common objections or concerns that might have prevented the purchase initially. Offer solutions, testimonials, or guarantees that alleviate these hesitations.
+4. Craft a compelling headline that speaks directly to the ideal customer persona, using language that resonates with their desires or pain points. The headline should spark curiosity or offer a value proposition that&#x27;s hard to ignore.
+5. Write the body of the ad:
+- Reinforce the unique benefits of the product/service, emphasizing what sets it apart from competitors.
+- Mention any social proof, like customer testimonials or ratings, to build trust and credibility.
+- Use a tone of inclusivity and understanding, making it clear that their decision to wait is respected but now is a great time to act.
+6. Conclude with a clear, motivating call-to-action (CTA) that makes it easy for them to take the next step. Encourage them to revisit the product/service with phrases like &quot;Take another look,&quot; &quot;Discover what&#x27;s new,&quot; or &quot;Join the satisfied customers.&quot;
+7. Optional: Suggest including an image or graphic that visually represents the product/service benefits, updates, or customer satisfaction to enhance the message.
+
+#INFORMATION ABOUT ME:
+- My ideal customer persona: [IDEAL CUSTOMER PERSONA]
+- My product/service: [PRODUCT/SERVICE]
+- New features or special offers: [NEW FEATURES/SPECIAL OFFERS]
+- Common objections or concerns: [COMMON OBJECTIONS/CONCERNS]
+- Social proof or testimonials: [SOCIAL PROOF/TESTIMONIALS]
+
+#OUTPUT:
+Ensure the ad copy is engaging, reassuring, and targeted, effectively addressing the reasons why the potential customer hesitated initially. The copy should not exceed 150 words to stay concise and impactful for the Facebook ad platform.</code></pre><h2 id="2733f44c-2287-8151-918c-e039e2f5b816" class=""><mark class="highlight-yellow_background">⚙️ Customer Testimonial</mark><mark class="highlight-yellow_background"><strong> Video Ad </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-818b-9a34-c315ce4b27bc" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Assume the role of an expert in digital marketing and video content creation, specializing in crafting compelling Facebook video ads. Your task involves developing a video ad script that leverages positive testimonials from satisfied customers to build trust and credibility with your ideal customer persona. This ad should highlight the benefits and transformative impact of your product or service, using real-world endorsements to overcome skepticism and encourage new customers to make a purchase. The script must be engaging, emotionally resonant, and strategically structured to maximize persuasion and conversion rates.
+
+#GOAL:
+You will create a video ad script that effectively showcases customer testimonials, persuading your ideal customer persona to trust in the quality and efficacy of your product or service, ultimately driving them towards making a purchase.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the video ad script:
+
+1. Open with a strong, attention-grabbing statement or question that addresses a common pain point or aspiration related to your product/service. This sets the tone and immediately engages your target audience.
+2. Introduce the product/service briefly, focusing on its ability to solve the problem or achieve the aspiration mentioned. Keep this segment concise and impactful.
+3. Transition into the testimonials segment by introducing the satisfied customers. Preface their endorsements with a quick introduction that highlights the diversity and relatability of your customer base.
+4. Feature a series of positive testimonials:
+- Start each testimonial with the customer&#x27;s name and a brief background to add authenticity.
+- Focus on specific benefits they experienced, including any before-and-after scenarios that visually or narratively demonstrate the transformation.
+- Include varied customer stories to cover different aspects of the product/service, ensuring a broad appeal to different segments of your target audience.
+5. Between testimonials, weave in key selling points of your product/service, emphasizing how it addresses the pain points and aspirations echoed in the testimonials.
+6. Conclude the video with a strong call-to-action (CTA), encouraging viewers to take the next step towards experiencing the benefits for themselves. This could be visiting your website, signing up for a free trial, or making a purchase.
+7. Optional: Suggest adding background music that fits the mood of the testimonials and the message you wish to convey, enhancing the emotional impact of the video.
+
+#INFORMATION ABOUT ME:
+- My satisfied customers: [SATISFIED CUSTOMERS]
+- My ideal customer persona: [IDEAL CUSTOMER PERSONA]
+- My product/service: [PRODUCT/SERVICE]
+
+#OUTPUT:
+The video ad script should be detailed, specifying dialogue, on-screen text, and visual cues where relevant. Ensure it is structured to flow smoothly from introduction to testimonials and finally to the call-to-action, maintaining viewer engagement throughout. The script length should align with Facebook&#x27;s best practices for video ads, typically not exceeding 1 minute to ensure maximum viewer retention and engagement.</code></pre><h2 id="2733f44c-2287-811b-8a16-fcec513cfa19" class=""><mark class="highlight-yellow_background">⚙️ Seasonal Promotion</mark><mark class="highlight-yellow_background"><strong> Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-81df-ae18-d294c4441d07" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer with a flair for creating captivating and festive ad copies. Your task is to craft a Facebook ad copy that announces a seasonal promotion or discount on a product or service. This ad should resonate with the festive spirit and excitement of the season, appealing directly to the ideal customer persona. The copy needs to highlight the limited-time nature of the offer, urging customers to act swiftly to take advantage of the exclusive promotion. The tone should be cheerful, engaging, and aligned with the festive atmosphere, encouraging customers to celebrate the season by indulging in the offer.
+
+#GOAL:
+You will create an ad copy that effectively promotes a seasonal discount or offer, leveraging the festive mood to drive urgency and conversions among your ideal customer persona.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the ad copy:
+
+1. Start with a festive, attention-grabbing headline that immediately conveys the special offer and ties it to the season. Use language that evokes excitement and celebration.
+2. In the body of the ad, briefly describe the product/service and the exclusive seasonal promotion. Highlight the key benefits of the product/service and how it complements the festive season or addresses specific needs or desires of your ideal customer persona during this time.
+3. Emphasize the limited-time nature of the offer. Include specific details about the promotion period, underscoring the urgency to act now. Phrases like &quot;Offer valid until [date],&quot; or &quot;While supplies last!&quot; can be effective.
+4. Incorporate festive elements and language throughout the ad copy to maintain the seasonal mood. This can include references to seasonal activities, traditions, or sentiments that resonate with your ideal customer persona.
+5. Include a strong call-to-action (CTA) that encourages immediate action. The CTA should be clear and direct, inviting customers to take advantage of the offer before it expires. Examples include &quot;Shop now to celebrate the season,&quot; &quot;Get your festive discount today!&quot; or &quot;Don&#x27;t miss out on this holiday cheer!&quot;
+6. Optional: Suggest using festive visuals or graphics that complement the ad copy and enhance the overall appeal. Visuals could include images of the product/service with seasonal decorations, people enjoying the festive season, or thematic colors and elements that align with the holiday.
+
+#INFORMATION ABOUT ME:
+- My product/service: [PRODUCT/SERVICE]
+- My ideal customer persona: [IDEAL CUSTOMER PERSONA]
+- Details of the seasonal promotion or discount: [DETAILS OF THE SEASONAL PROMOTION OR DISCOUNT]
+- Promotion validity period: [PROMOTION VALIDITY PERIOD]
+
+#OUTPUT:
+Ensure the ad copy is clear, engaging, and festive, effectively conveying the excitement of the seasonal offer and the urgency to act. The copy should not exceed 150 words to maintain conciseness and effectiveness for the Facebook ad platform.</code></pre><h2 id="2733f44c-2287-81c5-be33-d5eb44dcf747" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-81f7-8e6e-cca6a74c1a14" class="bulleted-list"><li style="list-style-type:disc"><strong>Experiment with Different Headlines</strong>: Test various headlines to see which ones capture the most attention and drive higher click-through rates.</li></ul><ul id="2733f44c-2287-8127-839f-d6fd7f2d3847" class="bulleted-list"><li style="list-style-type:disc"><strong>Highlight the USP Early</strong>: Mention your unique selling proposition early in the ad to immediately communicate the value of your offer.</li></ul><ul id="2733f44c-2287-814e-b28a-de7490ac6f3f" class="bulleted-list"><li style="list-style-type:disc"><strong>CTA Placement</strong>: Ensure your call-to-action is prominently placed and encourages immediate action, such as &quot;Act Now,&quot; &quot;Sign Up Today,&quot; or &quot;Grab Your Spot Before It&#x27;s Gone!&quot;</li></ul><p id="2733f44c-2287-8122-959e-c2fb998eec96" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

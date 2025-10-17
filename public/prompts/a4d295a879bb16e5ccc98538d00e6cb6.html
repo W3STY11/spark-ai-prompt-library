@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Twitter Ad Copies </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-81e9-941a-e0f4b196f6b0" class="page sans"><header><img class="page-cover-image" src="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Notion_Linear.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Create%20Twitter%20Ad%20Copies%202733f44c228781e9941ae0f4b196f6b0/twitter_prompt_icon.png"/></div><h1 class="page-title">Create Twitter Ad Copies </h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Online Marketing</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@March 1, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8102-9b10-fdde4e332100"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"> Use this guide to create Twitter ad copies that resonate with your audience, drive engagement, and amplify your product/service&#x27;s visibility by harnessing the essence of engaging tweet examples.</div></figure><h2 id="2733f44c-2287-813a-b434-d763801f967f" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>What This Mega-Prompt Does:</strong></mark></h2><ol type="1" id="2733f44c-2287-8123-8e5c-f3d06476a410" class="numbered-list" start="1"><li>Guides you in analyzing engaging tweets to identify what makes them compelling.</li></ol><ol type="1" id="2733f44c-2287-815d-8d06-f27b439da643" class="numbered-list" start="2"><li>Helps you craft an ad copy with a strong hook and clear value proposition.</li></ol><ol type="1" id="2733f44c-2287-8129-b6fd-c3350f7a663e" class="numbered-list" start="3"><li>Provides a framework for encouraging user interaction and leveraging visuals for impact.</li></ol><h2 id="2733f44c-2287-81a1-aa14-c6b7726a5c61" class=""><mark class="highlight-yellow_background">💡 </mark><mark class="highlight-yellow_background"><strong>Tips:</strong></mark></h2><ul id="2733f44c-2287-8146-880a-d711dc5bd221" class="bulleted-list"><li style="list-style-type:disc">Understand the elements that make tweets engaging, such as humor, direct language, and relatability. Apply these insights to your ad copy for a tone that grabs attention.</li></ul><ul id="2733f44c-2287-811e-a87d-d0f3a7ac9f8e" class="bulleted-list"><li style="list-style-type:disc">Start your ad with a bold statement or question that directly addresses your audience’s needs or challenges, mimicking the straightforwardness of successful tweets.</li></ul><ul id="2733f44c-2287-8192-b3a4-f5f2087ba4e6" class="bulleted-list"><li style="list-style-type:disc">Use concise, impactful language to highlight your product/service benefits. Emulate the brevity of Twitter communication to keep your message clear and memorable.</li></ul><h2 id="2733f44c-2287-818d-a588-eb0bb6fc95c4" class=""><mark class="highlight-yellow_background">❎ Twitter</mark><mark class="highlight-yellow_background"><strong> Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-8176-8490-dcf33f83fb17" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert digital marketer specializing in Twitter advertising. Your task is to craft a Twitter ad copy designed to encourage user engagement and generate responses from a specific target audience. This ad should create a buzz around a product or service, leveraging the unique features of Twitter as a platform for quick, public conversation and widespread sharing. Additionally, you&#x27;ll integrate the essence and style of engaging tweets provided as examples to inform the tone and approach of the ad, making it relatable and compelling.
+
+#GOAL:
+You will create a Twitter ad copy that not only boosts user engagement, encouraging likes, retweets, and replies, thereby amplifying visibility and excitement around the product/service, but also captures the informal, direct, and impactful tone seen in popular tweets.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the ad copy, incorporating the style and tone of the example tweets:
+
+1. Analyze the example tweets to understand the elements that make them engaging, such as direct language, relatability, humor, or provocative statements.
+2. Start with a compelling hook that mirrors the straightforwardness and punch of the example tweets. Address the target audience’s core interests or challenges in a way that&#x27;s bold and attention-grabbing.
+3. Highlight the key features or benefits of the product/service, using concise, impactful language. Ensure it’s clear why this offering is valuable and how it stands out, emulating the succinctness of tweet writing.
+4. Engage the audience by inviting them to share their thoughts or experiences related to the product/service theme. Incorporate a direct question or challenge that prompts reflection or response, akin to the conversational nature of the examples.
+5. Use relevant hashtags and a clear, compelling call to action (CTA), drawing inspiration from the examples to craft something memorable and shareable. The CTA should encourage immediate interaction, such as replying, retweeting, or following for more information.
+6. Optional: Suggest including a striking image or video that aligns with the ad’s message and the informal, direct style of the example tweets. The visual should capture attention and complement the text effectively.
+
+Here are some examples of &quot;tweets&quot;, separated by [NEW TWEET]:
+
+[NEW TWEET]:
+People&#x27;s attention spans are FUCKED.
+
+This is why I created a SUPER basic landing page for my course waitlist.
+
+My thoughts:
+
+Give them a short, bite-size overview instead of a long sales page.
+
+Write everything like a tweet.
+
+Result :
+
+The landing page converts at almost 80%.
+
+[NEW TWEET]:
+
+
+Understand that ethical wealth creation is possible. If you secretly despise wealth, it will elude you.
+
+[NEW TWEET]:
+
+Leverage is a force multiplier for your judgement.
+
+[NEW TWEET]:
+
+If you could choose between two teachers:
+
+1. The Natural
+2. The Non-Natural
+
+And they&#x27;re both equally skilled,
+
+I&#x27;d go with the Non-Natural.
+
+A Natural is good at the talent but can struggle teaching it.
+
+A Non-Natural is a great teacher because he wasn&#x27;t born with the talent.
+
+[NEW TWEET]:
+
+Some premium Twitter bro advice I’ve seen lately:
+
+• Smoke cigs to focus
+• Take 4 hour ice baths
+• Stare at the sun for energy
+
+Have a day off
+
+What’s is going to be next?
+
+“Inhale paint fumes for creativity”
+
+[NEW TWEET]:
+You make money.
+People say you&#x27;re scamming.
+
+You get jacked.
+People say you&#x27;re on roids.
+
+You grow a following.
+People say you bought &#x27;em.
+
+People will talk shit regardless, so do whatever the fuck makes you happy.
+
+[NEW TWEET]:
+Reading is faster than listening. Doing is faster than watching.
+
+#INFORMATION ABOUT ME:
+- My product/service: [PRODUCT/SERVICE]
+- My target audience: [TARGET AUDIENCE]
+- Key features/benefits of my product/service: [KEY FEATURES/BENEFITS]
+- Hashtags to include: [HASHTAGS]
+- Type of user interaction desired (e.g., reply, retweet, story share): [USER INTERACTION DESIRED]
+
+#OUTPUT:
+The ad copy should be engaging, reflective of Twitter’s character and conversation style, and incorporate the essence of the provided tweet examples. It must clearly encourage interaction and be crafted with a tone that resonates with the audience, using direct, punchy language and a straightforward CTA to foster a community buzz around the product/service.</code></pre><h2 id="2733f44c-2287-811e-842b-e5f639762872" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><ol type="1" id="2733f44c-2287-81cd-a7cf-f963cc36a9fd" class="numbered-list" start="1"><li><strong>[PRODUCT/SERVICE]</strong>: Insert the name or description of your product or service here. This should be something your target audience desires or needs.<ul id="2733f44c-2287-81da-af6f-fd74e02ae50c" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;QuickLearn App&quot;</li></ul></li></ol><ol type="1" id="2733f44c-2287-8174-8bfc-e854b2daef91" class="numbered-list" start="2"><li><strong>[TARGET AUDIENCE]</strong>: Specify who your ad is aimed at. Consider demographics, interests, and the problem your product/service solves for them.<ul id="2733f44c-2287-81db-a9bc-eb4b5b748e98" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;Busy professionals looking to acquire new skills in less time.&quot;</li></ul></li></ol><ol type="1" id="2733f44c-2287-81a6-8940-f8070c240c37" class="numbered-list" start="3"><li><strong>[KEY FEATURES/BENEFITS]</strong>: List the main benefits or features of your product/service that will appeal to your target audience.<ul id="2733f44c-2287-815f-a4bc-c67ff034ffca" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;5-minute interactive lessons, personalized learning paths, and progress tracking.&quot;</li></ul></li></ol><ol type="1" id="2733f44c-2287-8115-8bdc-da7246f62b6e" class="numbered-list" start="4"><li><strong>[HASHTAGS]</strong>: Choose relevant hashtags that will help your tweet be discovered by a wider audience or by people interested in specific topics.<ul id="2733f44c-2287-81e1-bb63-d1edd12c2ea7" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;#QuickLearn #SkillBuilding #TimeSaver&quot;</li></ul></li></ol><ol type="1" id="2733f44c-2287-810c-ac25-e1e14b3ad4b8" class="numbered-list" start="5"><li><strong>[USER INTERACTION DESIRED]</strong>: Decide on the type of interaction you want from your audience (e.g., reply, retweet, story share) and incorporate this into your call to action.<ul id="2733f44c-2287-81a2-ac60-e57c1dbc3332" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;Share your top skill to learn in 2024 below 👇&quot;</li></ul></li></ol><h2 id="2733f44c-2287-81d8-aab9-f470927f0e56" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-81be-9d48-e388efddad2b" class="">#INFORMATION ABOUT ME:</p><ul id="2733f44c-2287-81c8-acc9-e86e32506c03" class="bulleted-list"><li style="list-style-type:disc">My product/service: Complete AI Bundle by God of Prompt, a comprehensive collection of easy-to-follow AI resources and guides for entrepreneurs and small business owners.</li></ul><ul id="2733f44c-2287-81bf-ada6-d8446bbeb09f" class="bulleted-list"><li style="list-style-type:disc">My target audience: Entrepreneurs, marketers, content creators, solopreneurs, and small business owners who want to boost productivity using AI.</li></ul><ul id="2733f44c-2287-812e-82ee-fb38e3ffc118" class="bulleted-list"><li style="list-style-type:disc">Key features/benefits of my product/service: Time-saving, user-friendly prompts and strategies, comprehensive AI guides for automating tasks, scalable solutions for consistent quality.</li></ul><ul id="2733f44c-2287-8168-bf6a-e6279c6b16f2" class="bulleted-list"><li style="list-style-type:disc">Hashtags to include: #AI #Productivity #SmallBusiness #Marketing</li></ul><ul id="2733f44c-2287-81cf-8d14-d8f6ad092adb" class="bulleted-list"><li style="list-style-type:disc">Type of user interaction desired (e.g., reply, retweet, story share): Retweet</li></ul><h2 id="2733f44c-2287-81be-af0e-c38a457e5a43" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-8119-bbba-cedea21775d5" class="image"><a href="Create%20Twitter%20Ad%20Copies%202733f44c228781e9941ae0f4b196f6b0/Create_Twitter_Ad_Copies.png"><img style="width:1000px" src="Create%20Twitter%20Ad%20Copies%202733f44c228781e9941ae0f4b196f6b0/Create_Twitter_Ad_Copies.png"/></a></figure><h2 id="2733f44c-2287-81d0-9da6-e9c407434b67" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-8105-b31b-d9f640c093ef" class="bulleted-list"><li style="list-style-type:disc">Include a striking image or video that aligns with your ad&#x27;s message to grab attention visually.</li></ul><ul id="2733f44c-2287-81c2-94e8-edd81e76fd9a" class="bulleted-list"><li style="list-style-type:disc">Tailor the tone of your ad to match your brand voice while still incorporating the direct, engaging elements of the example tweets.</li></ul><ul id="2733f44c-2287-819f-8a82-f0f9faaefe15" class="bulleted-list"><li style="list-style-type:disc">Experiment with different calls to action to see what resonates most with your target audience, whether it&#x27;s asking for replies, encouraging retweets, or promoting story shares.</li></ul><p id="2733f44c-2287-81f2-9fb6-c44bbff0a36c" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

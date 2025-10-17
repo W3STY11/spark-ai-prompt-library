@@ -1,0 +1,784 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Compelling Value Proposition</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-810c-8c87-db511af2288f" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📈</span></div><h1 class="page-title">Create Compelling Value Proposition</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Business Communications</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@May 21, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8178-b152-d30d70d55d6e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Generate a compelling value proposition using the mega-prompt for ChatGPT to clearly communicate the unique benefits of your products or services, enhancing customer engagement and conversion rates.</mark></div></figure><hr id="2733f44c-2287-815b-8a6d-d6cf7c1aba3a"/><h2 id="2733f44c-2287-81a4-9363-cc1dd56eb305" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><ul id="2733f44c-2287-81f8-a73d-cb1c619e857c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Converts user input into a structured value proposition.</mark></li></ul><ul id="2733f44c-2287-8160-ad2a-cb34c4816a48" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Highlights unique benefits and competitive advantages of the products or services.<br/>Ensures the value proposition is concise and compelling for marketing purposes.</mark></li></ul><h2 id="2733f44c-2287-8173-8a5c-f3e706d0dfc4" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><ul id="2733f44c-2287-81cb-8bfa-d68f18f537e4" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Understand Your Unique Selling Points: Identify what sets your products or services apart from</mark></li></ul><ul id="2733f44c-2287-81c1-8e97-df855518b53e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">competitors and emphasize these features in your value proposition.</mark></li></ul><ul id="2733f44c-2287-8177-8e16-eaedc38363e6" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Highlight Customer Benefits: Focus on how your products or services solve problems or improve the customer&#x27;s situation, rather than just listing features.</mark></li></ul><ul id="2733f44c-2287-8176-8f55-d966f4641be7" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Use Clear and Concise Language: Ensure your value proposition is easy to understand and communicates the benefits quickly and effectively to engage potential customers immediately.</mark></li></ul><h2 id="2733f44c-2287-816e-b90f-de33b2554a49" class=""><mark class="highlight-yellow_background">📈 Value Proposition Generator ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-8125-a350-d17c93481cc4" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+You are a master product marketer and business communicator tasked with creating a compelling value proposition for a product or service. The value proposition should clearly and concisely communicate the unique benefits and value that the product or service provides to the target customers. It should be persuasive, highlight key differentiators, and resonate strongly with the needs and desires of the intended audience.
+
+#ROLE:
+Adopt the role of a master product marketer and business communicator with deep expertise in crafting irresistible value propositions.
+
+#RESPONSE GUIDELINES:
+The response should be organized into the following sections:
+
+1. Target Customer
+   - Demographics
+   - Psychographics
+   - Key needs and goals
+
+2. Product or Service
+   - Key features
+   - Key benefits
+   - Unique differentiators
+
+3. Value Proposition
+   - Headline
+   - Subheadline
+   - 2-3 sentence pitch
+
+4. Supporting Points
+   - Point 1
+   - Point 2 
+   - Point 3
+
+5. Call to Action
+
+The goal of each section is to provide a comprehensive understanding of the target customer, the product or service, and how the value proposition effectively communicates the unique benefits and value to the target audience.
+
+#TASK CRITERIA:
+1. The value proposition must be clear, concise, and compelling.
+2. It should highlight the key features, benefits, and unique differentiators of the product or service.
+3. The value proposition must resonate strongly with the needs and desires of the target customer.
+4. Supporting points should reinforce the main message of the value proposition.
+5. The call to action should be persuasive and encourage the target customer to take the desired action.
+
+Limitations:
+- Avoid using jargon or technical terms that the target customer may not understand.
+- Do not make unsubstantiated claims or promises about the product or service.
+
+Focus on:
+- Clearly communicating the unique value and benefits of the product or service.
+- Tailoring the message to the specific needs and desires of the target customer.
+
+#INFORMATION ABOUT ME:
+- My product or service: [INSERT DETAILED PRODUCT/SERVICE DESCRIPTION HERE]
+- My target customer demographics: [INSERT TARGET CUSTOMER DEMOGRAPHICS]
+- My target customer psychographics: [INSERT TARGET CUSTOMER PSYCHOGRAPHICS]
+- My target customer key needs and goals: [INSERT TARGET CUSTOMER KEY NEEDS AND GOALS]
+
+#RESPONSE FORMAT:
+The response should be formatted using the following structure:
+
+Target Customer:
+Demographics: [TARGET CUSTOMER DEMOGRAPHICS]
+Psychographics: [TARGET CUSTOMER PSYCHOGRAPHICS]
+Key needs and goals: [TARGET CUSTOMER KEY NEEDS AND GOALS]
+
+Product or Service:
+Key features: [KEY FEATURES]
+Key benefits: [KEY BENEFITS] 
+Unique differentiators: [UNIQUE DIFFERENTIATORS]
+
+Value Proposition:
+Headline: [HEADLINE]
+Subheadline: [SUBHEADLINE]
+2-3 sentence pitch: [2-3 SENTENCE PITCH]
+
+Supporting Points:
+1. [SUPPORTING POINT 1]
+2. [SUPPORTING POINT 2]
+3. [SUPPORTING POINT 3]
+
+Call to Action: [CALL TO ACTION]</code></pre><h2 id="2733f44c-2287-81a8-92ee-e1bf7fb69506" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-81dd-8440-eb4ee61552d2" class="">● Fill in the placeholders [INSERT DETAILED PRODUCT/SERVICE DESCRIPTION HERE], [INSERT TARGET CUSTOMER DEMOGRAPHICS], [INSERT TARGET CUSTOMER PSYCHOGRAPHICS], and [INSERT TARGET CUSTOMER KEY NEEDS AND GOALS] with specific details about your product or service and your target customer. For example, describe your product&#x27;s unique features, who your target customers are demographically (age, location, income), their psychographics (lifestyle, values, interests), and their primary needs and goals that your product or service addresses.<br/>● Example: If your product is an eco-friendly water bottle, you might fill in the variables as follows:</p><ul id="2733f44c-2287-8145-908b-d623d49ba1b7" class="bulleted-list"><li style="list-style-type:disc">[INSERT DETAILED PRODUCT/SERVICE DESCRIPTION HERE]: &quot;Reusable, BPA-free water bottle made from sustainable materials.&quot;</li></ul><ul id="2733f44c-2287-818a-8a8d-cd1b34863016" class="bulleted-list"><li style="list-style-type:disc">[INSERT TARGET CUSTOMER DEMOGRAPHICS]: &quot;Health-conscious consumers aged 20-35, primarily located in urban areas, with a median income of $40,000-$60,000.&quot;</li></ul><ul id="2733f44c-2287-8116-84d6-f816abcc7f6d" class="bulleted-list"><li style="list-style-type:disc">[INSERT TARGET CUSTOMER PSYCHOGRAPHICS]: &quot;Values sustainability, actively engages in outdoor activities, and prefers eco-friendly products.&quot;</li></ul><ul id="2733f44c-2287-8123-ad95-f574ffe3d361" class="bulleted-list"><li style="list-style-type:disc">[INSERT TARGET CUSTOMER KEY NEEDS AND GOALS]: &quot;Looking for a durable, stylish, and environmentally friendly drinking solution that supports an active lifestyle.&quot;</li></ul><h2 id="2733f44c-2287-81d9-9da4-f6a11a7aa2fe" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-811f-b759-ca3d8807e659" class="">#INFORMATION ABOUT ME:</p><p id="2733f44c-2287-816d-975b-ce77d12b8d82" class="">My product or service: The Complete AI Bundle by God of Prompt, offering the biggest collection of easy-to-follow AI resources, AI prompts, and how-to guides for busy small business owners.</p><p id="2733f44c-2287-818a-8f00-f8d6bf98cf65" class="">My target customer demographics: Small business owners, content creators, marketers, solopreneurs, entrepreneurs. Age: 24-55. Mostly busy males with intermediate/beginner level understanding of AI.</p><p id="2733f44c-2287-811d-b9ec-d47c3dd8f45a" class="">My target customer psychographics: Motivated to grow their business, interested in innovative and efficient tools, value time-saving solutions, and willing to invest in resources that offer clear ROI.</p><p id="2733f44c-2287-81d5-b2a2-e597d241e67e" class="">My target customer key needs and goals: Need for simple, effective AI tools to streamline operations, enhance productivity without extensive learning curves, and seeking cost-effective solutions to replace or supplement staff.</p><h2 id="2733f44c-2287-81c3-b6df-c13fb0c5ac1a" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-8110-8a45-fb45ec65f1de" class="image"><a href="Create%20Compelling%20Value%20Proposition%202733f44c2287810c8c87db511af2288f/Create_Compelling_Value_Proposition_1.png"><img style="width:827px" src="Create%20Compelling%20Value%20Proposition%202733f44c2287810c8c87db511af2288f/Create_Compelling_Value_Proposition_1.png"/></a></figure><figure id="2733f44c-2287-810c-8ecd-ea6e744262c8" class="image"><a href="Create%20Compelling%20Value%20Proposition%202733f44c2287810c8c87db511af2288f/Create_Compelling_Value_Proposition_2.png"><img style="width:827px" src="Create%20Compelling%20Value%20Proposition%202733f44c2287810c8c87db511af2288f/Create_Compelling_Value_Proposition_2.png"/></a></figure><h2 id="2733f44c-2287-81ca-86b5-faf587893c97" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-8130-90a9-d65ff676a986" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Differentiate Yourself: Clearly articulate what makes your products or services unique and why customers should choose you over competitors.</mark></li></ul><ul id="2733f44c-2287-81d8-bd27-ee80f383e771" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Address Customer Pain Points: Identify the specific challenges or frustrations that your target customers face, and explain how your products or services can alleviate those pain points.</mark></li></ul><ul id="2733f44c-2287-8154-b7b5-db5980bf1416" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Quantify the Value: Provide concrete evidence or statistics to demonstrate the tangible benefits that customers can expect from using your products or services.</mark></li></ul><ul id="2733f44c-2287-8189-97b7-e9099d92ff65" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Test and Iterate: Continuously refine and improve your value proposition based on customer feedback and market insights to ensure it remains relevant and compelling.</mark></li></ul><p id="2733f44c-2287-815d-a477-f0da59adaf8b" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

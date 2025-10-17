@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Persuasive Business Brochures</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-81ca-bd3c-f5b4b22d440a" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎨</span></div><h1 class="page-title">Create Persuasive Business Brochures</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-brown">Copywriting</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@June 21, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8163-91ef-ff5634b39d60"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Use the mega-prompt for ChatGPT to design a professional and persuasive business brochure. This tool guides you through creating a visually appealing and strategically structured brochure, incorporating marketing insights, graphic design expertise, and consumer psychology to effectively attract and engage your target audience.</mark></div></figure><hr id="2733f44c-2287-81c6-ae16-ca442135a024"/><h2 id="2733f44c-2287-813c-99c1-d2ab9e757b18" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-81f3-be61-cf9895a54a10" class=""><mark class="highlight-default">● Guides the user in creating a detailed and visually appealing brochure tailored to their business and target audience.</mark></p><p id="2733f44c-2287-81a3-8627-d97608b54740" class=""><mark class="highlight-default">● Focuses on organizing content into specific sections like cover page, about, services, testimonials, and contact information.</mark></p><p id="2733f44c-2287-8146-b178-d0ffdc777548" class=""><mark class="highlight-default">● Emphasizes the use of persuasive elements, professional design, and clear calls to action to engage potential clients.</mark></p><h2 id="2733f44c-2287-810a-9bc8-ff4f52ad139b" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-814c-bfc1-dd41cc610e88" class=""><mark class="highlight-default">● Tailor Visual Elements to Audience Preferences: Design the brochure with colors, images, and fonts that resonate with the specific demographics, interests, and preferences of your target audience to increase engagement and relatability.</mark></p><p id="2733f44c-2287-8176-87e8-f333855c8c2c" class=""><mark class="highlight-default">● Emphasize Unique Selling Propositions on Every Page: Consistently highlight your unique selling propositions throughout the brochure, not just in the About Section, to reinforce your business&#x27;s advantages and keep them top of mind as the reader navigates through the content.</mark></p><p id="2733f44c-2287-81af-815d-ccc56a54e9b8" class=""><mark class="highlight-default">● Strategically Place Testimonials: Position customer testimonials near relevant services or benefits they pertain to, rather than only in a dedicated section, to enhance credibility and directly associate positive customer experiences with specific offerings.</mark></p><h2 id="2733f44c-2287-81d0-a5a4-e5daa72ee818" class=""><mark class="highlight-yellow_background">🎨 Brochure Design Coach ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-81c8-99b2-cae07c72015d" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert brochure designer with comprehensive knowledge in marketing, graphic design, and consumer psychology. Your task is to help the user create a detailed, visually appealing brochure for their business, focusing on key benefits and incorporating persuasive elements like customer testimonials. Utilize best practices in brochure design to attract and engage potential clients effectively.
+
+#ROLE:
+You are an expert brochure designer with comprehensive knowledge in marketing, graphic design, and consumer psychology.
+
+#RESPONSE GUIDELINES:
+The brochure should be organized into the following sections:
+
+1. Cover Page
+   - Include a compelling headline and subheadline that grabs attention and highlights the main benefit of the business
+   - Describe an eye-catching main image that visually represents the business or its offerings
+   - The cover page should entice readers to open the brochure and learn more
+
+2. About Section
+   - Provide a brief overview of the business, its history, and its mission
+   - Clearly state the unique selling proposition that sets the business apart from competitors
+   - This section should build trust and credibility with potential clients
+
+3. Services Section
+   - Describe three key services offered by the business
+   - For each service, include a name, description, and list of key benefits
+   - Highlight how these services solve problems or meet the needs of the target audience
+
+4. Testimonials Section
+   - Include three customer testimonials that showcase the value and quality of the business&#x27;s services
+   - Provide the customer&#x27;s name and a brief quote highlighting their positive experience
+   - Testimonials should be authentic and relatable to the target audience
+
+5. Call to Action and Contact Information
+   - End the brochure with a clear and compelling call to action, encouraging readers to take the next step
+   - Provide contact information, such as phone number, email, website, and social media handles
+   - Make it easy for potential clients to reach out and learn more about the business
+
+The brochure should be visually appealing, with a consistent color scheme and professional design elements throughout. Use persuasive language and focus on benefits to engage and persuade potential clients.
+
+#TASK CRITERIA:
+1. The brochure should be tailored to the specific business type and target audience provided by the user.
+2. Incorporate best practices in brochure design, such as using white space effectively, choosing readable fonts, and creating a clear visual hierarchy.
+3. Focus on highlighting key benefits and unique selling points that differentiate the business from competitors.
+4. Use persuasive language and elements like customer testimonials to build trust and credibility.
+5. Avoid using jargon or complex terminology that may confuse or alienate potential clients.
+6. Ensure that the call to action is clear, compelling, and easy to follow.
+
+#INFORMATION ABOUT ME:
+- My business type: [INSERT BUSINESS TYPE]
+- My target audience: [DESCRIBE TARGET AUDIENCE]
+- My unique selling proposition: [DESCRIBE UNIQUE SELLING PROPOSITION]
+
+#RESPONSE FORMAT:
+Brochure Title: [BROCHURE TITLE]
+
+Color Scheme: [COLOR SCHEME]
+
+Cover Page Design:
+Headline: [HEADLINE]
+Subheadline: [SUBHEADLINE]
+Main Image Description: [MAIN IMAGE DESCRIPTION]
+
+About Section:
+Business Overview: [BUSINESS OVERVIEW]
+Unique Selling Proposition: [UNIQUE SELLING PROPOSITION]
+
+Services Section:
+Service 1:
+Name: [SERVICE 1 NAME]
+Description: [SERVICE 1 DESCRIPTION]
+Key Benefits: [SERVICE 1 KEY BENEFITS]
+
+Service 2:
+Name: [SERVICE 2 NAME]
+Description: [SERVICE 2 DESCRIPTION]
+Key Benefits: [SERVICE 2 KEY BENEFITS]
+
+Service 3:
+Name: [SERVICE 3 NAME]
+Description: [SERVICE 3 DESCRIPTION]
+Key Benefits: [SERVICE 3 KEY BENEFITS]
+
+Testimonials Section:
+Testimonial 1:
+Customer Name: [CUSTOMER 1 NAME]
+Quote: &quot;[CUSTOMER 1 QUOTE]&quot;
+
+Testimonial 2:
+Customer Name: [CUSTOMER 2 NAME]
+Quote: &quot;[CUSTOMER 2 QUOTE]&quot;
+
+Testimonial 3:
+Customer Name: [CUSTOMER 3 NAME]
+Quote: &quot;[CUSTOMER 3 QUOTE]&quot;
+
+Call to Action: [CALL TO ACTION]
+
+Contact Information: [CONTACT INFORMATION]</code></pre><h2 id="2733f44c-2287-81a0-a024-c657d2c8b8f3" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-8176-94db-fd7c2e727009" class=""><mark class="highlight-default">● Fill in the [INSERT BUSINESS TYPE], [DESCRIBE TARGET AUDIENCE], [DESCRIBE UNIQUE SELLING PROPOSITION], [BROCHURE TITLE], [COLOR SCHEME], [HEADLINE], [SUBHEADLINE], [MAIN IMAGE DESCRIPTION], [BUSINESS OVERVIEW], [UNIQUE SELLING PROPOSITION], [SERVICE 1 NAME], [SERVICE 1 DESCRIPTION], [SERVICE 1 KEY BENEFITS], [SERVICE 2 NAME], [SERVICE 2 DESCRIPTION], [SERVICE 2 KEY BENEFITS], [SERVICE 3 NAME], [SERVICE 3 DESCRIPTION], [SERVICE 3 KEY BENEFITS], [CUSTOMER 1 NAME], [CUSTOMER 1 QUOTE], [CUSTOMER 2 NAME], [CUSTOMER 2 QUOTE], [CUSTOMER 3 NAME], [CUSTOMER 3 QUOTE], [CALL TO ACTION], and [CONTACT INFORMATION] with specific details about your business, services, and target audience.</mark></p><p id="2733f44c-2287-8100-bdcf-ddab01233b09" class=""><mark class="highlight-default">- Example: If your business type is &quot;Organic Skincare&quot;, your target audience could be &quot;health-conscious consumers, primarily women aged 25-40&quot;, and your unique selling proposition might be &quot;using only certified organic ingredients that nourish skin without harsh chemicals&quot;.</mark></p><p id="2733f44c-2287-81da-b4e4-e9e24b4a55e7" class=""><mark class="highlight-default">● Use the structured format provided in the prompt to ensure each section of the brochure is comprehensive and addresses all necessary elements. This helps in maintaining a logical flow and ensures that all critical aspects of the business and its offerings are covered.</mark></p><p id="2733f44c-2287-814a-91a5-d7da001ee38a" class=""><mark class="highlight-default">● Focus on the visual and textual elements suggested in the guidelines to enhance the appeal and effectiveness of the brochure. For instance, ensure the color scheme is consistent with your brand, use high-quality images that represent your services, and craft a compelling headline and subheadline that capture the essence of your business and draw readers in.</mark></p><h2 id="2733f44c-2287-8115-93b2-fa2ce0c1d71b" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8158-ad6f-e88a91eb1d49" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- My business type: God of Prompt, the biggest collection of easy-to-follow AI resources, AI Prompts &amp; How-to Guides for busy Small Business Owners.<br/>- My target audience: Small business owners, content creators, marketers, solopreneurs, entrepreneurs. Age: 24-55. Mostly busy males with intermediate/beginner level understanding of AI.<br/>- My unique selling proposition: Lifetime access (one-time purchase without any subscriptions), 14-day money-back guarantee, Productivity - time saving, consistent high quality responses of AI, Money saving (replacing a team of employees), Easy to use (copy &amp; paste solutions), no technical expertise required (simple to follow AI how-to guides, prompts &amp; hacks), biggest collection of AI resources (the only collection you will ever need).</mark></p><h2 id="2733f44c-2287-818e-bd99-fd8676fc1195" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81d4-84af-decf35473398" class="image"><a href="Create%20Persuasive%20Business%20Brochures%202733f44c228781cabd3cf5b4b22d440a/Create_Persuasive_Business_Brochures_1.png"><img style="width:694.765625px" src="Create%20Persuasive%20Business%20Brochures%202733f44c228781cabd3cf5b4b22d440a/Create_Persuasive_Business_Brochures_1.png"/></a></figure><figure id="2733f44c-2287-8104-8d3b-dedd160f3c79" class="image"><a href="Create%20Persuasive%20Business%20Brochures%202733f44c228781cabd3cf5b4b22d440a/Create_Persuasive_Business_Brochures_2.png"><img style="width:1000px" src="Create%20Persuasive%20Business%20Brochures%202733f44c228781cabd3cf5b4b22d440a/Create_Persuasive_Business_Brochures_2.png"/></a></figure><h2 id="2733f44c-2287-81ca-8c3e-f78d9593d809" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-815e-a737-f03589021549" class=""><mark class="highlight-default">● Use Visual Hierarchy: Create a clear visual hierarchy by using different font sizes, colors, and styles to guide the reader&#x27;s attention and make important information stand out.</mark></p><p id="2733f44c-2287-81c1-9c46-f5cba25dc3bc" class=""><mark class="highlight-default">● Incorporate High-Quality Images: Use high-quality images that are relevant to your business and visually appealing to capture the reader&#x27;s attention and enhance the overall design of the brochure.</mark></p><p id="2733f44c-2287-813f-b233-fea1c3d69016" class=""><mark class="highlight-default">● Keep the Design Clean and Simple: Avoid cluttering the brochure with too much text or excessive design elements. Keep the design clean and simple to make it easy for readers to navigate and understand the content.</mark></p><p id="2733f44c-2287-81c2-a0a1-d80d794d8dd3" class=""><mark class="highlight-default">● Proofread and Edit: Before finalizing the brochure, carefully proofread and edit the text to ensure there are no grammatical or spelling errors. A professional and error-free brochure will leave a positive impression on potential clients.</mark></p><p id="2733f44c-2287-8151-ae21-c1fc641d04cf" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

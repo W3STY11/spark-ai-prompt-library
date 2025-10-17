@@ -1,0 +1,755 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Optimize Workplace Energy Management</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-811c-84e8-d93c278033b5" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🔋</span></div><h1 class="page-title">Optimize Workplace Energy Management</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Time Management</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@July 5, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8101-9612-c1d9dedc7b12"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Optimize workplace productivity with this mega-prompt for ChatGPT, designed to enhance energy management across physical, emotional, and mental domains. Gain actionable strategies, optimize environments, and leverage technology for sustained energy and productivity in diverse work settings.</mark></div></figure><hr id="2733f44c-2287-81d1-ab4b-e4ca23267f18"/><h2 id="2733f44c-2287-81d1-b4ca-fc3b4e8a3911" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-8136-a75a-d17f5987e300" class=""><mark class="highlight-default">● Converts user input into a structured guide for managing energy levels at work, focusing on physical, emotional, and mental strategies.</mark></p><p id="2733f44c-2287-819f-8c57-e52766a70121" class=""><mark class="highlight-default">● Organizes the content into specific sections with actionable recommendations for various work settings.</mark></p><p id="2733f44c-2287-814e-85cd-e0fb60db10d8" class=""><mark class="highlight-default">● Formats the response in markdown for clarity, including headings and bullet points for easy readability.</mark></p><h2 id="2733f44c-2287-8181-97b2-f9285a97f755" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-81d2-95af-c04f2aa2e437" class=""><mark class="highlight-default">● Begin by assessing the specific needs of your work setting and typical workday to tailor the strategies and recommendations provided in the prompt to your unique situation, enhancing their relevance and effectiveness.</mark></p><p id="2733f44c-2287-81b0-b93d-fcd208f13af2" class=""><mark class="highlight-default">● Implement a pilot program where you apply one strategy from each section (Physical, Emotional, Mental) for a week, monitor the outcomes, and adjust as necessary before fully integrating all strategies into your routine.</mark></p><p id="2733f44c-2287-8143-995e-e90111e9f881" class=""><mark class="highlight-default">● Leverage technology such as apps or software mentioned in the &quot;Energy Management Technology and Tools&quot; section to track your progress and gain insights into which strategies are most effective in boosting your productivity and energy levels.</mark></p><h2 id="2733f44c-2287-81f7-b2a2-cb3fa543e46b" class=""><mark class="highlight-yellow_background">🔋 Workplace Energy Optimizer ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-813c-85a2-ef21a8fd596a" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+You are an expert in workplace productivity and energy management, with deep knowledge of physiology, psychology, and organizational behavior. Your task is to help the user develop a comprehensive set of strategies for managing energy levels throughout the workday to optimize productivity, considering the interplay of physical, emotional, and mental factors, and providing actionable recommendations that can be implemented in various work settings.
+
+#ROLE:
+Adopt the role of an expert in workplace productivity and energy management, with deep knowledge of physiology, psychology, and organizational behavior.
+
+#RESPONSE GUIDELINES:
+The response should be organized into the following sections:
+
+1. Physical Energy Management Strategies
+   - Provide 3 strategies for managing physical energy
+   - Each strategy should be actionable and applicable to various work settings
+
+2. Emotional Energy Management Strategies
+   - Provide 3 strategies for managing emotional energy
+   - Each strategy should be actionable and applicable to various work settings
+
+3. Mental Energy Management Strategies
+   - Provide 3 strategies for managing mental energy
+   - Each strategy should be actionable and applicable to various work settings
+
+4. Workplace Environment Optimization
+   - Provide 3 recommendations for optimizing the workplace environment to support energy management and productivity
+
+5. Workday Structure and Scheduling
+   - Provide 3 tips for structuring and scheduling the workday to optimize energy levels and productivity
+
+6. Lifestyle Habits for Sustained Energy
+   - Provide 3 lifestyle habits that promote sustained energy levels throughout the workday
+
+7. Energy Management Technology and Tools
+   - Provide 3 examples of technology or tools that can support energy management and productivity in the workplace
+
+8. Energy Management Mindset and Philosophy
+   - Provide key insights into the mindset and philosophy behind effective energy management for workplace productivity
+
+#TASK CRITERIA:
+1. The response should be comprehensive, covering physical, emotional, and mental aspects of energy management.
+2. The strategies, recommendations, and tips provided should be actionable and applicable to various work settings.
+3. The response should consider the interplay between different factors affecting energy levels and productivity.
+4. The response should be well-organized, with clear sections and bullet points for easy readability.
+
+#INFORMATION ABOUT ME:
+- My work setting: [DESCRIBE YOUR WORK SETTING]
+- My typical workday: [DESCRIBE YOUR TYPICAL WORKDAY]
+- My current energy management challenges: [DESCRIBE YOUR CURRENT ENERGY MANAGEMENT CHALLENGES]
+
+#RESPONSE FORMAT:
+The response should be formatted using markdown, with clear headings for each section and bullet points for strategies, recommendations, and tips. No XML tags should be used in the response.</code></pre><h2 id="2733f44c-2287-81cd-af86-f493cdf0ed78" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-816c-a89d-e55688f92c91" class=""><mark class="highlight-default">● Fill in the [DESCRIBE YOUR WORK SETTING], [DESCRIBE YOUR TYPICAL WORKDAY], and [DESCRIBE YOUR CURRENT ENERGY MANAGEMENT CHALLENGES] placeholders with specific details about your work environment, daily routine, and any specific issues you face with managing your energy. For example, you might describe your work setting as &quot;an open-plan office with moderate noise levels,&quot; your typical workday as &quot;9 AM to 5 PM with regular meetings and minimal physical activity,&quot; and your current energy management challenges as &quot;feeling fatigued by mid-afternoon and difficulty concentrating after lunch.&quot;</mark></p><p id="2733f44c-2287-8184-949e-df93448d8faf" class=""><mark class="highlight-default">● Example: If your work setting is a busy hospital ward, your typical workday involves long shifts with irregular breaks, and your current energy management challenges include maintaining high energy levels during night shifts and managing stress, then fill in the variables accordingly to tailor the strategies to your specific needs.</mark></p><h2 id="2733f44c-2287-81a8-9864-c3d3a75c8832" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-819c-8f6c-e5c35c4ac1bb" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>● My work setting: I am a freelancer digital marketer who turned his low income life into an automated passive income generating online business called God of Prompt. Using AI Tools like ChatGPT &amp; Midjourney AI daily, I finally broke free from manual work and now help clients do the same with my biggest collection of AI resources for ChatGPT, Gemini AI &amp; Midjourney AI, as well as consultation work and custom business processes automation (e.g. chatbots for a specified task).<br/>● My typical workday: My typical workday involves creating and updating AI resources, consulting with clients on how to automate their business processes, and managing my online content.<br/>● My current energy management challenges: Balancing time between content creation, client consultations, and personal learning without feeling overwhelmed or burnt out.</mark></p><h2 id="2733f44c-2287-8182-845a-d6ee30ef8807" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-814b-b969-ec3aa0702536" class="image"><a href="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_1.png"><img style="width:716.26953125px" src="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_1.png"/></a></figure><figure id="2733f44c-2287-81d4-b72c-df7d9dc4edd1" class="image"><a href="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_4.png"><img style="width:716.26953125px" src="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_4.png"/></a></figure><figure id="2733f44c-2287-81b6-94e9-fd5bdb046d68" class="image"><a href="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_3.png"><img style="width:716.26953125px" src="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_3.png"/></a></figure><figure id="2733f44c-2287-817c-9bd6-ed3a0e448991" class="image"><a href="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_2.png"><img style="width:716.26953125px" src="Optimize%20Workplace%20Energy%20Management%202733f44c2287811c84e8d93c278033b5/Optimize_Workplace_Energy_Management_2.png"/></a></figure><h2 id="2733f44c-2287-81ac-9c49-eb1ce6290afa" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-8159-9f42-e5ab2bc0888b" class=""><mark class="highlight-default">● Prioritize regular physical activity throughout the workday, such as taking short walks or stretching breaks, to increase blood flow and energy levels.</mark></p><p id="2733f44c-2287-81a7-8977-c429228c34cd" class=""><mark class="highlight-default">● Practice mindfulness and stress management techniques, such as deep breathing exercises or meditation, to regulate emotions and maintain a positive emotional state.</mark></p><p id="2733f44c-2287-81a0-91c1-ef17cf0b630c" class=""><mark class="highlight-default">● Incorporate regular breaks and time for relaxation or hobbies to recharge mentally and prevent burnout.</mark></p><p id="2733f44c-2287-81ca-8b1b-c0b26eb9ef57" class=""><mark class="highlight-default">● Create a well-lit and comfortable workspace with ergonomic furniture and proper ventilation to optimize physical comfort and energy levels.</mark></p><p id="2733f44c-2287-81c0-8e66-ff8a38ac38c9" class=""><mark class="highlight-default">● Design a workday schedule that includes dedicated time for focused work, breaks, and tasks that align with your natural energy rhythms to maximize productivity and prevent energy dips.</mark></p><p id="2733f44c-2287-81e6-abe1-f0526a04528b" class=""><mark class="highlight-default">● Maintain a consistent sleep schedule and prioritize quality sleep to ensure optimal mental energy and cognitive function throughout the workday.</mark></p><p id="2733f44c-2287-8147-969f-f51a44b89307" class=""><mark class="highlight-default">● Stay hydrated by drinking enough water throughout the day to support physical and mental energy levels.</mark></p><p id="2733f44c-2287-810b-931a-d0eb03e6221e" class=""><mark class="highlight-default">● Foster a supportive and positive work environment by encouraging open communication, collaboration, and recognition of achievements to boost emotional energy and motivation.</mark></p><p id="2733f44c-2287-819d-b945-f05efdf028fc" class=""><mark class="highlight-default">● Use productivity tools and apps, such as task management software or time tracking apps, to stay organized, prioritize tasks, and minimize mental clutter.</mark></p><p id="2733f44c-2287-81a8-8325-faa38634424f" class=""><mark class="highlight-default">● Cultivate a growth mindset and embrace a proactive approach to energy management, viewing challenges as opportunities for growth and learning.</mark></p><p id="2733f44c-2287-81af-9c92-d3bcf00e311b" class=""><mark class="highlight-default">● Seek feedback and input from colleagues or mentors to gain different perspectives and insights on energy management strategies that have worked for them.</mark></p><p id="2733f44c-2287-816a-8c99-f11a88bbd8e2" class=""><mark class="highlight-default">● Practice self-care activities outside of work, such as exercise, hobbies, or spending time with loved ones, to replenish energy and maintain a healthy work-life balance.</mark></p><p id="2733f44c-2287-8175-86c1-d2efca4b7d22" class=""><mark class="highlight-default">● Utilize wearable devices, such as fitness trackers or smartwatches, to monitor and track physical activity, sleep patterns, and stress levels for better energy management.</mark></p><p id="2733f44c-2287-8145-9506-f50cfc8665e0" class=""><mark class="highlight-default">● Integrate natural elements, such as plants or natural light, into the workplace to create a calming and energizing environment.</mark></p><p id="2733f44c-2287-812c-b525-fe0d8d9f0958" class=""><mark class="highlight-default">● Experiment with different workday structures, such as the Pomodoro Technique or time blocking, to find a schedule that optimizes productivity and energy levels.</mark></p><p id="2733f44c-2287-81b0-97f5-e308a4de9068" class=""><mark class="highlight-default">● Minimize distractions in the workplace, such as excessive noise or clutter, to maintain focus and mental clarity.</mark></p><p id="2733f44c-2287-8186-b47e-c4667405b067" class=""><mark class="highlight-default">● Practice gratitude and positive affirmations to cultivate a positive mindset and boost emotional energy throughout the workday.</mark></p><p id="2733f44c-2287-813b-9e7a-c048ef21ede3" class=""><mark class="highlight-default">● Take regular breaks to engage in activities that bring joy and relaxation, such as listening to music or practicing a hobby, to recharge emotionally.</mark></p><p id="2733f44c-2287-81e5-92d0-f5e1b83588a5" class=""><mark class="highlight-default">● Engage in cognitive exercises, such as puzzles or brain teasers, to stimulate mental energy and improve cognitive function.</mark></p><p id="2733f44c-2287-8107-8cf7-c8637a393988" class=""><mark class="highlight-default">● Foster a culture of learning and professional development within the workplace to encourage continuous growth and mental stimulation.</mark></p><p id="2733f44c-2287-8157-a4cd-d42a855a852d" class=""><mark class="highlight-default">● Set clear boundaries between work and personal life to prevent mental exhaustion and maintain a healthy work-life balance.</mark></p><p id="2733f44c-2287-817b-904b-df5b0bae2470" class=""><mark class="highlight-default">● Invest in noise-cancelling headphones or create a designated quiet space for focused work to minimize distractions and enhance mental energy.</mark></p><p id="2733f44c-2287-8197-bed1-c0b5b5cf4608" class=""><mark class="highlight-default">● Prioritize tasks based on their importance and urgency to minimize decision fatigue and maintain mental energy throughout the workday.</mark></p><p id="2733f44c-2287-8193-8da4-f7e1135d1dd0" class=""><mark class="highlight-default">● Practice effective time management techniques, such as prioritizing tasks and setting realistic deadlines, to prevent mental overload and optimize productivity.</mark></p><p id="2733f44c-2287-8165-a802-ff4051ec8bf2" class=""><mark class="highlight-default">● Incorporate regular physical exercise, such as cardio or strength training, into your lifestyle to improve overall physical energy levels.</mark></p><p id="2733f44c-2287-8108-adfe-c062989aa620" class=""><mark class="highlight-default">● Follow a balanced diet that includes nutrient-rich foods, such as fruits, vegetables, and whole grains, to provide sustained energy throughout the day.</mark></p><p id="2733f44c-2287-812a-b46b-c6fa1cc917a5" class=""><mark class="highlight-default">● Stay hydrated by drinking enough water and limit the consumption of caffeine and sugary drinks to avoid energy crashes.</mark></p><p id="2733f44c-2287-8119-86e4-db28b4714e8c" class=""><mark class="highlight-default">● Practice good sleep hygiene habits, such as establishing a consistent sleep schedule and creating a relaxing bedtime routine, to ensure restful and rejuvenating sleep.</mark></p><p id="2733f44c-2287-81bc-a4fc-f5e386071f7b" class=""><mark class="highlight-default">● Engage in stress-reducing activities, such as yoga or journaling, to manage stress levels and prevent energy depletion.</mark></p><p id="2733f44c-2287-812b-89d8-f770e2c6d011" class=""><mark class="highlight-default">● Practice time management techniques, such as prioritizing tasks and setting realistic deadlines, to prevent mental overload and optimize productivity.</mark></p><p id="2733f44c-2287-8100-af7a-f911a6f96056" class=""><mark class="highlight-default">● Use productivity apps or tools, such as project management software or time tracking apps, to stay organized and focused on tasks.</mark></p><p id="2733f44c-2287-8193-b3d2-d0d9cc269f7a" class=""><mark class="highlight-default">● Implement a digital detox by setting boundaries for technology use and taking regular breaks from screens to prevent mental fatigue.</mark></p><p id="2733f44c-2287-8199-80c3-dc9b0bd2e074" class=""><mark class="highlight-default">● Foster a positive and supportive work culture that encourages open communication, collaboration, and work-life balance to enhance overall energy levels.</mark></p><p id="2733f44c-2287-81b2-bc52-eef6fac314cb" class=""><mark class="highlight-default">● Incorporate natural elements into the workplace, such as plants or natural light, to create a calming and energizing environment.</mark></p><p id="2733f44c-2287-8132-9566-fd35e5d80748" class=""><mark class="highlight-default">● Prioritize ergonomic workstations and invest in comfortable furniture to support physical well-being and prevent fatigue.</mark></p><p id="2733f44c-2287-8183-8fe9-cc6664e515cf" class=""><mark class="highlight-default">● Create designated spaces for relaxation or mindfulness activities, such as a meditation room or quiet corner, to promote emotional well-being and recharge.</mark></p><p id="2733f44c-2287-81c7-b465-fb31ad1079de" class=""><mark class="highlight-default">● Implement flexible work arrangements, such as remote work or flexible hours, to accommodate individual energy rhythms and enhance productivity.</mark></p><p id="2733f44c-2287-81fd-ae21-fd7c643863dd" class=""><mark class="highlight-default">● Encourage regular breaks and movement throughout the workday, such as standing or walking meetings, to prevent physical fatigue and boost energy levels.</mark></p><p id="2733f44c-2287-810a-9e21-e0b1cada2e10" class=""><mark class="highlight-default">● Foster a culture of work-life balance by promoting boundaries between work and personal life, encouraging time off, and supporting employee well-being.</mark></p><p id="2733f44c-2287-81da-88f7-c93f1df3f53a" class=""><mark class="highlight-default">● Incorporate natural elements into the workplace, such as plants or natural light, to create a calming and energizing environment.</mark></p><p id="2733f44c-2287-817a-8dbc-d6fae9916fb5" class=""><mark class="highlight-default">● Prioritize regular breaks and time for relaxation or hobbies to recharge mentally and prevent burnout.</mark></p><p id="2733f44c-2287-8189-ad74-cafc53ef405e" class=""><mark class="highlight-default">● Create a well-organized and clutter-free workspace to minimize mental distractions and enhance focus.</mark></p><p id="2733f44c-2287-81dd-804f-f26074541cb2" class=""><mark class="highlight-default">● Utilize productivity tools and apps, such as task management software or digital calendars, to stay organized and prioritize tasks effectively.</mark></p><p id="2733f44c-2287-81e5-a01a-f61dbf3d5bf6" class=""><mark class="highlight-default">● Practice mindfulness and stress management techniques, such as deep breathing exercises or meditation, to regulate emotions and maintain a positive mental state.</mark></p><p id="2733f44c-2287-81dd-82aa-cce0fd279dc9" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,28 @@
+{
+  "prompts": [
+    {
+      "title": "Create Marketing Campaign Strategy",
+      "description": "Develop comprehensive marketing campaign strategies with this structured prompt designed for marketing professionals.",
+      "content": "#CONTEXT:\nYou are a marketing strategist helping to develop comprehensive campaign strategies.\n\n#GOAL:\nCreate a detailed marketing campaign strategy that includes:\n- Target audience analysis\n- Channel selection\n- Budget allocation\n- Success metrics\n- Timeline\n\n#RESPONSE GUIDELINES:\n1. Analyze the target audience demographics and psychographics\n2. Recommend optimal marketing channels based on audience behavior\n3. Suggest budget distribution across channels\n4. Define clear KPIs and success metrics\n5. Create a realistic timeline with milestones\n\n#INFORMATION ABOUT ME:\n- My product/service: [DESCRIBE YOUR OFFERING]\n- My target audience: [DESCRIBE YOUR AUDIENCE]\n- My budget: [SPECIFY BUDGET]\n- My timeline: [SPECIFY TIMELINE]\n- My primary goals: [LIST GOALS]\n\n#OUTPUT:\nProvide a structured campaign strategy document with actionable recommendations.",
+      "department": "Marketing",
+      "tags": ["strategy", "campaigns", "planning"],
+      "complexity": "intermediate"
+    },
+    {
+      "title": "Optimize Sales Email Sequences",
+      "description": "Create high-converting sales email sequences that nurture leads through the sales funnel.",
+      "content": "#CONTEXT:\nYou are a sales copywriter specializing in email sequences that convert leads into customers.\n\n#GOAL:\nDevelop a 5-7 email sequence that:\n- Builds trust and rapport\n- Addresses pain points\n- Demonstrates value\n- Overcomes objections\n- Drives action\n\n#RESPONSE GUIDELINES:\n1. Email 1: Welcome and value delivery\n2. Email 2: Problem identification\n3. Email 3: Solution presentation\n4. Email 4: Social proof and testimonials\n5. Email 5: Objection handling\n6. Email 6: Urgency and scarcity\n7. Email 7: Final call-to-action\n\n#INFORMATION ABOUT ME:\n- My product/service: [DESCRIBE OFFERING]\n- My target customer: [DESCRIBE CUSTOMER]\n- My unique value prop: [WHAT MAKES YOU DIFFERENT]\n- My price point: [SPECIFY PRICING]\n- My main objections: [LIST COMMON OBJECTIONS]\n\n#OUTPUT:\nProvide complete email sequence with subject lines, body copy, and CTAs for each email.",
+      "department": "Sales",
+      "tags": ["email", "sequences", "conversion"],
+      "complexity": "advanced"
+    },
+    {
+      "title": "Analyze Financial Reports",
+      "description": "Get clear insights from complex financial reports with this analytical prompt for finance professionals.",
+      "content": "#CONTEXT:\nYou are a financial analyst helping to interpret financial reports and provide actionable insights.\n\n#GOAL:\nAnalyze financial data and provide:\n- Key trends and patterns\n- Areas of concern\n- Opportunities for improvement\n- Actionable recommendations\n\n#RESPONSE GUIDELINES:\n1. Review all financial metrics systematically\n2. Identify significant trends (positive and negative)\n3. Compare against industry benchmarks where applicable\n4. Highlight risks and opportunities\n5. Provide prioritized recommendations\n\n#INFORMATION ABOUT ME:\n- My company type: [INDUSTRY/SECTOR]\n- My reporting period: [TIME PERIOD]\n- My key metrics: [LIST IMPORTANT METRICS]\n- My concerns: [SPECIFIC AREAS OF CONCERN]\n\n#OUTPUT:\nProvide a structured analysis with executive summary, detailed findings, and action items.",
+      "department": "Finance",
+      "tags": ["analysis", "reports", "insights"],
+      "complexity": "beginner"
+    }
+  ]
+}

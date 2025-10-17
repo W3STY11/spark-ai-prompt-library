@@ -1,0 +1,42 @@
+{
+  "name": "promptforge",
+  "version": "3.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:rebuild": "node scripts/build-index.mjs && vite",
+    "build": "node scripts/build-index.mjs && vite build",
+    "build:quick": "vite build",
+    "preview": "vite preview",
+    "api": "node server/api.js",
+    "start": "npm run api & npm run dev:quick",
+    "start:prod": "node server/production.js"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "^9.54.0",
+    "@fluentui/react-icons": "^2.0.258",
+    "canvas": "^3.2.0",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "form-data": "^4.0.4",
+    "multer": "^2.0.2",
+    "node-fetch": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.16",
+    "playwright": "^1.56.1",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.0"
+  }
+}

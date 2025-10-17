@@ -1,0 +1,43 @@
+services:
+  # API Server (Backend)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: spark-api
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    volumes:
+      - ./public:/app/public
+      - ./backups:/app/backups
+      - ./.env:/app/.env
+    restart: unless-stopped
+    networks:
+      - spark-network
+
+  # Frontend Server (React + Nginx)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: spark-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - spark-network
+
+networks:
+  spark-network:
+    driver: bridge
+
+volumes:
+  prompts-data:
+  backups-data:

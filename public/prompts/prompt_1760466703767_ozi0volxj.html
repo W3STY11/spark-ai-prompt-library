@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategic Business Plan Generator | SPARK Prompt Library</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-3 text-xl font-bold text-gray-900 dark:text-white">
+          <span class="text-2xl">⚡</span>
+          <span>SPARK Prompt Library</span>
+        </a>
+        <nav class="flex items-center gap-8">
+          <a href="/" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold">Home</a>
+          <a href="/browse.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold">Browse</a>
+          <a href="/favorites.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold">Favorites</a>
+          <button id="darkModeToggle" class="p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-xl">
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Prompt Content -->
+  <main class="container mx-auto px-6 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Back Button -->
+      <button onclick="history.back()" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 font-semibold mb-6 transition-colors group">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:-translate-x-1 transition-transform">
+          <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Browse
+      </button>
+
+      <!-- Header -->
+      <div class="flex items-start gap-6 mb-8">
+        <span class="text-6xl">💼</span>
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="badge badge-primary text-sm">Business</span>
+            <span class="badge badge-secondary text-sm">Custom</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">2025-10-14</span>
+          </div>
+          <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Strategic Business Plan Generator</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400">Create comprehensive strategic business plans with market analysis, financial projections, and actionable roadmaps. Perfect for startups and established businesses looking to expand or pivot.</p>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      
+      <div class="flex flex-wrap gap-2 mb-8">
+        
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-lg font-medium">
+            strategy
+          </span>
+        
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-lg font-medium">
+            planning
+          </span>
+        
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-lg font-medium">
+            business plan
+          </span>
+        
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-lg font-medium">
+            market analysis
+          </span>
+        
+          <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-lg font-medium">
+            financial projections
+          </span>
+        
+      </div>
+      
+
+      <!-- Prompt -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">📋 Prompt</h2>
+        <pre class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-mono leading-relaxed bg-gray-50 dark:bg-gray-900 p-6 rounded-lg overflow-x-auto">#CONTEXT:
+You are a strategic business consultant with 20+ years of experience helping companies develop winning business strategies.
+
+#GOAL:
+Create a comprehensive strategic business plan that includes market analysis, competitive positioning, financial projections, and an actionable implementation roadmap.
+
+#RESPONSE GUIDELINES:
+1. Conduct thorough market analysis
+2. Define unique value proposition
+3. Analyze competitive landscape
+4. Develop financial projections (3-5 years)
+5. Create implementation timeline with milestones
+6. Identify key risks and mitigation strategies
+7. Outline resource requirements
+
+#INFORMATION ABOUT ME:
+- Business type: [YOUR BUSINESS TYPE]
+- Industry: [YOUR INDUSTRY]
+- Target market: [YOUR TARGET MARKET]
+- Current stage: [STARTUP/GROWTH/EXPANSION]
+
+#OUTPUT:
+Provide a structured business plan document with executive summary, detailed sections for each analysis area, and clear action items.</pre>
+      </div>
+
+      <!-- Copy Button -->
+      <div class="flex justify-center">
+        <button onclick="copyPrompt()" class="btn-primary px-8 py-4 text-lg">
+          📋 Copy Prompt
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-12 border-t border-gray-800 mt-12">
+    <div class="container mx-auto px-6">
+      <div class="text-center text-sm text-gray-400">
+        <p>© 2025 SPARK Serrala Program for AI Research & Knowledge. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copyPrompt() {
+      const promptText = document.querySelector('pre').textContent;
+      navigator.clipboard.writeText(promptText).then(() => {
+        alert('✅ Prompt copied to clipboard!');
+      });
+    }
+  </script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

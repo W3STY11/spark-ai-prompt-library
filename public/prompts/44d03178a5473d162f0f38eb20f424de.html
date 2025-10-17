@@ -1,0 +1,747 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Irresistible Product Offers</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-81b2-88d9-ff4d18572ff5" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎯</span></div><h1 class="page-title">Create Irresistible Product Offers</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Marketing Funnel</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@June 15, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-818b-a836-cb4ce8dfd44f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Create a compelling, irresistible offer using the mega-prompt for ChatGPT, tailored to your product or service. This prompt leverages Dan Kennedy&#x27;s 7-step framework to target your ideal customer profile, addressing their key challenges with unique solutions, and providing a clear, actionable call to action to convert leads effectively.</mark></div></figure><hr id="2733f44c-2287-8144-821c-da3975a42ff6"/><h2 id="2733f44c-2287-81bf-8b4e-ea27160f2750" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><ul id="2733f44c-2287-816d-9ef3-fe15cfe65a75" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Converts the user&#x27;s request into a structured offer using Dan Kennedy&#x27;s 7-step framework.</mark></li></ul><ul id="2733f44c-2287-817b-b9a3-c22827663668" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Focuses on defining the target market, their problems, and the unique benefits of the product/service.</mark></li></ul><ul id="2733f44c-2287-8125-bd22-ecc65c38df24" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Creates a compelling, tiered offer with urgency and a clear call to action, using persuasive and engaging language.</mark></li></ul><h2 id="2733f44c-2287-810a-9169-fc5a7ca5310a" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><ul id="2733f44c-2287-81dc-b503-c0e7236aaafd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Refine Your Target Market Description: Use demographic and psychographic data to create a detailed profile of your ideal customer. Include age, income, job role, and personal interests that align with your product/service.</mark></li></ul><ul id="2733f44c-2287-8132-941f-d72abcf20d18" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Highlight Exclusivity in Your Offer: Emphasize the uniqueness of your product/service by detailing what sets it apart from competitors. Focus on the unique selling proposition and how it specifically solves problems no other product can.</mark></li></ul><ul id="2733f44c-2287-81cb-832b-ff52171f6829" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Strengthen Your Call to Action: Ensure your call to action is not only clear but also compelling. Use action-oriented language that motivates immediate response, and make sure it&#x27;s easy for customers to take the next step without any hesitation.</mark></li></ul><h2 id="2733f44c-2287-8150-bd74-d08989e0879d" class=""><mark class="highlight-yellow_background">🎯 Offer Creation Coach ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-8129-9eb1-f1bc40ed0e67" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+I need to create an irresistible offer for my product/service that will make my ideal customer eager to buy. The offer should be based on Dan Kennedy&#x27;s proven 7-step framework and be tailored to my specific target audience.
+
+#ROLE:
+Expert copywriter and marketing strategist specializing in crafting compelling, high-converting offers based on proven frameworks like Dan Kennedy&#x27;s 7-step formula.
+
+#RESPONSE GUIDELINES:
+1. Target Market: Clearly describe the target market, focusing on their specific needs, wants, and challenges as they relate to the product/service. Paint a vivid picture of their current situation and the transformation they desire.
+
+2. Problem/Pain Points: Dive deep into the most pressing problems, pain points, or frustrations the target market is facing that the product/service can solve. Agitate these pain points to create a sense of urgency and need for a solution.
+
+3. Benefits: Detail the specific, compelling benefits the product/service provides to address those pain points and transform the customer&#x27;s life or business. Focus on the tangible outcomes and positive emotions they&#x27;ll experience after buying.
+
+4. Social Proof/Credibility: Share 2-3 powerful testimonials, case studies, or credentials that establish credibility and prove the product/service delivers results. These should be relatable to the target market and showcase the specific benefits highlighted.
+
+5. Reason to Act Now: Create a sense of urgency and scarcity with a specific, limited-time bonus, discount, or extra that compels prospects to take action immediately. Clarify what they&#x27;ll miss out on if they don&#x27;t act now.
+
+6. Irresistible Offer: Craft a tiered offer with a core product/service, a mid-tier upsell, and a top-tier premium option. For each tier, detail the specific features, benefits, and bonuses that make it an unbeatable value for the target market.
+
+7. Call to Action: Provide a crystal-clear, step-by-step call to action that tells the prospect exactly what to do next to accept the offer and experience the promised benefits. Remove any friction or confusion, and focus on the positive outcome they&#x27;ll achieve by acting now.
+
+#OFFER CRITERIA:
+1. The offer should be tailored to the specific needs, wants, and challenges of the target audience.
+2. It should agitate the pain points and create a sense of urgency for a solution.
+3. The benefits should be specific, compelling, and focused on tangible outcomes and positive emotions.
+4. Social proof and credibility elements should be relatable to the target market and showcase the specific benefits highlighted.
+5. The reason to act now should create genuine scarcity and urgency, compelling immediate action.
+6. The tiered offer should provide increasing value at each level, with the top tier being an irresistible, premium option.
+7. The call to action must be clear, concise, and focused on the positive outcome of accepting the offer.
+8. Use emotional language, vivid descriptions, and storytelling elements to engage the reader and make the offer come alive.
+9. Write in a conversational yet persuasive tone, as if speaking directly to the ideal customer.
+10. Avoid hype, false promises, or manipulative tactics. The offer should be authentic and deliver real value.
+
+#INFORMATION ABOUT ME:
+- My target audience: [ICP DESCRIPTION: ROLE, INDUSTRY, KEY CHALLENGE]
+- My product/service: [PRODUCT/SERVICE]
+- Key benefit of my product/service: [KEY BENEFIT]
+- Unique selling proposition: [UNIQUE SELLING PROPOSITION]
+
+#RESPONSE FORMAT:
+The final offer should be written in a conversational yet persuasive tone, as if speaking directly to the ideal customer. Use emotional language, vivid descriptions, and storytelling elements to engage the reader and make the offer come alive. Format the response using line breaks, bullet points, and bold/italic text for emphasis and readability.</code></pre><h2 id="2733f44c-2287-816e-a59d-c0d146fed2f3" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><ul id="2733f44c-2287-8166-bdda-c91cb1b21e2e" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Fill in the [PRODUCT/SERVICE], [ICP DESCRIPTION: ROLE, INDUSTRY, KEY CHALLENGE], [KEY BENEFIT], and [UNIQUE SELLING PROPOSITION] placeholders with specific details about your product or service, your ideal customer profile, the main benefit of your product/service, and what makes it unique. Example: If your product is an online fitness program, your ICP description could be &quot;busy professionals in the tech industry who struggle to find time for the gym,&quot; the key benefit might be &quot;efficient 30-minute workouts that can be done anywhere,&quot; and the unique selling proposition could be &quot;personalized fitness plans based on AI technology.&quot;</mark></li></ul><ul id="2733f44c-2287-815f-938e-f28bacf5af3b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Use the structure provided in the prompt to systematically address each element of Dan Kennedy&#x27;s 7-step framework. Ensure that each section is tailored to the specifics you filled in the placeholders, maintaining a cohesive and persuasive narrative throughout the offer.</mark></li></ul><ul id="2733f44c-2287-814d-8012-d8efd3d57214" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">- Keep the final offer within the 2000 character limit by focusing on concise, powerful language that conveys the value and urgency of the offer. Use emotional and vivid descriptions to connect with the reader and encourage action, ensuring the call to action is clear and compelling.</mark></li></ul><h2 id="2733f44c-2287-8136-abb3-c915ea8d9ef7" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8152-9fb1-c5dcc8c1eb31" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- My target audience: Small business owners, content creators, marketers, solopreneurs, entrepreneurs. Age: 24-55. Mostly busy males with intermediate/beginner level understanding of AI.<br/>- My product/service: Complete AI Bundle by God of Prompt, the biggest collection of easy-to-follow AI resources for busy entrepreneurs &amp; small business owners.<br/>- Key benefit of my product/service: Productivity - time saving, consistent high quality responses of AI, Money saving (replacing a team of employees), Easy to use (copy &amp; paste solutions), no technical expertise required (simple to follow AI how-to guides, prompts &amp; hacks), biggest collection of AI resources (the only collection you will ever need).<br/>- Unique selling proposition: Lifetime access (one-time purchase without any subscriptions), 14-day money-back guarantee.</mark></p><h2 id="2733f44c-2287-81d3-b119-fd6687960ac5" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81b4-9641-c85a5fdfbdb1" class="image"><a href="Create%20Irresistible%20Product%20Offers%202733f44c228781b288d9ff4d18572ff5/Create_Irresistible_Product_Offers_1.png"><img style="width:1000px" src="Create%20Irresistible%20Product%20Offers%202733f44c228781b288d9ff4d18572ff5/Create_Irresistible_Product_Offers_1.png"/></a></figure><figure id="2733f44c-2287-8135-82d9-f15c4ba6d6ed" class="image"><a href="Create%20Irresistible%20Product%20Offers%202733f44c228781b288d9ff4d18572ff5/Create_Irresistible_Product_Offers_2.png"><img style="width:1000px" src="Create%20Irresistible%20Product%20Offers%202733f44c228781b288d9ff4d18572ff5/Create_Irresistible_Product_Offers_2.png"/></a></figure><h2 id="2733f44c-2287-811b-85b4-f78c1f5ba876" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-8187-9492-d00c854907df" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Craft a Compelling Story: Use storytelling elements to create a narrative that resonates with your target market. Highlight their current struggles and paint a vivid picture of the transformation they can achieve with your product/service.</mark></li></ul><ul id="2733f44c-2287-8150-88c5-c8263c8a44cd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Offer a Risk-Free Guarantee: Instill confidence in your ideal customer by offering a money-back guarantee or a free trial period. This reduces the perceived risk of purchasing and encourages them to take action.</mark></li></ul><ul id="2733f44c-2287-8102-8dc1-c2235625c8d9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Create a Sense of Exclusivity: Make your offer feel exclusive by limiting the number of spots available or offering a special bonus for early adopters. This creates a sense of urgency and makes your ideal customer feel like they&#x27;re part of a select group.</mark></li></ul><ul id="2733f44c-2287-81e3-84fb-f7afd1d4116c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Provide Clear and Concise Benefits: Clearly communicate the specific benefits and outcomes your product/service provides. Use language that evokes emotion and highlights the positive impact it will have on their life or business.</mark></li></ul><ul id="2733f44c-2287-8169-8de9-e5d2f58ce8ba" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-default">Leverage Influencer Endorsements: Partner with influencers or industry experts who align with your target market. Their endorsement can add credibility and trust to your offer, making it more enticing to your ideal customer.</mark></li></ul><p id="2733f44c-2287-81b7-b38f-cd56fa16e193" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

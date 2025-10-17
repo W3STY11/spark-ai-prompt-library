@@ -1,0 +1,40 @@
+# API Server Dockerfile
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Install build dependencies for native modules (canvas, sharp)
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    cairo-dev \
+    pango-dev \
+    jpeg-dev \
+    giflib-dev \
+    pixman-dev \
+    pkgconfig
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy server code
+COPY server ./server
+
+# Copy .env.example as default config (users can override via volume mount)
+COPY .env.example ./.env
+
+# Copy public folder with all 2,376 prompts
+COPY public ./public
+
+# Create backups directory
+RUN mkdir -p backups
+
+# Expose API port
+EXPOSE 3001
+
+# Start API server
+CMD ["node", "server/api.js"]
