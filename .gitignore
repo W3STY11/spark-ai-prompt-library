@@ -46,6 +46,12 @@ temp/
 # Test screenshots
 bulk-import-screenshots/
 *-screenshots/
+audit-screenshots/
+test-screenshots/
+
+# Development directories
+docs/
+backups/
 
 # Development files
 import_all_prompts.mjs
