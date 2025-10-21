@@ -13,9 +13,12 @@
   }
 
   body {
-    @apply font-sans text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-900;
+    @apply text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    letter-spacing: -0.011em;
   }
 }
 
@@ -24,12 +27,28 @@
     @apply max-w-7xl;
   }
 
-  /* Department Card */
+  /* Department Card - Enhanced Glassmorphism */
   .department-card {
-    @apply bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700
-           rounded-3xl p-8 cursor-pointer relative overflow-hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    @apply rounded-3xl p-8 cursor-pointer relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    will-change: transform;
+  }
+
+  .dark .department-card {
+    background: rgba(31, 41, 55, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .department-card::before {
@@ -39,27 +58,74 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .department-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
   .department-card:hover::before {
     opacity: 1;
   }
 
-  .department-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
-    border-color: rgba(99, 102, 241, 0.3);
+  .department-card:hover::after {
+    opacity: 0.6;
   }
 
-  /* Prompt Card */
+  .department-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow:
+      0 20px 60px rgba(99, 102, 241, 0.15),
+      0 8px 24px rgba(99, 102, 241, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .department-card:hover {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(129, 140, 248, 0.4);
+    box-shadow:
+      0 20px 60px rgba(99, 102, 241, 0.25),
+      0 8px 24px rgba(99, 102, 241, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Prompt Card - Enhanced Glassmorphism */
   .prompt-card {
-    @apply bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700
-           rounded-3xl p-8 cursor-pointer relative overflow-hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    @apply rounded-3xl p-8 cursor-pointer relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    will-change: transform;
+  }
+
+  .dark .prompt-card {
+    background: rgba(31, 41, 55, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   .prompt-card::before {
@@ -69,19 +135,50 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .prompt-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
   .prompt-card:hover::before {
     opacity: 1;
   }
 
+  .prompt-card:hover::after {
+    opacity: 0.6;
+  }
+
   .prompt-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
-    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow:
+      0 20px 60px rgba(99, 102, 241, 0.15),
+      0 8px 24px rgba(99, 102, 241, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .prompt-card:hover {
+    background: rgba(31, 41, 55, 0.8);
+    border-color: rgba(129, 140, 248, 0.4);
+    box-shadow:
+      0 20px 60px rgba(99, 102, 241, 0.25),
+      0 8px 24px rgba(99, 102, 241, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   /* Button Styles */
@@ -149,22 +246,43 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
-  /* Prompt List Item (for list view) */
+  /* Prompt List Item (for list view) - Enhanced Glassmorphism */
   .prompt-list-item {
-    @apply bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700
-           rounded-xl p-4 cursor-pointer relative overflow-hidden;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply rounded-xl p-4 cursor-pointer relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    will-change: transform;
+  }
+
+  .dark .prompt-list-item {
+    background: rgba(31, 41, 55, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 
   .prompt-list-item:hover {
-    transform: translateX(4px);
-    background-color: #f9fafb;
-    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateX(6px) translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow:
+      0 8px 24px rgba(99, 102, 241, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .dark .prompt-list-item:hover {
-    background-color: #1f2937;
-    border-color: rgba(129, 140, 248, 0.3);
+    background: rgba(31, 41, 55, 0.7);
+    border-color: rgba(129, 140, 248, 0.4);
+    box-shadow:
+      0 8px 24px rgba(99, 102, 241, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   /* Badge */

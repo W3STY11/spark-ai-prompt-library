@@ -23,6 +23,15 @@ app.use(cors());
 // JSON parsing
 app.use(express.json());
 
+// PRODUCTION CACHE CONTROL - NO CACHING FOR PRODUCTION!
+app.use((req, res, next) => {
+  // Disable ALL caching for HTML, JS, and CSS
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  next();
+});
+
 // Static file serving - serve the built React app
 const distPath = path.join(__dirname, '../dist');
 app.use(express.static(distPath));

@@ -1,0 +1,700 @@
+{
+  "total": 2424,
+  "valid": 2417,
+  "issues": [],
+  "stats": {
+    "missingFields": [],
+    "emptyFields": [
+      {
+        "index": 105,
+        "id": "d972946cbcbd65287e5d36ff7fb30db1",
+        "title": "Create Retirement Planning Strategy",
+        "issues": [
+          "Empty description"
+        ]
+      },
+      {
+        "index": 528,
+        "id": "fb12d8158ad92beb8868d0cf38b178df",
+        "title": "Improve Competitive Comparison Angles",
+        "issues": [
+          "Empty content"
+        ]
+      },
+      {
+        "index": 574,
+        "id": "bbdb30cc0b05e07eefc985ebf5851ff0",
+        "title": "Untitled",
+        "issues": [
+          "Empty description",
+          "Empty content"
+        ]
+      },
+      {
+        "index": 1058,
+        "id": "9b856f0e5b19da9852ff824e38f562ee",
+        "title": "Optimize Website Breadcrumb Navigation",
+        "issues": [
+          "Empty description"
+        ]
+      },
+      {
+        "index": 1618,
+        "id": "d92166f884c5356429020c89333aff4a",
+        "title": "Create A Professional Resume",
+        "issues": [
+          "Empty description",
+          "Empty content"
+        ]
+      },
+      {
+        "index": 1724,
+        "id": "ef920124a5309b3c9213e5b6787eb3ae",
+        "title": "Create Insightful Interview Questions",
+        "issues": [
+          "Empty description"
+        ]
+      },
+      {
+        "index": 1841,
+        "id": "bdeb8bb56fed8141328348ad076f50e4",
+        "title": "Expand Your Vocabulary",
+        "issues": [
+          "Empty content"
+        ]
+      }
+    ],
+    "invalidValues": [],
+    "formattingIssues": [],
+    "dataQuality": [
+      {
+        "index": 105,
+        "id": "d972946cbcbd65287e5d36ff7fb30db1",
+        "title": "Create Retirement Planning Strategy",
+        "issues": [
+          "Description too short: 0 chars"
+        ]
+      },
+      {
+        "index": 528,
+        "id": "fb12d8158ad92beb8868d0cf38b178df",
+        "title": "Improve Competitive Comparison Angles",
+        "issues": [
+          "Word count mismatch: stored=1, actual=0, diff=1",
+          "Content too short: 0 chars"
+        ]
+      },
+      {
+        "index": 574,
+        "id": "bbdb30cc0b05e07eefc985ebf5851ff0",
+        "title": "Untitled",
+        "issues": [
+          "Word count mismatch: stored=1, actual=0, diff=1",
+          "Content too short: 0 chars",
+          "Description too short: 0 chars"
+        ]
+      },
+      {
+        "index": 1058,
+        "id": "9b856f0e5b19da9852ff824e38f562ee",
+        "title": "Optimize Website Breadcrumb Navigation",
+        "issues": [
+          "Description too short: 0 chars"
+        ]
+      },
+      {
+        "index": 1618,
+        "id": "d92166f884c5356429020c89333aff4a",
+        "title": "Create A Professional Resume",
+        "issues": [
+          "Word count mismatch: stored=1, actual=0, diff=1",
+          "Content too short: 0 chars",
+          "Description too short: 0 chars"
+        ]
+      },
+      {
+        "index": 1724,
+        "id": "ef920124a5309b3c9213e5b6787eb3ae",
+        "title": "Create Insightful Interview Questions",
+        "issues": [
+          "Description too short: 0 chars"
+        ]
+      },
+      {
+        "index": 1841,
+        "id": "bdeb8bb56fed8141328348ad076f50e4",
+        "title": "Expand Your Vocabulary",
+        "issues": [
+          "Word count mismatch: stored=1, actual=0, diff=1",
+          "Content too short: 0 chars"
+        ]
+      }
+    ],
+    "warnings": [
+      {
+        "index": 0,
+        "id": "prompt_1760739499113_g0i37ff59",
+        "title": "Test Prompt",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 19,
+        "id": "bcf26ebde8ba1acb24ffe49d068f0854",
+        "title": "Brainstorm LSD-like Ideas",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 77,
+        "id": "9640b4b65d72eb28ec67cebcd7962fb5",
+        "title": "Create Immersive Simulation Environments",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 129,
+        "id": "7248cb747b88455b400206ded0fc11ee",
+        "title": "Create Your Business Profiles",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 256,
+        "id": "25c6b066ad24270366106075f20d329d",
+        "title": "Get n8n Workflow JSON Outputs",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 318,
+        "id": "85fabac44b4fe9ceaabe7f80bbfb744c",
+        "title": "Research Market Opportunities",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 326,
+        "id": "b44018fddb05eb37ab6883af9070f6b4",
+        "title": "Simplify Business Complexity",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 327,
+        "id": "51ab586990f0fe238225a1bc440d97e0",
+        "title": "Solve Challenges With Game Theory",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 340,
+        "id": "dd3892eb4bc48f6dca8d3e3f8a4e6f28",
+        "title": "Brainstorm Seasonal Promotion Strategies",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 342,
+        "id": "7f434ddbf4064bed9b119808f5a6857a",
+        "title": "Build Your Brand's World",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 343,
+        "id": "3f27a64d22db471260349e83eb640d99",
+        "title": "Build Your Brand's World",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 356,
+        "id": "891356e008522323900d0853906d511f",
+        "title": "Convert LinkedIn Posts into Template",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 376,
+        "id": "2a31593645c9d68a2487665742ed7e69",
+        "title": "Create A/B Tests for Website Copy",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 389,
+        "id": "69ffac7131649e0a95793579ea4edc37",
+        "title": "Create Effective Micro Ads",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 406,
+        "id": "5409b8cbe1ef5f1fa6448589c4a6bad2",
+        "title": "Create LinkedIn Funnels",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 415,
+        "id": "e15807edd3e74f2490d4e3cda0da5d87",
+        "title": "Create Product Comparison Tables",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 438,
+        "id": "04590ccaa6e137b65f01fd47e3196a13",
+        "title": "Daily Task Planning Assistant",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 459,
+        "id": "da3f04a29a743b68557cce4a46d22d87",
+        "title": "Discover Your Personal Monopoly",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 461,
+        "id": "0482a1094e35a1cf1824f3ae0cddee46",
+        "title": "Draft Email Compliance Guidelines",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 481,
+        "id": "1100b0ad42c0781cfbc68b776bc55990",
+        "title": "Generate Viral X Threads",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 484,
+        "id": "9ca89cdfe271aca4d0502265d298870f",
+        "title": "Get Authentic Sponsored Post Captions---Get Engaging Brand Partnership Captions---Get Trustworthy Influencer Content Ideas",
+        "warning": "Title very long: 122 chars"
+      },
+      {
+        "index": 492,
+        "id": "d8ac6d50fd6988bfba07798911f9c562",
+        "title": "Get Contrarian Content Ideas",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 520,
+        "id": "cc79240ae8a47f8574d6e080f856ab98",
+        "title": "Get Viral Instagram Reel Scripts",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 528,
+        "id": "fb12d8158ad92beb8868d0cf38b178df",
+        "title": "Improve Competitive Comparison Angles",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 545,
+        "id": "63d332593052559aeddb072e2ae3aa9e",
+        "title": "Optimize Prompts with Prompt Creator",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 552,
+        "id": "44417a4afe37dbd39a77406b6ffc8278",
+        "title": "Plan Promotion Strategy for Products",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 557,
+        "id": "cc2a632f0c027fbfe2e55048a7e24e52",
+        "title": "Refine Your Marketing Copy",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 559,
+        "id": "8fc592a46b636740ac97355bbc30b2ec",
+        "title": "Replicate Top LinkedIn Content",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 560,
+        "id": "f9f0d95cbf1c058a94bdfe667d7f6144",
+        "title": "Repurpose Your Content",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 563,
+        "id": "65fb8d0aff04f22f38a2a8c71f7ba387",
+        "title": "Revive Dormant Email Subscribers",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 565,
+        "id": "ac60f4a621139a61bed1a384aeb4c4c3",
+        "title": "Strategize Email Personalization",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 566,
+        "id": "52d85fa82a434a2fcfc8e47d4fa32915",
+        "title": "Streamline & Automate Tasks",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 569,
+        "id": "4ab5c0f6f426eca762bb6f483def0c3e",
+        "title": "Transform Transcripts into LinkedIn Content",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 574,
+        "id": "bbdb30cc0b05e07eefc985ebf5851ff0",
+        "title": "Untitled",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 575,
+        "id": "acc6fd150af5b1c7029e4460ea8afd30",
+        "title": "Viral Tweet Writer",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 598,
+        "id": "9b1a7435474f71cb7fa8caa2c0cceaae",
+        "title": "Build Buyer Personas",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 729,
+        "id": "0f8009728de3d1e6c6d307a6635570f4",
+        "title": "Design Lead Nurturing Workflows",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 834,
+        "id": "0be7b0261955441ad3cb0654fc99b738",
+        "title": "Plan Lead Generation Content",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 853,
+        "id": "f1ce169132077b33cb3a4b80ac477f72",
+        "title": "Build Topical Authority with SEO",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 985,
+        "id": "675ea5d4cd3ab815619178045cad30a7",
+        "title": "Humanize Your SEO Text",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 988,
+        "id": "35c6c02fec2cf629e5f0d4215972980e",
+        "title": "Master Writing Style Mimicry",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1093,
+        "id": "f52861361bc0958b8fc31fa9c73fc3bf",
+        "title": "Analyze Accelerator Programs",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1094,
+        "id": "74fcc99bb20b3c1a812081acbf369079",
+        "title": "Analyze Business Credit Score",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1095,
+        "id": "6851c48d041b90f72298790b161deefd",
+        "title": "Analyze Business Risk Protection Strategies",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1099,
+        "id": "908c0b999b70892601970fbb1a9550aa",
+        "title": "Analyze Debt Consolidation Options",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1111,
+        "id": "6af51fa63a98c5bb9096a6d616330546",
+        "title": "Analyze Inheritance Tax",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1125,
+        "id": "410602493cb7c6290a772f9adaa570e8",
+        "title": "Analyze Seed Funding Opportunities",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1126,
+        "id": "1699e559424975ea8065d53b4cd1476f",
+        "title": "Analyze Social Impact Metrics",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1131,
+        "id": "cc593abff693ba08cbaa99aefa0de32f",
+        "title": "Analyze Subscription Spending Habits",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1132,
+        "id": "6d611ef6ce728d3eef053a130858748d",
+        "title": "Analyze Tax Deduction Tracking Systems",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1152,
+        "id": "9e0b3c353dfaa6ca67cf97b008a6aa11",
+        "title": "Craft Pitch Decks",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1158,
+        "id": "8e449c4318cc54c01d4ca2c29353d865",
+        "title": "Create  No-Spend Challenges",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1161,
+        "id": "2dc848689bb7f9538ff950156afb23c9",
+        "title": "Create Side Hustle Profit Plans",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1165,
+        "id": "2473d844482d40cce9da3847d122afcd",
+        "title": "Create Wealth Maximization Plan",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1171,
+        "id": "c93f92519be9075a287d972007728a84",
+        "title": "Develop Debt Payoff Strategy",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1175,
+        "id": "1d9602818b06d3bf5df950bc68474a6d",
+        "title": "Discover Financial Wellness Apps",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1180,
+        "id": "095a74a95bb318b5823ea4656c9d1483",
+        "title": "Draft Annual Tax Organizer",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1181,
+        "id": "366c199cb89ec38152ecc46736d3c833",
+        "title": "Draft Debt Snowball Savings Plan",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1184,
+        "id": "248ae85f7498d73dd9e0a8c318796daa",
+        "title": "Estimate Emergency Fund Needs",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1195,
+        "id": "d8cb5abc2a63bb92adae866e52559fd8",
+        "title": "Generate Cash Buffer Recommendations",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1200,
+        "id": "a1c1f16db1afa8674f80760b6455a890",
+        "title": "Get Comprehensive Operational Audits",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1205,
+        "id": "0c8409b472275a571fbda5b8d2aad4be",
+        "title": "Manage Home Budget",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1213,
+        "id": "3efd7ea1f37785634c1b3c1dce77d4d8",
+        "title": "Optimize Grocery Spending",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1217,
+        "id": "6c700b75c972f70f8aa86090f71fcf39",
+        "title": "Optimize Shared Household Budgets",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1223,
+        "id": "549f10ba18c83df7e65cd890d6a4a1c4",
+        "title": "Optimize Working Capital",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1226,
+        "id": "04c4554080fa7653c4f19e26be1f74aa",
+        "title": "Plan Major Purchase Timing",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1228,
+        "id": "9b2b2cbb49f94b7cf5de623e40416db7",
+        "title": "Plan Revenue Diversification",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1235,
+        "id": "c5fd5ef9c5b3e7007bd46d6bb6ddef51",
+        "title": "Project Contract Payment Timelines",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1243,
+        "id": "de3bb242d8328819ff6e2a9d37869d66",
+        "title": "Recommend Liquidity Strategies",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1245,
+        "id": "2186e929f5ed485ca3e7ae25705845f4",
+        "title": "Recommend Subscription Pricing Models",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1246,
+        "id": "32023536980349c40c691ed685788b1c",
+        "title": "Recommend Tax Software Solutions",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1253,
+        "id": "5d02f67420e0cc0725fece05ecf7c3cf",
+        "title": "Review Pricing Strategy",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1257,
+        "id": "0bc9baed8f57b3c9743d5e77e0c3623f",
+        "title": "Set Holiday Savings Goals",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1258,
+        "id": "d2b1ea43c239957b42d26ded388a3bf4",
+        "title": "Simulate Budget Scenarios",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1271,
+        "id": "3520e2f60d4847a0c2406b96cd852e0d",
+        "title": "Transform Family Budget",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1387,
+        "id": "c584460f87f541a85c3d62b4ec9eff62",
+        "title": "Create Personalized Language Learning Paths",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1507,
+        "id": "56d54bd0db8dd94164665aca3db01859",
+        "title": "Gamify Your Learning",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1523,
+        "id": "1a78d722d49ecb042fe20f9b554f2648",
+        "title": "Learn Everything On Any Topic",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1573,
+        "id": "311a2c1677a739d5df8efb2b921a58b6",
+        "title": "Transform YouTube Transcripts Into Courses",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1577,
+        "id": "f02a52cdf22d870260532ccd6af2df7e",
+        "title": "Automate Book Writing",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1618,
+        "id": "d92166f884c5356429020c89333aff4a",
+        "title": "Create A Professional Resume",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 1841,
+        "id": "bdeb8bb56fed8141328348ad076f50e4",
+        "title": "Expand Your Vocabulary",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2122,
+        "id": "98da8473a52be2cbbe178b03a83c9d72",
+        "title": "Discover Creative Fusion Meals",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2123,
+        "id": "a48739f482898e36236161c2838ba0b4",
+        "title": "Discover Ideal Career Pathways",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2142,
+        "id": "081bc9053b7557a18e0979f0eac52fc9",
+        "title": "Get Honest Psychological Profiles",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2190,
+        "id": "854b8e02b2853236bb82974488d22437",
+        "title": "Optimize Your AI Prompts",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2205,
+        "id": "30a8b4eb563d7dc0df46d8bc34df9e4a",
+        "title": "Transform PDFs Into Study Systems",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2206,
+        "id": "37394b4c357ab6554600e71e380f6a99",
+        "title": "Turn AI Into Your Co-Thinker",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2231,
+        "id": "f44691f0185dfe80d26ca524cf1efe57",
+        "title": "Create $10K MRR Startups",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2283,
+        "id": "f5391f43a26960f7fce231cf1e2f9f58",
+        "title": "Create Seven Steps to Success",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2329,
+        "id": "7a333de78789b45628bb08d11428f114",
+        "title": "Generate Divine Business Transformations",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2385,
+        "id": "fdc658d4eda793de58790b1db527ba81",
+        "title": "Get Viral Product Strategies",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2388,
+        "id": "d4f38293cfb0447db009b13b70345cb7",
+        "title": "Identify High-Value Business Problems",
+        "warning": "Content missing standard structure markers"
+      },
+      {
+        "index": 2423,
+        "id": "382cbc97e610f4ad83a7befce4958d76",
+        "title": "Unlock Hidden Wealth Opportunities",
+        "warning": "Content missing standard structure markers"
+      }
+    ]
+  }
+}

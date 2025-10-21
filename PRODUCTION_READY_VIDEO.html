@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK → M365 Copilot - Demo Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .hero-section {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            color: rgba(255,255,255,0.95);
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            background: #000;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .overlay-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .overlay-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6264A7, #8b5cf6);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(98, 100, 167, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(98, 100, 167, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1 class="hero-title">SPARK → M365 Copilot</h1>
+        <p class="hero-subtitle">Access 2,425+ Expert Prompts in Just 3 Clicks</p>
+
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- PRODUCTION-READY VIDEO EMBED -->
+                <video
+                    id="demo-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    poster="spark-demo-poster.jpg"
+                    preload="auto"
+                >
+                    <!-- WebM for modern browsers (better compression) -->
+                    <source src="spark-demo-optimized.webm" type="video/webm">
+
+                    <!-- MP4 fallback for all browsers -->
+                    <source src="spark-demo-optimized.mp4" type="video/mp4">
+
+                    <!-- Fallback message -->
+                    <p>Your browser doesn't support HTML5 video. <a href="spark-demo-optimized.mp4" download>Download the video</a>.</p>
+                </video>
+
+                <div class="video-overlay">
+                    <div class="overlay-title">How It Works</div>
+                    <p class="overlay-text">1. Click button → 2. Select prompt → 3. Customize & Insert</p>
+                    <a href="#install" class="cta-button">Install SPARK →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">2,425+ Prompts</div>
+                <div class="feature-text">Professional prompts across 9 business departments</div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Auto-Customization</div>
+                <div class="feature-text">Smart variable detection with automatic forms</div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✨</div>
+                <div class="feature-title">Perfect Formatting</div>
+                <div class="feature-text">Preserves structure and formatting every time</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Ensure video plays on all browsers
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('demo-video');
+
+            // Force play on iOS and modern browsers
+            video.play().catch(function(error) {
+                console.log('Autoplay prevented:', error);
+                // If autoplay is blocked, we're okay because poster will show
+            });
+
+            // Ensure muted state (some browsers require this)
+            video.muted = true;
+            video.setAttribute('muted', '');
+
+            // Reset video smoothly when it ends (for browsers that might glitch)
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            });
+
+            // Optional: Pause video when not visible (saves bandwidth)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    video.pause();
+                } else {
+                    video.play();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

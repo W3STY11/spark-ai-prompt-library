@@ -337,7 +337,10 @@ app.get('/api/prompts', async (req, res) => {
 // POST /api/prompts - Create new prompt (no auth needed - public can submit)
 app.post('/api/prompts', upload.single('image'), async (req, res) => {
   try {
-    const { category, title, description, prompt, tags } = req.body;
+    const {
+      category, title, description, prompt, tags,
+      subcategory, complexity, tips, images, metadata
+    } = req.body;
 
     if (!category || !title || !description || !prompt) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -348,7 +351,27 @@ app.post('/api/prompts', upload.single('image'), async (req, res) => {
     const index = JSON.parse(indexData);
 
     const promptId = `prompt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    const tagArray = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+
+    // Handle tags - can be array or comma-separated string
+    const tagArray = Array.isArray(tags)
+      ? tags
+      : (tags ? tags.split(',').map(t => t.trim()).filter(t => t) : []);
+
+    // Handle tips - can be array or newline-separated string
+    const tipsArray = Array.isArray(tips)
+      ? tips
+      : (tips ? tips.split('\n').map(t => t.trim()).filter(t => t) : []);
+
+    // Handle images - can be array or comma-separated string
+    const imagesArray = Array.isArray(images)
+      ? images
+      : (images ? images.split(',').map(i => i.trim()).filter(i => i) : []);
+
+    // Add uploaded image if present
+    if (req.file) {
+      imagesArray.push(req.file.filename);
+    }
+
     const icon = departmentIcons[category] || '✨';
 
     const newPrompt = {
@@ -357,14 +380,15 @@ app.post('/api/prompts', upload.single('image'), async (req, res) => {
       description: description.trim(),
       content: prompt.trim(),
       department: category,
-      subcategory: 'Custom',
+      subcategory: subcategory?.trim() || 'Custom',
       icon: icon,
-      complexity: 'intermediate',
+      complexity: complexity || 'intermediate',
       tags: tagArray,
       date: new Date().toISOString().split('T')[0],
       word_count: prompt.split(/\s+/).length,
-      images: req.file ? [req.file.filename] : [],
-      tips: [],
+      images: imagesArray,
+      tips: tipsArray,
+      metadata: metadata || {},
       status: 'pending', // User submissions require admin approval
       submitted_date: new Date().toISOString()
     };
@@ -414,11 +438,28 @@ app.post('/api/prompts/bulk', async (req, res) => {
         const promptId = `prompt_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
         const icon = departmentIcons[promptData.department] || '✨';
 
+        // Handle tags - can be array or comma-separated string
         let tags = [];
         if (Array.isArray(promptData.tags)) {
           tags = promptData.tags.map(t => String(t).trim()).filter(t => t);
         } else if (typeof promptData.tags === 'string') {
           tags = promptData.tags.split(',').map(t => t.trim()).filter(t => t);
+        }
+
+        // Handle tips - can be array or newline-separated string
+        let tips = [];
+        if (Array.isArray(promptData.tips)) {
+          tips = promptData.tips.map(t => String(t).trim()).filter(t => t);
+        } else if (typeof promptData.tips === 'string') {
+          tips = promptData.tips.split('\n').map(t => t.trim()).filter(t => t);
+        }
+
+        // Handle images - can be array or comma-separated string
+        let images = [];
+        if (Array.isArray(promptData.images)) {
+          images = promptData.images.map(i => String(i).trim()).filter(i => i);
+        } else if (typeof promptData.images === 'string') {
+          images = promptData.images.split(',').map(i => i.trim()).filter(i => i);
         }
 
         const newPrompt = {
@@ -433,8 +474,9 @@ app.post('/api/prompts/bulk', async (req, res) => {
           tags: tags,
           date: new Date().toISOString().split('T')[0],
           word_count: promptData.content.split(/\s+/).length,
-          images: [],
-          tips: Array.isArray(promptData.tips) ? promptData.tips : [],
+          images: images,
+          tips: tips,
+          metadata: promptData.metadata || {},
           status: 'pending', // Bulk imports also require admin approval
           submitted_date: new Date().toISOString()
         };
@@ -526,7 +568,10 @@ app.post('/api/admin/prompts/:id/reject', requireAuth, async (req, res) => {
 app.put('/api/prompts/:id', requireAuth, async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, content, department, subcategory, tags } = req.body;
+    const {
+      title, description, content, department, subcategory, tags,
+      complexity, tips, images, metadata
+    } = req.body;
 
     if (!title || !description || !content || !department) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -545,6 +590,22 @@ app.put('/api/prompts/:id', requireAuth, async (req, res) => {
     }
 
     const existingPrompt = index.prompts[promptIndex];
+
+    // Handle tags - can be array or comma-separated string
+    const tagArray = Array.isArray(tags)
+      ? tags
+      : (tags ? tags.split(',').map(t => t.trim()).filter(t => t) : existingPrompt.tags || []);
+
+    // Handle tips - can be array or newline-separated string
+    const tipsArray = Array.isArray(tips)
+      ? tips
+      : (tips ? tips.split('\n').map(t => t.trim()).filter(t => t) : existingPrompt.tips || []);
+
+    // Handle images - can be array or comma-separated string
+    const imagesArray = Array.isArray(images)
+      ? images
+      : (images ? images.split(',').map(i => i.trim()).filter(i => i) : existingPrompt.images || []);
+
     index.prompts[promptIndex] = {
       ...existingPrompt,
       title: title.trim(),
@@ -553,7 +614,11 @@ app.put('/api/prompts/:id', requireAuth, async (req, res) => {
       department: department,
       subcategory: subcategory || existingPrompt.subcategory,
       icon: departmentIcons[department] || existingPrompt.icon,
-      tags: Array.isArray(tags) ? tags : [],
+      complexity: complexity || existingPrompt.complexity || 'intermediate',
+      tags: tagArray,
+      tips: tipsArray,
+      images: imagesArray,
+      metadata: metadata || existingPrompt.metadata || {},
       word_count: content.split(/\s+/).length
     };
 

@@ -119,7 +119,7 @@ export default function PendingPromptsSection({ isDark, onUpdate }) {
   const loadPendingPrompts = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/prompts?status=pending', {
+      const response = await fetch('/api/prompts?status=pending', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -145,7 +145,7 @@ export default function PendingPromptsSection({ isDark, onUpdate }) {
       setLoading(true);
       const token = localStorage.getItem('adminToken');
 
-      const response = await fetch(`http://localhost:3001/api/admin/prompts/${prompt.id}/approve`, {
+      const response = await fetch(`/api/admin/prompts/${prompt.id}/approve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ export default function PendingPromptsSection({ isDark, onUpdate }) {
       setLoading(true);
       const token = localStorage.getItem('adminToken');
 
-      const response = await fetch(`http://localhost:3001/api/admin/prompts/${selectedPrompt.id}/reject`, {
+      const response = await fetch(`/api/admin/prompts/${selectedPrompt.id}/reject`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

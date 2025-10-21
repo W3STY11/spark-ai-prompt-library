@@ -184,7 +184,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
   const loadData = async () => {
     try {
       // Fetch from API server - automatically filters to approved prompts only for public users
-      const response = await fetch('http://localhost:3001/api/prompts');
+      const response = await fetch('/api/prompts');
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
@@ -317,13 +317,44 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
     try {
       const copilotText = `# AI Prompt: ${prompt.title}\n\n${prompt.content}\n\n---\nCopied from SPARK Prompt Library`;
+
+      // Copy to clipboard as fallback
       await navigator.clipboard.writeText(copilotText);
+
+      // Send to Copilot tab via BroadcastChannel
+      if (typeof BroadcastChannel !== 'undefined') {
+        try {
+          const channel = new BroadcastChannel('spark_copilot');
+          channel.postMessage({
+            type: 'INSERT_PROMPT',
+            content: copilotText,
+            title: prompt.title
+          });
+          channel.close();
+        } catch (broadcastErr) {
+          console.warn('BroadcastChannel not available:', broadcastErr);
+        }
+      }
+
+      // Also try localStorage for cross-tab communication
+      try {
+        localStorage.setItem('spark_prompt_transfer', JSON.stringify({
+          content: copilotText,
+          timestamp: Date.now()
+        }));
+        // Clear after a moment to trigger storage event
+        setTimeout(() => {
+          localStorage.removeItem('spark_prompt_transfer');
+        }, 100);
+      } catch (storageErr) {
+        console.warn('localStorage not available:', storageErr);
+      }
 
       setCopiedPromptId(prompt.id);
 
       dispatchToast(
         <Toast>
-          <div>✓ Copied to clipboard! Ready to paste into Copilot</div>
+          <div>✨ Sent to Copilot! Switch to your Copilot tab</div>
         </Toast>,
         { intent: 'success' }
       );
@@ -333,7 +364,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
       console.error('Failed to copy:', err);
       dispatchToast(
         <Toast>
-          <div>Failed to copy to clipboard</div>
+          <div>Failed to send to Copilot</div>
         </Toast>,
         { intent: 'error' }
       );

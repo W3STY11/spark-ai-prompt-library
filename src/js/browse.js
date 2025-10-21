@@ -462,7 +462,7 @@ async function handleAddPromptSubmit(event) {
     }
 
     // Send to API
-    const response = await fetch('http://localhost:3001/api/prompts', {
+    const response = await fetch('/api/prompts', {
       method: 'POST',
       body: formData
     });
@@ -758,7 +758,7 @@ async function handleBulkImport() {
 
   try {
     // Send to API
-    const response = await fetch('http://localhost:3001/api/prompts/bulk', {
+    const response = await fetch('/api/prompts/bulk', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

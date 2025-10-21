@@ -292,7 +292,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/prompts/${currentPrompt.id}`, {
+      const response = await fetch(`/api/prompts/${currentPrompt.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -341,7 +341,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleBulkDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/prompts/bulk-delete', {
+      const response = await fetch('/api/prompts/bulk-delete', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -500,7 +500,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
       const token = localStorage.getItem('adminToken');
 
-      const response = await fetch('http://localhost:3001/api/prompts/bulk', {
+      const response = await fetch('/api/prompts/bulk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -534,7 +534,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleManualBackup = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/admin/backup', {
+      const response = await fetch('/api/admin/backup', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -559,7 +559,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleValidate = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/admin/validate', {
+      const response = await fetch('/api/admin/validate', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

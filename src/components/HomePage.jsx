@@ -19,78 +19,204 @@ import {
   Text,
 } from '@fluentui/react-components';
 import {
-  ArrowRight24Regular,
-  Sparkle24Filled,
-  CheckmarkCircle24Regular,
-  Target24Regular,
-  Briefcase24Regular,
-  Megaphone24Regular,
-  MoneyHand24Regular,
-  SearchInfo24Regular,
-  Calculator24Regular,
-  BookOpenGlobe24Regular,
-  DocumentText24Regular,
-  TaskListSquareLtr24Regular,
-  PersonCircle24Regular,
-} from '@fluentui/react-icons';
+  ArrowRight,
+  Sparkles,
+  CheckCircle2,
+  Target,
+  Briefcase,
+  Megaphone,
+  DollarSign,
+  Search,
+  Calculator,
+  BookOpen,
+  FileText,
+  ListTodo,
+  UserCircle2,
+} from 'lucide-react';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
+
+// Enhanced floating animation keyframes (Best-in-class organic movement)
+const floatingAnimation = `
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-30px) translateX(10px) scale(1.05);
+    }
+    50% {
+      transform: translateY(-50px) translateX(-5px) scale(1);
+    }
+    75% {
+      transform: translateY(-25px) translateX(-12px) scale(0.98);
+    }
+  }
+
+  @keyframes floatAlt {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-40px) translateX(-15px) scale(1.08) rotate(2deg);
+    }
+    66% {
+      transform: translateY(-20px) translateX(15px) scale(0.95) rotate(-2deg);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: blur(60px) brightness(1);
+    }
+    50% {
+      filter: blur(75px) brightness(1.2);
+    }
+  }
+`;
 
 const useStyles = makeStyles({
   container: {
     minHeight: '100vh',
   },
   hero: {
-    ...shorthands.padding('64px', '24px'),
+    ...shorthands.padding('120px', '24px', '80px'),
     position: 'relative',
     overflow: 'hidden',
+    '@media (max-width: 1024px)': {
+      ...shorthands.padding('80px', '24px', '60px'),
+    },
   },
   heroContent: {
-    maxWidth: '768px',
+    maxWidth: '1280px',
     margin: '0 auto',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    ...shorthands.gap('64px'),
+    alignItems: 'center',
+    '@media (max-width: 1024px)': {
+      gridTemplateColumns: '1fr',
+      ...shorthands.gap('48px'),
+    },
+  },
+  heroTextContent: {
+    position: 'relative',
+    zIndex: 2,
+  },
+  heroVideoContent: {
+    position: 'relative',
+    zIndex: 2,
+    '@media (max-width: 1024px)': {
+      order: -1,
+    },
+  },
+  animatedBackground: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0,
+    overflow: 'hidden',
+    pointerEvents: 'none',
+  },
+  floatingShape: {
+    position: 'absolute',
+    ...shorthands.borderRadius('50%'),
+    opacity: 0.12,
+    filter: 'blur(60px) saturate(150%)',
+    willChange: 'transform, filter',
+    animation: 'float 12s cubic-bezier(0.4, 0, 0.2, 1) infinite, glow 8s ease-in-out infinite',
+    boxShadow: '0 0 120px rgba(99, 102, 241, 0.3)',
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none !important',
+    },
+  },
+  floatingShapeDark: {
+    opacity: 0.18,
+    filter: 'blur(70px) saturate(180%)',
+    boxShadow: '0 0 150px rgba(129, 140, 248, 0.4)',
   },
   heroTitle: {
-    fontSize: '68px',
-    fontWeight: 600,
-    lineHeight: '92px',
+    fontSize: '72px',
+    fontWeight: 700,
+    lineHeight: 1.1,
     marginBottom: '24px',
     color: tokens.colorNeutralForeground1,
-    letterSpacing: '-0.02em',
+    letterSpacing: '-0.03em',
+    '@media (max-width: 1024px)': {
+      fontSize: '56px',
+    },
     '@media (max-width: 768px)': {
-      fontSize: '40px',
-      lineHeight: '52px',
+      fontSize: '44px',
     },
   },
   heroSubtitle: {
     fontSize: '24px',
     lineHeight: 1.5,
-    marginBottom: '32px',
+    marginBottom: '40px',
     color: tokens.colorNeutralForeground2,
+    fontWeight: 400,
+    maxWidth: '580px',
+    '@media (max-width: 768px)': {
+      fontSize: '20px',
+    },
   },
-  heroChips: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, minmax(160px, 1fr))',
-    ...shorthands.gap('16px'),
-    marginTop: '24px',
-    maxWidth: '640px',
+  videoContainer: {
+    position: 'relative',
+    width: '100%',
+    ...shorthands.borderRadius('20px'),
+    overflow: 'hidden',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
+    background: isDark => isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)',
+    ...shorthands.border('1px', 'solid', isDark => isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'),
+    transform: 'perspective(1200px) rotateY(-5deg)',
+    ...shorthands.transition('transform', '500ms', 'cubic-bezier(0.34, 1.56, 0.64, 1)'),
+    ':hover': {
+      transform: 'perspective(1200px) rotateY(0deg) scale(1.02)',
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      transform: 'none',
+      ':hover': {
+        transform: 'none',
+      },
+    },
   },
-  chip: {
-    ...glass.card,
-    ...shorthands.borderRadius('12px'),
-    ...shorthands.padding('16px'),
-    textAlign: 'center',
+  video: {
+    width: '100%',
+    height: 'auto',
+    display: 'block',
   },
-  chipDark: {
-    ...glass.cardDark,
+  videoFallback: {
+    width: '100%',
+    height: 'auto',
+    objectFit: 'cover',
   },
-  chipValue: {
-    fontSize: '28px',
-    fontWeight: 700,
-    color: tokens.colorBrandForeground1,
-    lineHeight: '32px',
-  },
-  chipLabel: {
+  trustSignals: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.gap('24px'),
+    marginTop: '32px',
+    fontSize: '15px',
     color: tokens.colorNeutralForeground2,
+    flexWrap: 'wrap',
+    '@media (max-width: 768px)': {
+      ...shorthands.gap('16px'),
+      fontSize: '14px',
+    },
+  },
+  trustItem: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.gap('8px'),
+  },
+  trustCheckmark: {
+    color: tokens.colorPaletteGreenForeground1,
+    fontSize: '18px',
+  },
+  trustDivider: {
+    color: tokens.colorNeutralForeground3,
+    opacity: 0.5,
   },
   section: {
     ...shorthands.padding('64px', '24px'),
@@ -273,20 +399,20 @@ const useStyles = makeStyles({
   },
 });
 
-// Icon mapping for professional department icons
+// Icon mapping for professional department icons (Lucide - Industry standard)
 const getDepartmentIcon = (deptName) => {
   const iconMap = {
-    'Business': <Briefcase24Regular />,
-    'Marketing': <Megaphone24Regular />,
-    'Sales': <MoneyHand24Regular />,
-    'SEO': <SearchInfo24Regular />,
-    'Finance': <Calculator24Regular />,
-    'Education': <BookOpenGlobe24Regular />,
-    'Writing': <DocumentText24Regular />,
-    'Productivity': <TaskListSquareLtr24Regular />,
-    'Solopreneurs': <PersonCircle24Regular />,
+    'Business': <Briefcase size={24} strokeWidth={2} />,
+    'Marketing': <Megaphone size={24} strokeWidth={2} />,
+    'Sales': <DollarSign size={24} strokeWidth={2} />,
+    'SEO': <Search size={24} strokeWidth={2} />,
+    'Finance': <Calculator size={24} strokeWidth={2} />,
+    'Education': <BookOpen size={24} strokeWidth={2} />,
+    'Writing': <FileText size={24} strokeWidth={2} />,
+    'Productivity': <ListTodo size={24} strokeWidth={2} />,
+    'Solopreneurs': <UserCircle2 size={24} strokeWidth={2} />,
   };
-  return iconMap[deptName] || <Briefcase24Regular />;
+  return iconMap[deptName] || <Briefcase size={24} strokeWidth={2} />;
 };
 
 export default function HomePage({ isDark, toggleTheme }) {
@@ -294,6 +420,62 @@ export default function HomePage({ isDark, toggleTheme }) {
   const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
   const [totalPrompts, setTotalPrompts] = useState('2000+');
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll for parallax effects
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll animations on element entry (Best-in-class implementation)
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of element is visible
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0px)';
+          entry.target.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+          // Optional: Unobserve after animation to improve performance
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Wait for DOM to be ready, then observe all sections with data-animate attribute
+    const animateElements = () => {
+      const elementsToAnimate = document.querySelectorAll('[data-animate]');
+
+      elementsToAnimate.forEach((el) => {
+        // Add initial state
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        observer.observe(el);
+      });
+
+      return () => {
+        elementsToAnimate.forEach((el) => observer.unobserve(el));
+      };
+    };
+
+    // Delay to ensure DOM is ready
+    const timeoutId = setTimeout(animateElements, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [departments]); // Re-run when departments load
 
   useEffect(() => {
     // Load prompts index with fallback
@@ -330,49 +512,256 @@ export default function HomePage({ isDark, toggleTheme }) {
     navigate(`/browse?department=${encodeURIComponent(deptName)}`);
   };
 
+  // 3D Mouse Tracking Tilt Effect (Best-in-class implementation)
+  const handle3DTilt = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // Mouse X position within the card
+    const y = e.clientY - rect.top;  // Mouse Y position within the card
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Calculate rotation angles (-15 to +15 degrees for natural tilt)
+    const rotateX = ((y - centerY) / centerY) * -8; // Vertical tilt
+    const rotateY = ((x - centerX) / centerX) * 8;  // Horizontal tilt
+
+    // Apply 3D transform with perspective
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+    card.style.transition = 'none'; // Remove transition during mouse move for smooth tracking
+  };
+
+  const handle3DReset = (e) => {
+    const card = e.currentTarget;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+    card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'; // Smooth return to original position
+  };
+
   return (
     <div className={styles.container}>
+      {/* Inject floating animation */}
+      <style>{floatingAnimation}</style>
+
       <Header isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            Prompt<br />Library
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Curated prompts across 9 departments.<br />
-            Clean, tested, ready to use.
-          </p>
-          <Button
-            appearance="primary"
-            size="large"
-            icon={<ArrowRight24Regular />}
-            iconPosition="after"
-            onClick={() => handleNavigate('/browse')}
-          >
-            Browse Library
-          </Button>
+        {/* Animated Background - Subtle Glass Orbs */}
+        <div className={styles.animatedBackground}>
+          {/* Orb 1 - Top Left - Purple/Blue */}
+          <div
+            className={mergeClasses(styles.floatingShape, isDark && styles.floatingShapeDark)}
+            style={{
+              width: '350px',
+              height: '350px',
+              background: `linear-gradient(135deg, ${tokens.colorBrandForeground1}, ${tokens.colorPaletteBlueForeground1})`,
+              top: '-80px',
+              left: '-100px',
+              transform: `translateY(${scrollY * 0.12}px)`,
+              animationDelay: '0s',
+            }}
+          />
+          {/* Orb 2 - Top Right - Purple/Magenta */}
+          <div
+            className={mergeClasses(styles.floatingShape, isDark && styles.floatingShapeDark)}
+            style={{
+              width: '280px',
+              height: '280px',
+              background: `linear-gradient(135deg, ${tokens.colorPalettePurpleForeground1}, ${tokens.colorPaletteMagentaForeground1})`,
+              top: '15%',
+              right: '-60px',
+              transform: `translateY(${scrollY * 0.18}px)`,
+              animationDelay: '2s',
+              animation: 'floatAlt 14s cubic-bezier(0.4, 0, 0.2, 1) infinite, glow 10s ease-in-out infinite',
+            }}
+          />
+          {/* Orb 3 - Center Left - Teal/Blue */}
+          <div
+            className={mergeClasses(styles.floatingShape, isDark && styles.floatingShapeDark)}
+            style={{
+              width: '220px',
+              height: '220px',
+              background: `linear-gradient(135deg, ${tokens.colorPaletteTealForeground1}, ${tokens.colorPaletteBlueForeground1})`,
+              top: '45%',
+              left: '10%',
+              transform: `translateY(${scrollY * 0.08}px)`,
+              animationDelay: '4s',
+            }}
+          />
+          {/* Orb 4 - Bottom Center - Blue/Purple */}
+          <div
+            className={mergeClasses(styles.floatingShape, isDark && styles.floatingShapeDark)}
+            style={{
+              width: '300px',
+              height: '300px',
+              background: `linear-gradient(135deg, ${tokens.colorPaletteBlueForeground1}, ${tokens.colorBrandForeground2})`,
+              bottom: '-50px',
+              left: '40%',
+              transform: `translateY(${scrollY * 0.1}px)`,
+              animationDelay: '6s',
+            }}
+          />
+          {/* Orb 5 - Right Side - Purple */}
+          <div
+            className={mergeClasses(styles.floatingShape, isDark && styles.floatingShapeDark)}
+            style={{
+              width: '180px',
+              height: '180px',
+              background: `linear-gradient(135deg, ${tokens.colorPalettePurpleForeground1}, ${tokens.colorBrandForeground1})`,
+              top: '55%',
+              right: '15%',
+              transform: `translateY(${scrollY * 0.15}px)`,
+              animationDelay: '8s',
+              animation: 'floatAlt 15s cubic-bezier(0.4, 0, 0.2, 1) infinite, glow 12s ease-in-out infinite',
+            }}
+          />
+        </div>
 
-          <div className={styles.heroChips}>
-            <div className={mergeClasses(styles.chip, isDark && styles.chipDark)}>
-              <div className={styles.chipValue}>{totalPrompts}</div>
-              <div className={styles.chipLabel}>Prompts</div>
+        {/* Hero Content */}
+        <div className={styles.heroContent}>
+          {/* Text Content */}
+          <div className={styles.heroTextContent}>
+            <h1 className={styles.heroTitle}>
+              Your AI Prompt<br />Library
+            </h1>
+            <p className={styles.heroSubtitle}>
+              2,400+ battle-tested prompts for ChatGPT, Claude, and other AI tools. Browse by department, copy instantly, and create better AI content.
+            </p>
+
+            <Button
+              appearance="primary"
+              size="large"
+              icon={<ArrowRight size={20} strokeWidth={2.5} />}
+              iconPosition="after"
+              onClick={() => handleNavigate('/browse')}
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                border: 'none',
+                fontSize: '18px',
+                padding: '16px 32px',
+                height: 'auto',
+              }}
+            >
+              Browse Library
+            </Button>
+
+            {/* Trust Signals */}
+            <div className={styles.trustSignals}>
+              <div className={styles.trustItem}>
+                <span className={styles.trustCheckmark}>✓</span>
+                <span>{totalPrompts} Prompts</span>
+              </div>
+              <span className={styles.trustDivider}>•</span>
+              <div className={styles.trustItem}>
+                <span className={styles.trustCheckmark}>✓</span>
+                <span>9 Departments</span>
+              </div>
+              <span className={styles.trustDivider}>•</span>
+              <div className={styles.trustItem}>
+                <span className={styles.trustCheckmark}>✓</span>
+                <span>100% Tested</span>
+              </div>
             </div>
-            <div className={mergeClasses(styles.chip, isDark && styles.chipDark)}>
-              <div className={styles.chipValue}>9</div>
-              <div className={styles.chipLabel}>Departments</div>
-            </div>
-            <div className={mergeClasses(styles.chip, isDark && styles.chipDark)}>
-              <div className={styles.chipValue}>100%</div>
-              <div className={styles.chipLabel}>Tested</div>
+          </div>
+
+          {/* Demo Placeholder */}
+          <div className={styles.heroVideoContent}>
+            <div
+              className={styles.videoContainer}
+              style={{ background: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)' }}
+            >
+              {/* Enhanced Placeholder - Glassmorphic Design */}
+                <div
+                  style={{
+                    width: '100%',
+                    aspectRatio: '16 / 9',
+                    background: `linear-gradient(135deg,
+                      ${isDark ? 'rgba(99, 102, 241, 0.15)' : 'rgba(99, 102, 241, 0.08)'},
+                      ${isDark ? 'rgba(147, 51, 234, 0.15)' : 'rgba(147, 51, 234, 0.08)'})`,
+                    backdropFilter: 'blur(20px) saturate(160%)',
+                    WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+                    border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.2)'}`,
+                    borderRadius: '12px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '24px',
+                    padding: '48px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}
+                >
+                  {/* Background Pattern */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      backgroundImage: `radial-gradient(circle at 50% 50%,
+                        ${isDark ? 'rgba(99, 102, 241, 0.1)' : 'rgba(99, 102, 241, 0.05)'} 1px,
+                        transparent 1px)`,
+                      backgroundSize: '24px 24px',
+                      opacity: 0.3,
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  {/* Play Icon */}
+                  <div
+                    style={{
+                      width: '96px',
+                      height: '96px',
+                      borderRadius: '50%',
+                      background: `linear-gradient(135deg, ${tokens.colorBrandForeground1}, ${tokens.colorBrandForeground2})`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: `0 8px 32px rgba(99, 102, 241, 0.3)`,
+                      position: 'relative',
+                      zIndex: 1,
+                    }}
+                  >
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                      style={{ marginLeft: '4px' }}
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+
+                  {/* Text Content */}
+                  <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+                    <h3
+                      style={{
+                        fontSize: '24px',
+                        fontWeight: 600,
+                        marginBottom: '8px',
+                        color: tokens.colorNeutralForeground1,
+                        letterSpacing: '-0.01em',
+                      }}
+                    >
+                      Product Demo Coming Soon
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: '16px',
+                        color: tokens.colorNeutralForeground2,
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      See SPARK Prompt Library in action with our interactive demo
+                    </p>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Departments Section */}
-      <section className={styles.section}>
+      <section className={styles.section} data-animate>
         <div className={styles.sectionContent}>
           <div className={styles.sectionHeader}>
             <Title1 as="h2" block style={{ marginBottom: '16px' }}>
@@ -388,6 +777,9 @@ export default function HomePage({ isDark, toggleTheme }) {
                 key={index}
                 className={mergeClasses(styles.departmentCard, isDark && styles.departmentCardDark)}
                 onClick={() => handleDepartmentClick(dept.name)}
+                onMouseMove={handle3DTilt}
+                onMouseLeave={handle3DReset}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 <CardHeader
                   image={
@@ -408,7 +800,7 @@ export default function HomePage({ isDark, toggleTheme }) {
                 <CardFooter>
                   <Button
                     appearance="subtle"
-                    icon={<ArrowRight24Regular />}
+                    icon={<ArrowRight size={18} strokeWidth={2.5} />}
                     iconPosition="after"
                   >
                     Browse
@@ -421,26 +813,41 @@ export default function HomePage({ isDark, toggleTheme }) {
       </section>
 
       {/* Features Section */}
-      <section className={styles.section}>
+      <section className={styles.section} data-animate>
         <div className={styles.sectionContent}>
           <div className={styles.featuresGrid}>
-            <div className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}>
+            <div
+              className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}
+              onMouseMove={handle3DTilt}
+              onMouseLeave={handle3DReset}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               <div className={styles.featureIcon}>
-                <Sparkle24Filled style={{ fontSize: '64px', color: tokens.colorBrandForeground1 }} />
+                <Sparkles size={64} strokeWidth={2} style={{ color: tokens.colorBrandForeground1 }} />
               </div>
               <Title3 block style={{ marginBottom: '12px' }}>Ready to Use</Title3>
               <Body1>Copy and customize prompts in seconds</Body1>
             </div>
-            <div className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}>
+            <div
+              className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}
+              onMouseMove={handle3DTilt}
+              onMouseLeave={handle3DReset}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               <div className={styles.featureIcon}>
-                <CheckmarkCircle24Regular style={{ fontSize: '64px', color: tokens.colorBrandForeground1 }} />
+                <CheckCircle2 size={64} strokeWidth={2} style={{ color: tokens.colorBrandForeground1 }} />
               </div>
               <Title3 block style={{ marginBottom: '12px' }}>Quality Tested</Title3>
               <Body1>Every prompt verified for effectiveness</Body1>
             </div>
-            <div className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}>
+            <div
+              className={mergeClasses(styles.featureCard, isDark && styles.featureCardDark)}
+              onMouseMove={handle3DTilt}
+              onMouseLeave={handle3DReset}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               <div className={styles.featureIcon}>
-                <Target24Regular style={{ fontSize: '64px', color: tokens.colorBrandForeground1 }} />
+                <Target size={64} strokeWidth={2} style={{ color: tokens.colorBrandForeground1 }} />
               </div>
               <Title3 block style={{ marginBottom: '12px' }}>Organized</Title3>
               <Body1>Find exactly what you need quickly</Body1>
@@ -450,7 +857,7 @@ export default function HomePage({ isDark, toggleTheme }) {
       </section>
 
       {/* Team Section */}
-      <section className={styles.section}>
+      <section className={styles.section} data-animate>
         <div className={styles.sectionContent}>
           <div className={styles.sectionHeader}>
             <Title1 as="h2" block style={{ marginBottom: '16px' }}>
@@ -516,7 +923,7 @@ export default function HomePage({ isDark, toggleTheme }) {
       </section>
 
       {/* Quote Section */}
-      <section className={mergeClasses(styles.quote, isDark && styles.quoteDark)}>
+      <section className={mergeClasses(styles.quote, isDark && styles.quoteDark)} data-animate>
         <blockquote className={styles.quoteText}>
           The quality of your prompts determines the quality of your results
         </blockquote>
@@ -531,7 +938,7 @@ export default function HomePage({ isDark, toggleTheme }) {
           {/* Brand Column */}
           <div className={styles.footerBrand}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <Sparkle24Filled style={{ fontSize: '24px', color: tokens.colorBrandForeground1 }} />
+              <Sparkles size={24} strokeWidth={2} style={{ color: tokens.colorBrandForeground1 }} />
               <div className={styles.footerTitle}>SPARK</div>
             </div>
             <div className={styles.footerText}>

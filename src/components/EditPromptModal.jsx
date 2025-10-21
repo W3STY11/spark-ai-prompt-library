@@ -76,6 +76,12 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
     content: '',
     tags: '',
     icon: '⚡',
+    complexity: '',
+    tips: '',
+    whatItDoes: '',
+    howToUse: '',
+    exampleInput: '',
+    images: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -92,6 +98,12 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         content: prompt.content || '',
         tags: Array.isArray(prompt.tags) ? prompt.tags.join(', ') : prompt.tags || '',
         icon: prompt.icon || '⚡',
+        complexity: prompt.complexity || '',
+        tips: Array.isArray(prompt.tips) ? prompt.tips.join('\n') : prompt.tips || '',
+        images: Array.isArray(prompt.images) ? prompt.images.join(', ') : prompt.images || '',
+        whatItDoes: prompt.metadata?.whatItDoes || '',
+        howToUse: prompt.metadata?.howToUse || '',
+        exampleInput: prompt.metadata?.exampleInput || '',
       });
       setErrors({});
       setIsSubmitting(false);
@@ -161,6 +173,18 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
+      // Prepare tips
+      const tipsArray = formData.tips
+        .split('\n')
+        .map(tip => tip.trim())
+        .filter(tip => tip.length > 0);
+
+      // Prepare images
+      const imagesArray = formData.images
+        .split(',')
+        .map(img => img.trim())
+        .filter(img => img.length > 0);
+
       // Calculate word count
       const wordCount = formData.content.trim().split(/\s+/).filter(w => w.length > 0).length;
 
@@ -174,12 +198,20 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         content: formData.content.trim(),
         tags: tagsArray,
         icon: formData.icon,
+        complexity: formData.complexity || 'intermediate',
+        tips: tipsArray,
+        images: imagesArray,
+        metadata: {
+          whatItDoes: formData.whatItDoes.trim() || '',
+          howToUse: formData.howToUse.trim() || '',
+          exampleInput: formData.exampleInput.trim() || '',
+        },
         word_count: wordCount,
         last_modified: new Date().toISOString(),
       };
 
       // Send to API server
-      const response = await fetch(`http://localhost:3001/api/prompts/${prompt.id}`, {
+      const response = await fetch(`/api/prompts/${prompt.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -343,7 +375,6 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
               {/* Tags */}
               <Field
                 label="Tags"
-                className={styles.fullWidth}
                 hint="Comma-separated tags (e.g., analysis, strategy, planning)"
               >
                 <Input
@@ -354,15 +385,94 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
                 />
               </Field>
 
-              {/* Icon Display */}
+              {/* Complexity */}
               <Field
-                label="Icon"
-                hint="Automatically set based on department"
+                label="Complexity Level"
+                hint="Select the difficulty level"
+              >
+                <Dropdown
+                  placeholder="Select complexity"
+                  value={formData.complexity}
+                  onOptionSelect={(e, data) => handleChange('complexity', data.optionValue || '')}
+                  disabled={isSubmitting}
+                >
+                  <Option value="beginner">🟢 Beginner</Option>
+                  <Option value="intermediate">🟡 Intermediate</Option>
+                  <Option value="advanced">🔴 Advanced</Option>
+                </Dropdown>
+              </Field>
+
+              {/* Tips */}
+              <Field
+                label="Tips"
+                className={styles.fullWidth}
+                hint="One tip per line - helpful usage suggestions for this prompt"
+              >
+                <Textarea
+                  value={formData.tips}
+                  onChange={(e) => handleChange('tips', e.target.value)}
+                  placeholder="Prioritize the classification of expenses into fixed and variable costs...&#10;Utilize industry-specific benchmarks for comparative analysis...&#10;Develop a continuous improvement plan..."
+                  className={styles.tagsInput}
+                  disabled={isSubmitting}
+                />
+              </Field>
+
+              {/* What It Does */}
+              <Field
+                label="What This Prompt Does"
+                className={styles.fullWidth}
+                hint="Bullet points explaining the capabilities (use • or ● for bullets)"
+              >
+                <Textarea
+                  value={formData.whatItDoes}
+                  onChange={(e) => handleChange('whatItDoes', e.target.value)}
+                  placeholder="● Conducts a detailed financial analysis...&#10;● Compares costs against industry benchmarks...&#10;● Provides actionable recommendations..."
+                  className={styles.tagsInput}
+                  disabled={isSubmitting}
+                />
+              </Field>
+
+              {/* How To Use */}
+              <Field
+                label="How To Use This Prompt"
+                className={styles.fullWidth}
+                hint="Step-by-step instructions (use • or ● for bullet points)"
+              >
+                <Textarea
+                  value={formData.howToUse}
+                  onChange={(e) => handleChange('howToUse', e.target.value)}
+                  placeholder="● Fill in the placeholders [DESCRIBE YOUR BUSINESS]...&#10;● Example: If your business is a small bakery..."
+                  className={styles.tagsInput}
+                  disabled={isSubmitting}
+                />
+              </Field>
+
+              {/* Example Input */}
+              <Field
+                label="Example Input"
+                className={styles.fullWidth}
+                hint="A filled-in example showing real-world usage (use • or ● for bullets)"
+              >
+                <Textarea
+                  value={formData.exampleInput}
+                  onChange={(e) => handleChange('exampleInput', e.target.value)}
+                  placeholder="#INFORMATION ABOUT ME:&#10;● My business: Spark, the biggest collection of easy-to-follow AI resources...&#10;● Industry sector: Digital Marketing and AI Resources..."
+                  className={styles.tagsInput}
+                  disabled={isSubmitting}
+                />
+              </Field>
+
+              {/* Images */}
+              <Field
+                label="Example Output Images"
+                className={styles.fullWidth}
+                hint="Comma-separated image filenames (e.g., example1.png, example2.png)"
               >
                 <Input
-                  value={formData.icon}
-                  disabled
-                  style={{ fontSize: '24px', textAlign: 'center' }}
+                  value={formData.images}
+                  onChange={(e) => handleChange('images', e.target.value)}
+                  placeholder="example1.png, example2.png"
+                  disabled={isSubmitting}
                 />
               </Field>
             </div>

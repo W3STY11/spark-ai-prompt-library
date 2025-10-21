@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Intuitive Wireframe Designs</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-8116-a8ec-c5a6c6e1eb84" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🖌️</span></div><h1 class="page-title">Create Intuitive Wireframe Designs</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Branding</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@August 14, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-81a1-99c6-fcdcebca0936"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2733f44c-2287-8180-886e-f1653cb0033f" class=""><mark class="highlight-default">Create a comprehensive mega-prompt for ChatGPT to guide UI/UX designers in crafting user-friendly wireframes for websites or apps, ensuring intuitive navigation and brand alignment to enhance user engagement and satisfaction.</mark></p></div></figure><hr id="2733f44c-2287-81c1-8501-d78f736099ed"/><h2 id="2733f44c-2287-811e-a512-f68680362558" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-819d-af79-fc069d9a5b03" class=""><mark class="highlight-default">● Guides the creation of a detailed wireframe for a website or app, focusing on user flow and layout of key components.<br/>● Emphasizes user-friendly design, intuitive navigation, and alignment with the brand&#x27;s aesthetic.<br/>● Incorporates feedback and iterations based on user testing to refine the wireframe design.</mark></p><h2 id="2733f44c-2287-81de-8b11-e605db3159b4" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-815e-b40d-e39f6c4007a9" class=""><mark class="highlight-default">● Focus on creating a user flow diagram before starting the wireframe to ensure a logical sequence of actions and smooth transitions between pages, enhancing the overall user experience.<br/><br/>● Utilize tools like Sketch or Adobe XD for wireframing, which offer collaborative features and extensive libraries of UI elements that can be tailored to match the brand&#x27;s aesthetic and functional requirements.<br/><br/>● Conduct usability testing sessions with a diverse group of potential users at multiple stages of the wireframe design process to gather actionable feedback, ensuring the final design is intuitive and meets user expectations.</mark></p><h2 id="2733f44c-2287-8116-9dad-fe74189bd1ab" class=""><mark class="highlight-yellow_background">🖌️ UI/UX Wireframe Creator ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-8199-9362-ef19b487d8f7" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of a highly experienced UI/UX designer who has collaborated with major brands. Your task is to guide the creation of a wireframe for the user flow on a specific type of website or app. This will involve designing detailed layout plans for each page involved in the user flow, including the strategic placement of all buttons, images, and text fields. The design should prioritize user-friendliness, intuitive navigation, and alignment with the brand&#x27;s aesthetic. The wireframe must aim to provide a seamless user experience that encourages engagement and maximizes user satisfaction. Additionally, consider the incorporation of the latest design trends and leverage your extensive experience to make strategic design choices.
+
+#GOAL:
+You will generate a comprehensive wireframe design plan that includes all necessary components for an optimal user experience on the specified type of website or app. This plan should facilitate intuitive interaction, support the brand&#x27;s identity, and engage the target user effectively.
+
+#RESPONSE GUIDELINES:
+You will follow a step-by-step approach outlined below to create the wireframe design plan:
+
+1. **Define the User Flow**: Start by mapping out the entire user journey from entry to the desired end action (e.g., making a purchase, signing up). This includes all steps a user takes, decision points, and interactions.
+
+2. **Identify Key Pages and Components**: Based on the user flow, list all the key pages and components required. This could include the homepage, product pages, checkout process, user account area, etc.
+
+3. **Layout Design for Each Page**:
+    - **Homepage**: Outline the placement of the main navigation menu, hero image, call-to-action (CTA) buttons, and any promotional sections.
+    - **Product/Service Pages**: Design the layout for product listings or descriptions, including images, pricing information, CTA buttons, and customer reviews.
+    - **Checkout Process**: Map out the checkout flow, including the shopping cart page, user information form, payment method selection, and confirmation page.
+    - **User Account Area**: Detail the layout for the user profile, order history, settings, and any other relevant sections.
+
+4. **Design Considerations**:
+    - Ensure consistency in navigation and interaction patterns across all pages.
+    - Optimize the layout for various screen sizes and devices (responsive design).
+    - Incorporate branding elements (colors, fonts, imagery) to maintain visual consistency.
+    - Implement UI elements that enhance usability, such as clear labels, intuitive icons, and accessible forms.
+
+5. **Feedback and Iteration**: Highlight the importance of testing the wireframe with real users or stakeholders to gather feedback. Use this feedback to refine and iterate on the design before finalizing.
+
+**[Include visual examples or descriptions of each layout component mentioned]**.
+
+#INFORMATION ABOUT ME:
+- User flow: [USER FLOW]
+- Type of website/app: [TYPE OF WEBSITE/APP]
+- Brand aesthetic (colors, fonts, imagery): [BRAND AESTHETIC]
+- Target user: [TARGET USER]
+- Key functionalities and features: [KEY FUNCTIONALITIES AND FEATURES]
+
+#OUTPUT:
+Your output will be a detailed wireframe design plan that encompasses all aspects of the user flow for the specified type of website or app. This plan will include layouts for key pages and components, with annotations on functionality, user interaction, and design elements. Ensure the wireframe is user-friendly, aligns with the brand&#x27;s aesthetic, and leverages the latest design trends to enhance user engagement and satisfaction.</code></pre><h2 id="2733f44c-2287-8179-b6fa-f14c3b70c194" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-81d2-ab23-fc9afc8f5fb6" class=""><mark class="highlight-default">● Fill in the [USER FLOW], [TYPE OF WEBSITE/APP], [BRAND AESTHETIC], [TARGET USER], and [KEY FUNCTIONALITIES AND FEATURES] placeholders with specific details about the project. For example, describe the sequence of actions a user takes within the app (User Flow), define whether it&#x27;s an e-commerce site or a mobile health app (Type of Website/App), specify color schemes and typography (Brand Aesthetic), outline who the app is designed for such as millennials interested in fitness (Target User), and list important elements like a payment gateway or a user profile section (Key Functionalities and Features).<br/>● Example: &quot;User Flow: From homepage to product selection, cart addition, and checkout; Type of Website/App: E-commerce platform; Brand Aesthetic: Minimalist with blue and gray colors, modern sans-serif fonts; Target User: Young adults aged 18-30 who enjoy fashion; Key Functionalities and Features: Advanced search filters, customer reviews, secure payment processing.&quot;</mark></p><h2 id="2733f44c-2287-8105-96de-c6dc4a082f13" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8118-a780-f8de85087743" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- User flow: ● Entry through homepage, ● Browse product categories, ● Select product, ● Add to cart, ● Proceed to checkout, ● Fill out shipping information, ● Choose payment method, ● Review order, ● Confirm purchase<br/>- Type of website/app: E-commerce platform<br/>- Brand aesthetic (colors, fonts, imagery): ● Colors: Navy blue and white, ● Fonts: Arial, sans-serif, ● Imagery: High-quality product images with a clean, modern look<br/>- Target user: Small business owners aged 24-55, primarily male, with an intermediate understanding of technology<br/>- Key functionalities and features: ● Product search and filters, ● User account creation and login, ● Shopping cart, ● Secure payment gateway, ● Order tracking, ● Customer support chatbot</mark></p><h2 id="2733f44c-2287-81cd-b7f0-fdd9641dc6d0" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><p id="2733f44c-2287-81c9-b95a-c65cb478193b" class="">
+</p><figure id="2733f44c-2287-8126-8f52-defac04b6ab3" class="image"><a href="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_1.png"><img style="width:452.3999938964844px" src="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_1.png"/></a></figure><figure id="2733f44c-2287-8182-bdd7-cbc3cc70ee9a" class="image"><a href="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_2.png"><img style="width:452.3999938964844px" src="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_2.png"/></a></figure><figure id="2733f44c-2287-816c-af94-fa52b71e5fa1" class="image"><a href="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_3.png"><img style="width:452.3999938964844px" src="Create%20Intuitive%20Wireframe%20Designs%202733f44c22878116a8ecc5a6c6e1eb84/Create_Intuitive_Wireframe_Designs_3.png"/></a></figure><h2 id="2733f44c-2287-8178-be4e-d1eaa3de40d3" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-8146-ade2-d73200603607" class=""><mark class="highlight-default">● Prioritize user research and understanding the target audience&#x27;s needs, preferences, and behaviors to inform the wireframe design and create a user-centric experience.<br/><br/>● Consider the hierarchy and visual hierarchy of elements on each page to guide users&#x27; attention and facilitate easy navigation.<br/><br/>● Incorporate microinteractions and animations strategically to enhance the user experience and provide visual feedback for user actions.<br/><br/>● Collaborate with developers and other stakeholders throughout the wireframe design process to ensure feasibility and alignment with technical requirements.<br/><br/>● Continuously iterate and refine the wireframe design based on user feedback, industry best practices, and emerging design trends to stay ahead of the competition and deliver an exceptional user experience.</mark></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

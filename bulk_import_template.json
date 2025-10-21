@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Sample Marketing Email Campaign",
+    "department": "Marketing",
+    "subcategory": "Email Marketing",
+    "description": "Create a compelling email campaign for product launch",
+    "content": "You are a marketing expert. Create an email campaign for [PRODUCT NAME] that targets [AUDIENCE]. Include subject lines, body copy, and call-to-action.",
+    "icon": "📧",
+    "tags": ["email", "marketing", "campaign", "copywriting"],
+    "complexity": 2,
+    "tips": [
+      "Use personalization tokens",
+      "Test subject lines A/B",
+      "Keep emails mobile-friendly",
+      "Include clear CTA buttons"
+    ]
+  },
+  {
+    "title": "Business Strategy Analysis",
+    "department": "Business",
+    "subcategory": "Strategy",
+    "description": "Analyze business opportunities and risks",
+    "content": "You are a business strategist. Analyze [COMPANY/SITUATION] and provide insights on: 1) Market opportunities 2) Competitive threats 3) Growth strategies 4) Risk mitigation",
+    "icon": "💼",
+    "tags": ["strategy", "analysis", "business", "planning"],
+    "complexity": 3,
+    "tips": [
+      "Use SWOT framework",
+      "Include market data",
+      "Consider stakeholders",
+      "Provide actionable steps"
+    ]
+  },
+  {
+    "title": "SEO Content Optimization",
+    "department": "SEO",
+    "subcategory": "On-Page SEO",
+    "description": "Optimize content for search engines",
+    "content": "You are an SEO expert. Optimize this content for [KEYWORD]: [CONTENT]. Provide: 1) Keyword density analysis 2) Meta descriptions 3) Header structure 4) Internal linking suggestions",
+    "icon": "🔍",
+    "tags": ["seo", "optimization", "content", "keywords"],
+    "complexity": 2,
+    "tips": [
+      "Focus on user intent",
+      "Use long-tail keywords",
+      "Optimize meta tags",
+      "Include semantic keywords"
+    ]
+  }
+]

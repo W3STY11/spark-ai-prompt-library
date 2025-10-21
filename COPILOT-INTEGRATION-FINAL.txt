@@ -1,0 +1,444 @@
+// ==UserScript==
+// @name         SPARK → Copilot Integration (Simple & Works!)
+// @namespace    http://tampermonkey.net/
+// @version      3.0.0
+// @description  Draggable button opens library in new tab, Copy to Copilot button sends prompt back
+// @author       SPARK Library
+// @match        https://m365.cloud.microsoft/chat*
+// @match        https://m365.cloud.microsoft.com/chat*
+// @match        https://copilot.microsoft.com/*
+// @match        https://c7c817a549a4.ngrok-free.app/*
+// @icon         data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="75" font-size="75">⚡</text></svg>
+// @grant        GM_addStyle
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @run-at       document-idle
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    const LIBRARY_URL = 'https://c7c817a549a4.ngrok-free.app';
+    const BRAND_COLOR = '#6B47DC';
+
+    // ============================================================================
+    // DETECT PAGE TYPE
+    // ============================================================================
+
+    const isCopilotPage = window.location.href.includes('microsoft') || window.location.href.includes('copilot');
+    const isLibraryPage = window.location.href.includes('ngrok-free.app');
+
+    // ============================================================================
+    // COPILOT PAGE: DRAGGABLE BUTTON
+    // ============================================================================
+
+    if (isCopilotPage) {
+        GM_addStyle(`
+            .spark-fab {
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, ${BRAND_COLOR} 0%, #8B5CF6 100%);
+                border: none;
+                border-radius: 30px;
+                box-shadow: 0 4px 20px rgba(107, 71, 220, 0.4);
+                cursor: move;
+                z-index: 999999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                user-select: none;
+                touch-action: none;
+            }
+
+            .spark-fab:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 24px rgba(107, 71, 220, 0.5);
+            }
+
+            .spark-fab.dragging {
+                cursor: grabbing;
+                transform: scale(1.05);
+            }
+
+            .spark-fab-icon {
+                font-size: 36px;
+                line-height: 1;
+                pointer-events: none;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            }
+
+            .spark-fab-badge {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background: #EF4444;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-family: "Segoe UI", sans-serif;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                pointer-events: none;
+            }
+
+            .spark-toast {
+                position: fixed;
+                top: 24px;
+                right: 24px;
+                background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1000000;
+                font-family: "Segoe UI", sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-out 2.5s forwards;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+            }
+        `);
+
+        class DraggableFAB {
+            constructor() {
+                this.fab = null;
+                this.isDragging = false;
+                this.offset = { x: 0, y: 0 };
+                this.startPos = { x: 0, y: 0 };
+                this.init();
+            }
+
+            init() {
+                this.createFAB();
+                this.loadPosition();
+                this.attachEvents();
+                this.listenForPrompts();
+            }
+
+            createFAB() {
+                this.fab = document.createElement('button');
+                this.fab.className = 'spark-fab';
+                this.fab.innerHTML = `
+                    <span class="spark-fab-icon">⚡</span>
+                    <span class="spark-fab-badge">2.4K</span>
+                `;
+                document.body.appendChild(this.fab);
+            }
+
+            loadPosition() {
+                const saved = GM_getValue('fab_pos', null);
+                if (saved) {
+                    this.fab.style.bottom = saved.bottom + 'px';
+                    this.fab.style.right = saved.right + 'px';
+                }
+            }
+
+            savePosition() {
+                const rect = this.fab.getBoundingClientRect();
+                GM_setValue('fab_pos', {
+                    bottom: window.innerHeight - rect.bottom,
+                    right: window.innerWidth - rect.right
+                });
+            }
+
+            attachEvents() {
+                this.fab.addEventListener('mousedown', this.onMouseDown.bind(this));
+                this.fab.addEventListener('touchstart', this.onTouchStart.bind(this));
+            }
+
+            onMouseDown(e) {
+                if (e.button !== 0) return;
+                e.preventDefault();
+
+                const rect = this.fab.getBoundingClientRect();
+                this.offset.x = e.clientX - rect.left;
+                this.offset.y = e.clientY - rect.top;
+                this.startPos.x = e.clientX;
+                this.startPos.y = e.clientY;
+
+                this.isDragging = true;
+                this.fab.classList.add('dragging');
+
+                document.addEventListener('mousemove', this.onMouseMove.bind(this));
+                document.addEventListener('mouseup', this.onMouseUp.bind(this));
+            }
+
+            onTouchStart(e) {
+                const touch = e.touches[0];
+                const rect = this.fab.getBoundingClientRect();
+                this.offset.x = touch.clientX - rect.left;
+                this.offset.y = touch.clientY - rect.top;
+                this.startPos.x = touch.clientX;
+                this.startPos.y = touch.clientY;
+
+                this.isDragging = true;
+                this.fab.classList.add('dragging');
+
+                document.addEventListener('touchmove', this.onTouchMove.bind(this));
+                document.addEventListener('touchend', this.onTouchEnd.bind(this));
+            }
+
+            onMouseMove(e) {
+                if (!this.isDragging) return;
+                e.preventDefault();
+
+                const x = e.clientX - this.offset.x;
+                const y = e.clientY - this.offset.y;
+
+                const maxX = window.innerWidth - this.fab.offsetWidth;
+                const maxY = window.innerHeight - this.fab.offsetHeight;
+
+                this.fab.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+                this.fab.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+                this.fab.style.bottom = 'auto';
+                this.fab.style.right = 'auto';
+            }
+
+            onTouchMove(e) {
+                if (!this.isDragging) return;
+                e.preventDefault();
+
+                const touch = e.touches[0];
+                const x = touch.clientX - this.offset.x;
+                const y = touch.clientY - this.offset.y;
+
+                const maxX = window.innerWidth - this.fab.offsetWidth;
+                const maxY = window.innerHeight - this.fab.offsetHeight;
+
+                this.fab.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
+                this.fab.style.top = Math.max(0, Math.min(y, maxY)) + 'px';
+                this.fab.style.bottom = 'auto';
+                this.fab.style.right = 'auto';
+            }
+
+            onMouseUp(e) {
+                document.removeEventListener('mousemove', this.onMouseMove.bind(this));
+                document.removeEventListener('mouseup', this.onMouseUp.bind(this));
+
+                this.fab.classList.remove('dragging');
+
+                // Check if it was a click (not drag)
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - this.startPos.x, 2) +
+                    Math.pow(e.clientY - this.startPos.y, 2)
+                );
+
+                if (distance < 10) {
+                    this.openLibrary();
+                } else {
+                    this.savePosition();
+                }
+
+                this.isDragging = false;
+            }
+
+            onTouchEnd(e) {
+                document.removeEventListener('touchmove', this.onTouchMove.bind(this));
+                document.removeEventListener('touchend', this.onTouchEnd.bind(this));
+
+                this.fab.classList.remove('dragging');
+                this.savePosition();
+                this.isDragging = false;
+            }
+
+            openLibrary() {
+                window.open(LIBRARY_URL + '/browse', '_blank');
+            }
+
+            listenForPrompts() {
+                // Listen for prompts from library via localStorage
+                window.addEventListener('storage', (e) => {
+                    if (e.key === 'spark_prompt_transfer') {
+                        const promptData = JSON.parse(e.newValue);
+                        this.insertPrompt(promptData.content);
+                        localStorage.removeItem('spark_prompt_transfer');
+                    }
+                });
+
+                // Also listen via BroadcastChannel (more reliable)
+                if (typeof BroadcastChannel !== 'undefined') {
+                    const channel = new BroadcastChannel('spark_copilot');
+                    channel.onmessage = (e) => {
+                        if (e.data.type === 'INSERT_PROMPT') {
+                            this.insertPrompt(e.data.content);
+                        }
+                    };
+                }
+            }
+
+            insertPrompt(content) {
+                // Find Copilot input
+                const selectors = [
+                    'textarea[placeholder*="Ask"]',
+                    'textarea[placeholder*="Message"]',
+                    'textarea[placeholder*="Copilot"]',
+                    '[role="textbox"]',
+                    'textarea',
+                    '.cib-serp-main textarea'
+                ];
+
+                let input = null;
+                for (const selector of selectors) {
+                    input = document.querySelector(selector);
+                    if (input) break;
+                }
+
+                if (!input) {
+                    this.showToast('Could not find input field ⚠️');
+                    return;
+                }
+
+                // Insert text
+                input.value = content;
+                input.textContent = content;
+
+                // Trigger all possible events
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+                input.dispatchEvent(new KeyboardEvent('keydown', { key: 'a', bubbles: true }));
+                input.dispatchEvent(new KeyboardEvent('keyup', { key: 'a', bubbles: true }));
+
+                // Focus and select
+                input.focus();
+                if (input.setSelectionRange) {
+                    input.setSelectionRange(content.length, content.length);
+                }
+
+                this.showToast('✨ Prompt inserted! Click send arrow when ready');
+            }
+
+            showToast(message) {
+                const toast = document.createElement('div');
+                toast.className = 'spark-toast';
+                toast.innerHTML = `<span style="font-size: 20px;">⚡</span> ${message}`;
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+        }
+
+        // Initialize on Copilot page
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => new DraggableFAB());
+        } else {
+            new DraggableFAB();
+        }
+    }
+
+    // ============================================================================
+    // LIBRARY PAGE: ENHANCE "COPY TO COPILOT" BUTTONS
+    // ============================================================================
+
+    if (isLibraryPage) {
+        // Intercept Copy to Copilot button clicks
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest('button');
+            if (!button) return;
+
+            const buttonText = button.textContent || button.innerText;
+            if (buttonText.includes('Copy to Copilot') || buttonText.includes('Send to Copilot')) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Find the prompt content
+                const promptCard = button.closest('[data-prompt-id]') || button.closest('.prompt-card') || button.closest('article');
+                if (!promptCard) {
+                    console.error('Could not find prompt content');
+                    return;
+                }
+
+                // Try to extract prompt content
+                let content = '';
+                const contentEl = promptCard.querySelector('.prompt-content') ||
+                                promptCard.querySelector('[data-content]') ||
+                                promptCard.querySelector('pre') ||
+                                promptCard.querySelector('.content');
+
+                if (contentEl) {
+                    content = contentEl.textContent || contentEl.innerText;
+                } else {
+                    // Fallback: get from data attribute
+                    content = promptCard.dataset.content || '';
+                }
+
+                if (!content) {
+                    console.error('Could not extract prompt content');
+                    return;
+                }
+
+                // Send to Copilot tab
+                sendToCopilot(content.trim());
+            }
+        }, true);
+
+        function sendToCopilot(content) {
+            // Method 1: localStorage (works cross-tab)
+            localStorage.setItem('spark_prompt_transfer', JSON.stringify({
+                content: content,
+                timestamp: Date.now()
+            }));
+
+            // Method 2: BroadcastChannel (more reliable)
+            if (typeof BroadcastChannel !== 'undefined') {
+                const channel = new BroadcastChannel('spark_copilot');
+                channel.postMessage({
+                    type: 'INSERT_PROMPT',
+                    content: content
+                });
+            }
+
+            // Show confirmation
+            showLibraryToast('✓ Sent to Copilot! Switch back to your Copilot tab');
+        }
+
+        function showLibraryToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 24px;
+                right: 24px;
+                background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+                z-index: 1000000;
+                font-family: "Segoe UI", sans-serif;
+                font-size: 15px;
+                font-weight: 600;
+                animation: slideIn 0.3s ease-out;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        console.log('SPARK: Library page enhanced - Copy to Copilot buttons are active!');
+    }
+
+    console.log('SPARK: Integration loaded ⚡');
+})();

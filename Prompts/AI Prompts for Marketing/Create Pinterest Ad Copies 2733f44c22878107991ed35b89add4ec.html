@@ -1,0 +1,730 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Pinterest Ad Copies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-8107-991e-d35b89add4ec" class="page sans"><header><img class="page-cover-image" src="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Notion_Linear.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Pinterest-logo.png"/></div><h1 class="page-title">Create Pinterest Ad Copies</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Online Marketing</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@March 1, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-8161-888d-ee06156b2e73"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">This mega-prompt creates Pinterest ad copies that stand out by emphasizing the visual appeal of your product or service. It&#x27;s designed to capture the attention of your target audience, who values aesthetics and design, and to motivate them to engage further with your brand.</div></figure><h2 id="2733f44c-2287-8138-815c-c404fa93d8fc" class=""><mark class="highlight-yellow_background">⚙️ </mark><mark class="highlight-yellow_background"><strong>What This Mega-Prompt Does</strong></mark><mark class="highlight-yellow_background">:</mark></h2><ol type="1" id="2733f44c-2287-8180-8b6a-c08dbddc7e84" class="numbered-list" start="1"><li>Focuses on crafting headlines that capture aesthetic appeal.</li></ol><ol type="1" id="2733f44c-2287-8190-8087-d6cc2c22302b" class="numbered-list" start="2"><li>Guides on describing visual elements vividly.</li></ol><ol type="1" id="2733f44c-2287-815e-af97-e0e580077480" class="numbered-list" start="3"><li>Encourages linking aesthetic appeal to the lifestyle or desires of the target audience.</li></ol><h2 id="2733f44c-2287-81c0-bd8f-ced35469a3b6" class=""><mark class="highlight-yellow_background">💡 Tips:</mark></h2><ul id="2733f44c-2287-8184-b8c9-ce1d201eec8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Captivating Headlines:</strong> Start with a headline that immediately draws attention to the aesthetic or unique design of your product. Use language that evokes emotion and visual imagery.</li></ul><ul id="2733f44c-2287-8151-a2bf-e47617453d30" class="bulleted-list"><li style="list-style-type:disc"><strong>Vivid Descriptions:</strong> Dive deep into the specifics of your product&#x27;s design features, colors, and textures. Use sensory language to help your audience visualize and feel attracted to the aesthetic appeal of your offering.</li></ul><ul id="2733f44c-2287-8142-8313-f755e21e6ff8" class="bulleted-list"><li style="list-style-type:disc"><strong>Lifestyle Connection:</strong> Explain how your product enhances the lifestyle or image of your target audience. Make it not just a beautiful item, but a desirable addition to their lives because of its functionality and the beauty it adds to their daily routines.</li></ul><h1 id="2733f44c-2287-8141-a37c-c2a24968b219" class=""><mark class="highlight-yellow_background">⚙️ Pinterest</mark><mark class="highlight-yellow_background"><strong> Ad Copy </strong></mark><mark class="highlight-yellow_background">Mega-Prompt:</mark></h1><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-816c-8d29-e323282796f8" class="code code-wrap"><code class="language-Docker" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert social media marketer with a specialization in creating visually compelling Pinterest ad copies. Your task is to develop an ad copy for Pinterest that emphasizes the aesthetic or visual appeal of a product or service, aimed at grabbing the attention of a specific target audience. The ad should be designed to showcase the beauty, design, or visual uniqueness of the offering, making it irresistible to those who value aesthetics and design in their decision-making process.
+
+#GOAL:
+You will create a Pinterest ad copy that effectively highlights the visual appeal of the product or service, capturing the attention of the target audience and motivating them to engage further by exploring your Pinterest board or website.
+
+#RESPONSE GUIDELINES:
+Follow the step-by-step approach below to create the Pinterest ad copy:
+
+1. Begin with a captivating headline that immediately highlights the aesthetic appeal of the product or service. Use descriptive and emotive language that paints a picture of the beauty or uniqueness of the offering, making it appealing to the target audience&#x27;s sense of style and design.
+2. Describe the product or service in a way that focuses on its visual elements. 3. Mention specific design features, colors, textures, or any aspect that makes it visually stunning or unique. Use vivid, sensory language to help the audience visualize the offering and its aesthetic appeal.
+4. Explain how the product or service fits into the lifestyle or desires of the target audience. Link its aesthetic appeal to how it enhances their home, wardrobe, daily routine, or personal image, making it not just beautiful but also desirable for its functionality and impact on their lives.
+5. Incorporate a call-to-action (CTA) that encourages the target audience to explore more about the product or service. This could be an invitation to visit your Pinterest board for more inspiration, check out your website for further details, or follow your Pinterest account for ongoing updates and aesthetic content.
+6. Optional: Suggest using a high-quality, visually appealing image or graphic as part of the ad to complement the copy. The visual should be striking and representative of the aesthetic appeal of the product or service, making the ad itself a piece of visual content that fits seamlessly into the Pinterest platform.
+
+#INFORMATION ABOUT ME:
+- My product or service: [PRODUCT/SERVICE]
+- Target audience: [TARGET AUDIENCE]
+- Specific aesthetic or design features of my product or service: [SPECIFIC AESTHETIC OR DESIGN FEATURES]
+- How my product or service enhances the lifestyle or image of the target audience: [LIFESTYLE OR IMAGE ENHANCEMENT]
+- Desired action for the audience: [DESIRED ACTION] (e.g., &quot;Visit our website,&quot; &quot;Follow our Pinterest&quot;)
+
+#OUTPUT:
+The Pinterest ad copy should be visually evocative, engaging, and tailored to resonate with the aesthetic sensibilities of the target audience. It should clearly convey the beauty and design appeal of the product or service, encouraging viewers to take the desired action for more information or inspiration. The copy should be optimized for Pinterest, considering the platform&#x27;s focus on visual content, and should be paired with an image or graphic that enhances the overall appeal of the ad, ensuring it stands out in a visually crowded space.</code></pre><h2 id="2733f44c-2287-8193-862e-ccc5aa238f2e" class=""><mark class="highlight-yellow_background">❓ How To Use The Prompt:</mark></h2><ul id="2733f44c-2287-81b2-bf80-ea4438691d28" class="bulleted-list"><li style="list-style-type:disc">Customize the prompt with details about your product or service ([PRODUCT/SERVICE]), your target audience ([TARGET AUDIENCE]), the specific aesthetic or design features that set your product apart ([SPECIFIC AESTHETIC OR DESIGN FEATURES]), and how it enhances the lifestyle or image of your target audience ([LIFESTYLE OR IMAGE ENHANCEMENT]). Clearly define the action you want your audience to take ([DESIRED ACTION]).</li></ul><ul id="2733f44c-2287-819b-8bc1-e1c8b27beee7" class="bulleted-list"><li style="list-style-type:disc">Example: &quot;Our product is a line of minimalist, eco-friendly home decor items targeted at environmentally conscious homeowners. Specific design features include sustainable materials and a sleek, modern aesthetic. These items enhance the lifestyle by promoting a clutter-free, aesthetically pleasing living space. The desired action is for the audience to visit our website for more inspiration and follow our Pinterest for ongoing updates.&quot;</li></ul><h2 id="2733f44c-2287-811c-ad62-e6d3820c7143" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8163-831c-eee4070a79cb" class="">#INFORMATION ABOUT ME:</p><ul id="2733f44c-2287-81b7-ad71-d5c6bf2cd827" class="bulleted-list"><li style="list-style-type:disc"><strong>Product/Service:</strong> Complete AI Bundle, a comprehensive collection of AI prompts, resources, and how-to guides for small business owners to improve productivity and efficiency.</li></ul><ul id="2733f44c-2287-81bc-a23d-c461969ad8f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Target Audience:</strong> Small business owners, content creators, marketers, solopreneurs, and entrepreneurs aged 24-55 who value the aesthetic appeal and usability of curated AI solutions.</li></ul><ul id="2733f44c-2287-810d-a881-d4c06de179eb" class="bulleted-list"><li style="list-style-type:disc"><strong>Specific Aesthetic/Design Features:</strong> A clean and visually appealing collection of resources, beautifully organized into easy-to-follow guides and prompt templates.</li></ul><ul id="2733f44c-2287-8180-9f19-d4eff818f9fb" class="bulleted-list"><li style="list-style-type:disc"><strong>Lifestyle/Image Enhancement:</strong> The Complete AI Bundle empowers business owners to streamline workflows and automate processes, freeing up their time and allowing them to focus on creative or strategic work.</li></ul><ul id="2733f44c-2287-81da-989d-cdc82486efd9" class="bulleted-list"><li style="list-style-type:disc"><strong>Desired Action:</strong> &quot;Visit our website</li></ul><h2 id="2733f44c-2287-816d-acb4-cfc8a87105e6" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81a7-ab78-cc5afb19c600" class="image"><a href="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Create_Pinterest_Ad_Copies.png"><img style="width:707.96875px" src="Create%20Pinterest%20Ad%20Copies%202733f44c22878107991ed35b89add4ec/Create_Pinterest_Ad_Copies.png"/></a></figure><h2 id="2733f44c-2287-81b2-b0d7-cb1957023249" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><ul id="2733f44c-2287-815f-b53c-e7294f187636" class="bulleted-list"><li style="list-style-type:disc"><strong>High-Quality Images:</strong> Ensure the visual used in your ad is of the highest quality, striking, and fully representative of your product&#x27;s aesthetic appeal. This visual component is crucial on Pinterest, a platform driven by visual inspiration.</li></ul><ul id="2733f44c-2287-8132-a8fe-cbedff366a48" class="bulleted-list"><li style="list-style-type:disc"><strong>Direct and Inspiring CTA:</strong> Craft a CTA that feels natural and inspiring, encouraging viewers to explore more about your product or service. Whether it&#x27;s visiting your website or following your Pinterest account, make it a seamless step for them to take for more aesthetic inspiration.</li></ul><ul id="2733f44c-2287-8108-a7cd-e75f165a1caa" class="bulleted-list"><li style="list-style-type:disc"><strong>Optimize for Pinterest:</strong> Remember that Pinterest is a visual discovery engine. Your ad copy, paired with an appealing image, should be optimized to stand out in a visually crowded space, ensuring it grabs attention and sparks interest.</li></ul><p id="2733f44c-2287-8196-b167-f240e5d9849e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

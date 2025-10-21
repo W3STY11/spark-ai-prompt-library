@@ -1,0 +1,795 @@
+// ==UserScript==
+// @name         SPARK Prompt Library - Complete Copilot Integration
+// @namespace    http://tampermonkey.net/
+// @version      2.0.0
+// @description  Draggable button, full library browser, sidecar with all prompt details
+// @author       SPARK Library
+// @match        https://m365.cloud.microsoft/chat*
+// @match        https://m365.cloud.microsoft.com/chat*
+// @match        https://copilot.microsoft.com/*
+// @icon         data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="75" font-size="75">⚡</text></svg>
+// @grant        GM_xmlhttpRequest
+// @grant        GM_addStyle
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @connect      c7c817a549a4.ngrok-free.app
+// @run-at       document-idle
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // ============================================================================
+    // CONFIGURATION
+    // ============================================================================
+
+    const CONFIG = {
+        LIBRARY_URL: 'https://c7c817a549a4.ngrok-free.app',
+        API_URL: 'https://c7c817a549a4.ngrok-free.app/api/prompts',
+        BRAND_COLOR: '#6B47DC'
+    };
+
+    // ============================================================================
+    // STYLES
+    // ============================================================================
+
+    GM_addStyle(`
+        /* Draggable FAB */
+        .spark-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #FFFFFF;
+            border: 2px solid ${CONFIG.BRAND_COLOR};
+            border-radius: 28px;
+            box-shadow: 0 4px 16px rgba(107, 71, 220, 0.3);
+            cursor: move;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            touch-action: none;
+        }
+
+        .spark-fab:hover {
+            box-shadow: 0 6px 20px rgba(107, 71, 220, 0.4);
+            transform: scale(1.05);
+        }
+
+        .spark-fab.dragging {
+            cursor: grabbing;
+            box-shadow: 0 8px 24px rgba(107, 71, 220, 0.5);
+        }
+
+        .spark-fab-icon {
+            font-size: 32px;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .spark-fab-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: ${CONFIG.BRAND_COLOR};
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 12px;
+            font-family: "Segoe UI", sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        /* Full Screen Library Modal */
+        .spark-library-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .spark-library-modal.active {
+            display: flex;
+        }
+
+        .spark-library-container {
+            width: 90%;
+            height: 90%;
+            max-width: 1400px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            overflow: hidden;
+        }
+
+        .spark-library-iframe {
+            flex: 1;
+            border: none;
+            border-radius: 16px 0 0 16px;
+        }
+
+        /* Sidecar Panel */
+        .spark-sidecar {
+            width: 420px;
+            background: #F9FAFB;
+            border-left: 1px solid #E5E7EB;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .spark-sidecar-header {
+            padding: 20px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .spark-sidecar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+            margin: 0 0 8px;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .spark-sidecar-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #6B7280;
+        }
+
+        .spark-sidecar-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .spark-sidecar-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .spark-sidecar-section {
+            margin-bottom: 24px;
+        }
+
+        .spark-sidecar-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin: 0 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .spark-sidecar-section-content {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #4B5563;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #E5E7EB;
+        }
+
+        .spark-sidecar-tips {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .spark-sidecar-tips li {
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .spark-sidecar-tips li::before {
+            content: "💡";
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .spark-sidecar-footer {
+            padding: 16px 20px;
+            background: white;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .spark-use-prompt-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: ${CONFIG.BRAND_COLOR};
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .spark-use-prompt-btn:hover {
+            background: #5A3BB8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(107, 71, 220, 0.3);
+        }
+
+        .spark-use-prompt-btn:active {
+            transform: translateY(0);
+        }
+
+        .spark-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #6B7280;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .spark-close-btn:hover {
+            background: #F3F4F6;
+            color: #111827;
+        }
+
+        .spark-empty-state {
+            padding: 60px 20px;
+            text-align: center;
+            color: #9CA3AF;
+        }
+
+        .spark-empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .spark-empty-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #6B7280;
+        }
+
+        /* Scrollbar Styling */
+        .spark-sidecar-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .spark-sidecar-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .spark-sidecar-content::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 4px;
+        }
+
+        .spark-sidecar-content::-webkit-scrollbar-thumb:hover {
+            background: #9CA3AF;
+        }
+
+        /* Toast */
+        .spark-toast {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: #10B981;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1000001;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spark-word-count {
+            font-size: 13px;
+            color: #6B7280;
+            margin-top: 8px;
+        }
+    `);
+
+    // ============================================================================
+    // STATE
+    // ============================================================================
+
+    const state = {
+        currentPrompt: null,
+        isDragging: false,
+        dragOffset: { x: 0, y: 0 }
+    };
+
+    // ============================================================================
+    // DRAGGABLE FAB
+    // ============================================================================
+
+    function createDraggableFAB() {
+        const fab = document.createElement('div');
+        fab.className = 'spark-fab';
+        fab.innerHTML = `
+            <span class="spark-fab-icon">⚡</span>
+            <span class="spark-fab-badge">2.4K+</span>
+        `;
+
+        // Load saved position or use default
+        const savedPos = GM_getValue('fab_position', { bottom: 24, right: 24 });
+        fab.style.bottom = savedPos.bottom + 'px';
+        fab.style.right = savedPos.right + 'px';
+        fab.style.left = 'auto';
+        fab.style.top = 'auto';
+
+        // Mouse/Touch drag events
+        fab.addEventListener('mousedown', startDrag);
+        fab.addEventListener('touchstart', startDrag);
+
+        function startDrag(e) {
+            if (e.type === 'mousedown' && e.button !== 0) return;
+
+            e.preventDefault();
+            const rect = fab.getBoundingClientRect();
+            const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+            const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+
+            state.isDragging = true;
+            state.dragOffset = {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+
+            fab.classList.add('dragging');
+
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag);
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+        }
+
+        function drag(e) {
+            if (!state.isDragging) return;
+
+            e.preventDefault();
+            const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+            const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+            const newLeft = clientX - state.dragOffset.x;
+            const newTop = clientY - state.dragOffset.y;
+
+            // Keep within viewport
+            const maxLeft = window.innerWidth - fab.offsetWidth;
+            const maxTop = window.innerHeight - fab.offsetHeight;
+
+            const boundedLeft = Math.max(0, Math.min(newLeft, maxLeft));
+            const boundedTop = Math.max(0, Math.min(newTop, maxTop));
+
+            fab.style.left = boundedLeft + 'px';
+            fab.style.top = boundedTop + 'px';
+            fab.style.right = 'auto';
+            fab.style.bottom = 'auto';
+        }
+
+        function stopDrag(e) {
+            if (!state.isDragging) return;
+
+            state.isDragging = false;
+            fab.classList.remove('dragging');
+
+            // Save position
+            const rect = fab.getBoundingClientRect();
+            GM_setValue('fab_position', {
+                bottom: window.innerHeight - rect.bottom,
+                right: window.innerWidth - rect.right
+            });
+
+            // If it was just a click (not a drag), open library
+            const moveDistance = Math.abs(e.clientX - (rect.left + state.dragOffset.x)) +
+                                Math.abs(e.clientY - (rect.top + state.dragOffset.y));
+
+            if (moveDistance < 5) {
+                openLibrary();
+            }
+
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('touchmove', drag);
+            document.removeEventListener('mouseup', stopDrag);
+            document.removeEventListener('touchend', stopDrag);
+        }
+
+        return fab;
+    }
+
+    // ============================================================================
+    // LIBRARY MODAL
+    // ============================================================================
+
+    function createLibraryModal() {
+        const modal = document.createElement('div');
+        modal.className = 'spark-library-modal';
+
+        modal.innerHTML = `
+            <button class="spark-close-btn" aria-label="Close library">×</button>
+            <div class="spark-library-container">
+                <iframe class="spark-library-iframe" src="${CONFIG.LIBRARY_URL}/browse"></iframe>
+                <div class="spark-sidecar">
+                    <div class="spark-sidecar-header">
+                        <h3 class="spark-sidecar-title">Select a Prompt</h3>
+                        <div class="spark-sidecar-meta">
+                            <span>Browse 2,425+ prompts</span>
+                        </div>
+                    </div>
+                    <div class="spark-sidecar-content">
+                        <div class="spark-empty-state">
+                            <div class="spark-empty-icon">⚡</div>
+                            <div class="spark-empty-text">
+                                Click any prompt in the library<br>to see details and use it
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        modal.querySelector('.spark-close-btn').addEventListener('click', closeLibrary);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeLibrary();
+        });
+
+        return modal;
+    }
+
+    // ============================================================================
+    // SIDECAR CONTENT
+    // ============================================================================
+
+    function updateSidecar(prompt) {
+        state.currentPrompt = prompt;
+        const sidecar = document.querySelector('.spark-sidecar');
+        if (!sidecar) return;
+
+        const departmentIcons = {
+            'Business': '💼', 'Marketing': '📢', 'Sales': '💰',
+            'SEO': '🔍', 'Finance': '💵', 'Education': '📚',
+            'Writing': '✍️', 'Productivity': '⚡', 'Solopreneurs': '🚀'
+        };
+
+        const icon = departmentIcons[prompt.department] || '📄';
+        const wordCount = prompt.word_count || (prompt.content ? prompt.content.split(/\s+/).length : 0);
+
+        let sidecarHTML = `
+            <div class="spark-sidecar-header">
+                <h3 class="spark-sidecar-title">${escapeHtml(prompt.title)}</h3>
+                <div class="spark-sidecar-meta">
+                    <span class="spark-sidecar-meta-item">
+                        <span>${icon}</span>
+                        <span>${escapeHtml(prompt.department)}</span>
+                    </span>
+                    <span class="spark-sidecar-meta-item">
+                        <span>📝</span>
+                        <span>${wordCount} words</span>
+                    </span>
+                    ${prompt.complexity ? `
+                    <span class="spark-sidecar-meta-item">
+                        <span>⭐</span>
+                        <span>${escapeHtml(prompt.complexity)}</span>
+                    </span>` : ''}
+                </div>
+            </div>
+            <div class="spark-sidecar-content">
+        `;
+
+        // Description
+        if (prompt.description) {
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>📋</span>
+                        <span>Description</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${escapeHtml(prompt.description)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // What It Does
+        if (prompt.whatItDoes || (prompt.metadata && prompt.metadata.whatItDoes)) {
+            const whatItDoes = prompt.whatItDoes || prompt.metadata.whatItDoes;
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>🎯</span>
+                        <span>What It Does</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${escapeHtml(whatItDoes)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // How To Use
+        if (prompt.howToUse || (prompt.metadata && prompt.metadata.howToUse)) {
+            const howToUse = prompt.howToUse || prompt.metadata.howToUse;
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>📖</span>
+                        <span>How To Use</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${escapeHtml(howToUse)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Example Input
+        if (prompt.exampleInput || (prompt.metadata && prompt.metadata.exampleInput)) {
+            const exampleInput = prompt.exampleInput || prompt.metadata.exampleInput;
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>💬</span>
+                        <span>Example Input</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${escapeHtml(exampleInput)}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Tips
+        if (prompt.tips && prompt.tips.length > 0) {
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>💡</span>
+                        <span>Tips & Best Practices</span>
+                    </div>
+                    <ul class="spark-sidecar-tips">
+                        ${prompt.tips.map(tip => `<li>${escapeHtml(tip)}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Tags
+        if (prompt.tags && prompt.tags.length > 0) {
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>🏷️</span>
+                        <span>Tags</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${prompt.tags.map(tag => `<span style="display: inline-block; background: #EEF2FF; color: #6B47DC; padding: 4px 10px; border-radius: 12px; font-size: 12px; margin: 4px 4px 0 0;">${escapeHtml(tag)}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Prompt Content Preview
+        if (prompt.content) {
+            const preview = prompt.content.substring(0, 300) + (prompt.content.length > 300 ? '...' : '');
+            sidecarHTML += `
+                <div class="spark-sidecar-section">
+                    <div class="spark-sidecar-section-title">
+                        <span>📄</span>
+                        <span>Prompt Preview</span>
+                    </div>
+                    <div class="spark-sidecar-section-content">
+                        ${escapeHtml(preview)}
+                        <div class="spark-word-count">Full prompt: ${wordCount} words</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        sidecarHTML += `
+            </div>
+            <div class="spark-sidecar-footer">
+                <button class="spark-use-prompt-btn">
+                    <span>📋</span>
+                    <span>Use This Prompt</span>
+                    <span>→</span>
+                </button>
+            </div>
+        `;
+
+        sidecar.innerHTML = sidecarHTML;
+
+        // Add click handler to Use button
+        sidecar.querySelector('.spark-use-prompt-btn').addEventListener('click', () => {
+            insertPromptIntoCopilot(prompt.content);
+        });
+    }
+
+    // ============================================================================
+    // COPILOT INTEGRATION
+    // ============================================================================
+
+    function insertPromptIntoCopilot(promptText) {
+        // Find Copilot input
+        const selectors = [
+            'textarea[placeholder*="Ask me anything"]',
+            'textarea[placeholder*="Message"]',
+            'textarea[placeholder*="Copilot"]',
+            '[role="textbox"]',
+            'textarea',
+            '.cib-serp-main textarea'
+        ];
+
+        let input = null;
+        for (const selector of selectors) {
+            input = document.querySelector(selector);
+            if (input) break;
+        }
+
+        if (!input) {
+            console.error('SPARK: Could not find Copilot input');
+            showToast('Could not find input field', '⚠️');
+            return false;
+        }
+
+        // Insert text
+        input.value = promptText;
+        input.textContent = promptText;
+
+        // Trigger events
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        input.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true }));
+        input.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true }));
+
+        // Focus input
+        input.focus();
+
+        showToast('Prompt inserted! Click the send button when ready ✨');
+        closeLibrary();
+
+        return true;
+    }
+
+    // ============================================================================
+    // LIBRARY COMMUNICATION
+    // ============================================================================
+
+    function setupMessageListener() {
+        window.addEventListener('message', (event) => {
+            // Security: verify origin
+            if (!event.origin.includes('ngrok-free.app') && !event.origin.includes('localhost')) {
+                return;
+            }
+
+            if (event.data && event.data.type === 'SPARK_PROMPT_SELECTED') {
+                const prompt = event.data.prompt;
+                updateSidecar(prompt);
+            }
+        });
+    }
+
+    // ============================================================================
+    // UTILITY FUNCTIONS
+    // ============================================================================
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function showToast(message, icon = '✓') {
+        const toast = document.createElement('div');
+        toast.className = 'spark-toast';
+        toast.innerHTML = `<span style="font-size: 18px;">${icon}</span> ${escapeHtml(message)}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    function openLibrary() {
+        const modal = document.querySelector('.spark-library-modal');
+        if (modal) {
+            modal.classList.add('active');
+        }
+    }
+
+    function closeLibrary() {
+        const modal = document.querySelector('.spark-library-modal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
+        state.currentPrompt = null;
+    }
+
+    // ============================================================================
+    // INITIALIZATION
+    // ============================================================================
+
+    function init() {
+        console.log('SPARK: Initializing Copilot integration...');
+
+        // Wait for page to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+            return;
+        }
+
+        // Create and inject components
+        const fab = createDraggableFAB();
+        const modal = createLibraryModal();
+
+        document.body.appendChild(fab);
+        document.body.appendChild(modal);
+
+        // Setup communication
+        setupMessageListener();
+
+        console.log('SPARK: Integration ready! ⚡');
+    }
+
+    // Start initialization
+    init();
+
+})();

@@ -1,0 +1,740 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Develop Educational Course Content</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-810f-a04b-fdde8349d0e4" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📚</span></div><h1 class="page-title">Develop Educational Course Content</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Academic Research</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@August 14, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-81ec-b097-f5ad6a44bbe8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2733f44c-2287-81ef-af32-d61c2801788b" class=""><mark class="highlight-default">Create an expertly crafted mega-prompt for ChatGPT that enables course creators to generate detailed, engaging summaries of the latest research and developments in their field. This tool aids in updating or developing course content that is both informative and captivating for learners, ensuring educational materials remain cutting-edge and relevant.</mark></p></div></figure><hr id="2733f44c-2287-81f9-a262-c6a0863695b2"/><h2 id="2733f44c-2287-81b6-a598-dd7d33452a43" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-81a5-b742-fab952c0a9f3" class=""><mark class="highlight-default">● Conducts in-depth research to gather the latest information, studies, and news in a specific field.</mark></p><p id="2733f44c-2287-81c0-aa35-da7fb73d78da" class=""><mark class="highlight-default">● Summarizes key findings, trends, and advancements to update or create educational content.</mark></p><p id="2733f44c-2287-8170-a2db-d9b50d3202a1" class=""><mark class="highlight-default">● Structures the summary to be engaging and informative for learners, enhancing their understanding of the topic.</mark></p><h2 id="2733f44c-2287-815d-bac3-db4d1d28f3ad" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-812a-80cc-c7e9d58894db" class=""><mark class="highlight-default">● Develop a robust research plan that includes a schedule for regular updates to ensure the course content remains current with the latest findings and advancements in the field.</mark></p><p id="2733f44c-2287-8170-94a5-cd5eaf10d055" class=""><mark class="highlight-default">● Utilize multimedia elements such as videos, infographics, and interactive timelines in the course materials to illustrate complex concepts and engage learners more effectively.</mark></p><p id="2733f44c-2287-818c-ac46-c30a26565b43" class=""><mark class="highlight-default">● Establish partnerships with industry experts and professionals to contribute guest lectures or real-world case studies, enhancing the credibility and practical relevance of the course content.</mark></p><h2 id="2733f44c-2287-8143-ac49-c16a73b31d7e" class=""><mark class="highlight-yellow_background">📚 Course Content Developer ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-810e-a26c-eab89f3b9779" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an expert course creator with a wealth of experience in educational content development, particularly in staying abreast of the latest studies, news, and advancements in a specified field. Your task encompasses conducting meticulous research to collate the most up-to-date, relevant information, studies, and breakthroughs within a chosen domain. This research should culminate in a summary that is both detailed and succinct, designed to captivate an audience keen on deepening their understanding of the topic. This summary must encapsulate key discoveries, trends, and any noteworthy shifts or progressions in the field. It will serve as the foundation for updating existing course materials or devising new course content, ensuring it is both current and enlightening for students or learners. Your acumen in course creation will influence the organization and delivery of this summary, rendering it both engaging and instructional.
+
+#GOAL:
+You will produce a comprehensive summary that incorporates the latest research, news, and developments in a specific area of interest. This summary will be instrumental in refreshing or establishing course content that remains relevant and informative for learners.
+
+#RESPONSE GUIDELINES:
+Follow the structured approach detailed below to compile the summary:
+
+1. **Identify the Core Topic**: Clearly define the topic you are researching. Ensure that it is specific enough to allow for focused research yet broad enough to encompass significant studies and developments.
+   
+2. **Conduct Thorough Research**: Utilize authoritative sources to gather the latest studies, news articles, and developments in the field. Prioritize peer-reviewed journals, reputable news outlets, and official publications from leading organizations within the industry.
+   
+3. **Analyze Key Findings**: Summarize the main findings from the most recent and relevant research studies. Highlight groundbreaking discoveries, the implications of these findings, and how they advance the understanding or application of the topic.
+   
+4. **Note Trends and Advancements**: Identify and elaborate on any notable trends or advancements within the field. This might include technological innovations, shifts in best practices, or changes in industry standards.
+   
+5. **Reflect on the Impact**: Consider how these developments could impact learners, professionals within the field, and the broader industry. Discuss the potential for these findings to influence future research, practice, or policy.
+   
+6. **Update Course Content**: Based on the information gathered, suggest how course content could be updated. This could involve introducing new modules, revising existing ones, or incorporating case studies and examples that reflect the latest developments.
+
+7. **Engage with Examples**: Where possible, include practical examples or case studies to illustrate the real-world application or consequences of these findings. This approach aids in making the summary more relatable and understandable for learners.
+
+8. **Conclude with Insights**: Sum up the research with your professional insights into how these updates will enhance the course content. Highlight the added value these changes bring to learners’ understanding and engagement with the topic.
+
+#INFORMATION ABOUT ME:
+- My field of expertise: [FIELD OF EXPERTISE]
+- Specific topic of interest: [TOPIC OF INTEREST]
+- Target audience for the course: [TARGET AUDIENCE]
+- Preferred sources for research: [PREFERRED SOURCES]
+- Key findings of interest: [KEY FINDINGS]
+
+#OUTPUT:
+The output will be a detailed, yet concise, summary that effectively synthesizes the latest studies, news, and developments in the [TOPIC OF INTEREST]. This summary will be structured to highlight key findings, trends, advancements, and their implications, providing a solid foundation for updating or creating relevant and engaging course content tailored to the [TARGET AUDIENCE]. The summary will be crafted to not only inform but also inspire learners, fostering a deeper understanding and appreciation of the subject matter.</code></pre><h2 id="2733f44c-2287-812f-8c32-c7fc90b0a86b" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-812b-b7db-fbcd2d48243e" class=""><mark class="highlight-default">● Fill in the placeholders [FIELD OF EXPERTISE], [TOPIC OF INTEREST], [TARGET AUDIENCE], [PREFERRED SOURCES], and [KEY FINDINGS] with specific details relevant to your area of expertise and the content you wish to develop. For example, if you specialize in renewable energy, your field of expertise might be &quot;Environmental Science&quot;, your topic of interest could be &quot;Solar Energy Innovations&quot;, your target audience might be &quot;undergraduate students&quot;, your preferred sources could be &quot;academic journals and industry reports&quot;, and key findings might include &quot;recent advancements in solar panel efficiency&quot;.</mark></p><p id="2733f44c-2287-817b-8559-fe1f91d842e1" class=""><mark class="highlight-default">● Example: If your field of expertise is &quot;Environmental Science&quot;, your specific topic of interest is &quot;Solar Energy Innovations&quot;, your target audience is &quot;undergraduate students&quot;, your preferred sources are &quot;academic journals and industry reports&quot;, and your key findings include &quot;recent advancements in solar panel efficiency&quot;, then your summary should focus on these areas to ensure it is relevant and informative for your audience.</mark></p><h2 id="2733f44c-2287-81af-ab91-ea8d12648255" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-81cf-8707-c7f48e1e191b" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- My field of expertise: Digital Marketing and AI Integration<br/>- Specific topic of interest: Utilization of AI Tools in Streamlining Digital Marketing Processes<br/>- Target audience for the course: Small business owners, content creators, marketers, solopreneurs, entrepreneurs. Age: 24-55. Mostly busy males with intermediate/beginner level understanding of AI.<br/>- Preferred sources for research: Peer-reviewed journals in technology and marketing, authoritative tech news websites, official publications from major AI and digital marketing platforms.<br/>- Key findings of interest: Recent advancements in AI tools have significantly reduced the time required for data analysis in digital marketing, allowing for real-time campaign adjustments and increased ROI.</mark></p><h2 id="2733f44c-2287-8185-90b4-e06826cad8db" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81d5-87cf-cf2baa353978" class="image"><a href="Develop%20Educational%20Course%20Content%202733f44c2287810fa04bfdde8349d0e4/Develop_Educational_Course_Content.png"><img style="width:707.96875px" src="Develop%20Educational%20Course%20Content%202733f44c2287810fa04bfdde8349d0e4/Develop_Educational_Course_Content.png"/></a></figure><h2 id="2733f44c-2287-814d-a340-c7cb30d11599" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-8165-bb95-c208987d3a05" class=""><mark class="highlight-default">● Stay organized throughout the research process by creating a system to categorize and store relevant articles, studies, and resources. This will make it easier to refer back to information and ensure that nothing important is overlooked.</mark></p><p id="2733f44c-2287-8177-acbb-f4f1623d9cf5" class=""><mark class="highlight-default">● Consider incorporating different perspectives and viewpoints in the summary to provide a well-rounded understanding of the topic. This can be done by including research from different authors, institutions, or even conflicting studies to encourage critical thinking and analysis.</mark></p><p id="2733f44c-2287-81a9-87f3-e6d19dd19de7" class=""><mark class="highlight-default">● Regularly engage with the target audience or potential learners to gather feedback and insights on their specific needs and interests. This will help tailor the course content to their preferences and ensure its relevance and effectiveness.</mark></p><p id="2733f44c-2287-812f-998e-f85f3279b3a0" class=""><mark class="highlight-default">● Keep up with emerging technologies and educational tools that can enhance the delivery of the course content. Explore options such as virtual reality, gamification, or interactive quizzes to create an immersive and engaging learning experience.</mark></p><p id="2733f44c-2287-81f9-b217-f60ddb40e5f2" class=""><mark class="highlight-default">● Continuously evaluate and update the course content based on new research, feedback from learners, and changes in the field. This will ensure that the course remains up-to-date, accurate, and valuable to learners over time.</mark></p><p id="2733f44c-2287-819a-b093-eab3ab1ecc97" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
