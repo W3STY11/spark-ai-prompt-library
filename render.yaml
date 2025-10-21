@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: spark-prompt-library
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/production.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: ADMIN_PASSWORD
+        value: sparkadmin2025
+      - key: MAX_BACKUPS
+        value: 100
+      - key: BACKUP_RETENTION_DAYS
+        value: 30
