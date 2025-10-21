@@ -1,0 +1,12 @@
+{
+  "install": "npm install",
+  "start": "npm run start:prod",
+  "watch": {
+    "ignore": [
+      "dist/**",
+      "backups/**",
+      "public/prompts/**",
+      "public/thumbnails/**"
+    ]
+  }
+}
