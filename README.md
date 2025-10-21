@@ -3,8 +3,24 @@
 > A comprehensive, self-hosted prompt library with **2,376+ professional AI prompts** across 9 business departments
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docker](https://img.shields.io/badge/docker-ready-brightgreen.svg)](https://www.docker.com/)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/W3STY11/spark-prompt-library-live)
 [![Prompts](https://img.shields.io/badge/prompts-2376%2B-orange.svg)](#)
+
+---
+
+## ⚡ One-Click Deploy to Live URL
+
+**Click the "Deploy to Render" button above** to get your library live in 5 minutes!
+
+No manual setup required - Render automatically:
+- Installs all dependencies
+- Builds the production app
+- Deploys to a live HTTPS URL
+- Sets up environment variables from `render.yaml`
+
+**Your live URL**: `https://spark-prompt-library-XXXX.onrender.com`
+
+**Admin Access**: Go to `/admin-login` with password `sparkadmin2025`
 
 ---
 
