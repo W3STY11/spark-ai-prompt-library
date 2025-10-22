@@ -23,6 +23,7 @@ import {
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
+import { API_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
   container: {
@@ -93,7 +94,7 @@ export default function AdminLoginPage({ isDark, toggleTheme }) {
     setError('');
 
     try {
-      const response = await fetch('/api/admin/login', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

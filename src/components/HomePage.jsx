@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BLOB_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -478,19 +479,20 @@ export default function HomePage({ isDark, toggleTheme }) {
   }, [departments]); // Re-run when departments load
 
   useEffect(() => {
-    // Load prompts index with fallback
+    // Load prompts index from Blob Storage
     const fetchData = async () => {
       try {
-        const res = await fetch('/prompts_index.json');
+        const res = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         if (data && data.departments) {
           setDepartments(data.departments);
         }
       } catch (err) {
-        console.error('Failed to load from primary index, trying backup:', err);
+        console.error('Failed to load departments from Blob Storage:', err);
+        // Fallback to local file if blob storage fails
         try {
-          const res = await fetch('/prompts_index_backup.json');
+          const res = await fetch('/prompts_index.json');
           if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           const data = await res.json();
           if (data && data.departments) {
@@ -791,9 +793,11 @@ export default function HomePage({ isDark, toggleTheme }) {
                   description={
                     <Body2>
                       {dept.description
-                        .replace(/professional /gi, '')
-                        .replace(/\d+\s+\w+\s+prompts/gi, '')
-                        .trim()}
+                        ? dept.description
+                            .replace(/professional /gi, '')
+                            .replace(/\d+\s+\w+\s+prompts/gi, '')
+                            .trim()
+                        : `${dept.count || 0} professional prompts`}
                     </Body2>
                   }
                 />
@@ -868,21 +872,16 @@ export default function HomePage({ isDark, toggleTheme }) {
             </Body1>
           </div>
           <div className={styles.teamGrid}>
-            <Card className={mergeClasses(styles.teamCard, isDark && styles.teamCardDark)}>
-              <div className={styles.teamAvatar}>
-                <Avatar
-                  size={96}
-                  image={{ src: '/images/peter.jpg' }}
-                  name="Peter Wolf"
-                />
+            <Card className={mergeClasses(styles.teamCard, isDark && styles.teamCardDark)} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ flex: 1 }}>
+                <Title2 block style={{ marginBottom: '8px' }}>Peter Wolf</Title2>
+                <Subtitle1 block style={{ marginBottom: '16px', color: tokens.colorBrandForeground1 }}>
+                  Managing Director Treasury Services
+                </Subtitle1>
+                <Body2 block style={{ marginBottom: '24px' }}>
+                  Leading business automation and AI integration strategies
+                </Body2>
               </div>
-              <Title2 block style={{ marginBottom: '8px' }}>Peter Wolf</Title2>
-              <Subtitle1 block style={{ marginBottom: '16px', color: tokens.colorBrandForeground1 }}>
-                Managing Director Treasury Services
-              </Subtitle1>
-              <Body2 block style={{ marginBottom: '24px' }}>
-                Leading business automation and AI integration strategies
-              </Body2>
               <Button
                 as="a"
                 href="https://www.linkedin.com/in/peter-wolf-mba-24688611/"
@@ -893,21 +892,16 @@ export default function HomePage({ isDark, toggleTheme }) {
                 View LinkedIn
               </Button>
             </Card>
-            <Card className={mergeClasses(styles.teamCard, isDark && styles.teamCardDark)}>
-              <div className={styles.teamAvatar}>
-                <Avatar
-                  size={96}
-                  image={{ src: '/images/nick.jpg' }}
-                  name="Nicholas Westburg"
-                />
+            <Card className={mergeClasses(styles.teamCard, isDark && styles.teamCardDark)} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ flex: 1 }}>
+                <Title2 block style={{ marginBottom: '8px' }}>Nicholas Westburg</Title2>
+                <Subtitle1 block style={{ marginBottom: '16px', color: tokens.colorBrandForeground1 }}>
+                  AI Integration Architect
+                </Subtitle1>
+                <Body2 block style={{ marginBottom: '24px' }}>
+                  Expert in prompt engineering and AI implementation
+                </Body2>
               </div>
-              <Title2 block style={{ marginBottom: '8px' }}>Nicholas Westburg</Title2>
-              <Subtitle1 block style={{ marginBottom: '16px', color: tokens.colorBrandForeground1 }}>
-                AI Integration Architect
-              </Subtitle1>
-              <Body2 block style={{ marginBottom: '24px' }}>
-                Expert in prompt engineering and AI implementation
-              </Body2>
               <Button
                 as="a"
                 href="https://www.linkedin.com/in/nwestburg/"

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK Copilot Integration Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .test-section h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        button.success {
+            background: #28a745;
+        }
+
+        button.error {
+            background: #dc3545;
+        }
+
+        .test-result {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            background: white;
+            border-left: 4px solid #667eea;
+        }
+
+        .copilot-simulator {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .copilot-simulator textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            resize: vertical;
+        }
+
+        .copilot-simulator textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #floating-button-preview {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        #floating-button-preview:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.5);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        .prompt-preview {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .prompt-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .prompt-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .badge.department {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>⚡ SPARK Copilot Integration Test Suite</h1>
+        <p class="subtitle">Test the Tampermonkey script functionality without leaving the page</p>
+
+        <!-- Test 1: Floating Button -->
+        <div class="test-section">
+            <h2>1. Floating Button Test <span class="status-badge success">✓ READY</span></h2>
+            <p>Test the circular floating button that appears on M365 Chat</p>
+            <button onclick="testFloatingButton()">Show Floating Button</button>
+            <button onclick="hideFloatingButton()">Hide Floating Button</button>
+            <div id="floating-button-test-result" class="test-result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 2: API Connection -->
+        <div class="test-section">
+            <h2>2. API Connection Test <span class="status-badge pending">⏳ PENDING</span></h2>
+            <p>Test connection to SPARK Prompt Library API (localhost:3001)</p>
+            <button onclick="testAPIConnection()">Test API Connection</button>
+            <div id="api-test-result" class="test-result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 3: Load Prompts -->
+        <div class="test-section">
+            <h2>3. Load Prompts Test <span class="status-badge pending">⏳ PENDING</span></h2>
+            <p>Test loading all 2,423 prompts from the library</p>
+            <button onclick="testLoadPrompts()">Load All Prompts</button>
+            <div id="load-prompts-result" class="test-result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 4: Copy to Copilot -->
+        <div class="test-section">
+            <h2>4. Copy to Copilot Test <span class="status-badge pending">⏳ PENDING</span></h2>
+            <p>Test copying a prompt to the Copilot input field</p>
+
+            <div class="copilot-simulator">
+                <h3 style="margin-top: 0;">Copilot Input Simulator</h3>
+                <textarea id="copilot-input" placeholder="Copilot chat messages appear here..."></textarea>
+            </div>
+
+            <button onclick="testCopyToCopilot()">Copy Random Prompt</button>
+            <button onclick="clearCopilotInput()">Clear Input</button>
+            <div id="copy-test-result" class="test-result" style="display:none;"></div>
+        </div>
+
+        <!-- Test 5: Details Sidecar -->
+        <div class="test-section">
+            <h2>5. Details Sidecar Test <span class="status-badge pending">⏳ PENDING</span></h2>
+            <p>Test showing prompt details (tips, how-to-use, metadata) in side panel</p>
+            <button onclick="testDetailsSidecar()">Show Prompt Details</button>
+            <div id="details-test-result" class="test-result" style="display:none;"></div>
+        </div>
+
+        <!-- Installation Instructions -->
+        <div class="test-section">
+            <h2>📦 Installation Instructions</h2>
+            <p>To install the Tampermonkey script on M365 Copilot:</p>
+            <ol>
+                <li>Install <strong>Tampermonkey</strong> browser extension</li>
+                <li>Click <strong>"Create a new script"</strong></li>
+                <li>Copy the script from: <code>/home/aiwithnick/SPARK_LIBRARY_FLUENT_UI_VERSION/m365-copilot-spark-integration.user.js</code></li>
+                <li>Paste and <strong>Save</strong> (Ctrl+S)</li>
+                <li>Navigate to M365 Copilot Chat</li>
+                <li>The ⚡ button will appear automatically!</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Floating Button Preview -->
+    <div id="floating-button-preview" style="display: none;" onclick="alert('Floating button clicked! This will open the SPARK Prompt Library sidecar.')">⚡</div>
+
+    <script>
+        let allPrompts = [];
+        let currentPrompt = null;
+        const API_URL = 'http://localhost:3001/api/prompts';
+
+        // Test 1: Floating Button
+        function testFloatingButton() {
+            const btn = document.getElementById('floating-button-preview');
+            btn.style.display = 'flex';
+
+            const result = document.getElementById('floating-button-test-result');
+            result.style.display = 'block';
+            result.innerHTML = `
+                <strong>✅ SUCCESS:</strong> Floating button is now visible at the bottom-right corner!<br>
+                <small>Try hovering over it or clicking it to test interactions.</small>
+            `;
+
+            updateStatus(1, 'success');
+        }
+
+        function hideFloatingButton() {
+            document.getElementById('floating-button-preview').style.display = 'none';
+            updateStatus(1, 'pending');
+        }
+
+        // Test 2: API Connection
+        async function testAPIConnection() {
+            const result = document.getElementById('api-test-result');
+            result.style.display = 'block';
+            result.innerHTML = '<strong>⏳ Testing...</strong> Connecting to API...';
+
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+
+                result.innerHTML = `
+                    <strong>✅ SUCCESS:</strong> Connected to SPARK API!<br>
+                    <strong>Prompts Found:</strong> ${data.prompts.length}<br>
+                    <strong>Departments:</strong> ${new Set(data.prompts.map(p => p.department)).size}<br>
+                    <strong>API Endpoint:</strong> ${API_URL}
+                `;
+                updateStatus(2, 'success');
+            } catch (error) {
+                result.innerHTML = `
+                    <strong>❌ ERROR:</strong> Could not connect to API<br>
+                    <strong>Error:</strong> ${error.message}<br>
+                    <small>Make sure the SPARK Library is running on localhost:3001</small>
+                `;
+                updateStatus(2, 'error');
+            }
+        }
+
+        // Test 3: Load Prompts
+        async function testLoadPrompts() {
+            const result = document.getElementById('load-prompts-result');
+            result.style.display = 'block';
+            result.innerHTML = '<strong>⏳ Loading...</strong> Fetching all prompts...';
+
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                allPrompts = data.prompts;
+
+                // Show first 3 prompts as preview
+                const previewHTML = allPrompts.slice(0, 3).map(p => `
+                    <div class="prompt-preview">
+                        <div class="prompt-title">${p.title}</div>
+                        <div class="prompt-meta">
+                            <span class="badge department">${p.icon || '📄'} ${p.department}</span>
+                            <span class="badge">${p.complexity || 'N/A'}</span>
+                            <span class="badge">${p.word_count || 0} words</span>
+                        </div>
+                        <div style="font-size: 13px; color: #666;">${(p.description || '').substring(0, 150)}...</div>
+                    </div>
+                `).join('');
+
+                result.innerHTML = `
+                    <strong>✅ SUCCESS:</strong> Loaded ${allPrompts.length} prompts!<br>
+                    <strong>Preview (first 3):</strong>
+                    ${previewHTML}
+                `;
+                updateStatus(3, 'success');
+            } catch (error) {
+                result.innerHTML = `<strong>❌ ERROR:</strong> ${error.message}`;
+                updateStatus(3, 'error');
+            }
+        }
+
+        // Test 4: Copy to Copilot
+        async function testCopyToCopilot() {
+            if (allPrompts.length === 0) {
+                alert('Please load prompts first (Test #3)');
+                return;
+            }
+
+            // Get random prompt
+            const randomPrompt = allPrompts[Math.floor(Math.random() * allPrompts.length)];
+            currentPrompt = randomPrompt;
+
+            // Copy to "Copilot" input
+            const copilotInput = document.getElementById('copilot-input');
+            copilotInput.value = randomPrompt.content || randomPrompt.description || '';
+
+            const result = document.getElementById('copy-test-result');
+            result.style.display = 'block';
+            result.innerHTML = `
+                <strong>✅ SUCCESS:</strong> Prompt copied to Copilot input!<br>
+                <strong>Prompt:</strong> ${randomPrompt.title}<br>
+                <strong>Department:</strong> ${randomPrompt.department}<br>
+                <strong>Characters:</strong> ${copilotInput.value.length}<br>
+                <small>Check the textarea above to see the prompt content.</small>
+            `;
+            updateStatus(4, 'success');
+
+            // Auto-show details
+            testDetailsSidecar();
+        }
+
+        function clearCopilotInput() {
+            document.getElementById('copilot-input').value = '';
+        }
+
+        // Test 5: Details Sidecar
+        function testDetailsSidecar() {
+            if (!currentPrompt) {
+                alert('Please copy a prompt first (Test #4)');
+                return;
+            }
+
+            const result = document.getElementById('details-test-result');
+            result.style.display = 'block';
+
+            let detailsHTML = `<strong>✅ Showing details for:</strong> ${currentPrompt.title}<br><br>`;
+
+            if (currentPrompt.metadata?.whatItDoes) {
+                detailsHTML += `<strong>⚙️ What It Does:</strong><br>${currentPrompt.metadata.whatItDoes.substring(0, 200)}...<br><br>`;
+            }
+
+            if (currentPrompt.metadata?.howToUse) {
+                detailsHTML += `<strong>📖 How To Use:</strong><br>${currentPrompt.metadata.howToUse.substring(0, 200)}...<br><br>`;
+            }
+
+            if (currentPrompt.tips && currentPrompt.tips.length > 0) {
+                detailsHTML += `<strong>💡 Tips (${currentPrompt.tips.length}):</strong><br>`;
+                detailsHTML += currentPrompt.tips.slice(0, 2).map(tip => `• ${tip.substring(0, 100)}...`).join('<br>');
+            }
+
+            result.innerHTML = detailsHTML;
+            updateStatus(5, 'success');
+        }
+
+        // Helper: Update status badges
+        function updateStatus(testNumber, status) {
+            const sections = document.querySelectorAll('.test-section');
+            const badge = sections[testNumber - 1].querySelector('.status-badge');
+
+            badge.classList.remove('success', 'pending', 'error');
+            badge.classList.add(status);
+
+            if (status === 'success') {
+                badge.textContent = '✓ PASSED';
+            } else if (status === 'error') {
+                badge.textContent = '✗ FAILED';
+            } else {
+                badge.textContent = '⏳ PENDING';
+            }
+        }
+
+        // Auto-run tests on load
+        window.addEventListener('load', () => {
+            console.log('🚀 SPARK Copilot Integration Test Suite loaded!');
+        });
+    </script>
+</body>
+</html>

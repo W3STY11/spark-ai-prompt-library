@@ -1,0 +1,59 @@
+{
+  "timestamp": "2025-10-22T01:26:22.322Z",
+  "baseUrl": "https://gray-ocean-059c8510f.3.azurestaticapps.net",
+  "blobUrl": "https://sparkpromptstorage.blob.core.windows.net/data/prompts_index.json",
+  "results": {
+    "passed": [
+      "Favorites System",
+      "Dark Theme Toggle",
+      "Blob Storage Performance",
+      "Data Integrity - All Prompts Accessible"
+    ],
+    "failed": [
+      {
+        "name": "Homepage Loads",
+        "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=SPARK AI Prompt Library') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "Department Cards Display",
+        "error": "No department cards found"
+      },
+      {
+        "name": "Browse Page Loads All Prompts",
+        "error": "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"promptCard\"]') to be visible\u001b[22m\n"
+      },
+      {
+        "name": "Department Filter Works",
+        "error": "page.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Business')\u001b[22m\n"
+      },
+      {
+        "name": "Search Functionality",
+        "error": "No search results found"
+      },
+      {
+        "name": "Individual Prompt View with Rich Content",
+        "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\"promptCard\"]').first()\u001b[22m\n"
+      }
+    ],
+    "warnings": [
+      "Theme toggle button not found"
+    ]
+  },
+  "networkRequests": [
+    {
+      "url": "https://sparkpromptstorage.blob.core.windows.net/data/prompts_index.json",
+      "method": "GET",
+      "timestamp": "2025-10-22T01:24:51.589Z"
+    },
+    {
+      "url": "https://gray-ocean-059c8510f.3.azurestaticapps.net/prompts_index.json",
+      "method": "GET",
+      "timestamp": "2025-10-22T01:24:51.864Z"
+    },
+    {
+      "url": "https://sparkpromptstorage.blob.core.windows.net/data/prompts_index.json",
+      "method": "GET",
+      "timestamp": "2025-10-22T01:25:02.433Z"
+    }
+  ]
+}

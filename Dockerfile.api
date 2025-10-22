@@ -1,40 +1,39 @@
-# API Server Dockerfile
-FROM node:22-alpine
+FROM node:20-alpine
 
 WORKDIR /app
 
-# Install build dependencies for native modules (canvas, sharp)
-RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    cairo-dev \
-    pango-dev \
-    jpeg-dev \
-    giflib-dev \
-    pixman-dev \
-    pkgconfig
+# Create a minimal package.json for API-only dependencies
+RUN echo '{ \
+  "name": "spark-api", \
+  "version": "1.0.0", \
+  "type": "module", \
+  "scripts": { \
+    "start": "node server/api.js" \
+  }, \
+  "dependencies": { \
+    "express": "^5.1.0", \
+    "cors": "^2.8.5", \
+    "dotenv": "^16.5.0", \
+    "multer": "^1.4.5-lts.1" \
+  } \
+}' > package.json
 
-# Copy package files
-COPY package*.json ./
+# Install only API dependencies
+RUN npm install --omit=dev
 
-# Install dependencies
-RUN npm ci --only=production
-
-# Copy server code
-COPY server ./server
-
-# Copy .env.example as default config (users can override via volume mount)
-COPY .env.example ./.env
-
-# Copy public folder with all 2,376 prompts
-COPY public ./public
+# Copy API server and prompts index
+COPY server/ ./server/
+COPY public/prompts_index.json ./public/prompts_index.json
 
 # Create backups directory
 RUN mkdir -p backups
 
-# Expose API port
+# Expose port
 EXPOSE 3001
 
-# Start API server
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3001
+
+# Start the API server
 CMD ["node", "server/api.js"]

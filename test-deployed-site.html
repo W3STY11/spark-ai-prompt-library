@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Deployed SPARK Site</title>
+</head>
+<body>
+    <h1>Testing Azure Deployed SPARK Site</h1>
+    <div id="status">Loading...</div>
+    <div id="details"></div>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const detailsDiv = document.getElementById('details');
+
+        async function testSite() {
+            try {
+                // Test 1: HTML loads
+                statusDiv.textContent = 'Test 1: Fetching HTML...';
+                const htmlResponse = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/');
+                const htmlText = await htmlResponse.text();
+                detailsDiv.innerHTML += `<p>✓ HTML loaded (${htmlText.length} chars)</p>`;
+
+                // Test 2: JavaScript file exists
+                statusDiv.textContent = 'Test 2: Fetching JavaScript...';
+                const jsResponse = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/assets/main-BRAhoFDV.js');
+                detailsDiv.innerHTML += `<p>✓ JavaScript loaded (${jsResponse.status})</p>`;
+
+                // Test 3: CSS file exists
+                statusDiv.textContent = 'Test 3: Fetching CSS...';
+                const cssResponse = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/assets/main-vox0tdXZ.css');
+                detailsDiv.innerHTML += `<p>✓ CSS loaded (${cssResponse.status})</p>`;
+
+                // Test 4: JSON data exists
+                statusDiv.textContent = 'Test 4: Fetching JSON data (9MB - may take time)...';
+                const jsonResponse = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/prompts_index.json');
+                const jsonData = await jsonResponse.json();
+                detailsDiv.innerHTML += `<p>✓ JSON loaded (${jsonData.prompts.length} prompts)</p>`;
+
+                // Test 5: Check a sample prompt has metadata
+                const samplePrompt = jsonData.prompts[0];
+                const hasMetadata = samplePrompt.metadata && (samplePrompt.metadata.whatItDoes || samplePrompt.metadata.howToUse);
+                detailsDiv.innerHTML += `<p>${hasMetadata ? '✓' : '✗'} Sample prompt has metadata</p>`;
+                if (hasMetadata) {
+                    detailsDiv.innerHTML += `<pre>${JSON.stringify(samplePrompt.metadata, null, 2).substring(0, 500)}...</pre>`;
+                }
+
+                statusDiv.textContent = 'All tests passed! ✓';
+                statusDiv.style.color = 'green';
+                statusDiv.style.fontWeight = 'bold';
+
+            } catch (error) {
+                statusDiv.textContent = 'Test failed! ✗';
+                statusDiv.style.color = 'red';
+                detailsDiv.innerHTML += `<p style="color:red">Error: ${error.message}</p>`;
+            }
+        }
+
+        testSite();
+    </script>
+</body>
+</html>

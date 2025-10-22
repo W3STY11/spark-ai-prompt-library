@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BLOB_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -106,7 +107,7 @@ export default function FavoritesPage({ isDark, toggleTheme }) {
       }
 
       // Fetch all prompts
-      const response = await fetch('/prompts_index.json');
+      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 

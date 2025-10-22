@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPARK - Debug Test</title>
+</head>
+<body>
+  <h1>SPARK Deployment Test</h1>
+  <div id="status">Loading...</div>
+  <div id="data"></div>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const dataEl = document.getElementById('data');
+
+    // Test fetching from blob storage
+    fetch('https://sparkpromptstorage.blob.core.windows.net/data/prompts_index.json')
+      .then(res => {
+        statusEl.innerHTML = `Response status: ${res.status} ${res.statusText}`;
+        return res.json();
+      })
+      .then(data => {
+        dataEl.innerHTML = `
+          <h2>✅ Data loaded successfully!</h2>
+          <p><strong>Total prompts:</strong> ${data.meta.total_prompts}</p>
+          <p><strong>Departments:</strong> ${data.departments.length}</p>
+          <p><strong>First prompt:</strong> ${data.prompts[0].title}</p>
+          <p><strong>Subcategory:</strong> ${data.prompts[0].subcategory}</p>
+        `;
+      })
+      .catch(err => {
+        statusEl.innerHTML = `❌ Error: ${err.message}`;
+        dataEl.innerHTML = `<pre>${err.stack}</pre>`;
+      });
+  </script>
+</body>
+</html>

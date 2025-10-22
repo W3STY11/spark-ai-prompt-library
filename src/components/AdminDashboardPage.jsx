@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BLOB_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -50,6 +51,7 @@ import { glass } from '../ui/themeGlass';
 import Header from './Header';
 import EditPromptModal from './EditPromptModal';
 import PendingPromptsSection from './PendingPromptsSection';
+import { API_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
   container: {
@@ -209,7 +211,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
   const loadPrompts = async () => {
     try {
-      const response = await fetch('/prompts_index.json');
+      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
       if (!response.ok) throw new Error('Failed to load prompts');
       const data = await response.json();
 
@@ -292,7 +294,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/prompts/${currentPrompt.id}`, {
+      const response = await fetch(API_ENDPOINTS.PROMPT_BY_ID(currentPrompt.id), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -341,7 +343,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleBulkDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/prompts/bulk-delete', {
+      const response = await fetch(API_ENDPOINTS.PROMPTS_BULK_DELETE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -500,7 +502,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
       const token = localStorage.getItem('adminToken');
 
-      const response = await fetch('/api/prompts/bulk', {
+      const response = await fetch(API_ENDPOINTS.PROMPTS_BULK, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -534,7 +536,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleManualBackup = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/admin/backup', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_BACKUP, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -559,7 +561,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const handleValidate = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/admin/validate', {
+      const response = await fetch(API_ENDPOINTS.ADMIN_VALIDATE, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

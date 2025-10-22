@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Site Accessibility Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 1200px; margin: 0 auto; }
+    .test { margin: 20px 0; padding: 15px; border: 2px solid #ddd; border-radius: 8px; }
+    .success { background-color: #d4edda; border-color: #c3e6cb; }
+    .error { background-color: #f8d7da; border-color: #f5c6cb; }
+    .pending { background-color: #fff3cd; border-color: #ffeeba; }
+    pre { background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>SPARK Deployment Accessibility Test</h1>
+  <p>Testing if the deployed site and blob storage are accessible...</p>
+
+  <div id="test1" class="test pending">
+    <h3>Test 1: Site HTML Loading</h3>
+    <p id="test1-status">Testing...</p>
+    <pre id="test1-result"></pre>
+  </div>
+
+  <div id="test2" class="test pending">
+    <h3>Test 2: JavaScript Bundle Loading</h3>
+    <p id="test2-status">Testing...</p>
+    <pre id="test2-result"></pre>
+  </div>
+
+  <div id="test3" class="test pending">
+    <h3>Test 3: CSS Loading</h3>
+    <p id="test3-status">Testing...</p>
+    <pre id="test3-result"></pre>
+  </div>
+
+  <div id="test4" class="test pending">
+    <h3>Test 4: Blob Storage JSON Loading</h3>
+    <p id="test4-status">Testing...</p>
+    <pre id="test4-result"></pre>
+  </div>
+
+  <div id="test5" class="test pending">
+    <h3>Test 5: Data Structure Validation</h3>
+    <p id="test5-status">Testing...</p>
+    <pre id="test5-result"></pre>
+  </div>
+
+  <script>
+    async function runTests() {
+      // Test 1: Site HTML
+      try {
+        const res = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net');
+        const html = await res.text();
+        document.getElementById('test1').className = 'test success';
+        document.getElementById('test1-status').textContent = `✅ SUCCESS - Status: ${res.status}`;
+        document.getElementById('test1-result').textContent = `HTML length: ${html.length} bytes\nContains root div: ${html.includes('id="root"')}`;
+      } catch (error) {
+        document.getElementById('test1').className = 'test error';
+        document.getElementById('test1-status').textContent = `❌ FAILED`;
+        document.getElementById('test1-result').textContent = error.message;
+      }
+
+      // Test 2: JavaScript
+      try {
+        const res = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/assets/main-NZGmNDfL.js');
+        document.getElementById('test2').className = 'test success';
+        document.getElementById('test2-status').textContent = `✅ SUCCESS - Status: ${res.status}`;
+        document.getElementById('test2-result').textContent = `JS bundle size: ${res.headers.get('content-length')} bytes`;
+      } catch (error) {
+        document.getElementById('test2').className = 'test error';
+        document.getElementById('test2-status').textContent = `❌ FAILED`;
+        document.getElementById('test2-result').textContent = error.message;
+      }
+
+      // Test 3: CSS
+      try {
+        const res = await fetch('https://gray-ocean-059c8510f.3.azurestaticapps.net/assets/main-vox0tdXZ.css');
+        document.getElementById('test3').className = 'test success';
+        document.getElementById('test3-status').textContent = `✅ SUCCESS - Status: ${res.status}`;
+        document.getElementById('test3-result').textContent = `CSS size: ${res.headers.get('content-length')} bytes`;
+      } catch (error) {
+        document.getElementById('test3').className = 'test error';
+        document.getElementById('test3-status').textContent = `❌ FAILED`;
+        document.getElementById('test3-result').textContent = error.message;
+      }
+
+      // Test 4: Blob Storage
+      try {
+        const res = await fetch('https://sparkpromptstorage.blob.core.windows.net/data/prompts_index.json');
+        const data = await res.json();
+        document.getElementById('test4').className = 'test success';
+        document.getElementById('test4-status').textContent = `✅ SUCCESS - Status: ${res.status}`;
+        document.getElementById('test4-result').textContent = `Total prompts: ${data.meta.total_prompts}\nDepartments: ${data.departments.length}\nFirst prompt: ${data.prompts[0].title}`;
+
+        // Test 5: Data Structure
+        const samplePrompt = data.prompts[0];
+        const hasSubcategory = samplePrompt.subcategory && samplePrompt.subcategory.length > 0;
+        const hasMetadata = samplePrompt.metadata && samplePrompt.metadata.whatItDoes;
+
+        document.getElementById('test5').className = 'test ' + (hasSubcategory && hasMetadata ? 'success' : 'error');
+        document.getElementById('test5-status').textContent = hasSubcategory && hasMetadata ? '✅ SUCCESS' : '❌ FAILED';
+        document.getElementById('test5-result').textContent = `Sample Prompt:\nTitle: ${samplePrompt.title}\nDepartment: ${samplePrompt.department}\nSubcategory: ${samplePrompt.subcategory || 'MISSING'}\nHas metadata: ${hasMetadata}\nWhat It Does: ${hasMetadata ? samplePrompt.metadata.whatItDoes.substring(0, 100) + '...' : 'MISSING'}`;
+      } catch (error) {
+        document.getElementById('test4').className = 'test error';
+        document.getElementById('test4-status').textContent = `❌ FAILED`;
+        document.getElementById('test4-result').textContent = error.message;
+
+        document.getElementById('test5').className = 'test error';
+        document.getElementById('test5-status').textContent = `❌ SKIPPED`;
+        document.getElementById('test5-result').textContent = 'Previous test failed';
+      }
+    }
+
+    runTests();
+  </script>
+</body>
+</html>

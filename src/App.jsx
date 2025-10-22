@@ -7,7 +7,7 @@ import ViewPage from './components/ViewPage';
 import FavoritesPage from './components/FavoritesPage';
 import AdminLoginPage from './components/AdminLoginPage';
 import AdminDashboardPage from './components/AdminDashboardPage';
-import CopilotIntegration from './components/CopilotIntegration';
+// import CopilotIntegration from './components/CopilotIntegration';
 import { gradients } from './ui/themeGlass';
 
 const useStyles = makeStyles({
@@ -57,7 +57,7 @@ function App({ isDark, setIsDark }) {
         <Route path="/admin-login" element={<AdminLoginPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/admin" element={<AdminDashboardPage isDark={isDark} toggleTheme={toggleTheme} />} />
       </Routes>
-      <CopilotIntegration />
+      {/* <CopilotIntegration /> */}
     </div>
   );
 }

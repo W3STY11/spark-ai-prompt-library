@@ -1,6 +1,6 @@
 // Admin Dashboard Logic
 
-const API_URL = '';
+const API_URL = 'http://spark-api-server.eastus.azurecontainer.io:3001';
 
 let allPrompts = [];
 let filteredPrompts = [];

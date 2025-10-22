@@ -1,0 +1,178 @@
+**Title:** ACK FREEZE → Read-only inventory → (Post-demo) set up GitHub→Azure SWA staging + PR previews + first UI tightening PR
+
+**Guardrails (read carefully):**
+
+* **Do not** modify or redeploy **production**.
+* **Do not** write to Azure resources or Blob Storage.
+* **Do not** change `prompts_index.json` or the Tampermonkey script.
+* **No builds or deploys to production** until I explicitly say **GO**.
+* **Blackout window:** No merges/deploys around **Oct 23, 2025 — 11:30 AM ET** (Oliver demo).
+
+**Current prod URLs (leave as-is):**
+
+* SWA (prod): `https://gray-ocean-059c8510f.3.azurestaticapps.net`
+* Blob thumbnails: `https://sparkpromptstorage.blob.core.windows.net/thumbnails/`
+
+---
+
+### Phase A — Acknowledge freeze + produce read-only inventory (now)
+
+1. Reply exactly: **`ACK FREEZE — read-only mode engaged.`**
+2. Run **read-only** Azure queries and return a compact table:
+
+```bash
+# Static Web App (filter by known hostname stem)
+az staticwebapp list \
+  --query "[?contains(defaultHostname, 'gray-ocean-059c8510f')].{name:name,rg:resourceGroup,location:location,hostname:defaultHostname,branch:branch}" \
+  -o table
+
+# (Optional) Storage account metadata for sparkpromptstorage
+az storage account list \
+  --query "[?name=='sparkpromptstorage'].{name:name,rg:resourceGroup,location:primaryLocation,kind:kind,sku:sku.name}" \
+  -o table
+```
+
+3. Detect the local project type (Vite/React/etc.) and confirm the **build output folder** (expected: `dist`). Report back (no build runs).
+
+4. Create a **local** git tag (no remote pushes yet) that matches the current production snapshot:
+
+```bash
+git init -q 2>/dev/null || true
+git add -A
+git commit -m "Prod freeze snapshot (Oct 22, 2025)" || true
+git tag -f prod-freeze-2025-10-22
+```
+
+Return: the inventory table + confirmation that tag exists (`git show --quiet --pretty=oneline prod-freeze-2025-10-22`).
+
+---
+
+### Phase B — Prepare (post-demo) safe CI/CD plan; generate files but **pause before pushing**
+
+> **Do not** execute anything in this phase until I say **GO** after the Oliver meeting. You may **prepare** files/commands locally and show diffs.
+
+1. **Repo setup plan (no push yet):**
+
+   * Target repo name: `spark-prompt-library` (private).
+   * Default branches: `main` (prod), `dev` (staging).
+   * Branch protections: protect `main` (require PR + passing checks). Prepare a short checklist I can apply in GitHub UI.
+
+2. **Create GitHub Actions workflow file locally** at `.github/workflows/swa-ci.yml` with the following content (adjust `app_location`/`output_location` if you detect different paths):
+
+```yaml
+name: Azure Static Web Apps CI
+
+on:
+  push:
+    branches: [dev]                    # stage on dev pushes
+  pull_request:
+    branches: [dev, main]              # PR previews
+  workflow_dispatch:                   # manual runs (safe)
+
+concurrency:
+  group: swa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview_and_dev:
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to Azure Static Web Apps (preview/dev)
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"
+          output_location: "dist"
+          production_branch: "main"
+
+  production:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: production             # require manual approval in repo Settings → Environments
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to Azure Static Web Apps (production)
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "/"
+          output_location: "dist"
+          production_branch: "main"
+```
+
+3. **Produce a one-page “Secrets & Approvals” checklist** for me (markdown):
+
+   * Azure Portal path to the SWA: **Overview → Manage deployment token** (copy token).
+   * GitHub: **Settings → Secrets and variables → Actions** → create secret `AZURE_STATIC_WEB_APPS_API_TOKEN`.
+   * GitHub: **Settings → Environments → production** → require reviewer (me) so main deploys pause for manual approval.
+   * GitHub: **Settings → Branches → main** → Require PR + checks (and optionally protect `dev`).
+
+4. **Generate (but do not run) exact CLI commands** I’ll use after GO:
+
+   * `gh repo create ...` (private)
+   * `git remote add origin ... && git push -u origin main && git push origin dev --tags`
+   * Optional: `az staticwebapp secrets reset --name <SWA_NAME> --resource-group <RG>` (only if we need to rotate the token; don’t run).
+
+Return: the new workflow file diff, the checklist, and the ready-to-run command block. **Pause here** awaiting my explicit GO.
+
+---
+
+### Phase C — First UI tightening in an isolated branch (code-only, no prod deploy)
+
+Create **but don’t merge** branch `feat/card-tightening` and implement exactly this:
+
+1. **Single-line header row** on Browse cards
+
+   * Keep **Title · WordCount · DepartmentBadge** on one line.
+   * Use flex/grid with `min-w-0` and `truncate text-ellipsis` for long titles.
+   * Ensure the badge and word count don’t wrap.
+
+2. **Reduce vertical whitespace**
+
+   * Trim top/bottom padding in the card header/content so more cards fit above the fold. **Do not** change font sizes/line heights.
+
+3. **Image/example indicator must not change card height**
+
+   * Reposition the indicator to a non-reflow area (e.g., absolutely-positioned in a corner) so it never pushes header content.
+
+4. **Acceptance tests & proof**
+
+   * At ~1366×768, ~9 cards visible without header wrapping.
+   * No layout shift when indicator appears.
+   * Long titles truncate with ellipsis.
+   * Provide before/after screenshots and a bullet list of changed files.
+
+5. Open a PR → `dev`. The CI should publish a **preview URL**. Share that URL plus screenshots. **Do not merge.**
+
+---
+
+### Phase D — Hand-off & confirmations
+
+When done, return all of the following in one message:
+
+* `ACK FREEZE` + the **inventory table** from Phase A
+* Confirmation of local tag `prod-freeze-2025-10-22`
+* The **swa-ci.yml** file content (as created)
+* The **Secrets & Approvals** checklist (markdown)
+* The prepared **command block** I’ll run after I say GO
+* Link(s)/artifact(s) for the **card-tightening PR** preview and screenshots
+
+**If any step might modify production or write to Azure, STOP and ask me for GO.**
+
+---
+
+That’s it — follow these phases exactly and pause before any action that would change cloud resources or production.

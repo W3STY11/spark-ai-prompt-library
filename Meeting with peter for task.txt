@@ -1,0 +1,348 @@
+Transcript
+
+October 21, 2025, 3:22PM
+
+[]
+Nicholas Westburg 0:47
+You're gonna love what I'm gonna show you.
+
+[]
+Peter Wolf 0:56
+Some reason now, whenever I join meetings, it always has my mic off and
+my uh.
+
+[]
+Nicholas Westburg 1:01
+Yeah.
+Let me.
+
+[]
+Peter Wolf 1:04
+Not sure why it does that, so I was just trying to get the from the last
+fall.
+So we can find out whether.
+
+[]
+Nicholas Westburg 1:15
+Let me show you something real quick. I think you're gonna like just
+briefly after sitting in on that meeting. So this is cope. This is just
+solely the button.
+
+[]
+Peter Wolf 1:17
+Hello.
+
+[]
+Nicholas Westburg 1:26
+Can you see my screen?
+
+[]
+Peter Wolf 1:27
+Yep.
+
+[]
+Nicholas Westburg 1:28
+But check this out O.
+I have the button like Norwal.
+
+[]
+Peter Wolf 1:34
+Mhm.
+
+[]
+Nicholas Westburg 1:36
+You can click it like normal. We'll go through this part. We'll just
+simply I'll go through everything here. So this is 1 whatever. Same as
+before, copy to copilot.
+
+[]
+Peter Wolf 1:47
+Yeah, hold on. Hold on a second. Hold on a second. Hold on a second. Be
+wolf.
+
+[]
+Nicholas Westburg 1:49
+Yeah.
+
+[]
+Peter Wolf 2:44
+My contractors at Home Depot, they're gonna be calling me for a.
+Credit card here for a purchase. Hold on a second.
+
+[]
+Nicholas Westburg 2:54
+Yeah, no worries.
+
+[]
+Peter Wolf 3:29
+OK, go ahead.
+
+[]
+Nicholas Westburg 3:33
+So we copied that prompt in. Can you hear me?
+
+[]
+Peter Wolf 3:37
+Yep.
+
+[]
+Nicholas Westburg 3:39
+So new additions.
+
+[]
+Peter Wolf 3:41
+Yep, I see it. Pin it. Yep.
+
+[]
+Nicholas Westburg 3:43
+Minimize.
+This changes color. I'll get to this in a minute. Prompts in there and
+go back. You can now pin it and then go along your day tight.
+
+[]
+Peter Wolf 3:54
+Hey, can you unpin it a second? Yeah, yeah, unpin it for a second.
+
+[]
+Nicholas Westburg 3:55
+Can also drag.
+
+[]
+Peter Wolf 4:02
+OK, I was just wondering, it looked like it's shifted, but that's great.
+So you can pin it on the screen and you can move it around a different
+spot. Awesome.
+
+[]
+Nicholas Westburg 4:06
+Yeah, so this can move regardless. So it's called overlay. So with
+overlay right when I try to type, I can't, but when I pin it, the
+overlay is gone, but I can still move regardless. I can minimize.
+And when it's minimized, that is orange. When it's open, it's green. So
+let me show you another thing that I added. Let's just start.
+
+[]
+Peter Wolf 4:22
+Yeah.
+Awesome.
+
+[]
+Nicholas Westburg 4:33
+With a clean conversation copilot.
+This is pretty cool.
+And this could get expanded on, right? So where's the button?
+That might not be the right one.
+I'm just gonna do this.
+So we'll click on it.
+Go over, grab the same prompt.
+Copy to copilot. Boom, right? Pretty cool sidebar, but now.
+This button here, if you right click, this is what you get.
+
+[]
+Peter Wolf 6:04
+Hold one second. Hold one second.
+
+[]
+Nicholas Westburg 6:07
+Yeah.
+
+[]
+Peter Wolf 6:09
+It was.
+All right, so I'll go ahead and show you were right-clicking. Go ahead,
+extra stuff.
+
+[]
+Nicholas Westburg 7:17
+Yeah, so this is just a fresh screen.
+Restart, right? We have the floating button like normal. So now you
+right click and you get this.
+
+[]
+Peter Wolf 7:21
+Yeah, yeah, yeah.
+Open library Hide sidecar reset.
+
+[]
+Nicholas Westburg 7:31
+Yeah.
+Take the prompt.
+
+[]
+Peter Wolf 7:34
+Good.
+
+[]
+Nicholas Westburg 7:43
+Turns green. Same thing right? Now if we want to pin it, minimize it,
+turns orange and click reset position goes down to the bottom right.
+Uh, show sidecar. It'll pop right up.
+
+[]
+Peter Wolf 8:00
+Yeah.
+
+[]
+Nicholas Westburg 8:02
+Hide side card. Hide the side card show.
+
+[]
+Peter Wolf 8:02
+Nice.
+Looks good, dude.
+
+[]
+Nicholas Westburg 8:07
+So then you have help and docs. So this explains everything here. So
+floating button, click open library or restore side card, drag move
+button anywhere, right click.
+
+[]
+Peter Wolf 8:17
+Hold on, what is that? Where is? Where was that? And oh, in the help
+docs. OK, got you.
+
+[]
+Nicholas Westburg 8:20
+In the area called the action menu.
+
+[]
+Peter Wolf 8:23
+Yeah, cool.
+
+[]
+Nicholas Westburg 8:25
+So help docs and they'll just show up. So purple means it's idle closed.
+Green means the sidecar's open. Amber I guess is the orange sidecar
+minimized. So like if I.
+
+[]
+Peter Wolf 8:26
+Awesome.
+
+[]
+Nicholas Westburg 8:41
+close that it's minimized and if I I guess.
+One second, I'm gonna try this updated version two. It just made me
+which will.
+Refresh the conversation that if a user wants to have a clear control A
+control C.
+Let's see this version.
+Yeah, so this is pretty cool. So new conversation. So let's.
+
+[]
+Peter Wolf 9:42
+All right, so I gotta jump on another call. I'm sending you on a paste
+for you the transcript from this morning.
+
+[]
+Nicholas Westburg 9:49
+Cry.
+
+[]
+Peter Wolf 9:49
+And what you need to do is run this through, put it in the chat.
+
+[]
+Nicholas Westburg 9:56
+New conversation Bang. So then it's purple again.
+
+[]
+Peter Wolf 9:57
+You wanna you wanna focus on? Oops.
+
+[]
+Nicholas Westburg 10:03
+Cool. All right.
+
+[]
+Peter Wolf 10:04
+Hold on, ****.
+****.
+
+[]
+Nicholas Westburg 10:07
+Yeah, that's what I've done. So a little bit of the.
+Clean it up from earlier.
+
+[]
+Peter Wolf 10:13
+Good. I'm on.
+
+[]
+Nicholas Westburg 10:20
+And if you look closely, the button looks like it's like.
+See it like like pulsing. It's pretty cool.
+
+[]
+Peter Wolf 10:33
+What is going on here?
+Not what I want.
+Well.
+Oh.
+That's frick.
+OK.
+So I asked for a transcript and it's got all these images in it. I don't
+know why it's including the images, but I'm attaching this document.
+What you want to do is focus on the topic about how do we migrate this
+to.
+To to the Microsoft environment. How do we host it? How do we manage it?
+Right. It was a it was comments that Wilfred made and that Oliver made
+and that I made about, you know, can this be on well in SharePoint? Can
+it be on Teams? Can it be? Does it need a?
+Does it need a web server? So that's what I need you to.
+To hold on to, to incorporate or to ask. Um.
+
+[]
+Nicholas Westburg 13:12
+Yeah, what I think is that the code's gonna be hosted through enterprise
+GitHub account, which I think all developers have access to, right?
+
+[]
+Peter Wolf 13:21
+Yeah, I don't know if we use that or not. Not all, not all companies use
+that. I have no idea if we use it or or don't use it. There are other
+repositories that companies use, so.
+
+[]
+Nicholas Westburg 13:27
+Yeah.
+
+[]
+Peter Wolf 13:33
+That's what you need. You need to find out if if we didn't have a GitHub
+repository, right? How would we host this code? Where would we put it?
+What's the? Here we go. Oh, process workshop.
+
+[]
+Nicholas Westburg 13:37
+Yeah.
+Yeah.
+
+[]
+Peter Wolf 13:49
+OK, I gotta jump to this other call. Can you do research on that? And
+then I'll get back to you in a few minutes. OK. They should. My next
+call shouldn't take me more. I mean, maybe till 12, so 25 minutes. OK.
+
+[]
+Nicholas Westburg 13:53
+Yeah.
+Yeah, did you send me the?
+Yeah, that's fine. I gotta get some lunch. But did you send me that
+e-mail?
+
+[]
+Peter Wolf 14:01
+OK, I just I just sent it already. I put it in the chat.
+
+[]
+Nicholas Westburg 14:06
+OK, great. Yeah, I'll get on that now and kind of dissect it. Thanks.
+
+[]
+Peter Wolf 14:07
+Should be there. OK. Thanks. Yep. Bye.
+
+[]
+Peter Wolf stopped transcription

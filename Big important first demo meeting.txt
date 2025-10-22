@@ -1,0 +1,1212 @@
+Transcript
+
+October 21, 2025, 11:19AM
+
+[]
+started transcription
+
+[]
+Nicholas Westburg 0:19
+But.
+
+[]
+2:12
+Hey.
+
+[]
+Nicholas Westburg 2:15
+Hi.
+
+[]
+Peter Wolf 2:16
+All right, let's see what we got.
+
+[]
+Nicholas Westburg 3:09
+It's uh.
+Too much.
+You know what I've been taking at night? Have you heard of ashwagandha?
+
+[]
+Peter Wolf 3:26
+What are you saying?
+
+[]
+Nicholas Westburg 3:28
+Ashwaganda. It's like you buy from like CVS or Walmart. I guess it's
+like a melatonin, man. It knocks you out cold, knocks you out cold. I
+would get like really, really good sleep. I'm not saying it's like a
+good thing, but.
+
+[]
+Peter Wolf 3:30
+No, who's that?
+Done.
+Yeah.
+
+[]
+Nicholas Westburg 3:45
+OK, what am I? So I'm gonna share my screen.
+So admin log.
+Yeah.
+
+[]
+Peter Wolf 4:46
+the It the
+
+[]
+Nicholas Westburg 4:56
+Alright, so.
+Um.
+How do we want to do this? So let's just run through the button I guess
+first.
+
+[]
+Peter Wolf 5:04
+OK.
+Yeah, OK.
+
+[]
+Nicholas Westburg 5:13
+Same as before, I have it in tamper monkey just for, you know, time's
+sake, it opens up.
+
+[]
+Peter Wolf 5:17
+Yeah.
+
+[]
+Nicholas Westburg 5:24
+You know, blah blah blah. Uh, check business.
+Scroll down. Oh, this one looks pretty cool.
+Tips, right? Same thing with the prompt does.
+Copy to copilot. Um.
+Same exact prompt.
+About right, like if you go back and compare.
+And then yeah, this is just rendering. I think this is with copilot. I
+need to figure this out, but it redirects you back for the example
+outputs, which I'm not even gonna focus on today. But yeah, we can clean
+that up.
+Come here.
+
+[]
+Peter Wolf 6:23
+Scroll down, look, don't lie yet.
+
+[]
+Nicholas Westburg 6:24
+Right.
+Oh, sorry.
+
+[]
+Peter Wolf 6:26
+Just because you see that there's that content we're supposed to fill
+in, right? So we should, we should pick something to fill in. And this
+one I don't think is good. This is a investment thing, right?
+
+[]
+Nicholas Westburg 6:37
+Yeah, so I I was working on, I got sidetracked and there was a really
+cool, you know, I was discussing this button and I got it working a
+little bit just for time's sake. I was like, I can't focus on this, but
+it was like every single prompt somehow.
+Cloud code made it so that the user can fill in. There's for every
+single prompt automatically through some type of code, right? It
+formulates a text box, so it copies to copilot and the user gets shown a
+little text box and they fill in the little text box with whatever
+information.
+And then it fills in the fillers for whatever prompt they're using, so
+it's their own.
+
+[]
+Peter Wolf 7:19
+Yes, you you know what we had, we had developed or I had developed some
+prompts before where I started direction I was going was in the actually
+in the in that in that custom prompt GPT.
+
+[]
+Nicholas Westburg 7:27
+Yeah.
+
+[]
+Peter Wolf 7:34
+From the engineering GPT, I had rewritten them to say that the the first
+I had rewritten them to say that the request for information should all
+be at the at one place, kind of like this was right, not spread out
+throughout the thing, but in one place where you just entered then what
+I did.
+It's changed a lot. You can say when the prompt runs, first thing you
+should do is just ask me for the input. That way you don't have to find
+where you put it to enter stuff. You just run it and it says, hey,
+here's the can you give me this information? And if you give it to it,
+great. And if you don't give it to it, then OK, then you don't.
+
+[]
+Nicholas Westburg 8:00
+Yeah, yeah, yeah.
+Yeah.
+
+[]
+Peter Wolf 8:14
+You don't use it, right? And it goes generic. I think. I think we should
+think about at least going forward. I don't think we try and change all
+the history of them, but when we're developing props, I think we should
+develop them that way.
+
+[]
+Nicholas Westburg 8:17
+Yeah, I think.
+Yeah.
+Yeah, it looks really good too. So like for example like this, like each
+prompt via code like like an whatever, like an algorithm like detects
+very simply. I've figured out like no changes of everything but it
+right? Like fill in like the recent news information about me, right?
+
+[]
+Peter Wolf 8:44
+Yeah.
+
+[]
+Nicholas Westburg 8:46
+Where the user would put stuff in here? Well, I did a few tests
+yesterday and it would this right? Right now it's just popping up right
+here.
+What would happen was click user clicks here, you know, whatever. Let's
+say they come across this prompt, copy to copilot. Well, then what
+happens is this new little window, right? And it's like, please fill in.
+
+[]
+Peter Wolf 9:11
+I mean, if they could do something like that, that would be, that would
+be great, right? That's.
+
+[]
+Nicholas Westburg 9:15
+Oh yeah, and then it formats and then it adds the prompt, but with the
+user's inputs rather than them trying to grasp the entire prompt.
+
+[]
+Peter Wolf 9:21
+Yeah, yeah. No, if it's possible to do that, that would be cool. That
+would be cool. So for now we just say you have to enter the content,
+right? Then obviously it depends on how you write the prompt. And as
+soon as the prompts go in there, someone could take this prompt, copy
+the prompt, change the prompt so that it has the specific.
+
+[]
+Nicholas Westburg 9:25
+Yeah, yeah, yeah.
+Yeah.
+
+[]
+Peter Wolf 9:41
+Information they want and just stored it right. It could be that
+information would be the information they want, right? And then that
+prompt would be saved that way or save a copy of the prompt with what
+they want. Otherwise they enter the additional details they need, right?
+So I think that's fine. Do me a favor, go back to where the prompts are
+in the prompt library.
+
+[]
+Nicholas Westburg 9:43
+Yeah.
+Yeah.
+
+[]
+Peter Wolf 10:01
+Yeah.
+
+[]
+Nicholas Westburg 10:08
+Browse. I removed those images too.
+Is to.
+
+[]
+Peter Wolf 10:11
+Drill into any prompt. Um.
+And we're going to go pick a couple of prompts so that we're going to go
+find specific ones that fit with something more aligned with what we
+want. Now go to marketing, go to departments, go to marketing.
+
+[]
+Nicholas Westburg 10:30
+Department with business there.
+
+[]
+Peter Wolf 10:35
+OK, so I want to analyze this, yeah.
+Let's pick that third one down analyze industry trends.
+Scroll down the right.
+Go down on the right hand side.
+
+[]
+Nicholas Westburg 10:54
+Oh, this is pretty good. Yeah, yeah, yeah.
+
+[]
+Peter Wolf 10:56
+Scroll the right hand side. Keep going.
+Yeah, so that it that output. Can you can you double click on that
+output? Like if you can't read that right? It's so small or something.
+Yeah. And then is that even readable? Can you can you zoom inward? I can
+see you zoom outward. Can you zoom inward? Oh wow, yeah.
+
+[]
+Nicholas Westburg 11:14
+Uh.
+
+[]
+Peter Wolf 11:21
+Yeah, that's that's a problem, right?
+It's not really viewable.
+
+[]
+Nicholas Westburg 11:29
+I don't know why it's not. Why can I? I can't even like.
+
+[]
+Peter Wolf 11:33
+Your **** looked like you could zoom out, but you couldn't zoom in like
+it was already zoomed in.
+
+[]
+Nicholas Westburg 11:38
+What the heck? You know, it's just a little stupid. I don't know why
+this is even here. I mean, it's just like added.
+
+[]
+Peter Wolf 11:50
+Alright, so we need to take note like there's gonna be things we're
+gonna have to clean up and we're gonna have to stay really focused that.
+Um.
+Yeah, we're gonna have to stay really focused on what specific things we
+want to clean up, but that's gonna be one of them, because right now
+that's not really usable like it is, right? The font's too small or the
+rendition or the rendering is is not. And over here, the same thing when
+you get over there.
+Well, over there it wasn't even output, right? It wasn't even showing.
+
+[]
+Nicholas Westburg 12:22
+Yeah.
+
+[]
+Peter Wolf 12:40
+Did it fail? No, it triggered.
+Oh, it didn't populate.
+
+[]
+Nicholas Westburg 13:01
+That one did.
+
+[]
+Peter Wolf 13:01
+Yeah, we're gonna have to find out if it's an issue because of the
+prompt or because of something else so that we don't get one that's not
+gonna work.
+
+[]
+Nicholas Westburg 13:12
+Uh, just try this random.
+Yeah, I'll try that again.
+Now it worked. Weird. OK, analyze industry trends.
+
+[]
+Peter Wolf 13:46
+Yes, I mean that all looks good, right? The that we need to repair and
+then we need to figure out why it's so small in the other. But go go to
+the prompt, execute the prompt. Does it look it's asking us for
+something? It must, right?
+
+[]
+Nicholas Westburg 13:52
+Yeah.
+Yeah, turn on.
+
+[]
+Peter Wolf 14:02
+My goal, my obstacles, my available time, my environment, yeah.
+Yeah.
+
+[]
+Nicholas Westburg 14:14
+I mean it ask you, I mean, which is good.
+
+[]
+Peter Wolf 14:15
+Yeah, yeah. Thanks for the detailed instructions. Hold on, let me just
+see what it says. Again, I don't want to use any one that's an
+investment wall. We're going to have to find some good ones to use, but.
+
+[]
+Nicholas Westburg 14:22
+Yeah.
+
+[]
+Peter Wolf 14:34
+Yeah.
+OK. Let's go back over to the Ortfolio and let's, I mean to the prompts
+and let's let's try and find some that fit good. Let's let's go to the
+marketing first because I think that's where we'll find the.
+
+[]
+Nicholas Westburg 15:00
+What do you want to shoot for like 5?
+
+[]
+Peter Wolf 15:02
+I'm just saying I just want to find. I just want to find some that seem
+like good titles to look at. Hold on. Set sentiment analysis, automate
+e-mail sequence, brainstorm, build narrative flow.
+Go up to the assess, go up a little bit, go up to assess the competitive
+environment.
+
+[]
+Nicholas Westburg 15:20
+Dulicates too.
+
+[]
+Peter Wolf 15:26
+So it's competitive landscape. So hold on. Dr. Roll, expert market
+research specialist and focus on. Yeah, right. He focus on e-commerce.
+But that's where exactly one that should say it was, you know, asking
+for inputs. Hey, Nick, you got to give me a second. I'll be right back,
+OK.
+
+[]
+Nicholas Westburg 15:30
+Uh.
+Dropping that we don't know.
+Yep, Yep.
+
+[]
+Peter Wolf 20:50
+Sorry, I had to put my trash up.
+
+[]
+Nicholas Westburg 20:53
+No worries. I was just doing some digging too. So what we can do too for
+the presentation is I just went over and favorited a few and we can just
+keep all of them in favorites.
+
+[]
+Peter Wolf 21:01
+OK.
+And this.
+
+[]
+Nicholas Westburg 21:05
+So I I just did a few, I just feel.
+
+[]
+Peter Wolf 21:06
+Yeah, the only problem that industry trends once was like a what was it
+a blogger or something? Click on that first one. Analyze industry
+trends.
+So.
+OK, so that was that was good.
+
+[]
+Nicholas Westburg 21:35
+You want me to send you these too? I can just send them in the chat.
+
+[]
+Peter Wolf 21:40
+Or was I on industry areas of interest?
+Yeah, um.
+Again, this whole model of making the edits inside the thing is not
+great, but.
+
+[]
+Nicholas Westburg 22:03
+Yeah, I'm telling you what I what I had briefly for like that where I
+had to switch up was really, really actually.
+
+[]
+Peter Wolf 22:07
+Yeah.
+I have to figure that back out, yeah.
+
+[]
+Nicholas Westburg 22:13
+Brings value kind of stuff, yeah.
+This is good too. I I'm not sure what you're looking to, uh, present,
+but like the.
+Like create action plan is pretty cool, like the productivity stuff.
+Adopt the role of an expert strategy. Your task is to help a user create
+a comprehensive action plan template to achieve a specified goal within
+a given time frame. Identify the goal and time frame upfront, blah blah
+blah.
+User my goal specify the goal to be achieved my timeframe response goal.
+
+[]
+Peter Wolf 22:53
+Yeah, but really, are you gonna fill in all that **** down the bottom
+there?
+
+[]
+Nicholas Westburg 22:58
+Let's see when you paste it in. I think that's just how the prompt like
+if we go here.
+Yeah.
+
+[]
+Peter Wolf 23:19
+And what we need to emphasize is all these. They can edit them and put
+in the exact stuff they want. These are samples, right? So it won't
+necessarily be that this is the way they're going to use the prompt.
+This prompt is an idea. Then they come in here and they can they can
+adjust it however they want.
+
+[]
+Nicholas Westburg 23:29
+Yeah.
+Yeah. So it's not it's, it's, yeah, it's starting a little bit more
+information about you. What is your specific goal? What's your target?
+This is like, this is so ID.
+
+[]
+Peter Wolf 23:46
+OK, but at least it said. Yeah, but at least it said asking you what it
+what for input. So hold on, let's let's say this as a completion
+certificate organized.
+
+[]
+Nicholas Westburg 23:52
+Yeah.
+
+[]
+Peter Wolf 23:59
+What's the time frame to achieve the goal? So let's let's put did it
+automatically put that one and two down the bottom or do you do that?
+OK, so then just put put that your goal is to is to launch a new
+financial AI.
+
+[]
+Nicholas Westburg 24:06
+I just did. No, I just did that.
+
+[]
+Peter Wolf 24:15
+Um.
+AI enablement hub.
+And change it to Financial Operations, Financial Operations, AI
+Enablement Hub and then wait and if AI Enablement Hub. Hold on Cole
+launch Financial Operations, AI Enablement Hub for for.
+
+[]
+Nicholas Westburg 24:29
+Rayite option.
+
+[]
+Peter Wolf 24:39
+Fortune 500 companies.
+
+[]
+Nicholas Westburg 24:44
+Fortune 500 companies.
+
+[]
+Peter Wolf 24:46
+OK. And then down in two, say, yeah, you're you're looking to do that in
+the next 90 days.
+
+[]
+Nicholas Westburg 24:57
+Looking to do this.
+
+[]
+Peter Wolf 24:58
+Yeah, I don't want AI adoption because we're this is, I'm trying to say
+this would be us trying to get a plan for rolling out the hold on. We'll
+also we'll put in the name of it. We'll call so large and then we can
+copy this stuff and then use it just to paste it right in, right. So
+gold large financial operations, AI enablement.
+
+[]
+Nicholas Westburg 25:04
+Yeah.
+Yeah.
+
+[]
+Peter Wolf 25:18
+In hub for Fortune 500 companies and then just put called comma, called
+called um serrala.
+Sarala Finos.
+Put the OPS O like capitalized.
+
+[]
+Nicholas Westburg 25:40
+Yes.
+
+[]
+Peter Wolf 25:41
+You can take this the hyphen out, just put fin OPS and then fin OPS AI
+Nexus capital NEXUS. Yeah, and then.
+Um.
+Hey, you know what? Let's let's add a little bit to this. So.
+So hold one second. Hold on one second.
+Hold on, I'm logging this on.
+
+[]
+Nicholas Westburg 26:23
+Like I I love this kind of output. It's so.
+Clear and direct to the user.
+Like this is what piece of like this is.
+
+[]
+Peter Wolf 26:45
+Hold on a second.
+
+[]
+Nicholas Westburg 26:46
+Yeah.
+And then the user can save this prompt if they want to retty much.
+
+[]
+Peter Wolf 27:28
+Hold on a second, hold on.
+
+[]
+Nicholas Westburg 27:30
+Yeah.
+8.
+Still there?
+
+[]
+Peter Wolf 31:03
+Yeah, hold on. Sorry.
+Can you cut that prompt out for me and justice send that to me?
+
+[]
+Nicholas Westburg 31:40
+This one here.
+
+[]
+Peter Wolf 31:40
+Just paste it in the chat.
+
+[]
+Nicholas Westburg 31:42
+Yeah.
+Get the.
+
+[]
+Peter Wolf 32:42
+Yeah.
+Yeah, so.
+But I.
+Take this and plug this in. The only problem is this is this is really
+long and it doesn't look so good if you're.
+You're putting in uh.
+All this content, but it's got the prompt. Maybe we edit the prompt and
+we.
+
+[]
+Nicholas Westburg 34:36
+Yeah, I'll I'll I'll do this ready. So I'm gonna copy this.
+Gonna do this.
+
+[]
+Peter Wolf 34:50
+Just cut, cut and paste the whole thing out. It already has it in, yeah.
+I don't think you need to edit anything. I think if you just cut it and
+paste it the way it was, it would be fine.
+
+[]
+Nicholas Westburg 35:44
+Let me know when you want me to scroll.
+
+[]
+Peter Wolf 35:47
+Yep, Scroll down.
+You go.
+You go.
+You go.
+You go.
+October, November, December, January 3090 days. Conduct customer
+reporter enablement session.
+Yeah, keep going. It's at the bottom. Accountability executive sponsor.
+Yeah, that's OK. Isn't that great? Um.
+
+[]
+Nicholas Westburg 36:44
+I'm I uh, let me try GT5. I don't know why I.
+
+[]
+Peter Wolf 37:01
+Do me a favor, just cut and paste. Don't make any edits at all. Cut and
+paste what I popped in there and just let it get.
+
+[]
+Nicholas Westburg 37:05
+Yeah, yeah.
+
+[]
+Peter Wolf 37:16
+It may ask for a different set of follow-ups though.
+
+[]
+Nicholas Westburg 37:16
+Yeah.
+Oh well.
+How to use is replace goal with. I'll go to the top. I'll just go up. I
+still haven't sent your prompt yet.
+
+[]
+Peter Wolf 37:39
+Yeah, no, I I you may not need to hold on.
+So take, yeah, just execute my prompt now and just see what happens. Or
+my input, yeah.
+
+[]
+Nicholas Westburg 37:52
+I mean, I love the templates. Templates are so nice when they're
+properly, you know, they they work.
+
+[]
+Peter Wolf 37:57
+It is structured.
+See, the problem, what I expect is that they would, though they mean who
+we're going to show this today, look at this and say, well ****, all the
+complexities in what you added in, right? That's the part they don't
+know. They don't know all that complexity to add that and so.
+It is not predefined, so I'm feeling like that's not a great way to go
+about this is to show all this extra content.
+
+[]
+Nicholas Westburg 38:42
+No, I think like we talked about earlier, it's the pre. When they click
+the prompt, they fill in regardless of whatever prompt that they pick.
+Doesn't matter. There's no preset defined. Only a few prompts have this.
+A little text box appears. How does that happen? Well.
+
+[]
+Peter Wolf 38:48
+Yeah.
+Yeah.
+
+[]
+Nicholas Westburg 38:58
+I I can't give you the the the techie terminology behind it, but I know
+that it's possible because I've done it already and I've had the
+conversation with the LLM. I've tested it first hand so when you they
+click the prompt and it comes in. So this prompt here.
+
+[]
+Peter Wolf 38:59
+Yeah.
+Yeah, I understand. I know what you're saying. Yeah.
+
+[]
+Nicholas Westburg 39:15
+Comes in, pops and it's just little text boxes and they fill it in and
+then the prompt populates, but with the information that they have
+filled in.
+
+[]
+Peter Wolf 39:24
+Yep.
+Yep.
+
+[]
+Nicholas Westburg 39:30
+And it was great. And I got all wigged. I was like, I'm gonna try to do
+this. And I was like, it's not worth it. We're here. Cool, cool.
+
+[]
+Peter Wolf 39:46
+Yeah, I don't know if it's gonna take this long. I don't think we're
+gonna go to the shrink.
+
+[]
+Nicholas Westburg 39:52
+Can I turn off reasoning?
+
+[]
+Peter Wolf 39:53
+No, no. Hold on, hold on. Just wait till it finishes now.
+
+[]
+Nicholas Westburg 39:58
+Bill, second.
+No, I think it's just the auto. It's probably like the auto or whatever.
+
+[]
+Peter Wolf 40:16
+Looks like.
+
+[]
+Nicholas Westburg 40:16
+Or.
+OK.
+Phase one. Why did this just?
+
+[]
+Peter Wolf 40:48
+Yeah, it didn't look like it was ready to feed it out to you. It's still
+working.
+
+[]
+Nicholas Westburg 40:52
+Yeah, it is. I'm not gonna touch it now.
+
+[]
+Peter Wolf 40:54
+All right, let's go back over. ****, let's go back over. I gotta pick
+some props that are gonna be good. Show me the the saved ones you have
+again.
+
+[]
+Nicholas Westburg 41:07
+Um.
+
+[]
+Peter Wolf 41:10
+And click the branch strategy.
+
+[]
+Nicholas Westburg 41:10
+So yeah.
+
+[]
+Peter Wolf 41:15
+Hold on.
+Scroll down on the left.
+
+[]
+Nicholas Westburg 41:29
+No.
+OK.
+
+[]
+Peter Wolf 41:36
+Scroll down in the prompt or nothing said.
+Keep going.
+You don't pay stop.
+Yeah, so we're we're only 15 minutes, 10 minutes. So we're not gonna
+really get further than this. I think we're just gonna go about it here,
+pull up these prompts.
+
+[]
+Nicholas Westburg 42:20
+Let's let's go to the the business ones are good that we can grab a few.
+
+[]
+Peter Wolf 42:24
+Yeah, the business one's got a bunch of investment framework stuff in
+it. Analyze stock investments.
+Duck gap and us conduct you a political risk.
+We're going to create go to market strategy. Is that marketing or
+business? See, this is the other thing. Some of these I looked at there,
+there's they're just totally mismatched. They just.
+Plopped them into business. They're really marketing, but click on the
+go to marketing strategy second from the bottom.
+Context top roll second code and log in.
+Scroll down.
+Kee going, Kee going, Kee going down to the inputs.
+So briefly describe the new product or service. So take this one, run
+this one, great go to market strategy and then take the first part of my
+answer.
+
+[]
+Nicholas Westburg 43:33
+Yep.
+
+[]
+Peter Wolf 43:40
+For the thin OS thing.
+
+[]
+Nicholas Westburg 43:44
+I'm not gonna run with GBT 5. I'm gonna ride with whatever this model
+is.
+Oh, um.
+
+[]
+Peter Wolf 43:58
+So just execute it and see what it does and then see if we can just O in
+my.
+OK, now take now take the response I have and plug that in just the
+first part, not the 90 days.
+
+[]
+Nicholas Westburg 44:23
+Just this.
+
+[]
+Peter Wolf 44:24
+Yep.
+
+[]
+Nicholas Westburg 44:59
+Let me know when the.
+
+[]
+Peter Wolf 45:03
+Yeah.
+Keep going.
+Good girl.
+You go.
+Keep going.
+Yep, so take that prompt and put it off. Save it off to the side where
+you can easily get it where you don't have to change and cut out that
+input and all. So save that prompt and then take the inputs I gave you
+and save that somewhere so you can easily cut and paste it without
+having to.
+Fumble around and cut out the input or whatever, OK.
+
+[]
+Nicholas Westburg 45:41
+Yeah, so let me let me clean this. So the favorites. So let's keep
+create the conduct market or go to analyze industry trends. We don't
+need this. Create your Twitter persona. We don't need.
+International market research don't need create action plan template. I
+think that's good to automate business, but develop a brand strategy.
+
+[]
+Peter Wolf 46:14
+You know it's what was the one we just added? Create go to market
+strategy. Was that it? What was the one we just did? OK, so again, just
+take the take the info, yeah.
+
+[]
+Nicholas Westburg 46:18
+Yeah, so let's see how the. Yeah, yeah, let's see how this runs too for
+because you can change.
+
+[]
+Peter Wolf 46:29
+No 'cause that wasn't isn't the same one, is it?
+
+[]
+Nicholas Westburg 46:32
+No, this is a different one, but I just want to test this with the web
+too, because there's the web feature and this is a market research
+question with solely and right, you have to click the web.
+So.
+
+[]
+Peter Wolf 46:47
+Yeah, but the web's about searching for stuff, right?
+
+[]
+Nicholas Westburg 46:58
+This is the conduct market research.
+
+[]
+Peter Wolf 47:02
+So the thing I'm going to focus on in this call is that we got a
+structure and we got an integration, right? The content part is
+something that can be built up. Probably doesn't have any content hardly
+at all. Anyway, I'm going to talk about we're going to have category,
+subcategory. We can talk about the the structure that the.
+
+[]
+Nicholas Westburg 47:05
+Yeah.
+Yep.
+Try.
+
+[]
+Peter Wolf 47:22
+HR is doing what they want. They want it to be department and and family
+or whatever they call a group or team, how they want to handle it. Those
+could be those could be adjusted in.
+Yeah, take that and put it somewhere where it's gonna be easy for you to
+cut it without.
+I'm the kind of piecemealing or something.
+
+[]
+Nicholas Westburg 47:51
+And then I could just have this U create again and I'll just yeah, I'll
+be able to find it just, you know, when we're in copilot and I click
+here, this'll populate.
+And then I'll just easily be able to go to.
+Go to market strategy, right? Yeah. And then just simply be able to come
+here.
+Oh.
+And then run it and then just.
+Is to them.
+You want to get a couple more?
+
+[]
+Peter Wolf 48:45
+Oh, yeah, a couple minutes. Let's just go. Yeah, let's go back and look
+at them. Love you soon.
+
+[]
+Nicholas Westburg 48:48
+And then I mean this is the prompt library if you wanna the admin where
+you if you wanna talk about like the adding prompts.
+
+[]
+Peter Wolf 48:56
+Yes, we'll show. We'll show about adding a prompt. Just Yep, it's got
+structure for adding a prompt. You can either Add all that detail or not
+Add all that detail, right? If you make it simple, you don't add detail,
+it's just not gonna have it. But that's fine.
+
+[]
+Nicholas Westburg 49:06
+Yep.
+Can you can you give me a test prompt to make?
+
+[]
+Peter Wolf 49:14
+Yeah, not, not, not in, not in 6 minutes. It's gonna put all that
+content in there.
+
+[]
+Nicholas Westburg 49:15
+Just to add.
+Yeah, but another thing too, I'll just show you. So all of these are
+edible. This works. Let's say that I wanted to export that prompt
+exported just like that, and that's the entire prompt itself.
+Right here everything that is in ID, title, department, subcategory,
+description, content level.
+
+[]
+Peter Wolf 49:40
+Yeah. And I would say likewise we could just say likewise we can upload
+them that way too, right? So.
+
+[]
+Nicholas Westburg 49:47
+Yep.
+
+[]
+Peter Wolf 49:48
+If we create a volume of prompts and what we're saying is we've curated
+a bunch of prompts. We have prompts for the teams. Again, they're
+moderate level prompts, but we can incorporate those. Yeah, so I'm not
+going to worry about the content too much.
+
+[]
+Nicholas Westburg 50:03
+No, I think the copilot button's really how we're how this integrates
+and then how we plan on making it better with you know what we kind of
+talked about this morning with the, you know, ease of use for.
+
+[]
+Peter Wolf 50:10
+Yeah.
+Yeah.
+
+[]
+Nicholas Westburg 50:20
+Any user and anybody can use it right, but they they need to fill. If
+they want to use it perfectly, they can just simply fill it in or not.
+They'll have the option to do so and it'll populate with their, you
+know, it'll fill in the fillers and populate the prompt with.
+
+[]
+Peter Wolf 50:28
+But.
+
+[]
+Nicholas Westburg 50:37
+The users.
+
+[]
+Peter Wolf 50:38
+And right now, at least the way we have it, is that you fill it in, it
+becomes public. I guess something we could look at is if you wanted to
+have prompts that were only to 1 user or something like that. Right now
+we don't have that and I don't think prompt library prompt buddy has
+that.
+So I don't need to to promise to deliver anything more, but so right now
+you have the ability to create. You have great favorites. We can mass
+upload, we can download, we can, they can edit, they can.
+
+[]
+Nicholas Westburg 50:59
+Yeah, that's what it'll be.
+
+[]
+Peter Wolf 51:10
+Yeah, how about go, go to, go to that prompt that we that we had. I
+don't know, because if you added something that you're gonna have to go
+over to the other side, you're gonna have to approve it to come back. Is
+that a hassle or can you do that without a problem?
+
+[]
+Nicholas Westburg 51:23
+I can edit it right now actually. Uh, so maybe we can just pre fill it.
+
+[]
+Peter Wolf 51:28
+That's what I was thinking.
+
+[]
+Nicholas Westburg 51:31
+So go so it's go to where did the prompt admin go?
+Oh ****.
+What was it go?
+Create.
+
+[]
+Peter Wolf 51:59
+So you can't edit on the other side, you can only edit on the admin
+side.
+
+[]
+Nicholas Westburg 52:02
+Yep, Yep.
+
+[]
+Peter Wolf 52:04
+Um.
+That's not good because because if the users that you're not going to go
+to the user like when we roll this out and the user's got to once says
+OK, this problem's pretty good, but I want to customize it to us, then
+they can't edit it and save it.
+
+[]
+Nicholas Westburg 52:08
+Why?
+Right, right. That's what I was working on yesterday. So like, it
+wouldn't make sense for the user to to what's in the prompt library to
+mess with, right? Because then that would affect, let's call it
+thousands of other users, because one user might find that.
+
+[]
+Peter Wolf 52:33
+OK, but they could cop. Can they copy and can they copy an existing one
+and edit it?
+
+[]
+Nicholas Westburg 52:38
+No, they'll have the option within this button. The button populates.
+This is solely for an individual user, and that user can click on the
+prompt and customize it and edit it to however they want, and it won't
+affect anything that's in here.
+
+[]
+Peter Wolf 52:53
+Yeah, but are you saying the one time edit or or edit and save?
+
+[]
+Nicholas Westburg 52:58
+They can edit and see, which is the vision that I had and I and I saw
+and I just haven't had the time.
+
+[]
+Peter Wolf 53:03
+So OK, so I'm not. I'm not following you. I want to make sure I'm clear
+as we only got 3 minutes left. So if if right now I'm a user, I don't
+have admin rights and I want to take a prompt that exists and I want to
+edit the prompt and save the prompt so that I can put my specific
+information in there.
+
+[]
+Nicholas Westburg 53:07
+Yep.
+
+[]
+Peter Wolf 53:19
+How do I do that?
+
+[]
+Nicholas Westburg 53:21
+You'd run it. I mean, right now you'd have to run it, blah blah blah.
+And then I don't know why this is, but you can save this. You can save
+this to the prompt library. Not right now with all what we have. We
+don't have a feature for that, but you can save this.
+
+[]
+Peter Wolf 53:33
+OK. Yeah.
+OK, so then that's no, I need to make sure I'm talking about it right
+now. So right now we we have it only that the admin can edit. We're
+going to change that. It's going to be editable by the user. We'll
+figure out how we control that or they can at least copy existing
+prompts and they can then save them as unique so that that way if
+there's a baseline prompt so.
+
+[]
+Nicholas Westburg 53:49
+Yep.
+
+[]
+Peter Wolf 54:01
+Somebody else could use it. They don't disrupt all the others, but they
+can copy an existing prompt, edit it, and save that prompt, right?
+That's what we'll have to. We'll have to put in some functionality like
+that, because if the user can't edit, it's not realistic to work. I
+mean, it's not going to be a manageable function.
+
+[]
+Nicholas Westburg 54:10
+Yeah.
+
+[]
+Peter Wolf 54:16
+And right now if they can prompt buddy, they could easily just add one,
+right? It needed to go to approval at the prompt manager, prompt buddy
+manager, but it was available. It would be available and they could edit
+or create a new one. So we're going to have to have a function that
+would copy because we're saying look, these are templates, they can edit
+the templates.
+And create new ones. So we'll say they don't edit the existing template,
+they create a new template and then save that in its place. Or I guess
+we could decide if they could edit. Again, it impacts everybody, but.
+
+[]
+Nicholas Westburg 54:49
+Yeah, it would just be on their console. It would be when they have
+access to the app, they can, you know, customize it and save it to,
+which we can add later, right? It's that's not the issue, yeah.
+
+[]
+Peter Wolf 55:03
+Yep. No, that's what we're saying. Look, this is a baseline. We got the
+connection. We'll figure it out. OK, All right, let's jump over, OK?
+
+[]
+Nicholas Westburg 55:06
+Yeah.
+Yeah. Did you send me the teams?
+
+[]
+Peter Wolf 55:16
+Oh oh, I thought I already had it. Hold on.
+
+[]
+Nicholas Westburg 55:23
+So I'll just walk with whatever while you're talking, I'll click through
+everything and uh, just follow your lead here.
+
+[]
+Peter Wolf 55:27
+Yeah, I'll give you guidance of what I'll give you guidance of what I
+want you to go through.
+
+[]
+Nicholas Westburg 55:32
+Oh.
+What do you think looks cooler this? I think this color looks nice.
+
+[]
+Peter Wolf 55:37
+Well, I show them back, show them back and forth. I wanna show the Uh
+capability.
+
+[]
+Nicholas Westburg 55:41
+Yeah.
+
+[]
+Peter Wolf 55:48
+OK, I just sent to your, uh, e-mail. OK.
+
+[]
+Nicholas Westburg 55:51
+Yeah, alright, I'll join now.
+
+[]
+Peter Wolf 55:53
+Yep.
+
+[]
+Peter Wolf stopped transcription

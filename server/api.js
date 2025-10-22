@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001; // Azure assigns PORT dynamically
 
 // Middleware
 app.use(cors());
@@ -716,6 +716,13 @@ app.post('/api/prompts/bulk-delete', requireAuth, async (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', auth: 'enabled', backups: 'enabled' });
 });
+
+// =============================================================================
+// SERVE REACT BUILD (for Azure/production deployment)
+// =============================================================================
+
+// Note: React app is deployed separately to Azure Static Web Apps
+// This API server only handles /api/* endpoints
 
 // =============================================================================
 // START SERVER

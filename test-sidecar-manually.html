@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Sidecar Display</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .instructions {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+        .code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>⚡ Test Sidecar Integration</h1>
+
+        <h2>Steps to Test:</h2>
+        <ol>
+            <li>Open M365 Copilot in a browser tab: <code>https://m365.cloud.microsoft/chat/</code></li>
+            <li>Install the Tampermonkey script from: <code>m365-copilot-spark-integration.user.js</code></li>
+            <li>You should see the ⚡ floating button on M365 Copilot</li>
+            <li>Click the ⚡ button → SPARK library opens in new tab</li>
+            <li>Browse to any prompt and click "Copy to Copilot"</li>
+            <li>Switch back to M365 Copilot tab</li>
+            <li>You should see:
+                <ul>
+                    <li>✅ Prompt text in the chatbox</li>
+                    <li>✅ Sidecar panel on the right with all prompt details</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>What the Sidecar Should Show:</h2>
+        <ul>
+            <li>📄 Prompt icon and title</li>
+            <li>🏷️ Department badge</li>
+            <li>📊 Complexity level</li>
+            <li>📝 Word count</li>
+            <li>📂 Subcategory (if available)</li>
+            <li>📖 Description</li>
+            <li>💡 Pro Tips (in golden card)</li>
+            <li>🏷️ Tags (as colorful pills)</li>
+            <li>✓ Success message</li>
+        </ul>
+
+        <h2>Troubleshooting:</h2>
+        <p><strong>If sidecar doesn't appear:</strong></p>
+        <ol>
+            <li>Open browser console (F12)</li>
+            <li>Look for [Spark] logs</li>
+            <li>Check if you see: <code>[Spark] ✓ Beautiful sidecar panel created</code></li>
+            <li>Check if you see: <code>[Spark] ✓ Sidecar opened: [Prompt Title]</code></li>
+            <li>Inspect DOM for elements: <code>#spark-sidecar</code> and <code>#spark-sidecar-overlay</code></li>
+        </ol>
+
+        <h2>Current Script Status:</h2>
+        <div class="code">
+✅ Floating button - WORKING<br>
+✅ Prompt insertion - WORKING (text persists in chatbox)<br>
+✅ Sidecar code - IMPLEMENTED<br>
+❓ Sidecar display - NEEDS TESTING
+        </div>
+
+        <p><strong>The sidecar code is fully implemented in the Tampermonkey script.</strong></p>
+        <p>It should automatically appear when you click "Copy to Copilot" and the prompt is successfully inserted.</p>
+
+        <h2>Expected Behavior:</h2>
+        <p>When you click "Copy to Copilot" in the SPARK library:</p>
+        <ol>
+            <li>Prompt text appears in M365 Copilot chatbox</li>
+            <li>Sidecar slides in from the right side</li>
+            <li>Overlay darkens the background</li>
+            <li>You can close sidecar by pressing ESC or clicking the overlay</li>
+        </ol>
+    </div>
+
+    <script>
+        console.log('Test page loaded. Follow the instructions above to test the sidecar integration.');
+    </script>
+</body>
+</html>

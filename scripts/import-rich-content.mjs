@@ -21,7 +21,7 @@ import crypto from 'crypto';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PROMPTS_DIR = path.join(__dirname, '..', 'Prompts');
+const PROMPTS_DIR = path.join(__dirname, '..', 'public', 'prompts');
 const INDEX_PATH = path.join(__dirname, '..', 'public', 'prompts_index.json');
 const BACKUP_DIR = path.join(__dirname, '..', 'backups');
 
@@ -64,7 +64,7 @@ const stats = {
 /**
  * Parse HTML file and extract all rich content
  */
-async function parseHTMLPrompt(htmlPath, departmentFolder) {
+async function parseHTMLPrompt(htmlPath, departmentFolder, promptId = '') {
   const html = await fs.readFile(htmlPath, 'utf-8');
   const $ = cheerio.load(html);
 
@@ -81,7 +81,8 @@ async function parseHTMLPrompt(htmlPath, departmentFolder) {
     howToUse: '',
     whatItDoes: '',
     additionalTips: '',
-    complexity: ''
+    complexity: '',
+    id: promptId
   };
 
   // Extract title
@@ -119,15 +120,26 @@ async function parseHTMLPrompt(htmlPath, departmentFolder) {
   let whatItDoesSection = '';
   $('h2').each((i, el) => {
     const heading = $(el).text().trim();
-    if (heading.includes('What This Mega-Prompt Does')) {
+    if (heading.includes('What This') && heading.includes('Does')) {
       let nextEl = $(el).next();
       const bullets = [];
       while (nextEl.length && !nextEl.is('h2')) {
         if (nextEl.is('p')) {
-          const text = nextEl.text().trim();
-          // Split by bullet points if present
-          const lines = text.split(/[●•]\s+/).filter(l => l.trim());
-          bullets.push(...lines);
+          // Get HTML and split by <br/> tags to preserve line breaks
+          const html = nextEl.html();
+          if (html) {
+            // Split by br tags first
+            const lines = html.split(/<br\s*\/?>/i);
+            lines.forEach(line => {
+              // Clean HTML tags and get text
+              const text = $('<div>').html(line).text().trim();
+              // Remove bullet point prefix if present
+              const cleaned = text.replace(/^[●•]\s*/, '').trim();
+              if (cleaned && cleaned.length > 5) {
+                bullets.push(cleaned);
+              }
+            });
+          }
         }
         nextEl = nextEl.next();
       }
@@ -144,31 +156,56 @@ async function parseHTMLPrompt(htmlPath, departmentFolder) {
       const bullets = [];
       while (nextEl.length && !nextEl.is('h2')) {
         if (nextEl.is('p')) {
-          const text = nextEl.text().trim();
-          // Split by bullet points
-          const lines = text.split(/[●•]\s+/).filter(l => l.trim());
-          bullets.push(...lines);
+          // Get HTML and split by <br/> tags to preserve line breaks
+          const html = nextEl.html();
+          if (html) {
+            // Split by br tags first
+            const lines = html.split(/<br\s*\/?>/i);
+            lines.forEach(line => {
+              // Clean HTML tags and get text
+              const text = $('<div>').html(line).text().trim();
+              // Remove bullet point prefix if present
+              const cleaned = text.replace(/^[●•]\s*/, '').trim();
+              if (cleaned && cleaned.length > 10) {
+                bullets.push(cleaned);
+              }
+            });
+          }
         }
         nextEl = nextEl.next();
       }
       tipsSections.push(...bullets);
     }
   });
-  data.tips = [...new Set(tipsSections)].filter(t => t.length > 10); // Remove duplicates and very short tips
+  data.tips = [...new Set(tipsSections)]; // Remove duplicates only
 
   // Extract "How To Use" section
   $('h2').each((i, el) => {
     const heading = $(el).text().trim();
     if (heading.includes('How To Use')) {
       let nextEl = $(el).next();
-      const content = [];
+      const bullets = [];
       while (nextEl.length && !nextEl.is('h2')) {
         if (nextEl.is('p')) {
-          content.push(nextEl.text().trim());
+          // Get HTML and split by <br/> tags to preserve line breaks
+          const html = nextEl.html();
+          if (html) {
+            // Split by br tags first
+            const lines = html.split(/<br\s*\/?>/i);
+            lines.forEach(line => {
+              // Clean HTML tags and get text
+              const text = $('<div>').html(line).text().trim();
+              // Remove bullet point prefix if present
+              const cleaned = text.replace(/^[●•]\s*/, '').trim();
+              if (cleaned && cleaned.length > 5) {
+                bullets.push(cleaned);
+              }
+            });
+          }
         }
         nextEl = nextEl.next();
       }
-      data.howToUse = content.join('\\n\\n');
+      data.howToUse = bullets.join('\\n');
     }
   });
 
@@ -177,14 +214,28 @@ async function parseHTMLPrompt(htmlPath, departmentFolder) {
     const heading = $(el).text().trim();
     if (heading.includes('Example Input') || heading.includes('📥')) {
       let nextEl = $(el).next();
-      const content = [];
+      const bullets = [];
       while (nextEl.length && !nextEl.is('h2')) {
         if (nextEl.is('p')) {
-          content.push(nextEl.text().trim());
+          // Get HTML and split by <br/> tags to preserve line breaks
+          const html = nextEl.html();
+          if (html) {
+            // Split by br tags first
+            const lines = html.split(/<br\s*\/?>/i);
+            lines.forEach(line => {
+              // Clean HTML tags and get text
+              const text = $('<div>').html(line).text().trim();
+              // Remove bullet point prefix if present
+              const cleaned = text.replace(/^[●•]\s*/, '').trim();
+              if (cleaned && cleaned.length > 5) {
+                bullets.push(cleaned);
+              }
+            });
+          }
         }
         nextEl = nextEl.next();
       }
-      data.exampleInput = content.join('\\n\\n');
+      data.exampleInput = bullets.join('\\n');
     }
   });
 
@@ -192,8 +243,9 @@ async function parseHTMLPrompt(htmlPath, departmentFolder) {
   $('img').each((i, el) => {
     const src = $(el).attr('src');
     if (src && src.includes('.png') && !src.includes('notion.so/icons')) {
-      // Extract just the filename
-      const filename = path.basename(src);
+      // Extract filename and prepend prompt ID to match blob storage naming
+      const basename = path.basename(src);
+      const filename = data.id ? `${data.id}_${basename}` : basename;
       data.images.push(filename);
     }
   });
@@ -242,46 +294,46 @@ function mergePromptData(existing, htmlData) {
   const updated = { ...existing };
   let changes = [];
 
-  // Update subcategory if missing
-  if (htmlData.subcategory && !existing.subcategory) {
+  // ALWAYS update subcategory if found in HTML
+  if (htmlData.subcategory) {
     updated.subcategory = htmlData.subcategory;
     changes.push('subcategory');
   }
 
-  // Update complexity if missing
-  if (htmlData.complexity && (!existing.complexity || existing.complexity === '')) {
+  // ALWAYS update complexity if found in HTML
+  if (htmlData.complexity) {
     updated.complexity = htmlData.complexity;
     changes.push('complexity');
   }
 
-  // Update tips if missing or empty
-  if (htmlData.tips.length > 0 && (!existing.tips || existing.tips.length === 0)) {
+  // ALWAYS update tips if found in HTML
+  if (htmlData.tips.length > 0) {
     updated.tips = htmlData.tips;
     changes.push('tips');
   }
 
-  // Update images if missing or empty
-  if (htmlData.images.length > 0 && (!existing.images || existing.images.length === 0)) {
+  // ALWAYS update images if found in HTML
+  if (htmlData.images.length > 0) {
     updated.images = htmlData.images;
     changes.push('images');
   }
 
-  // Add structured sections as metadata
+  // Add structured sections as metadata - ALWAYS update with real data from HTML
   if (!updated.metadata) {
     updated.metadata = {};
   }
 
-  if (htmlData.whatItDoes && !updated.metadata.whatItDoes) {
+  if (htmlData.whatItDoes) {
     updated.metadata.whatItDoes = htmlData.whatItDoes;
     changes.push('whatItDoes');
   }
 
-  if (htmlData.howToUse && !updated.metadata.howToUse) {
+  if (htmlData.howToUse) {
     updated.metadata.howToUse = htmlData.howToUse;
     changes.push('howToUse');
   }
 
-  if (htmlData.exampleInput && !updated.metadata.exampleInput) {
+  if (htmlData.exampleInput) {
     updated.metadata.exampleInput = htmlData.exampleInput;
     changes.push('exampleInput');
   }
@@ -306,70 +358,64 @@ async function importRichContent() {
   await fs.writeFile(backupPath, indexData);
   console.log(`✓ Backup created: ${path.basename(backupPath)}\\n`);
 
-  // Process each department
-  const departments = Object.keys(DEPT_MAP);
+  // Read all HTML files from flat directory
+  console.log(`\\n📁 Processing HTML files from: ${PROMPTS_DIR}`);
+  console.log('─'.repeat(50));
 
-  for (const deptFolder of departments) {
-    const department = DEPT_MAP[deptFolder];
-    const deptPath = path.join(PROMPTS_DIR, deptFolder);
+  try {
+    const files = await fs.readdir(PROMPTS_DIR);
+    const htmlFiles = files.filter(f => f.endsWith('.html'));
 
-    console.log(`\\n📁 Processing: ${department}`);
-    console.log('─'.repeat(50));
+    console.log(`   Found ${htmlFiles.length} HTML files\\n`);
 
-    try {
-      const files = await fs.readdir(deptPath);
-      const htmlFiles = files.filter(f => f.endsWith('.html'));
+    for (const htmlFile of htmlFiles) {
+      const htmlPath = path.join(PROMPTS_DIR, htmlFile);
+      const promptId = path.basename(htmlFile, '.html');
 
-      console.log(`   Found ${htmlFiles.length} HTML files`);
+      try {
+        // Parse HTML with prompt ID
+        const htmlData = await parseHTMLPrompt(htmlPath, '', promptId);
+        stats.processed++;
 
-      for (const htmlFile of htmlFiles) {
-        const htmlPath = path.join(deptPath, htmlFile);
+        // Find matching prompt by ID
+        const match = index.prompts.find(p => p.id === promptId);
 
-        try {
-          // Parse HTML
-          const htmlData = await parseHTMLPrompt(htmlPath, deptFolder);
-          stats.processed++;
+        if (match) {
+          // Merge rich data
+          const { updated, changes } = mergePromptData(match, htmlData);
 
-          // Find matching prompt in existing data
-          const match = findMatchingPrompt(index.prompts, htmlData, department);
+          if (changes.length > 0) {
+            // Replace in array
+            const idx = index.prompts.findIndex(p => p.id === match.id);
+            index.prompts[idx] = updated;
 
-          if (match) {
-            // Merge rich data
-            const { updated, changes } = mergePromptData(match, htmlData);
+            stats.updated++;
+            if (changes.includes('tips')) stats.newTips++;
+            if (changes.includes('images')) stats.newImages++;
+            if (changes.includes('subcategory')) stats.newSubcategories++;
+            if (changes.includes('complexity')) stats.newComplexity++;
 
-            if (changes.length > 0) {
-              // Replace in array
-              const idx = index.prompts.findIndex(p => p.id === match.id);
-              index.prompts[idx] = updated;
-
-              stats.updated++;
-              if (changes.includes('tips')) stats.newTips++;
-              if (changes.includes('images')) stats.newImages++;
-              if (changes.includes('subcategory')) stats.newSubcategories++;
-              if (changes.includes('complexity')) stats.newComplexity++;
-
-              if (stats.updated % 100 === 0) {
-                process.stdout.write(`\\r   Updated: ${stats.updated}/${stats.processed}`);
-              }
-            } else {
-              stats.skipped++;
+            if (stats.updated % 100 === 0) {
+              process.stdout.write(`\\r   Updated: ${stats.updated}/${stats.processed}`);
             }
           } else {
-            // console.log(`   ⚠️  No match found for: ${htmlData.title}`);
             stats.skipped++;
           }
-
-        } catch (err) {
-          console.error(`   ❌ Error processing ${htmlFile}:`, err.message);
-          stats.errors++;
+        } else {
+          // console.log(`   ⚠️  No match found for ID: ${promptId}`);
+          stats.skipped++;
         }
+
+      } catch (err) {
+        console.error(`   ❌ Error processing ${htmlFile}:`, err.message);
+        stats.errors++;
       }
-
-      console.log(`\\r   Updated: ${stats.updated}, Skipped: ${stats.skipped}`);
-
-    } catch (err) {
-      console.error(`   ❌ Error reading department:`, err.message);
     }
+
+    console.log(`\\r   Updated: ${stats.updated}, Skipped: ${stats.skipped}`);
+
+  } catch (err) {
+    console.error(`   ❌ Error reading directory:`, err.message);
   }
 
   // Save updated index

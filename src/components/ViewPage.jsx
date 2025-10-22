@@ -30,6 +30,7 @@ import {
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
+import { BLOB_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
   container: {
@@ -537,8 +538,8 @@ export default function ViewPage({ isDark, toggleTheme }) {
     }
 
     try {
-      // Fetch from API server - automatically filters to approved prompts only for public users
-      const response = await fetch('/api/prompts');
+      // Fetch from Blob Storage (Azure Static Web Apps deployment)
+      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
@@ -548,23 +549,7 @@ export default function ViewPage({ isDark, toggleTheme }) {
         setPrompt(foundPrompt);
       }
     } catch (error) {
-      console.error('Failed to load from API, trying static index:', error);
-      try {
-        // Fallback to static JSON file
-        const response = await fetch('/prompts_index.json');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-
-        // Find prompt and check if it's approved (or no status for backward compatibility)
-        const foundPrompt = data.prompts?.find(p => p.id === promptId);
-
-        if (foundPrompt && (foundPrompt.status === 'approved' || !foundPrompt.status)) {
-          setPrompt(foundPrompt);
-        }
-        // If prompt is pending or rejected, don't set it (will show "not found")
-      } catch (error2) {
-        console.error('Failed to load prompt from static file:', error2);
-      }
+      console.error('Failed to load prompt:', error);
     } finally {
       setLoading(false);
     }
@@ -582,35 +567,74 @@ export default function ViewPage({ isDark, toggleTheme }) {
       let textToCopy = prompt.content;
 
       if (type === 'copilot') {
-        textToCopy = `# AI Prompt: ${prompt.title}\n\n${prompt.content}\n\n---\nCopied from SPARK Prompt Library`;
+        textToCopy = prompt.content; // Send raw prompt content
 
-        // Send to Copilot tab via BroadcastChannel
-        if (typeof BroadcastChannel !== 'undefined') {
-          try {
-            const channel = new BroadcastChannel('spark_copilot');
-            channel.postMessage({
-              type: 'INSERT_PROMPT',
-              content: textToCopy,
-              title: prompt.title
-            });
-            channel.close();
-          } catch (broadcastErr) {
-            console.warn('BroadcastChannel not available:', broadcastErr);
-          }
-        }
-
-        // Also try localStorage for cross-tab communication
+        // Send to Copilot tab via window.opener.postMessage (for Tampermonkey integration)
         try {
-          localStorage.setItem('spark_prompt_transfer', JSON.stringify({
-            content: textToCopy,
-            timestamp: Date.now()
-          }));
-          // Clear after a moment to trigger storage event
-          setTimeout(() => {
-            localStorage.removeItem('spark_prompt_transfer');
-          }, 100);
-        } catch (storageErr) {
-          console.warn('localStorage not available:', storageErr);
+          // Prepare prompt details for sidecar
+          const promptDetails = {
+            id: prompt.id,
+            title: prompt.title,
+            description: prompt.description,
+            department: prompt.department,
+            subcategory: prompt.subcategory,
+            icon: prompt.icon || '⚡',
+            complexity: prompt.complexity,
+            word_count: prompt.word_count,
+            tips: prompt.tips || [],
+            images: prompt.images || [],
+            metadata: {
+              whatItDoes: prompt.metadata?.whatItDoes || '',
+              howToUse: prompt.metadata?.howToUse || '',
+              exampleInput: prompt.metadata?.exampleInput || '',
+              exampleOutput: prompt.metadata?.exampleOutput || ''
+            }
+          };
+
+          // Try window.opener first (if opened from Copilot button)
+          if (window.opener && !window.opener.closed) {
+            window.opener.postMessage({
+              type: 'SPARK_SEND_TO_COPILOT',
+              promptText: textToCopy,
+              promptDetails: promptDetails
+            }, '*');
+            console.log('[SPARK] Sent prompt to opener window via postMessage');
+          }
+
+          // Also broadcast to all windows (for manual tab switching)
+          if (typeof BroadcastChannel !== 'undefined') {
+            try {
+              const channel = new BroadcastChannel('spark_copilot');
+              channel.postMessage({
+                type: 'SPARK_SEND_TO_COPILOT',
+                promptText: textToCopy,
+                promptDetails: promptDetails
+              });
+              channel.close();
+              console.log('[SPARK] Sent prompt via BroadcastChannel');
+            } catch (broadcastErr) {
+              console.warn('[SPARK] BroadcastChannel failed:', broadcastErr);
+            }
+          }
+
+          // Fallback: localStorage for cross-tab communication
+          try {
+            localStorage.setItem('spark_prompt_transfer', JSON.stringify({
+              type: 'SPARK_SEND_TO_COPILOT',
+              promptText: textToCopy,
+              promptDetails: promptDetails,
+              timestamp: Date.now()
+            }));
+            // Clear after a moment to trigger storage event
+            setTimeout(() => {
+              localStorage.removeItem('spark_prompt_transfer');
+            }, 100);
+            console.log('[SPARK] Saved prompt to localStorage for cross-tab transfer');
+          } catch (storageErr) {
+            console.warn('[SPARK] localStorage transfer failed:', storageErr);
+          }
+        } catch (err) {
+          console.error('[SPARK] Failed to send prompt to Copilot:', err);
         }
       }
 
@@ -957,10 +981,10 @@ export default function ViewPage({ isDark, toggleTheme }) {
                         </div>
                       ) : (
                         <img
-                          src={`/thumbnails/${image}`}
+                          src={BLOB_ENDPOINTS.THUMBNAIL_IMAGE(image)}
                           alt={`Example output ${index + 1}`}
                           className={styles.galleryImage}
-                          onClick={() => setFullscreenImage({ src: `/thumbnails/${image}`, alt: `Example output ${index + 1}`, fallbackSrc: `/prompts/${prompt.department}/${prompt.title.replace(/[^a-zA-Z0-9 ]/g, '')}_${prompt.id.slice(0, 8)}/${image}` })}
+                          onClick={() => setFullscreenImage({ src: BLOB_ENDPOINTS.THUMBNAIL_IMAGE(image), alt: `Example output ${index + 1}`, fallbackSrc: `/prompts/${prompt.department}/${prompt.title.replace(/[^a-zA-Z0-9 ]/g, '')}_${prompt.id.slice(0, 8)}/${image}` })}
                           onError={(e) => {
                             // Try fallback path once, then show placeholder
                             if (!e.target.dataset.fallbackAttempted) {

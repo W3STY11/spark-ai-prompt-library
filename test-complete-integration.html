@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPARK Integration Test - Simulated Copilot</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f3f4f6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        .status {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        .check {
+            color: #10b981;
+            font-size: 20px;
+        }
+        .cross {
+            color: #ef4444;
+            font-size: 20px;
+        }
+        .copilot-input {
+            width: 100%;
+            min-height: 200px;
+            padding: 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            background: white;
+            resize: vertical;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        .btn-secondary:hover {
+            background: #d1d5db;
+        }
+        #console {
+            background: #1f2937;
+            color: #10b981;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .console-line {
+            margin-bottom: 4px;
+        }
+        .console-error {
+            color: #ef4444;
+        }
+        .console-warn {
+            color: #f59e0b;
+        }
+        .console-success {
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 SPARK Integration Test</h1>
+        <p>Simulated M365 Copilot environment with BroadcastChannel listener</p>
+
+        <div class="status">
+            <h3>Status Checks</h3>
+            <div class="status-item">
+                <span id="status-broadcast" class="cross">✗</span>
+                <span>BroadcastChannel Support</span>
+            </div>
+            <div class="status-item">
+                <span id="status-listener" class="cross">✗</span>
+                <span>Message Listener Active</span>
+            </div>
+            <div class="status-item">
+                <span id="status-received" class="cross">✗</span>
+                <span>Message Received</span>
+            </div>
+            <div class="status-item">
+                <span id="status-inserted" class="cross">✗</span>
+                <span>Prompt Inserted</span>
+            </div>
+        </div>
+
+        <div>
+            <h3>Simulated Copilot Input</h3>
+            <div id="m365-chat-editor-target-element" contenteditable="true" class="copilot-input" role="textbox">
+                Type your message here...
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="openLibrary()">⚡ Open SPARK Library</button>
+            <button class="btn-secondary" onclick="clearInput()">Clear Input</button>
+            <button class="btn-secondary" onclick="clearConsole()">Clear Console</button>
+        </div>
+
+        <div id="console"></div>
+    </div>
+
+    <script>
+        // Console logging
+        function log(message, type = 'info') {
+            const console = document.getElementById('console');
+            const line = document.createElement('div');
+            line.className = `console-line console-${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            console.appendChild(line);
+            console.scrollTop = console.scrollHeight;
+
+            // Also log to real console
+            if (type === 'error') {
+                console.error(message);
+            } else if (type === 'warn') {
+                console.warn(message);
+            } else {
+                console.log(message);
+            }
+        }
+
+        function updateStatus(id, success) {
+            const elem = document.getElementById(id);
+            if (success) {
+                elem.className = 'check';
+                elem.textContent = '✓';
+            } else {
+                elem.className = 'cross';
+                elem.textContent = '✗';
+            }
+        }
+
+        // Check BroadcastChannel support
+        if (typeof BroadcastChannel !== 'undefined') {
+            log('✓ BroadcastChannel API supported', 'success');
+            updateStatus('status-broadcast', true);
+        } else {
+            log('✗ BroadcastChannel API not supported', 'error');
+            updateStatus('status-broadcast', false);
+        }
+
+        // Setup BroadcastChannel listener
+        let channel = null;
+        if (typeof BroadcastChannel !== 'undefined') {
+            try {
+                channel = new BroadcastChannel('spark_copilot');
+
+                channel.addEventListener('message', (event) => {
+                    log('📨 Message received via BroadcastChannel', 'success');
+                    log('Message type: ' + event.data.type, 'info');
+                    updateStatus('status-received', true);
+
+                    if (event.data.type === 'SPARK_SEND_TO_COPILOT') {
+                        const { promptText, promptDetails } = event.data;
+
+                        if (promptText) {
+                            log(`✓ Prompt text received (${promptText.length} chars)`, 'success');
+                            insertPrompt(promptText);
+
+                            if (promptDetails) {
+                                log(`✓ Prompt details received: ${promptDetails.title}`, 'success');
+                                log(`  - Department: ${promptDetails.department}`, 'info');
+                                log(`  - Word count: ${promptDetails.word_count}`, 'info');
+                            }
+                        } else {
+                            log('✗ No prompt text in message', 'error');
+                        }
+                    }
+                });
+
+                log('✓ BroadcastChannel listener ready', 'success');
+                updateStatus('status-listener', true);
+            } catch (err) {
+                log('✗ Failed to setup BroadcastChannel: ' + err.message, 'error');
+                updateStatus('status-listener', false);
+            }
+        }
+
+        // Insert prompt into input
+        function insertPrompt(text) {
+            const input = document.getElementById('m365-chat-editor-target-element');
+
+            try {
+                // Clear existing content
+                input.textContent = '';
+
+                // Insert new text
+                input.textContent = text;
+
+                // Focus
+                input.focus();
+
+                // Place cursor at end
+                const range = document.createRange();
+                const sel = window.getSelection();
+                range.selectNodeContents(input);
+                range.collapse(false);
+                sel.removeAllRanges();
+                sel.addRange(range);
+
+                log(`✅ Prompt inserted successfully (${text.length} chars)`, 'success');
+                updateStatus('status-inserted', true);
+            } catch (err) {
+                log('✗ Failed to insert prompt: ' + err.message, 'error');
+                updateStatus('status-inserted', false);
+            }
+        }
+
+        // Open library in new tab
+        function openLibrary() {
+            const libraryUrl = 'https://gray-ocean-059c8510f.3.azurestaticapps.net';
+            log(`🚀 Opening library: ${libraryUrl}`, 'info');
+            window.open(libraryUrl, '_blank');
+        }
+
+        // Clear input
+        function clearInput() {
+            document.getElementById('m365-chat-editor-target-element').textContent = 'Type your message here...';
+            updateStatus('status-inserted', false);
+            log('🗑️ Input cleared', 'info');
+        }
+
+        // Clear console
+        function clearConsole() {
+            document.getElementById('console').innerHTML = '';
+            log('Console cleared', 'info');
+        }
+
+        // Initial log
+        log('🧪 Test page loaded', 'info');
+        log('📋 Instructions:', 'info');
+        log('1. Click "Open SPARK Library" button', 'info');
+        log('2. Find a prompt in the library', 'info');
+        log('3. Click "Copy to Copilot" in the library', 'info');
+        log('4. Switch back to this tab', 'info');
+        log('5. Prompt should appear in the input above', 'info');
+    </script>
+</body>
+</html>

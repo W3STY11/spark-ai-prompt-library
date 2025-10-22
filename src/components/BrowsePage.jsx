@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { BLOB_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -164,6 +165,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [selectedDepartment, setSelectedDepartment] = useState(searchParams.get('department') || '');
+  const [selectedSubcategory, setSelectedSubcategory] = useState(searchParams.get('subcategory') || '');
   const [sortBy, setSortBy] = useState('title');
   const [viewMode, setViewMode] = useState('card');
   const [currentPage, setCurrentPage] = useState(1);
@@ -179,42 +181,25 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
   useEffect(() => {
     applyFilters();
-  }, [searchQuery, selectedDepartment, sortBy, allPrompts]);
+  }, [searchQuery, selectedDepartment, selectedSubcategory, sortBy, allPrompts]);
 
   const loadData = async () => {
     try {
-      // Fetch from API server - automatically filters to approved prompts only for public users
-      const response = await fetch('/api/prompts');
+      // Fetch from Blob Storage FIRST (Azure Static Web Apps deployment)
+      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
       if (data) {
-        setAllPrompts(Array.isArray(data.prompts) ? data.prompts : Array.isArray(data.items) ? data.items : []);
+        // All prompts are already filtered (no status field needed)
+        const prompts = Array.isArray(data.prompts) ? data.prompts : Array.isArray(data.items) ? data.items : [];
+        setAllPrompts(prompts);
         setDepartments(data.departments || []);
       }
     } catch (error) {
-      console.error('Failed to load from API, trying static index:', error);
-      try {
-        // Fallback to static JSON file
-        const response = await fetch('/prompts_index.json');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-
-        if (data) {
-          // Filter to approved prompts only (or prompts without status for backward compatibility)
-          const approvedPrompts = Array.isArray(data.prompts)
-            ? data.prompts.filter(p => p.status === 'approved' || !p.status)
-            : Array.isArray(data.items)
-            ? data.items.filter(p => p.status === 'approved' || !p.status)
-            : [];
-          setAllPrompts(approvedPrompts);
-          setDepartments(data.departments || []);
-        }
-      } catch (error2) {
-        console.error('Failed to load prompts from static file:', error2);
-        setAllPrompts([]);
-        setDepartments([]);
-      }
+      console.error('Failed to load prompts:', error);
+      setAllPrompts([]);
+      setDepartments([]);
     } finally {
       setLoading(false);
     }
@@ -237,6 +222,11 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     // Department filter
     if (selectedDepartment) {
       filtered = filtered.filter(prompt => prompt.department === selectedDepartment);
+    }
+
+    // Subcategory filter
+    if (selectedSubcategory) {
+      filtered = filtered.filter(prompt => prompt.subcategory === selectedSubcategory);
     }
 
     // Sort
@@ -267,17 +257,46 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
   const handleDepartmentChange = (value) => {
     setSelectedDepartment(value);
+    setSelectedSubcategory(''); // Reset subcategory when department changes
     if (value) {
       searchParams.set('department', value);
     } else {
       searchParams.delete('department');
     }
+    searchParams.delete('subcategory');
     setSearchParams(searchParams);
+  };
+
+  const handleSubcategoryChange = (value) => {
+    setSelectedSubcategory(value);
+    if (value) {
+      searchParams.set('subcategory', value);
+    } else {
+      searchParams.delete('subcategory');
+    }
+    setSearchParams(searchParams);
+  };
+
+  // Get available subcategories based on selected department
+  const getAvailableSubcategories = () => {
+    if (!selectedDepartment) return [];
+
+    const subcategoriesSet = new Set();
+    allPrompts
+      .filter(prompt => prompt.department === selectedDepartment)
+      .forEach(prompt => {
+        if (prompt.subcategory) {
+          subcategoriesSet.add(prompt.subcategory);
+        }
+      });
+
+    return Array.from(subcategoriesSet).sort();
   };
 
   const clearFilters = () => {
     setSearchQuery('');
     setSelectedDepartment('');
+    setSelectedSubcategory('');
     setSortBy('title');
     setSearchParams({});
   };
@@ -600,6 +619,20 @@ export default function BrowsePage({ isDark, toggleTheme }) {
             </Dropdown>
 
             <Dropdown
+              placeholder="All Subcategories"
+              value={selectedSubcategory}
+              onOptionSelect={(e, data) => handleSubcategoryChange(data.optionValue || '')}
+              disabled={!selectedDepartment}
+            >
+              <Option value="">All Subcategories</Option>
+              {getAvailableSubcategories().map(subcategory => (
+                <Option key={subcategory} value={subcategory}>
+                  {subcategory}
+                </Option>
+              ))}
+            </Dropdown>
+
+            <Dropdown
               placeholder="Sort by"
               value={sortBy}
               onOptionSelect={(e, data) => setSortBy(data.optionValue || 'title')}
@@ -613,7 +646,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
               appearance="subtle"
               icon={<Dismiss24Regular />}
               onClick={clearFilters}
-              disabled={!searchQuery && !selectedDepartment && sortBy === 'title'}
+              disabled={!searchQuery && !selectedDepartment && !selectedSubcategory && sortBy === 'title'}
             >
               Clear
             </Button>
