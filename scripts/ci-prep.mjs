@@ -55,11 +55,17 @@ async function main() {
   const slim = data.map(slimPrompt);
   fs.mkdirSync(outDir, { recursive: true });
 
-  // Ensure no thumbnails land in public
+  // Ensure no thumbnails or prompt HTML files land in public
   const thumbsDir = path.join(outDir, 'thumbnails');
   if (fs.existsSync(thumbsDir)) {
     fs.rmSync(thumbsDir, { recursive: true, force: true });
     console.log('Removed public/thumbnails from CI build.');
+  }
+
+  const promptsDir = path.join(outDir, 'prompts');
+  if (fs.existsSync(promptsDir)) {
+    fs.rmSync(promptsDir, { recursive: true, force: true });
+    console.log('Removed public/prompts from CI build.');
   }
 
   fs.writeFileSync(outFile, JSON.stringify(slim));
