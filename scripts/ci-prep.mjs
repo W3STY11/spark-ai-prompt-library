@@ -42,8 +42,12 @@ async function main() {
   console.log(`CI prep: fetching ${fetchUrl}`);
   const res = await fetch(fetchUrl);
   if (!res.ok) throw new Error(`Failed to fetch prompts_index.json: ${res.status} ${res.statusText}`);
-  let data = await res.json();
-  if (!Array.isArray(data)) throw new Error('prompts_index.json is not an array');
+  let json = await res.json();
+
+  // Handle both array format and object format { prompts: [...] }
+  let data = Array.isArray(json) ? json : (json.prompts || []);
+  if (!Array.isArray(data)) throw new Error('prompts_index.json has no prompts array');
+
   if (limit && data.length > limit) {
     console.log(`Sampling prompts to first ${limit} items for CI.`);
     data = data.slice(0, limit);
