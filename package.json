@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vite",
     "dev:rebuild": "node scripts/build-index.mjs && vite",
-    "build": "node scripts/build-index.mjs && vite build",
+    "build": "node scripts/ci-decide.mjs",
+    "build:vite": "vite build",
     "build:quick": "vite build",
     "preview": "vite preview",
     "api": "node server/api.js",
