@@ -30,6 +30,7 @@ jobs:
           app_location: "/"
           output_location: "dist"
           production_branch: "main"
+          skip_app_build: true
 
   production:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -50,3 +51,4 @@ jobs:
           app_location: "/"
           output_location: "dist"
           production_branch: "main"
+          skip_app_build: true
