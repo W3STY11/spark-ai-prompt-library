@@ -406,25 +406,61 @@ export default function BrowsePage({ isDark, toggleTheme }) {
       className={mergeClasses(styles.promptCard, isDark && styles.promptCardDark)}
       onClick={() => handlePromptClick(prompt.id)}
     >
-      <div style={{ padding: '16px' }}>
-        <div style={{ display: 'flex', alignItems: 'start', gap: '16px', marginBottom: '16px' }}>
-          <span className={styles.promptIcon}>{prompt.icon}</span>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <Title3 block style={{ marginBottom: '8px' }}>
-              {prompt.title}
-            </Title3>
-            <Badge appearance="filled" color="brand">
-              {prompt.department}
-            </Badge>
+      <div style={{ padding: '8px 12px', position: 'relative' }}>
+        {/* Absolutely positioned image indicator - no layout impact */}
+        {prompt.images && prompt.images.length > 0 && (
+          <div style={{
+            position: 'absolute',
+            top: '8px',
+            right: '8px',
+            color: tokens.colorNeutralForeground3,
+            pointerEvents: 'none',
+            zIndex: 1
+          }}>
+            <Image24Regular />
           </div>
+        )}
+
+        {/* Single-line header: Icon · Title · WordCount · DepartmentBadge */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginBottom: '8px'
+        }}>
+          <span style={{ fontSize: '24px', flexShrink: 0 }}>{prompt.icon}</span>
+          <Title3
+            block
+            style={{
+              flex: 1,
+              minWidth: 0,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              marginBottom: 0
+            }}
+          >
+            {prompt.title}
+          </Title3>
+          <span style={{
+            fontSize: '12px',
+            color: tokens.colorNeutralForeground2,
+            whiteSpace: 'nowrap',
+            flexShrink: 0
+          }}>
+            {prompt.word_count}w
+          </span>
+          <Badge appearance="filled" color="brand" size="small" style={{ flexShrink: 0 }}>
+            {prompt.department}
+          </Badge>
         </div>
 
-        <Body2 block style={{ marginBottom: '16px', color: tokens.colorNeutralForeground2 }}>
-          {prompt.description.substring(0, 150)}...
+        <Body2 block style={{ marginBottom: '8px', color: tokens.colorNeutralForeground2 }}>
+          {prompt.description.substring(0, 120)}...
         </Body2>
 
         {prompt.tags && prompt.tags.length > 0 && (
-          <div className={styles.tagsContainer}>
+          <div className={styles.tagsContainer} style={{ marginTop: '8px' }}>
             {prompt.tags.slice(0, 3).map((tag, idx) => (
               <Badge key={idx} appearance="outline" size="small">
                 {tag}
@@ -435,16 +471,12 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
         <div style={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'flex-end',
           alignItems: 'center',
-          marginTop: '16px',
-          paddingTop: '16px',
+          marginTop: '8px',
+          paddingTop: '8px',
           borderTop: `1px solid ${tokens.colorNeutralStroke2}`
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '14px', color: tokens.colorNeutralForeground2 }}>
-            {prompt.images && prompt.images.length > 0 && <Image24Regular />}
-            <span>{prompt.word_count} words</span>
-          </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Button
               appearance="subtle"
