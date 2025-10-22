@@ -408,7 +408,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     >
       <div style={{ padding: '8px 12px', position: 'relative' }}>
         {/* Absolutely positioned image indicator - no layout impact */}
-        {prompt.images && prompt.images.length > 0 && (
+        {(prompt?.has_image || (prompt?.images && prompt.images.length > 0)) && (
           <div style={{
             position: 'absolute',
             top: '8px',
