@@ -13,7 +13,12 @@ concurrency:
 
 jobs:
   preview_and_dev:
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/dev'
+    # Run on PRs, dev pushes, and manual dispatch on feature/dev branches
+    if: >
+      github.event_name == 'pull_request' ||
+      github.ref == 'refs/heads/dev' ||
+      (github.event_name == 'workflow_dispatch' &&
+       (startsWith(github.ref, 'refs/heads/feat/') || startsWith(github.ref, 'refs/heads/dev')))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
