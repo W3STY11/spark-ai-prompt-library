@@ -31,8 +31,10 @@ jobs:
           node scripts/check-dist-size.js
       - name: Cleanup workspace for deployment
         run: |
-          # Keep only dist and staticwebapp.config.json for deployment
-          find . -maxdepth 1 ! -name '.' ! -name 'dist' ! -name 'staticwebapp.config.json' -exec rm -rf {} +
+          # Copy staticwebapp.config.json into dist for Azure SWA routing
+          cp staticwebapp.config.json dist/
+          # Keep only dist folder for deployment
+          find . -maxdepth 1 ! -name '.' ! -name 'dist' -exec rm -rf {} +
           echo "Workspace cleaned. Remaining files:"
           du -sh * 2>/dev/null || true
       - name: Deploy to Azure Static Web Apps (preview/dev)
@@ -66,8 +68,10 @@ jobs:
           node scripts/check-dist-size.js
       - name: Cleanup workspace for deployment
         run: |
-          # Keep only dist and staticwebapp.config.json for deployment
-          find . -maxdepth 1 ! -name '.' ! -name 'dist' ! -name 'staticwebapp.config.json' -exec rm -rf {} +
+          # Copy staticwebapp.config.json into dist for Azure SWA routing
+          cp staticwebapp.config.json dist/
+          # Keep only dist folder for deployment
+          find . -maxdepth 1 ! -name '.' ! -name 'dist' -exec rm -rf {} +
           echo "Workspace cleaned. Remaining files:"
           du -sh * 2>/dev/null || true
       - name: Deploy to Azure Static Web Apps (production)
