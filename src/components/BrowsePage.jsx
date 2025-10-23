@@ -86,7 +86,7 @@ const useStyles = makeStyles({
   gridContainer: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-    ...shorthands.gap('12px'),
+    ...shorthands.gap('24px'),
     marginBottom: '48px',
   },
   listContainer: {
@@ -406,12 +406,12 @@ export default function BrowsePage({ isDark, toggleTheme }) {
       className={mergeClasses(styles.promptCard, isDark && styles.promptCardDark)}
       onClick={() => handlePromptClick(prompt.id)}
     >
-      <div style={{ padding: '6px 10px', position: 'relative' }}>
+      <div style={{ padding: '8px 12px', position: 'relative' }}>
         {/* Absolutely positioned image indicator - no layout impact */}
         {(prompt?.has_image || (prompt?.images && prompt.images.length > 0)) && (
           <div style={{
             position: 'absolute',
-            top: '6px',
+            top: '8px',
             right: '8px',
             color: tokens.colorNeutralForeground3,
             pointerEvents: 'none',
@@ -425,10 +425,10 @@ export default function BrowsePage({ isDark, toggleTheme }) {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '6px',
-          marginBottom: '6px'
+          gap: '8px',
+          marginBottom: '8px'
         }}>
-          <span style={{ fontSize: '20px', flexShrink: 0 }}>{prompt.icon}</span>
+          <span style={{ fontSize: '24px', flexShrink: 0 }}>{prompt.icon}</span>
           <Title3
             block
             style={{
@@ -443,7 +443,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
             {prompt.title}
           </Title3>
           <span style={{
-            fontSize: '11px',
+            fontSize: '12px',
             color: tokens.colorNeutralForeground2,
             whiteSpace: 'nowrap',
             flexShrink: 0
@@ -455,23 +455,13 @@ export default function BrowsePage({ isDark, toggleTheme }) {
           </Badge>
         </div>
 
-        <Body2
-          block
-          style={{
-            marginBottom: '6px',
-            color: tokens.colorNeutralForeground2,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden'
-          }}
-        >
-          {prompt.description.substring(0, 120)}
+        <Body2 block style={{ marginBottom: '8px', color: tokens.colorNeutralForeground2 }}>
+          {prompt.description.substring(0, 120)}...
         </Body2>
 
         {prompt.tags && prompt.tags.length > 0 && (
-          <div className={styles.tagsContainer} style={{ marginTop: '4px' }}>
-            {prompt.tags.slice(0, 2).map((tag, idx) => (
+          <div className={styles.tagsContainer} style={{ marginTop: '8px' }}>
+            {prompt.tags.slice(0, 3).map((tag, idx) => (
               <Badge key={idx} appearance="outline" size="small">
                 {tag}
               </Badge>
@@ -483,11 +473,11 @@ export default function BrowsePage({ isDark, toggleTheme }) {
           display: 'flex',
           justifyContent: 'flex-end',
           alignItems: 'center',
-          marginTop: '6px',
-          paddingTop: '6px',
+          marginTop: '8px',
+          paddingTop: '8px',
           borderTop: `1px solid ${tokens.colorNeutralStroke2}`
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Button
               appearance="subtle"
               size="small"
