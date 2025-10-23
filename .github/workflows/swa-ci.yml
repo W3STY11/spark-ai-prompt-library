@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [dev, main]              # PR previews
   workflow_dispatch:                   # manual runs (safe)
+    inputs:
+      confirm:
+        description: 'Type "DEPLOY_MAIN" to deploy to production'
+        required: false
+        default: ''
 
 concurrency:
   group: swa-${{ github.ref }}
@@ -49,7 +54,8 @@ jobs:
           skip_app_build: true
 
   production:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Manual-only production deploy; requires explicit confirmation
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && github.event.inputs.confirm == 'DEPLOY_MAIN'
     runs-on: ubuntu-latest
     environment: production             # require manual approval in repo Settings → Environments
     steps:
