@@ -69,10 +69,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-      - name: Build (lean CI - prod)
-        env:
-          PROMPTS_INDEX_URL: https://gray-ocean-059c8510f.3.azurestaticapps.net/prompts_index.json
-          PROMPT_SAMPLE_LIMIT: '300'
+      - name: Build (full production)
         run: |
           npm ci
           npm run build
