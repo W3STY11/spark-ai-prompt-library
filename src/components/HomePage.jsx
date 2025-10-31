@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BLOB_ENDPOINTS } from '../config';
+import { API_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -479,28 +479,24 @@ export default function HomePage({ isDark, toggleTheme }) {
   }, [departments]); // Re-run when departments load
 
   useEffect(() => {
-    // Load prompts index from Blob Storage
+    // Load departments from Azure SQL API
     const fetchData = async () => {
       try {
-        const res = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
+        const res = await fetch(`${API_ENDPOINTS.PROMPTS.replace('/prompts', '/departments')}`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
-        if (data && data.departments) {
-          setDepartments(data.departments);
+        if (Array.isArray(data)) {
+          // Transform API response to match expected format
+          const depts = data.map(d => ({
+            name: d.name,
+            icon: d.icon,
+            promptCount: d.prompt_count,
+            description: `Browse ${d.prompt_count} prompts in ${d.name}`
+          }));
+          setDepartments(depts);
         }
       } catch (err) {
-        console.error('Failed to load departments from Blob Storage:', err);
-        // Fallback to local file if blob storage fails
-        try {
-          const res = await fetch('/prompts_index.json');
-          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-          const data = await res.json();
-          if (data && data.departments) {
-            setDepartments(data.departments);
-          }
-        } catch (err2) {
-          console.error('Failed to load departments from backup:', err2);
-        }
+        console.error('Failed to load departments from API:', err);
       }
     };
     fetchData();
