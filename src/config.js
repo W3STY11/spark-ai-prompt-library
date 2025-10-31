@@ -11,6 +11,9 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://prompt
 
 // Full API endpoints
 export const API_ENDPOINTS = {
+  // Base URL for backward compatibility
+  API_URL: API_BASE_URL,
+
   // Public endpoints
   PROMPTS: `${API_BASE_URL}/api/prompts`,
   DEPARTMENTS: `${API_BASE_URL}/api/departments`,
@@ -18,12 +21,19 @@ export const API_ENDPOINTS = {
   // Dynamic endpoints (need ID parameter)
   PROMPT_BY_ID: (id) => `${API_BASE_URL}/api/prompts/${id}`,
 
-  // Admin endpoints - CRUD operations
+  // Admin endpoints - CRUD operations for prompts
   ADMIN_CREATE_PROMPT: `${API_BASE_URL}/api/admin/prompts`,
   ADMIN_UPDATE_PROMPT: (id) => `${API_BASE_URL}/api/admin/prompts/${id}`,
   ADMIN_DELETE_PROMPT: (id) => `${API_BASE_URL}/api/admin/prompts/${id}`,
   ADMIN_BULK_CREATE: `${API_BASE_URL}/api/admin/prompts/bulk`,
+
+  // Admin endpoints - Departments
+  ADMIN_DEPARTMENTS: `${API_BASE_URL}/api/admin/departments`,
+  ADMIN_DEPARTMENT_BY_ID: (id) => `${API_BASE_URL}/api/admin/departments/${id}`,
+
+  // Admin endpoints - Subcategories
   ADMIN_SUBCATEGORIES: `${API_BASE_URL}/api/admin/subcategories`,
+  ADMIN_SUBCATEGORY_BY_ID: (id) => `${API_BASE_URL}/api/admin/subcategories/${id}`,
 
   // Legacy admin endpoints (not implemented in simplified API yet)
   ADMIN_LOGIN: `${API_BASE_URL}/api/admin/login`,
