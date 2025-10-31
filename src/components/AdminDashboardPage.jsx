@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BLOB_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -50,7 +49,8 @@ import {
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
 import EditPromptModal from './EditPromptModal';
-import PendingPromptsSection from './PendingPromptsSection';
+// TEMPORARILY DISABLED - Missing backend endpoints
+// import PendingPromptsSection from './PendingPromptsSection';
 import { API_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
@@ -211,7 +211,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
   const loadPrompts = async () => {
     try {
-      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
+      const response = await fetch(API_ENDPOINTS.PROMPTS);
       if (!response.ok) throw new Error('Failed to load prompts');
       const data = await response.json();
 
@@ -754,7 +754,8 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
         </div>
 
         {/* Pending Approvals Section */}
-        <PendingPromptsSection isDark={isDark} onUpdate={loadPrompts} />
+        {/* TEMPORARILY DISABLED - Missing backend endpoints */}
+        {/* <PendingPromptsSection isDark={isDark} onUpdate={loadPrompts} /> */}
 
         {/* Stats Grid */}
         <div className={styles.statsGrid}>

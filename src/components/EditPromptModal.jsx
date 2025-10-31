@@ -25,6 +25,7 @@ import {
   Checkmark24Regular,
   Edit24Regular,
 } from '@fluentui/react-icons';
+import { API_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
   dialogContent: {
@@ -188,34 +189,31 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
       // Calculate word count
       const wordCount = formData.content.trim().split(/\s+/).filter(w => w.length > 0).length;
 
-      // Prepare updated prompt data
+      // Prepare updated prompt data with metadata
       const updatedPrompt = {
-        ...prompt,
         title: formData.title.trim(),
         department: formData.department,
         subcategory: formData.subcategory.trim(),
         description: formData.description.trim(),
         content: formData.content.trim(),
         tags: tagsArray,
-        icon: formData.icon,
-        complexity: formData.complexity || 'intermediate',
         tips: tipsArray,
         images: imagesArray,
+        icon: formData.icon,
+        complexity: formData.complexity || 'intermediate',
+        word_count: wordCount,
         metadata: {
           whatItDoes: formData.whatItDoes.trim() || '',
           howToUse: formData.howToUse.trim() || '',
           exampleInput: formData.exampleInput.trim() || '',
         },
-        word_count: wordCount,
-        last_modified: new Date().toISOString(),
       };
 
       // Send to API server
-      const response = await fetch(`/api/prompts/${prompt.id}`, {
+      const response = await fetch(API_ENDPOINTS.ADMIN_UPDATE_PROMPT(prompt.id), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(updatedPrompt),
       });
@@ -227,9 +225,14 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
 
       const result = await response.json();
 
-      // Call the onUpdate callback
-      if (result.success && result.prompt) {
-        await onUpdate(result.prompt);
+      // Call the onUpdate callback with merged data (backend doesn't return the full prompt)
+      if (result.success) {
+        const mergedPrompt = {
+          ...prompt,
+          ...updatedPrompt,
+          updated_at: new Date().toISOString(),
+        };
+        await onUpdate(mergedPrompt);
       }
 
       dispatchToast(
