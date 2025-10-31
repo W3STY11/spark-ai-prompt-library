@@ -11,3 +11,4 @@ cypress/screenshots/
 .DS_Store
 Thumbs.db
 .env*
+public/prompts/
