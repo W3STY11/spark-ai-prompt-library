@@ -145,6 +145,12 @@ export default function Header({ isDark, toggleTheme }) {
             Browse
           </span>
           <span
+            className={`${styles.navLink} ${isActive('/my-prompts') ? styles.navLinkActive : ''}`}
+            onClick={() => navigate('/my-prompts')}
+          >
+            My Prompts
+          </span>
+          <span
             className={`${styles.navLink} ${isActive('/favorites') ? styles.navLinkActive : ''}`}
             onClick={() => navigate('/favorites')}
           >

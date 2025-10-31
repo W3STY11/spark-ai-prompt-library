@@ -5,6 +5,7 @@ import HomePage from './components/HomePage';
 import BrowsePage from './components/BrowsePage';
 import ViewPage from './components/ViewPage';
 import FavoritesPage from './components/FavoritesPage';
+import MyPromptsPage from './components/MyPromptsPage';
 import AdminLoginPage from './components/AdminLoginPage';
 import AdminDashboardPage from './components/AdminDashboardPage';
 // import CopilotIntegration from './components/CopilotIntegration';
@@ -54,6 +55,7 @@ function App({ isDark, setIsDark }) {
         <Route path="/browse" element={<BrowsePage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/view" element={<ViewPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/favorites" element={<FavoritesPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path="/my-prompts" element={<MyPromptsPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/admin-login" element={<AdminLoginPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/admin" element={<AdminDashboardPage isDark={isDark} toggleTheme={toggleTheme} />} />
       </Routes>

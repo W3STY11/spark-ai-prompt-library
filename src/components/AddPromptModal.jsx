@@ -182,26 +182,31 @@ export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
         .filter(img => img.length > 0);
 
       // Send to API server
-      const response = await fetch('/api/prompts', {
+      const response = await fetch('/api/admin/prompts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          category: formData.department,
+          department: formData.department,
           title: formData.title.trim(),
           description: formData.description.trim(),
-          prompt: formData.content.trim(),
+          content: formData.content.trim(),
           tags: tagsArray,
           subcategory: formData.subcategory.trim(),
           complexity: formData.complexity || 'intermediate',
           tips: tipsArray,
           images: imagesArray,
+          icon: formData.icon,
           metadata: {
-            whatItDoes: formData.whatItDoes.trim() || '',
-            howToUse: formData.howToUse.trim() || '',
-            exampleInput: formData.exampleInput.trim() || '',
+            additional_tips: [],
+            what_it_does: formData.whatItDoes.trim() || '',
+            how_to_use: formData.howToUse.trim() || '',
+            example_input: formData.exampleInput.trim() || '',
+            example_output: '',
+            date: new Date().toISOString().split('T')[0],
           },
+          created_by: 'anonymous', // TODO: Replace with actual user ID when auth is added
         }),
       });
 
