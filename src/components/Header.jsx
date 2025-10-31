@@ -91,6 +91,29 @@ const useStyles = makeStyles({
   },
 });
 
+function EnvBadge() {
+  const h = typeof window !== 'undefined' ? window.location.hostname : '';
+  let env = 'production';
+  if (/-dev\./.test(h)) env = 'staging';
+  else if (/-\d+\.|-(feat|fix|chore|refactor)/.test(h)) env = 'preview';
+  const color = env === 'production' ? '#16a34a' : env === 'staging' ? '#2563eb' : '#a855f7';
+  const label = env[0].toUpperCase() + env.slice(1);
+  return (
+    <span style={{
+      marginLeft: 8,
+      padding: '2px 8px',
+      borderRadius: 9999,
+      fontSize: 12,
+      background: color + '22',
+      color,
+      border: `1px solid ${color}55`,
+      fontWeight: 600,
+    }}>
+      {label}
+    </span>
+  );
+}
+
 export default function Header({ isDark, toggleTheme }) {
   const styles = useStyles();
   const navigate = useNavigate();
@@ -101,9 +124,12 @@ export default function Header({ isDark, toggleTheme }) {
   return (
     <header className={mergeClasses(styles.header, isDark && styles.headerDark)}>
       <div className={styles.headerContent}>
-        <div className={styles.logo} onClick={() => navigate('/')}>
-          <Sparkle24Filled />
-          <span>SPARK Prompt Library</span>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div className={styles.logo} onClick={() => navigate('/')}>
+            <Sparkle24Filled />
+            <span>SPARK Prompt Library</span>
+          </div>
+          <EnvBadge />
         </div>
         <nav className={styles.nav}>
           <span
