@@ -35,7 +35,7 @@ import {
   Add24Regular,
   Edit24Regular,
   Delete24Regular,
-  FolderList24Regular,
+  Folder24Regular,
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
@@ -256,7 +256,7 @@ export default function AdminSubcategoriesPage({ isDark, toggleTheme }) {
       <main className={styles.main}>
         <div className={styles.header}>
           <div className={styles.title}>
-            <FolderList24Regular />
+            <Folder24Regular />
             <Title1>Subcategory Management</Title1>
           </div>
           <Button
