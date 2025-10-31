@@ -78,6 +78,8 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
     tags: '',
     icon: '⚡',
     complexity: '',
+    promptCategory: '',
+    worksIn: '',
     tips: '',
     whatItDoes: '',
     howToUse: '',
@@ -87,10 +89,53 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [promptCategories, setPromptCategories] = useState([]);
+  const [worksInOptions, setWorksInOptions] = useState([]);
+
+  // Load categories and works-in options when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      const loadOptions = async () => {
+        try {
+          const [categoriesRes, worksInRes] = await Promise.all([
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/prompt-categories`),
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/works-in`)
+          ]);
+
+          if (categoriesRes.ok) {
+            const categories = await categoriesRes.json();
+            setPromptCategories(categories);
+          }
+
+          if (worksInRes.ok) {
+            const worksIn = await worksInRes.json();
+            setWorksInOptions(worksIn);
+          }
+        } catch (error) {
+          console.error('Failed to load options:', error);
+        }
+      };
+
+      loadOptions();
+    }
+  }, [isOpen]);
 
   // Load prompt data when modal opens
   useEffect(() => {
     if (isOpen && prompt) {
+      // Handle works_in - can be JSON string, array, or null
+      let worksInStr = '';
+      if (prompt.works_in_json) {
+        try {
+          const worksInArray = typeof prompt.works_in_json === 'string'
+            ? JSON.parse(prompt.works_in_json)
+            : prompt.works_in_json;
+          worksInStr = Array.isArray(worksInArray) ? worksInArray.join(', ') : '';
+        } catch {
+          worksInStr = '';
+        }
+      }
+
       setFormData({
         title: prompt.title || '',
         department: prompt.department || '',
@@ -100,6 +145,8 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         tags: Array.isArray(prompt.tags) ? prompt.tags.join(', ') : prompt.tags || '',
         icon: prompt.icon || '⚡',
         complexity: prompt.complexity || '',
+        promptCategory: prompt.prompt_category || '',
+        worksIn: worksInStr,
         tips: Array.isArray(prompt.tips) ? prompt.tips.join('\n') : prompt.tips || '',
         images: Array.isArray(prompt.images) ? prompt.images.join(', ') : prompt.images || '',
         whatItDoes: prompt.metadata?.whatItDoes || '',
@@ -186,6 +233,12 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         .map(img => img.trim())
         .filter(img => img.length > 0);
 
+      // Prepare works-in array
+      const worksInArray = formData.worksIn
+        .split(',')
+        .map(item => item.trim())
+        .filter(item => item.length > 0);
+
       // Calculate word count
       const wordCount = formData.content.trim().split(/\s+/).filter(w => w.length > 0).length;
 
@@ -202,6 +255,8 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
         icon: formData.icon,
         complexity: formData.complexity || 'intermediate',
         word_count: wordCount,
+        prompt_category: formData.promptCategory || null,
+        works_in_json: worksInArray.length > 0 ? JSON.stringify(worksInArray) : null,
         metadata: {
           whatItDoes: formData.whatItDoes.trim() || '',
           howToUse: formData.howToUse.trim() || '',
@@ -403,6 +458,41 @@ export default function EditPromptModal({ isOpen, onClose, prompt, onUpdate }) {
                   <Option value="intermediate">🟡 Intermediate</Option>
                   <Option value="advanced">🔴 Advanced</Option>
                 </Dropdown>
+              </Field>
+
+              {/* Prompt Category */}
+              <Field
+                label="Prompt Category"
+                hint="Optional: categorize by action type"
+                className={styles.fullWidth}
+              >
+                <Dropdown
+                  placeholder="Select category (optional)"
+                  value={formData.promptCategory}
+                  onOptionSelect={(e, data) => handleChange('promptCategory', data.optionValue || '')}
+                  disabled={isSubmitting}
+                >
+                  <Option value="">None</Option>
+                  {promptCategories.map(category => (
+                    <Option key={category.id} value={category.name}>
+                      {category.name}
+                    </Option>
+                  ))}
+                </Dropdown>
+              </Field>
+
+              {/* Works In */}
+              <Field
+                label="Works In Platforms"
+                hint="Optional: comma-separated list of platforms where this prompt works"
+                className={styles.fullWidth}
+              >
+                <Input
+                  value={formData.worksIn}
+                  onChange={(e) => handleChange('worksIn', e.target.value)}
+                  placeholder="e.g., Teams, Outlook, ChatGPT"
+                  disabled={isSubmitting}
+                />
               </Field>
 
               {/* Tips */}
