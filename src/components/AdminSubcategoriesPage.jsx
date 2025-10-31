@@ -39,6 +39,7 @@ import {
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
+import AdminNavigation from './AdminNavigation';
 
 const useStyles = makeStyles({
   container: {
@@ -254,6 +255,8 @@ export default function AdminSubcategoriesPage({ isDark, toggleTheme }) {
       <Header isDark={isDark} toggleTheme={toggleTheme} />
 
       <main className={styles.main}>
+        <AdminNavigation />
+
         <div className={styles.header}>
           <div className={styles.title}>
             <Folder24Regular />

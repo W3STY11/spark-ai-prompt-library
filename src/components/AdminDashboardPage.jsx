@@ -48,6 +48,7 @@ import {
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
+import AdminNavigation from './AdminNavigation';
 import EditPromptModal from './EditPromptModal';
 // TEMPORARILY DISABLED - Missing backend endpoints
 // import PendingPromptsSection from './PendingPromptsSection';
@@ -745,6 +746,8 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
       <Toaster toasterId={toasterId} />
 
       <main className={styles.main}>
+        <AdminNavigation />
+
         {/* Header */}
         <div className={styles.header}>
           <Title1 block style={{ marginBottom: '8px' }}>Admin Dashboard</Title1>
