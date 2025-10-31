@@ -1,0 +1,739 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create LinkedIn Thought Leadership Article</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-81cb-a590-d45e27645c1a" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📝</span></div><h1 class="page-title">Create LinkedIn Thought Leadership Article</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Content Marketing</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@August 14, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-816b-8246-c65fb242d3ea"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><p id="2733f44c-2287-8163-a6fb-c28dcb1eaedd" class=""><mark class="highlight-default">Use this mega-prompt for ChatGPT that crafts LinkedIn articles positioning authors as industry thought leaders, engaging professionals with well-researched, SEO-optimized content that encourages reader interaction and shares.</mark></p></div></figure><hr id="2733f44c-2287-8119-9a38-e94940bee208"/><h2 id="2733f44c-2287-8131-97ec-c3bef81d0fc5" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-8191-8d3c-f924666597ec" class=""><mark class="highlight-default">● Converts user input into a structured LinkedIn article outline, focusing on engaging and informative content.<br/>● Guides the user in incorporating SEO practices and persuasive language to enhance article visibility and reader engagement.<br/>● Encourages interaction from the LinkedIn community by ending with a call-to-action or discussion prompt.</mark></p><h2 id="2733f44c-2287-811a-9e79-fb818c0751a6" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-81b7-83f5-e008174db451" class=""><mark class="highlight-default">● Start by crafting a compelling introduction that immediately captures the attention of your LinkedIn audience. Use a provocative question or a startling fact related to your topic to hook readers from the beginning, ensuring it aligns with the professional tone and expectations of LinkedIn users.<br/><br/>● Structure the body of your article with clear, SEO-friendly subheadings that not only guide the reader through your narrative but also incorporate your chosen keywords strategically. This approach helps in maintaining reader engagement and enhancing the article&#x27;s visibility on LinkedIn.<br/><br/>● Conclude your article with a strong call-to-action or a thought-provoking question that encourages reader interaction, such as comments and shares. This not only fosters community engagement but also boosts the article&#x27;s reach and impact within your industry on LinkedIn.</mark></p><h2 id="2733f44c-2287-8114-87d8-fe183fc82294" class=""><mark class="highlight-yellow_background">📝 LinkedIn Article Creator ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-81a3-b351-cfdfd578ff36" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+Adopt the role of an experienced copywriter specialized in creating professional content tailored for LinkedIn. Your task is to draft a LinkedIn article on a given topic that not only positions the author as a thought leader within their industry but also caters to the expectations of a LinkedIn audience—professionals seeking insights and updates in their fields. The content should be well-researched, informative, and structured with a compelling introduction, clear subheadings, and a conclusive wrap-up, incorporating SEO best practices without sacrificing readability or authenticity. The use of persuasive language is key to engaging readers, sparking discussions, and encouraging shares within the LinkedIn community.
+
+#GOAL:
+You will create an article that not only informs and educates but also engages the LinkedIn community, prompting readers to view the author as a go-to resource within their industry.
+
+#RESPONSE GUIDELINES:
+To craft this LinkedIn article, follow the steps below:
+
+Start with a compelling introduction that hooks the reader. This could involve posing a provocative question, presenting a startling fact, or sharing a brief anecdote that directly relates to your topic and demonstrates the relevance and urgency of the discussion.
+
+Outline the body of your article with clear subheadings that guide the reader through your arguments or points. Each section should build upon the last, weaving a narrative that is both informative and engaging.
+
+[Subheading 1]: Dive deep into the current state of the industry, using data and research to back up your points. This section should set the stage for why your topic is important.
+[Subheading 2]: Present challenges or common misconceptions related to your topic, providing insights that only someone with your expertise could offer.
+[Subheading 3]: Offer solutions or future predictions, leaning on your unique perspective and experiences. Use this section to showcase your thought leadership.
+[Subheading 4]: Discuss the implications of your topic on the industry, suggesting actionable steps for the reader to take or consider.
+Conclude your article by summarizing the key takeaways and encouraging readers to engage with the content. Pose a question or invite discussion to prompt comments and shares. Offer a final, thought-provoking statement or call-to-action that reinforces your position as a thought leader.
+
+Throughout the article, incorporate SEO best practices:
+
+Use relevant keywords naturally within the text, especially in headings and early in sections.
+Link to reputable sources to back up your data and provide further reading.
+Encourage reader engagement, as comments and shares will improve the article&#x27;s visibility.
+Use persuasive language to keep the reader engaged. This includes using active voice, vivid descriptions, and relatable examples that bring your points to life.
+
+#INFORMATION ABOUT ME:
+-My topic: [TOPIC]
+-My unique insights or experiences on this topic: [UNIQUE INSIGHTS]
+-Data or research I can reference: [DATA OR RESEARCH]
+-Common challenges or misconceptions related to my topic: [CHALLENGES -OR MISCONCEPTIONS]
+-My proposed solutions or predictions: [SOLUTIONS OR PREDICTIONS]
+-Actionable steps for the industry: [ACTIONABLE STEPS]
+-Keywords to include: [KEYWORDS]</code></pre><p id="2733f44c-2287-8185-b1ac-eee1eecbd79d" class=""><mark class="highlight-default"><code><br/>#OUTPUT:<br/>Your LinkedIn article will be a thoughtfully composed piece that effectively positions you as a thought leader. It will be structured to capture the reader&#x27;s attention from the outset, provide valuable insights and data-backed arguments, and conclude in a manner that encourages engagement and discussion. Ensure your article is optimized for SEO without compromising on authenticity, and uses persuasive language to make a lasting impact on your readers.</code></mark></p><h2 id="2733f44c-2287-81fc-8c1b-e38ef66bd2c0" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-8181-9bd5-fbe434a6a98a" class=""><mark class="highlight-default">● Fill in the placeholders [TOPIC], [UNIQUE INSIGHTS], [DATA OR RESEARCH], [CHALLENGES OR MISCONCEPTIONS], [SOLUTIONS OR PREDICTIONS], [ACTIONABLE STEPS], and [KEYWORDS] with specific details relevant to your expertise and the article you intend to write.<br/>  - Example: If your topic is &quot;Sustainable Business Practices&quot;, you might fill in:<br/>    - [TOPIC] with &quot;Sustainable Business Practices&quot;<br/>    - [UNIQUE INSIGHTS] with &quot;My experience implementing green initiatives in tech companies&quot;<br/>    - [DATA OR RESEARCH] with &quot;Recent studies from the Environmental Protection Agency and my own company&#x27;s sustainability reports&quot;<br/>    - [CHALLENGES OR MISCONCEPTIONS] with &quot;Misconceptions about the high costs of sustainability&quot;<br/>    - [SOLUTIONS OR PREDICTIONS] with &quot;Cost-effective sustainable solutions and future trends in green technology&quot;<br/>    - [ACTIONABLE STEPS] with &quot;Steps companies can take to integrate eco-friendly practices&quot;<br/>    - [KEYWORDS] with &quot;sustainability, green initiatives, eco-friendly technology&quot;<br/><br/>● Example: For an article on &quot;Sustainable Business Practices&quot;, you might write:<br/>  - Topic: Sustainable Business Practices<br/>  - Unique Insights: Leveraging my decade-long experience in implementing green initiatives within tech companies<br/>  - Data or Research: Citing recent EPA studies and data from corporate sustainability reports<br/>  - Common Challenges or Misconceptions: Addressing the false belief that sustainable practices are always cost-prohibitive<br/>  - Proposed Solutions or Predictions: Introducing cost-effective methods and predicting the rise of biodegradable materials in manufacturing<br/>  - Actionable Steps: Outlining practical steps for companies to reduce carbon footprints<br/>  - Keywords: sustainability, environmental impact, green business practices</mark></p><h2 id="2733f44c-2287-81ac-a403-d15f2dba7ce8" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-81bd-8f5a-ebfd7edebf4e" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>● My topic: Leveraging AI in Digital Marketing<br/>● My unique insights or experiences on this topic: As a freelancer digital marketer who extensively uses AI tools like ChatGPT &amp; Midjourney AI, I have firsthand experience in integrating AI to enhance marketing strategies and automate tasks.<br/>● Data or research I can reference: Recent studies showing a 50% increase in campaign efficiency when AI is integrated into digital marketing strategies.<br/>● Common challenges or misconceptions related to my topic: Many believe AI will replace human marketers, but it&#x27;s more about augmentation and efficiency.<br/>● My proposed solutions or predictions: Businesses should focus on AI as a tool for enhancing human creativity and strategy, not replacing it. I predict AI will become indispensable in personalizing customer interactions.<br/>● Actionable steps for the industry: Adopt AI tools for data analysis and customer service automation to free up human resources for creative and strategic tasks.<br/>● Keywords to include: AI in marketing, digital marketing automation, AI efficiency, AI personalization strategies</mark></p><h2 id="2733f44c-2287-810a-abb7-e2f8319cc589" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81f2-8580-d0e572053063" class="image"><a href="Create%20LinkedIn%20Thought%20Leadership%20Article%202733f44c228781cba590d45e27645c1a/Create_LinkedIn_Thought_Leadership_Article_1.png"><img style="width:540.5397338867188px" src="Create%20LinkedIn%20Thought%20Leadership%20Article%202733f44c228781cba590d45e27645c1a/Create_LinkedIn_Thought_Leadership_Article_1.png"/></a></figure><figure id="2733f44c-2287-81cf-a343-e8c3196595c7" class="image"><a href="Create%20LinkedIn%20Thought%20Leadership%20Article%202733f44c228781cba590d45e27645c1a/Create_LinkedIn_Thought_Leadership_Article_2.png"><img style="width:540.5397338867188px" src="Create%20LinkedIn%20Thought%20Leadership%20Article%202733f44c228781cba590d45e27645c1a/Create_LinkedIn_Thought_Leadership_Article_2.png"/></a></figure><h2 id="2733f44c-2287-81a0-a2ff-f6cf38b8d905" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-81b0-a263-d72f10e3a716" class=""><mark class="highlight-default">● Incorporate relevant statistics and data throughout your article to support your arguments and enhance the credibility of your insights. This will help position you as a knowledgeable and authoritative thought leader within your industry on LinkedIn.<br/><br/>● Use storytelling techniques to make your article more relatable and engaging. Share personal anecdotes or case studies that illustrate the practical applications of your topic and resonate with your LinkedIn audience.<br/><br/>● Make your article visually appealing by including high-quality images, infographics, or charts that complement your content. Visual elements not only break up the text but also make your article more shareable and memorable on LinkedIn.<br/><br/>● Promote your article on other social media platforms and professional networks to expand its reach beyond LinkedIn. Share snippets or teasers of your article, along with a link to the full piece, to attract a wider audience and drive traffic to your LinkedIn profile.</mark></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

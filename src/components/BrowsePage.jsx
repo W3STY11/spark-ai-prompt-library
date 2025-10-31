@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { API_ENDPOINTS } from '../config';
+import { PROMPT_CATEGORIES, WORKS_IN_OPTIONS } from '../constants/promptFilters';
 import {
   makeStyles,
   mergeClasses,
@@ -58,9 +59,12 @@ const useStyles = makeStyles({
   },
   filtersGrid: {
     display: 'grid',
-    gridTemplateColumns: '2fr 1fr 1fr auto',
+    gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr auto auto',
     ...shorthands.gap('16px'),
     marginBottom: '16px',
+    '@media (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
     '@media (max-width: 768px)': {
       gridTemplateColumns: '1fr',
     },
@@ -166,6 +170,8 @@ export default function BrowsePage({ isDark, toggleTheme }) {
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [selectedDepartment, setSelectedDepartment] = useState(searchParams.get('department') || '');
   const [selectedSubcategory, setSelectedSubcategory] = useState(searchParams.get('subcategory') || '');
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || '');
+  const [selectedWorksIn, setSelectedWorksIn] = useState(searchParams.get('worksIn') || '');
   const [sortBy, setSortBy] = useState('title');
   const [viewMode, setViewMode] = useState('card');
   const [currentPage, setCurrentPage] = useState(1);
@@ -181,7 +187,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
   useEffect(() => {
     applyFilters();
-  }, [searchQuery, selectedDepartment, selectedSubcategory, sortBy, allPrompts]);
+  }, [searchQuery, selectedDepartment, selectedSubcategory, selectedCategory, selectedWorksIn, sortBy, allPrompts]);
 
   const loadData = async () => {
     try {
@@ -227,6 +233,26 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     // Subcategory filter
     if (selectedSubcategory) {
       filtered = filtered.filter(prompt => prompt.subcategory === selectedSubcategory);
+    }
+
+    // Prompt Category filter
+    if (selectedCategory) {
+      filtered = filtered.filter(prompt => prompt.prompt_category === selectedCategory);
+    }
+
+    // Works In filter (check if any of the selected works_in values match)
+    if (selectedWorksIn) {
+      filtered = filtered.filter(prompt => {
+        if (!prompt.works_in) return false;
+        try {
+          const worksInArray = Array.isArray(prompt.works_in)
+            ? prompt.works_in
+            : JSON.parse(prompt.works_in);
+          return worksInArray && worksInArray.includes(selectedWorksIn);
+        } catch {
+          return false;
+        }
+      });
     }
 
     // Sort
@@ -277,6 +303,26 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     setSearchParams(searchParams);
   };
 
+  const handleCategoryChange = (value) => {
+    setSelectedCategory(value);
+    if (value) {
+      searchParams.set('category', value);
+    } else {
+      searchParams.delete('category');
+    }
+    setSearchParams(searchParams);
+  };
+
+  const handleWorksInChange = (value) => {
+    setSelectedWorksIn(value);
+    if (value) {
+      searchParams.set('worksIn', value);
+    } else {
+      searchParams.delete('worksIn');
+    }
+    setSearchParams(searchParams);
+  };
+
   // Get available subcategories based on selected department
   const getAvailableSubcategories = () => {
     if (!selectedDepartment) return [];
@@ -297,6 +343,8 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     setSearchQuery('');
     setSelectedDepartment('');
     setSelectedSubcategory('');
+    setSelectedCategory('');
+    setSelectedWorksIn('');
     setSortBy('title');
     setSearchParams({});
   };
@@ -665,6 +713,32 @@ export default function BrowsePage({ isDark, toggleTheme }) {
             </Dropdown>
 
             <Dropdown
+              placeholder="Prompt Category"
+              value={selectedCategory}
+              onOptionSelect={(e, data) => handleCategoryChange(data.optionValue || '')}
+            >
+              <Option value="">All Categories</Option>
+              {PROMPT_CATEGORIES.map(category => (
+                <Option key={category} value={category}>
+                  {category}
+                </Option>
+              ))}
+            </Dropdown>
+
+            <Dropdown
+              placeholder="Works In"
+              value={selectedWorksIn}
+              onOptionSelect={(e, data) => handleWorksInChange(data.optionValue || '')}
+            >
+              <Option value="">All Platforms</Option>
+              {WORKS_IN_OPTIONS.map(platform => (
+                <Option key={platform} value={platform}>
+                  {platform}
+                </Option>
+              ))}
+            </Dropdown>
+
+            <Dropdown
               placeholder="Sort by"
               value={sortBy}
               onOptionSelect={(e, data) => setSortBy(data.optionValue || 'title')}
@@ -678,7 +752,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
               appearance="subtle"
               icon={<Dismiss24Regular />}
               onClick={clearFilters}
-              disabled={!searchQuery && !selectedDepartment && !selectedSubcategory && sortBy === 'title'}
+              disabled={!searchQuery && !selectedDepartment && !selectedSubcategory && !selectedCategory && !selectedWorksIn && sortBy === 'title'}
             >
               Clear
             </Button>

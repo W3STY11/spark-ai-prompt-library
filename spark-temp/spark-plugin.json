@@ -1,0 +1,581 @@
+{
+  "schema_version": "v2.1",
+  "name_for_human": "SPARK Prompts",
+  "description_for_human": "Access and manage 2,376+ professional AI prompts across 9 business departments",
+  "namespace": "spark",
+  "functions": [
+    {
+      "name": "searchPrompts",
+      "description": "Search for prompts by keywords, department, tags, complexity level, or use case. Returns a list of matching prompts with titles, descriptions, and metadata.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.department",
+            "url": "$.icon"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "items": [
+                  {
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${icon}",
+                            "size": "ExtraLarge",
+                            "spacing": "None"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${title}",
+                            "weight": "Bolder",
+                            "size": "Large",
+                            "wrap": true,
+                            "style": "heading"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${department} • ${subcategory} • ${complexity}",
+                            "size": "Small",
+                            "color": "Accent",
+                            "spacing": "None"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${description}",
+                            "wrap": true,
+                            "spacing": "Small",
+                            "maxLines": 3
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "📝 ${word_count} words • 🏷️ ${tags}",
+                            "size": "Small",
+                            "isSubtle": true,
+                            "wrap": true,
+                            "spacing": "Small"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "View Full Prompt",
+                "data": {
+                  "action": "viewPrompt",
+                  "promptId": "${id}"
+                }
+              },
+              {
+                "type": "Action.Submit",
+                "title": "⭐ Add to Favorites",
+                "data": {
+                  "action": "addFavorite",
+                  "promptId": "${id}"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "getPrompt",
+      "description": "Retrieve the complete details of a specific prompt by ID, including full content, usage tips, examples, and metadata.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.department"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "style": "emphasis",
+                "items": [
+                  {
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${icon}",
+                            "size": "ExtraLarge"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${title}",
+                            "weight": "Bolder",
+                            "size": "ExtraLarge",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${department} > ${subcategory}",
+                            "size": "Medium",
+                            "color": "Accent",
+                            "spacing": "None"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "separator": true,
+                "spacing": "Medium",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "📋 Description",
+                    "weight": "Bolder",
+                    "size": "Medium"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${description}",
+                    "wrap": true,
+                    "spacing": "Small"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "separator": true,
+                "spacing": "Medium",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "✨ The Prompt",
+                    "weight": "Bolder",
+                    "size": "Medium"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${content}",
+                    "wrap": true,
+                    "spacing": "Small",
+                    "fontType": "Monospace"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "separator": true,
+                "spacing": "Medium",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "💡 Pro Tips",
+                    "weight": "Bolder",
+                    "size": "Medium"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${if(tips, tips, 'No specific tips available for this prompt.')}",
+                    "wrap": true,
+                    "spacing": "Small"
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "spacing": "Medium",
+                "items": [
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {
+                        "title": "Complexity:",
+                        "value": "${complexity}"
+                      },
+                      {
+                        "title": "Word Count:",
+                        "value": "${word_count}"
+                      },
+                      {
+                        "title": "Tags:",
+                        "value": "${tags}"
+                      },
+                      {
+                        "title": "Date Added:",
+                        "value": "${date}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "🔗 Open in SPARK",
+                "url": "https://spark-prompts.azurewebsites.net/view?id=${id}"
+              },
+              {
+                "type": "Action.Submit",
+                "title": "⭐ Add to Favorites",
+                "data": {
+                  "action": "addFavorite",
+                  "promptId": "${id}"
+                }
+              },
+              {
+                "type": "Action.Submit",
+                "title": "📋 Copy to Clipboard",
+                "data": {
+                  "action": "copyPrompt",
+                  "content": "${content}"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "getUserFavorites",
+      "description": "Retrieve the list of prompts that the current user has saved as favorites. Returns personalized prompt collection.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.results",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.department"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "⭐ Your Favorite Prompts",
+                "weight": "Bolder",
+                "size": "ExtraLarge",
+                "separator": true
+              },
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "separator": true,
+                "items": [
+                  {
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${icon}",
+                            "size": "Large"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${title}",
+                            "weight": "Bolder",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${department} • ${complexity}",
+                            "size": "Small",
+                            "isSubtle": true,
+                            "spacing": "None"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "addToFavorites",
+      "description": "Add a specific prompt to the user's favorites list by prompt ID. Allows quick access to frequently used prompts.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.message",
+            "subtitle": "$.promptTitle"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "style": "good",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "⭐ Added to Favorites!",
+                    "weight": "Bolder",
+                    "size": "Large",
+                    "horizontalAlignment": "Center"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "\"${promptTitle}\" has been saved to your favorites.",
+                    "wrap": true,
+                    "horizontalAlignment": "Center",
+                    "spacing": "Small"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.Submit",
+                "title": "View My Favorites",
+                "data": {
+                  "action": "viewFavorites"
+                }
+              }
+            ]
+          }
+        },
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Add prompt to your favorites?",
+          "body": "This will save the prompt for quick access later."
+        }
+      }
+    },
+    {
+      "name": "recommendPrompts",
+      "description": "Get intelligent prompt recommendations based on a specific use case, context, or business need. Provides personalized suggestions with explanations.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.recommendations",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.reason"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "🎯 Recommended Prompts for You",
+                "weight": "Bolder",
+                "size": "ExtraLarge"
+              },
+              {
+                "type": "TextBlock",
+                "text": "${message}",
+                "wrap": true,
+                "spacing": "Small",
+                "isSubtle": true
+              },
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "separator": true,
+                "spacing": "Medium",
+                "items": [
+                  {
+                    "type": "ColumnSet",
+                    "columns": [
+                      {
+                        "type": "Column",
+                        "width": "auto",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${icon}",
+                            "size": "Large"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Column",
+                        "width": "stretch",
+                        "items": [
+                          {
+                            "type": "TextBlock",
+                            "text": "${title}",
+                            "weight": "Bolder",
+                            "size": "Large",
+                            "wrap": true
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "💡 Why this works: ${reason}",
+                            "wrap": true,
+                            "color": "Good",
+                            "spacing": "Small"
+                          },
+                          {
+                            "type": "TextBlock",
+                            "text": "${description}",
+                            "wrap": true,
+                            "spacing": "Small",
+                            "maxLines": 2
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "getPromptsByDepartment",
+      "description": "Browse all prompts in a specific department (Business, Marketing, Sales, SEO, Finance, Education, Writing, Productivity, or Solopreneurs). Returns categorized list.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.prompts",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.subcategory"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "Container",
+                "style": "emphasis",
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "${departmentIcon} ${departmentName} Department",
+                    "weight": "Bolder",
+                    "size": "ExtraLarge"
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${promptCount} prompts available",
+                    "size": "Medium",
+                    "spacing": "None",
+                    "isSubtle": true
+                  }
+                ]
+              },
+              {
+                "type": "Container",
+                "$data": "${$root}",
+                "separator": true,
+                "items": [
+                  {
+                    "type": "TextBlock",
+                    "text": "${title}",
+                    "weight": "Bolder",
+                    "wrap": true
+                  },
+                  {
+                    "type": "TextBlock",
+                    "text": "${subcategory} • ${complexity}",
+                    "size": "Small",
+                    "spacing": "None",
+                    "isSubtle": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "None"
+      },
+      "spec": {
+        "url": "spark-openapi.json"
+      },
+      "run_for_functions": [
+        "searchPrompts",
+        "getPrompt",
+        "getUserFavorites",
+        "addToFavorites",
+        "recommendPrompts",
+        "getPromptsByDepartment"
+      ]
+    }
+  ],
+  "capabilities": {
+    "localization": {},
+    "conversation_starters": [
+      {
+        "text": "Find marketing prompts for social media"
+      },
+      {
+        "text": "Show me beginner-friendly writing prompts"
+      },
+      {
+        "text": "I need help with cold email outreach"
+      },
+      {
+        "text": "Recommend prompts for SEO content creation"
+      },
+      {
+        "text": "What are my favorite prompts?"
+      }
+    ]
+  }
+}

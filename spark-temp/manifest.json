@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "id": "39cdb9ab-d89e-45c2-a207-6b12cc0ab331",
+  "version": "1.0.4",
+  "developer": {
+    "name": "SPARK AI Research & Knowledge",
+    "websiteUrl": "https://spark-prompts.azurewebsites.net",
+    "privacyUrl": "https://spark-prompts.azurewebsites.net/privacy",
+    "termsOfUseUrl": "https://spark-prompts.azurewebsites.net/terms"
+  },
+  "icons": {
+    "color": "spark-color-192.png",
+    "outline": "spark-outline-32.png"
+  },
+  "name": {
+    "short": "SPARK Prompts",
+    "full": "SPARK AI Prompt Library & Assistant"
+  },
+  "description": {
+    "short": "Your personal AI prompt consultant with 2,400+ tested prompts",
+    "full": "SPARK is your intelligent prompt assistant that helps you find, customize, and use professional AI prompts. Access 2,376+ battle-tested prompts across 9 departments, get personalized recommendations, and create custom prompts—all through natural conversation in Copilot."
+  },
+  "accentColor": "#4F46E5",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "sparkPromptAgent",
+        "file": "spark-declarative-agent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "spark-prompts.azurewebsites.net",
+    "spark-copilot-api.azurewebsites.net"
+  ]
+}

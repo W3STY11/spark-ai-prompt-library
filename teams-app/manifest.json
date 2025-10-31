@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.17",
+  "version": "1.0.0",
+  "id": "39cdb9ab-d89e-45c2-a207-6b12cc0ab331",
+  "packageName": "com.spark.promptlibrary",
+  "developer": {
+    "name": "SPARK AI",
+    "websiteUrl": "https://victorious-bush-0ff64fc0f.3.azurestaticapps.net",
+    "privacyUrl": "https://victorious-bush-0ff64fc0f.3.azurestaticapps.net/privacy",
+    "termsOfUseUrl": "https://victorious-bush-0ff64fc0f.3.azurestaticapps.net/terms"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "SPARK Prompts",
+    "full": "SPARK AI Prompt Library"
+  },
+  "description": {
+    "short": "1,800+ professional AI prompts",
+    "full": "Access 1,800+ professional AI prompts across Business, Marketing, Sales, SEO, Finance, Education, Writing, Productivity, and Solopreneurs. Find the perfect prompt for any task right from Microsoft Teams and Copilot."
+  },
+  "accentColor": "#6264A7",
+  "bots": [
+    {
+      "botId": "39cdb9ab-d89e-45c2-a207-6b12cc0ab331",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal",
+            "team",
+            "groupchat"
+          ],
+          "commands": [
+            {
+              "title": "help",
+              "description": "Get help using SPARK Prompt Library"
+            },
+            {
+              "title": "search [query]",
+              "description": "Search for prompts by keyword"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "39cdb9ab-d89e-45c2-a207-6b12cc0ab331",
+      "canUpdateConfiguration": false,
+      "commands": [
+        {
+          "id": "searchPrompts",
+          "type": "query",
+          "title": "Search Prompts",
+          "description": "Search 1,800+ AI prompts",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "compose",
+            "commandBox"
+          ],
+          "parameters": [
+            {
+              "name": "searchQuery",
+              "title": "Search",
+              "description": "Search for prompts",
+              "inputType": "text"
+            }
+          ]
+        }
+      ],
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": [
+              "victorious-bush-0ff64fc0f.3.azurestaticapps.net",
+              "gray-ocean-059c8510f.3.azurestaticapps.net"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "victorious-bush-0ff64fc0f.3.azurestaticapps.net",
+    "gray-ocean-059c8510f.3.azurestaticapps.net",
+    "spark-copilot-api.azurewebsites.net"
+  ],
+  "webApplicationInfo": {
+    "id": "39cdb9ab-d89e-45c2-a207-6b12cc0ab331",
+    "resource": "api://spark-copilot-api.azurewebsites.net/39cdb9ab-d89e-45c2-a207-6b12cc0ab331"
+  },
+  "copilotExtensions": {
+    "declarativeAgents": [
+      {
+        "id": "sparkPromptAgent",
+        "file": "sparkAgent.json"
+      }
+    ]
+  }
+}

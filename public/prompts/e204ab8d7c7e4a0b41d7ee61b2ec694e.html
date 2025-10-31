@@ -1,0 +1,786 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Create Joint Venture Agreement</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 111, 200, 0.09);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(134, 131, 126, 1);
+	fill: rgba(134, 131, 126, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(63, 126, 190, 1);
+	fill: rgba(63, 126, 190, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(232, 242, 250, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 99, 174, 0.172); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2733f44c-2287-8157-9575-d5035ad736ef" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📄</span></div><h1 class="page-title">Create Joint Venture Agreement</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Subcategory</th><td><span class="selected-value select-value-color-red">Legal Writing</span></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><td><time>@June 28, 2024</time></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-yellow_background callout" style="white-space:pre-wrap;display:flex" id="2733f44c-2287-810b-a97f-ff8064ee7925"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-default">Create a comprehensive joint venture agreement with the mega-prompt for ChatGPT, ensuring all critical elements like partner contributions, management structure, and profit-sharing are clearly defined using precise legal terminology for optimal clarity and enforceability.</mark></div></figure><hr id="2733f44c-2287-813b-8a92-cb2f3ecce6a5"/><h2 id="2733f44c-2287-817c-bb10-d87b8d7f8908" class=""><mark class="highlight-yellow_background">⚙️ What This Mega-Prompt Does: </mark></h2><p id="2733f44c-2287-8179-88ec-ddb2d529abf8" class=""><mark class="highlight-default">● Converts user input into a structured joint venture agreement, covering all essential aspects like purpose, contributions, and management.</mark></p><p id="2733f44c-2287-8156-af23-fe6f1de851dc" class=""><mark class="highlight-default">● Ensures the use of clear and concise legal language tailored to the specifics of the partners and the project.</mark></p><p id="2733f44c-2287-81ac-8e17-edce2f490d30" class=""><mark class="highlight-default">● Organizes the agreement into clearly defined sections for easy navigation and understanding.</mark></p><h2 id="2733f44c-2287-8105-b003-fa9e37f97771" class=""><mark class="highlight-yellow_background">💡Tips:</mark></h2><p id="2733f44c-2287-8133-b463-e6bd0d037c34" class=""><mark class="highlight-default">● Clarify Contributions: Ensure that the contributions of each partner are not only listed but also quantified where possible. This includes monetary investments, resources, intellectual property, and other assets. Specify the valuation methods used for non-monetary contributions to avoid future disputes.</mark></p><p id="2733f44c-2287-81e7-93bd-f1a418eeb9e1" class=""><mark class="highlight-default">● Detail Management Responsibilities: Expand the management section by detailing the specific responsibilities and powers of the Management Committee. Include how often the committee will meet, the process for agenda setting, and the protocol for replacing members if necessary.</mark></p><p id="2733f44c-2287-81f2-944e-f21b14144c43" class=""><mark class="highlight-default">● Develop a Comprehensive Dispute Resolution Framework: Beyond good faith negotiations and standard dispute resolution methods, consider including a step-by-step escalation process that might involve mediation before arbitration or litigation. This structured approach can save time and resources by potentially resolving disputes before reaching more formal and costly stages.</mark></p><h2 id="2733f44c-2287-81ce-9a4a-c7ac1e289b69" class=""><mark class="highlight-yellow_background">📄 Joint Venture Agreement Generator ChatGPT Mega Prompt</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2733f44c-2287-81bf-865a-f6d62a1db4d9" class="code code-wrap"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">#CONTEXT:
+You are an AI assistant helping a user draft a comprehensive joint venture agreement between specified parties for a given project. The agreement should cover all key aspects including partner contributions, management structure, profit-sharing terms, and dispute resolution processes, using clear legal language and a well-organized contract structure.
+
+#ROLE:
+Adopt the role of a legal expert specializing in drafting joint venture agreements, with deep knowledge of business law, corporate structures, and contract negotiation.
+
+#RESPONSE GUIDELINES:
+The joint venture agreement should be organized into the following sections:
+
+1. Purpose: State the purpose of the joint venture and provide a brief description of the project.
+
+2. Contributions: Outline the contributions each partner agrees to make to the joint venture. 
+
+3. Management: Describe the management structure, including the composition of the Management Committee, appointment of representatives, and voting thresholds for decisions.
+
+4. Profit Sharing: Specify how profits generated by the joint venture will be distributed between the partners.
+
+5. Dispute Resolution: Outline the process for resolving any disputes that may arise, including good faith negotiations and any additional dispute resolution methods.
+
+6. Term and Termination: State the commencement date, duration, and conditions for termination of the agreement.
+
+7. General Provisions: Include any additional provisions such as applicable law and jurisdiction, assignment terms, notices, and entire agreement clause.
+
+8. Signature Block: Provide space for each partner to sign and date the agreement.
+
+#JOINT VENTURE AGREEMENT CRITERIA:
+1. Use clear and concise legal language throughout the agreement.
+2. Ensure all key aspects of the joint venture are adequately addressed, including partner contributions, management, profit sharing, and dispute resolution.
+3. Tailor the agreement to the specific needs and circumstances of the partners and the project.
+4. Avoid any ambiguous or vague language that could lead to misinterpretation or disputes.
+5. Ensure the agreement is well-structured and easy to navigate, with clearly defined sections and subsections.
+
+#INFORMATION ABOUT ME:
+- Project Description: [DESCRIPTION OF JOINT VENTURE PROJECT]
+- Partner A Name: [NAME OF PARTNER A]
+- Partner A Entity Type: [LEGAL ENTITY TYPE OF PARTNER A] 
+- Partner A Address: [REGISTERED ADDRESS OF PARTNER A]
+- Partner B Name: [NAME OF PARTNER B]
+- Partner B Entity Type: [LEGAL ENTITY TYPE OF PARTNER B]
+- Partner B Address: [REGISTERED ADDRESS OF PARTNER B]
+
+#RESPONSE FORMAT:
+
+JOINT VENTURE AGREEMENT
+
+This Joint Venture Agreement (&quot;Agreement&quot;) is entered into on [DATE] by and between [PARTNER A NAME], a [PARTNER A ENTITY TYPE] with its principal place of business at [PARTNER A ADDRESS] (&quot;Partner A&quot;) and [PARTNER B NAME], a [PARTNER B ENTITY TYPE] with its principal place of business at [PARTNER B ADDRESS] (&quot;Partner B&quot;). Partner A and Partner B are collectively referred to as the &quot;Parties.&quot;
+
+1. PURPOSE 
+   1.1 The Parties hereby agree to establish a joint venture (&quot;Joint Venture&quot;) for the purpose of [PROJECT DESCRIPTION] (the &quot;Project&quot;).
+
+2. CONTRIBUTIONS
+   2.1 Partner A agrees to contribute the following to the Joint Venture: [PARTNER A CONTRIBUTIONS].
+   2.2 Partner B agrees to contribute the following to the Joint Venture: [PARTNER B CONTRIBUTIONS].
+
+3. MANAGEMENT
+   3.1 The Joint Venture shall be managed by a Management Committee consisting of [NUMBER] representatives, with [PARTNER A REPS] appointed by Partner A and [PARTNER B REPS] appointed by Partner B.
+   3.2 Decisions of the Management Committee shall require [VOTING THRESHOLD].
+
+4. PROFIT SHARING
+   4.1 Profits generated by the Joint Venture shall be distributed between the Parties as follows: [PROFIT SHARE PARTNER A]% to Partner A and [PROFIT SHARE PARTNER B]% to Partner B.
+
+5. DISPUTE RESOLUTION  
+   5.1 Any disputes arising out of or in connection with this Agreement shall be resolved through good faith negotiations between the Parties.
+   5.2 If negotiations fail, disputes shall be resolved through [DISPUTE RESOLUTION METHOD], with [ADDITIONAL DISPUTE TERMS].
+
+6. TERM AND TERMINATION
+   6.1 This Agreement shall commence on the date hereof and continue until [TERMINATION EVENT].
+   6.2 Either Party may terminate this Agreement upon [TERMINATION NOTICE PERIOD] written notice to the other Party in the event of [TERMINATION TRIGGERS].
+
+7. GENERAL PROVISIONS
+   7.1 [APPLICABLE LAW AND JURISDICTION] 
+   7.2 [ASSIGNMENT TERMS]
+   7.3 [NOTICES]
+   7.4 [ENTIRE AGREEMENT CLAUSE]
+
+IN WITNESS WHEREOF, the Parties have executed this Agreement as of the date first written above.
+
+[PARTNER A SIGNATURE BLOCK]
+
+[PARTNER B SIGNATURE BLOCK]</code></pre><h2 id="2733f44c-2287-81ea-b114-d9e658b0530f" class=""><mark class="highlight-yellow_background">❓How To Use The Prompt: </mark></h2><p id="2733f44c-2287-8182-b1ac-faacb25350d9" class=""><mark class="highlight-default">● Fill in the placeholders [DESCRIPTION OF JOINT VENTURE PROJECT], [NAME OF PARTNER A], [LEGAL ENTITY TYPE OF PARTNER A], [REGISTERED ADDRESS OF PARTNER A], [NAME OF PARTNER B], [LEGAL ENTITY TYPE OF PARTNER B], and [REGISTERED ADDRESS OF PARTNER B] with specific details about the joint venture project and the partners involved. For example, if Partner A is a corporation named &quot;Tech Innovations Inc.&quot; located in New York, and Partner B is a limited liability company named &quot;Eco Solutions LLC&quot; located in California, and the project involves developing a new green technology.</mark></p><p id="2733f44c-2287-81a2-b220-d26860377bb1" class=""><mark class="highlight-default">● Example: Fill in the placeholders as follows:<br/>  - [DESCRIPTION OF JOINT VENTURE PROJECT]: &quot;to develop and commercialize advanced solar panels&quot;<br/>  - [NAME OF PARTNER A]: &quot;Tech Innovations Inc.&quot;<br/>  - [LEGAL ENTITY TYPE OF PARTNER A]: &quot;Corporation&quot;<br/>  - [REGISTERED ADDRESS OF PARTNER A]: &quot;123 Tech Blvd, New York, NY 10001&quot;<br/>  - [NAME OF PARTNER B]: &quot;Eco Solutions LLC&quot;<br/>  - [LEGAL ENTITY TYPE OF PARTNER B]: &quot;Limited Liability Company&quot;<br/>  - [REGISTERED ADDRESS OF PARTNER B]: &quot;456 Green St, San Francisco, CA 94107&quot;</mark></p><h2 id="2733f44c-2287-81d7-b1d5-efb6403d5b5b" class=""><mark class="highlight-yellow_background">📥 Example Input: </mark></h2><p id="2733f44c-2287-8165-8ebc-f42d087873ea" class=""><mark class="highlight-default">#INFORMATION ABOUT ME:<br/>- Project Description: Developing a new cloud-based platform for real-time data analytics<br/>- Partner A Name: DataTech Innovations LLC<br/>- Partner A Entity Type: Limited Liability Company<br/>- Partner A Address: 1234 Silicon Drive, Tech City, TX 75001<br/>- Partner B Name: Analytiq Solutions Corp.<br/>- Partner B Entity Type: Corporation<br/>- Partner B Address: 987 Enterprise Blvd, Innovation Park, CA 94088</mark></p><h2 id="2733f44c-2287-812a-a6b1-fcb5cbd692c0" class=""><mark class="highlight-yellow_background">📤 Example Output:</mark></h2><figure id="2733f44c-2287-81be-a5c6-fa8bf3ace6aa" class="image"><a href="Create%20Joint%20Venture%20Agreement%202733f44c228781579575d5035ad736ef/Create_Joint_Venture_Agreement.png"><img style="width:1000px" src="Create%20Joint%20Venture%20Agreement%202733f44c228781579575d5035ad736ef/Create_Joint_Venture_Agreement.png"/></a></figure><h2 id="2733f44c-2287-81b2-a104-c8b42e3f12ad" class=""><mark class="highlight-yellow_background">💡Additional Tips:</mark></h2><p id="2733f44c-2287-8195-b9a9-c0b15fb9eb26" class=""><mark class="highlight-default">● Clearly Define Project Scope: Provide a detailed description of the joint venture project, including its objectives, deliverables, and timeline. This will help ensure that both partners have a clear understanding of the project&#x27;s scope and can align their contributions accordingly.</mark></p><p id="2733f44c-2287-812d-a554-e37e9dd2dbb5" class=""><mark class="highlight-default">● Include Confidentiality and Non-Compete Clauses: To protect the interests of both partners, consider including clauses that address confidentiality and non-compete obligations. This will help safeguard sensitive information and prevent partners from engaging in activities that may compete with the joint venture.</mark></p><p id="2733f44c-2287-819d-8907-c9bae8dd22e4" class=""><mark class="highlight-default">● Establish Performance Metrics: Define key performance indicators (KPIs) that will be used to measure the success of the joint venture. This will allow both partners to track progress, identify areas for improvement, and ensure accountability throughout the duration of the agreement.</mark></p><p id="2733f44c-2287-8116-887b-fe9c0a8a5c6c" class=""><mark class="highlight-default">● Plan for Succession and Exit Strategies: Anticipate potential scenarios where one partner may want to exit the joint venture or transfer their ownership stake. Include provisions that outline the process for such situations, including buyout options, valuation methods, and the transfer of responsibilities.</mark></p><p id="2733f44c-2287-815b-a6ab-d54c6f2e3591" class=""><mark class="highlight-default">● Seek Legal Counsel: While this guide provides a comprehensive framework for drafting a joint venture agreement, it is always advisable to consult with a legal expert who specializes in business law. They can provide valuable insights and ensure that the agreement complies with relevant laws and regulations.</mark></p><p id="2733f44c-2287-813c-b60e-ebcdf516de33" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

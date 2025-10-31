@@ -1,0 +1,435 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "SPARK Prompt Library API",
+    "description": "API for accessing and managing 2,376+ professional AI prompts across 9 business departments"
+  },
+  "servers": [
+    {
+      "url": "https://spark-copilot-api.azurewebsites.net/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/prompts/search": {
+      "get": {
+        "operationId": "searchPrompts",
+        "summary": "Search for prompts by keywords, department, tags, or complexity",
+        "description": "Returns a list of prompts matching the search criteria. Supports multiple filters including keywords, department selection, tags, and complexity levels.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search keywords to find in prompt titles, descriptions, or content",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "department",
+            "in": "query",
+            "description": "Filter by department: Business, Marketing, Sales, SEO, Finance, Education, Writing, Productivity, or Solopreneurs",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["Business", "Marketing", "Sales", "SEO", "Finance", "Education", "Writing", "Productivity", "Solopreneurs"]
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "description": "Filter by tags (comma-separated)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "complexity",
+            "in": "query",
+            "description": "Filter by complexity level",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["Beginner", "Intermediate", "Advanced"]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return (default: 10, max: 50)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matching prompts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PromptSummary"
+                      }
+                    },
+                    "total": {
+                      "type": "integer",
+                      "description": "Total number of matching prompts"
+                    },
+                    "query": {
+                      "type": "string",
+                      "description": "The search query used"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/prompts/{promptId}": {
+      "get": {
+        "operationId": "getPrompt",
+        "summary": "Get complete details of a specific prompt",
+        "description": "Retrieves the full prompt content, metadata, tips, examples, and all associated information for a given prompt ID",
+        "parameters": [
+          {
+            "name": "promptId",
+            "in": "path",
+            "required": true,
+            "description": "The unique identifier of the prompt",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with complete prompt details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromptDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Prompt not found"
+          }
+        }
+      }
+    },
+    "/users/me/favorites": {
+      "get": {
+        "operationId": "getUserFavorites",
+        "summary": "Get user's favorite prompts",
+        "description": "Retrieves the list of prompts that the current user has saved as favorites",
+        "responses": {
+          "200": {
+            "description": "Successful response with user's favorite prompts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PromptSummary"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "addToFavorites",
+        "summary": "Add a prompt to favorites",
+        "description": "Adds the specified prompt to the user's favorites collection",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "promptId": {
+                    "type": "string",
+                    "description": "The ID of the prompt to add to favorites"
+                  }
+                },
+                "required": ["promptId"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully added to favorites",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "promptTitle": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/prompts/recommend": {
+      "post": {
+        "operationId": "recommendPrompts",
+        "summary": "Get intelligent prompt recommendations",
+        "description": "Returns personalized prompt recommendations based on the user's specific use case, context, or business need",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "useCase": {
+                    "type": "string",
+                    "description": "Description of what the user is trying to accomplish"
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "Additional context about the user's situation or requirements"
+                  },
+                  "industry": {
+                    "type": "string",
+                    "description": "User's industry or business type"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with personalized recommendations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Explanation of why these prompts were recommended"
+                    },
+                    "recommendations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {"type": "string"},
+                          "title": {"type": "string"},
+                          "description": {"type": "string"},
+                          "department": {"type": "string"},
+                          "icon": {"type": "string"},
+                          "reason": {
+                            "type": "string",
+                            "description": "Explanation of why this prompt is recommended"
+                          },
+                          "relevanceScore": {
+                            "type": "number",
+                            "description": "Relevance score from 0-1"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/departments/{departmentName}/prompts": {
+      "get": {
+        "operationId": "getPromptsByDepartment",
+        "summary": "Get all prompts in a department",
+        "description": "Retrieves all prompts belonging to a specific department with optional subcategory filtering",
+        "parameters": [
+          {
+            "name": "departmentName",
+            "in": "path",
+            "required": true,
+            "description": "Name of the department",
+            "schema": {
+              "type": "string",
+              "enum": ["Business", "Marketing", "Sales", "SEO", "Finance", "Education", "Writing", "Productivity", "Solopreneurs"]
+            }
+          },
+          {
+            "name": "subcategory",
+            "in": "query",
+            "description": "Filter by subcategory within the department",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with department prompts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "departmentName": {
+                      "type": "string"
+                    },
+                    "departmentIcon": {
+                      "type": "string"
+                    },
+                    "promptCount": {
+                      "type": "integer"
+                    },
+                    "prompts": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PromptSummary"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PromptSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique prompt identifier"
+          },
+          "title": {
+            "type": "string",
+            "description": "Prompt title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Brief description of the prompt"
+          },
+          "department": {
+            "type": "string",
+            "description": "Department category"
+          },
+          "subcategory": {
+            "type": "string",
+            "description": "Subcategory within department"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Emoji icon for visual identification"
+          },
+          "complexity": {
+            "type": "string",
+            "enum": ["Beginner", "Intermediate", "Advanced"],
+            "description": "Complexity level"
+          },
+          "tags": {
+            "type": "string",
+            "description": "Comma-separated tags"
+          },
+          "word_count": {
+            "type": "integer",
+            "description": "Number of words in the prompt"
+          }
+        }
+      },
+      "PromptDetail": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "description": "Full prompt content"
+          },
+          "department": {
+            "type": "string"
+          },
+          "subcategory": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "complexity": {
+            "type": "string",
+            "enum": ["Beginner", "Intermediate", "Advanced"]
+          },
+          "tags": {
+            "type": "string"
+          },
+          "tips": {
+            "type": "string",
+            "description": "Usage tips and best practices"
+          },
+          "word_count": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string",
+            "description": "Date added to library"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of image URLs"
+          }
+        }
+      }
+    }
+  }
+}

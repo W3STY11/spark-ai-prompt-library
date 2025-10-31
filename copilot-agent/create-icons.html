@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <canvas id="color" width="192" height="192"></canvas>
+    <canvas id="outline" width="32" height="32"></canvas>
+    <script>
+        // Color icon (192x192)
+        const colorCanvas = document.getElementById('color');
+        const colorCtx = colorCanvas.getContext('2d');
+        colorCtx.fillStyle = '#4F46E5';
+        colorCtx.fillRect(0, 0, 192, 192);
+        colorCtx.fillStyle = 'white';
+        colorCtx.font = 'bold 100px Arial';
+        colorCtx.textAlign = 'center';
+        colorCtx.textBaseline = 'middle';
+        colorCtx.fillText('S', 96, 96);
+        
+        // Outline icon (32x32)
+        const outlineCanvas = document.getElementById('outline');
+        const outlineCtx = outlineCanvas.getContext('2d');
+        outlineCtx.strokeStyle = 'black';
+        outlineCtx.lineWidth = 2;
+        outlineCtx.strokeRect(1, 1, 30, 30);
+        outlineCtx.fillStyle = 'black';
+        outlineCtx.font = 'bold 20px Arial';
+        outlineCtx.textAlign = 'center';
+        outlineCtx.textBaseline = 'middle';
+        outlineCtx.fillText('S', 16, 16);
+        
+        // Download images
+        colorCanvas.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'spark-color-192.png';
+            a.click();
+        });
+        
+        outlineCanvas.toBlob(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'spark-outline-32.png';
+            a.click();
+        });
+    </script>
+</body>
+</html>
