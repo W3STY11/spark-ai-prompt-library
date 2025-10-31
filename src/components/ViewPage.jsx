@@ -981,10 +981,10 @@ export default function ViewPage({ isDark, toggleTheme }) {
                         </div>
                       ) : (
                         <img
-                          src={BLOB_ENDPOINTS.THUMBNAIL_IMAGE(image)}
+                          src={`/thumbnails/${image}`}
                           alt={`Example output ${index + 1}`}
                           className={styles.galleryImage}
-                          onClick={() => setFullscreenImage({ src: BLOB_ENDPOINTS.THUMBNAIL_IMAGE(image), alt: `Example output ${index + 1}`, fallbackSrc: `/prompts/${prompt.department}/${prompt.title.replace(/[^a-zA-Z0-9 ]/g, '')}_${prompt.id.slice(0, 8)}/${image}` })}
+                          onClick={() => setFullscreenImage({ src: `/thumbnails/${image}`, alt: `Example output ${index + 1}`, fallbackSrc: `/prompts/${prompt.department}/${prompt.title.replace(/[^a-zA-Z0-9 ]/g, '')}_${prompt.id.slice(0, 8)}/${image}` })}
                           onError={(e) => {
                             // Try fallback path once, then show placeholder
                             if (!e.target.dataset.fallbackAttempted) {
