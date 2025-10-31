@@ -108,7 +108,7 @@ export default function AdminDepartmentsPage({ isDark, toggleTheme }) {
   const [formData, setFormData] = useState({
     name: '',
     icon: '📁',
-    display_order: 999,
+    display_order: 1,
   });
 
   useEffect(() => {
@@ -153,7 +153,7 @@ export default function AdminDepartmentsPage({ isDark, toggleTheme }) {
       );
 
       setIsCreateOpen(false);
-      setFormData({ name: '', icon: '📁', display_order: 999 });
+      setFormData({ name: '', icon: '📁', display_order: 1 });
       loadDepartments();
     } catch (error) {
       console.error('Failed to create department:', error);
@@ -185,7 +185,7 @@ export default function AdminDepartmentsPage({ isDark, toggleTheme }) {
 
       setIsEditOpen(false);
       setSelectedDepartment(null);
-      setFormData({ name: '', icon: '📁', display_order: 999 });
+      setFormData({ name: '', icon: '📁', display_order: 1 });
       loadDepartments();
     } catch (error) {
       console.error('Failed to update department:', error);
@@ -346,7 +346,8 @@ export default function AdminDepartmentsPage({ isDark, toggleTheme }) {
                 <Input
                   type="number"
                   value={formData.display_order}
-                  onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 999 })}
+                  onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 1 })}
+                  min="1"
                 />
               </Field>
             </DialogContent>
@@ -387,7 +388,8 @@ export default function AdminDepartmentsPage({ isDark, toggleTheme }) {
                 <Input
                   type="number"
                   value={formData.display_order}
-                  onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 999 })}
+                  onChange={(e) => setFormData({ ...formData, display_order: parseInt(e.target.value) || 1 })}
+                  min="1"
                 />
               </Field>
             </DialogContent>

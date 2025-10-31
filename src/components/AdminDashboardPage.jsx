@@ -178,6 +178,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
   // State
   const [prompts, setPrompts] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const [filteredPrompts, setFilteredPrompts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -222,6 +223,10 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
         ? data.items
         : [];
 
+      // Get departments from API response (includes departments with 0 prompts)
+      const depts = data.departments || [];
+      setDepartments(depts);
+
       setPrompts(allPrompts);
       calculateStats(allPrompts);
     } catch (error) {
@@ -237,11 +242,16 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
   const calculateStats = (promptList) => {
     const byDept = {};
-    DEPARTMENTS.forEach(d => byDept[d.name] = 0);
+    departments.forEach(d => byDept[d.name] = 0);
 
     promptList.forEach(p => {
-      if (p.department && byDept[p.department] !== undefined) {
-        byDept[p.department]++;
+      if (p.department) {
+        if (byDept[p.department] !== undefined) {
+          byDept[p.department]++;
+        } else {
+          // Department not in our list, but exists in prompts - still count it
+          byDept[p.department] = 1;
+        }
       }
     });
 
@@ -752,7 +762,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
         <div className={styles.header}>
           <Title1 block style={{ marginBottom: '8px' }}>Admin Dashboard</Title1>
           <Body1 style={{ color: tokens.colorNeutralForeground2 }}>
-            Manage all {stats.total} prompts across 9 departments
+            Manage all {stats.total} prompts across {departments.length} departments
           </Body1>
         </div>
 
@@ -769,7 +779,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
 
           <div className={mergeClasses(styles.statCard, isDark && styles.statCardDark)}>
             <Title3 block style={{ marginBottom: '8px' }}>Departments</Title3>
-            <Title1 block>{DEPARTMENTS.length}</Title1>
+            <Title1 block>{departments.length}</Title1>
           </div>
 
           <div className={mergeClasses(styles.statCard, isDark && styles.statCardDark)}>
@@ -839,7 +849,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
             style={{ minWidth: '200px' }}
           >
             <Option value="All">All Departments</Option>
-            {DEPARTMENTS.map(dept => (
+            {departments.map(dept => (
               <Option key={dept.name} value={dept.name}>
                 {dept.icon} {dept.name}
               </Option>

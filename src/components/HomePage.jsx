@@ -494,6 +494,10 @@ export default function HomePage({ isDark, toggleTheme }) {
             description: `Browse ${d.prompt_count} prompts in ${d.name}`
           }));
           setDepartments(depts);
+
+          // Calculate total prompts from all departments
+          const total = depts.reduce((sum, d) => sum + (d.promptCount || 0), 0);
+          setTotalPrompts(total > 0 ? total.toString() : '0');
         }
       } catch (err) {
         console.error('Failed to load departments from API:', err);
@@ -622,7 +626,7 @@ export default function HomePage({ isDark, toggleTheme }) {
               Your AI Prompt<br />Library
             </h1>
             <p className={styles.heroSubtitle}>
-              2,400+ battle-tested prompts for ChatGPT, Claude, and other AI tools. Browse by department, copy instantly, and create better AI content.
+              {totalPrompts}+ battle-tested prompts for ChatGPT, Claude, and other AI tools. Browse by department, copy instantly, and create better AI content.
             </p>
 
             <Button
@@ -646,12 +650,12 @@ export default function HomePage({ isDark, toggleTheme }) {
             <div className={styles.trustSignals}>
               <div className={styles.trustItem}>
                 <span className={styles.trustCheckmark}>✓</span>
-                <span>{totalPrompts} Prompts</span>
+                <span>{totalPrompts}+ Prompts</span>
               </div>
               <span className={styles.trustDivider}>•</span>
               <div className={styles.trustItem}>
                 <span className={styles.trustCheckmark}>✓</span>
-                <span>9 Departments</span>
+                <span>{departments.length} Departments</span>
               </div>
               <span className={styles.trustDivider}>•</span>
               <div className={styles.trustItem}>
@@ -964,7 +968,7 @@ export default function HomePage({ isDark, toggleTheme }) {
                 <span className={styles.footerStatLabel}>Prompts</span>
               </div>
               <div className={styles.footerStat}>
-                <span className={styles.footerStatValue}>9</span>
+                <span className={styles.footerStatValue}>{departments.length}</span>
                 <span className={styles.footerStatLabel}>Departments</span>
               </div>
               <div className={styles.footerStat}>
