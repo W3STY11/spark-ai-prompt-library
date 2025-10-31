@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   root: 'src',
-  publicDir: '../public',
+  publicDir: false, // Disable automatic public directory copying - SQL API migration
   build: {
     outDir: '../dist',
     emptyOutDir: true,
