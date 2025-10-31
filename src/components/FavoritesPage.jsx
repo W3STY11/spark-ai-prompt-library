@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BLOB_ENDPOINTS } from '../config';
+import { API_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -106,8 +106,8 @@ export default function FavoritesPage({ isDark, toggleTheme }) {
         return;
       }
 
-      // Fetch all prompts
-      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
+      // Fetch all prompts from SQL API (real-time sync with admin)
+      const response = await fetch(API_ENDPOINTS.PROMPTS);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 

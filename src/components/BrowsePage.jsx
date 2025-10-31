@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { BLOB_ENDPOINTS } from '../config';
+import { API_ENDPOINTS } from '../config';
 import {
   makeStyles,
   mergeClasses,
@@ -185,8 +185,8 @@ export default function BrowsePage({ isDark, toggleTheme }) {
 
   const loadData = async () => {
     try {
-      // Fetch from Blob Storage FIRST (Azure Static Web Apps deployment)
-      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
+      // Fetch from SQL API (real-time sync with admin)
+      const response = await fetch(API_ENDPOINTS.PROMPTS);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
@@ -212,10 +212,10 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(prompt =>
-        prompt.title.toLowerCase().includes(query) ||
-        prompt.description.toLowerCase().includes(query) ||
-        prompt.subcategory.toLowerCase().includes(query) ||
-        (prompt.tags || []).some(tag => tag.toLowerCase().includes(query))
+        (prompt.title || '').toLowerCase().includes(query) ||
+        (prompt.description || '').toLowerCase().includes(query) ||
+        (prompt.subcategory || '').toLowerCase().includes(query) ||
+        (prompt.tags || []).some(tag => (tag || '').toLowerCase().includes(query))
       );
     }
 
@@ -232,11 +232,11 @@ export default function BrowsePage({ isDark, toggleTheme }) {
     // Sort
     filtered.sort((a, b) => {
       if (sortBy === 'title') {
-        return a.title.localeCompare(b.title);
+        return (a.title || '').localeCompare(b.title || '');
       } else if (sortBy === 'date') {
-        return new Date(b.date) - new Date(a.date);
+        return new Date(b.date || 0) - new Date(a.date || 0);
       } else if (sortBy === 'department') {
-        return a.department.localeCompare(b.department) || a.title.localeCompare(b.title);
+        return (a.department || '').localeCompare(b.department || '') || (a.title || '').localeCompare(b.title || '');
       }
       return 0;
     });
@@ -456,7 +456,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
         </div>
 
         <Body2 block style={{ marginBottom: '8px', color: tokens.colorNeutralForeground2 }}>
-          {prompt.description.substring(0, 120)}...
+          {(prompt.description || '').substring(0, 120)}...
         </Body2>
 
         {prompt.tags && prompt.tags.length > 0 && (
@@ -514,7 +514,7 @@ export default function BrowsePage({ isDark, toggleTheme }) {
           <Title3>{prompt.title}</Title3>
         </div>
         <Body2 style={{ color: tokens.colorNeutralForeground2 }}>
-          {prompt.description.substring(0, 100)}...
+          {(prompt.description || '').substring(0, 100)}...
         </Body2>
       </div>
 

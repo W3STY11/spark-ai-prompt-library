@@ -30,7 +30,7 @@ import {
 } from '@fluentui/react-icons';
 import { glass } from '../ui/themeGlass';
 import Header from './Header';
-import { BLOB_ENDPOINTS } from '../config';
+import { API_ENDPOINTS } from '../config';
 
 const useStyles = makeStyles({
   container: {
@@ -538,8 +538,8 @@ export default function ViewPage({ isDark, toggleTheme }) {
     }
 
     try {
-      // Fetch from Blob Storage (Azure Static Web Apps deployment)
-      const response = await fetch(BLOB_ENDPOINTS.PROMPTS_INDEX);
+      // Fetch from SQL API (real-time sync with admin)
+      const response = await fetch(API_ENDPOINTS.PROMPTS);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
