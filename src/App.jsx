@@ -10,6 +10,8 @@ import AdminLoginPage from './components/AdminLoginPage';
 import AdminDashboardPage from './components/AdminDashboardPage';
 import AdminDepartmentsPage from './components/AdminDepartmentsPage';
 import AdminSubcategoriesPage from './components/AdminSubcategoriesPage';
+import AdminPromptCategoriesPage from './components/AdminPromptCategoriesPage';
+import AdminWorksInPage from './components/AdminWorksInPage';
 // import CopilotIntegration from './components/CopilotIntegration';
 import { gradients } from './ui/themeGlass';
 
@@ -62,6 +64,8 @@ function App({ isDark, setIsDark }) {
         <Route path="/admin" element={<AdminDashboardPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/admin/departments" element={<AdminDepartmentsPage isDark={isDark} toggleTheme={toggleTheme} />} />
         <Route path="/admin/subcategories" element={<AdminSubcategoriesPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path="/admin/prompt-categories" element={<AdminPromptCategoriesPage isDark={isDark} toggleTheme={toggleTheme} />} />
+        <Route path="/admin/works-in" element={<AdminWorksInPage isDark={isDark} toggleTheme={toggleTheme} />} />
       </Routes>
       {/* <CopilotIntegration /> */}
     </div>

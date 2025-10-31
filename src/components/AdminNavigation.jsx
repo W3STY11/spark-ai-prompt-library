@@ -10,6 +10,8 @@ import {
   Database24Regular,
   Building24Regular,
   Folder24Regular,
+  Tag24Regular,
+  AppGeneric24Regular,
   ArrowLeft24Regular,
 } from '@fluentui/react-icons';
 
@@ -80,6 +82,24 @@ export default function AdminNavigation() {
         className={isActive('/admin/subcategories') ? styles.activeButton : styles.navButton}
       >
         Subcategories
+      </Button>
+
+      <Button
+        appearance={isActive('/admin/prompt-categories') ? 'primary' : 'subtle'}
+        icon={<Tag24Regular />}
+        onClick={() => navigate('/admin/prompt-categories')}
+        className={isActive('/admin/prompt-categories') ? styles.activeButton : styles.navButton}
+      >
+        Categories
+      </Button>
+
+      <Button
+        appearance={isActive('/admin/works-in') ? 'primary' : 'subtle'}
+        icon={<AppGeneric24Regular />}
+        onClick={() => navigate('/admin/works-in')}
+        className={isActive('/admin/works-in') ? styles.activeButton : styles.navButton}
+      >
+        Works In
       </Button>
     </nav>
   );
