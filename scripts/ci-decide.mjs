@@ -16,12 +16,8 @@ function run(cmd, args, env = {}) {
 }
 
 if (isCI) {
-  // Lean CI build
-  console.log('CI detected → running lean build: ci-prep.mjs → vite build');
-  run('node', ['scripts/ci-prep.mjs'], {
-    PROMPTS_INDEX_URL: process.env.PROMPTS_INDEX_URL || 'https://gray-ocean-059c8510f.3.azurestaticapps.net/prompts_index.json',
-    PROMPT_SAMPLE_LIMIT: process.env.PROMPT_SAMPLE_LIMIT || '300',
-  });
+  // Lean CI build - skip ci-prep since we now use SQL API (no prompts_index.json needed)
+  console.log('CI detected → running vite build only (SQL API migration)');
   run('npm', ['run', 'build:vite']);
 } else {
   // Local dev build: try original, fall back to vite
