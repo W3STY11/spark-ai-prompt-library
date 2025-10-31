@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_ENDPOINTS } from '../config';
 import {
   makeStyles,
   shorthands,
@@ -182,7 +183,7 @@ export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
         .filter(img => img.length > 0);
 
       // Send to API server
-      const response = await fetch('/api/admin/prompts', {
+      const response = await fetch(`${API_ENDPOINTS.API_URL}/api/admin/prompts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
