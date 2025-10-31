@@ -546,6 +546,21 @@ export default function ViewPage({ isDark, toggleTheme }) {
       const foundPrompt = data.prompts?.find(p => p.id === promptId);
 
       if (foundPrompt) {
+        // Parse additional_tips if it's a string
+        if (typeof foundPrompt.additional_tips === 'string') {
+          try {
+            foundPrompt.additional_tips = JSON.parse(foundPrompt.additional_tips);
+          } catch (e) {
+            console.warn('Failed to parse additional_tips:', e);
+            foundPrompt.additional_tips = [];
+          }
+        }
+
+        // Ensure additional_tips is an array
+        if (!Array.isArray(foundPrompt.additional_tips)) {
+          foundPrompt.additional_tips = [];
+        }
+
         setPrompt(foundPrompt);
       }
     } catch (error) {
@@ -905,12 +920,12 @@ export default function ViewPage({ isDark, toggleTheme }) {
 
           {/* RIGHT COLUMN: All Guidance */}
           <div className={styles.guidanceColumn}>
-            {/* What It Does Section */}
-            {prompt.metadata?.whatItDoes && (
+            {/* What It Does Section - FIRST */}
+            {prompt.what_it_does && (
               <div className={mergeClasses(styles.metadataSection, isDark && styles.metadataSectionDark)}>
                 <Title3 className={styles.sectionTitle}>⚙️ What This Prompt Does</Title3>
                 <ul className={styles.bulletList}>
-                  {prompt.metadata.whatItDoes.split('\\n').filter(line => line.trim()).map((line, index) => (
+                  {prompt.what_it_does.split(/\n/).filter(line => line.trim()).map((line, index) => (
                     <li key={index} className={styles.bulletItem}>
                       <Body1>{line.trim()}</Body1>
                     </li>
@@ -933,12 +948,26 @@ export default function ViewPage({ isDark, toggleTheme }) {
               </div>
             )}
 
-            {/* How To Use Section - THIRD */}
-            {prompt.metadata?.howToUse && (
+            {/* Additional Tips Section - THIRD */}
+            {prompt.additional_tips && prompt.additional_tips.length > 0 && (
+              <div className={mergeClasses(styles.promptCard, isDark && styles.promptCardDark)}>
+                <Title3 className={styles.sectionTitle}>💡 Additional Tips</Title3>
+                <ul className={styles.tipsList}>
+                  {prompt.additional_tips.map((tip, index) => (
+                    <li key={index} className={styles.tipItem}>
+                      <Body1>{tip}</Body1>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* How To Use Section - FOURTH */}
+            {prompt.how_to_use && (
               <div className={mergeClasses(styles.metadataSection, isDark && styles.metadataSectionDark)}>
                 <Title3 className={styles.sectionTitle}>❓ How To Use This Prompt</Title3>
                 <ul className={styles.instructionsList}>
-                  {prompt.metadata.howToUse.split(/[●•]/).filter(item => item.trim()).map((instruction, index) => (
+                  {prompt.how_to_use.split(/[●•]/).filter(item => item.trim()).map((instruction, index) => (
                     <li key={index} className={styles.instructionItem}>
                       <Body1>{instruction.trim()}</Body1>
                     </li>
@@ -947,12 +976,12 @@ export default function ViewPage({ isDark, toggleTheme }) {
               </div>
             )}
 
-            {/* Example Input Section - FOURTH */}
-            {prompt.metadata?.exampleInput && (
+            {/* Example Input Section - FIFTH */}
+            {prompt.example_input && (
               <div className={mergeClasses(styles.metadataSection, isDark && styles.metadataSectionDark)}>
                 <Title3 className={styles.sectionTitle}>📥 Example Input</Title3>
                 <div className={styles.exampleContent}>
-                  {prompt.metadata.exampleInput.split(/[●•]/).filter(item => item.trim()).map((line, index) => (
+                  {prompt.example_input.split(/[●•]/).filter(item => item.trim()).map((line, index) => (
                     <div key={index} className={styles.exampleItem}>
                       <Body1>{line.trim()}</Body1>
                     </div>
@@ -961,10 +990,25 @@ export default function ViewPage({ isDark, toggleTheme }) {
               </div>
             )}
 
-            {/* Example Output Images - FIFTH */}
+            {/* Example Output Text - SIXTH */}
+            {prompt.example_output && !prompt.images?.length && (
+              <div className={mergeClasses(styles.metadataSection, isDark && styles.metadataSectionDark)}>
+                <Title3 className={styles.sectionTitle}>📤 Example Output</Title3>
+                <div className={styles.metadataContent}>
+                  {prompt.example_output}
+                </div>
+              </div>
+            )}
+
+            {/* Example Output Images - SEVENTH */}
             {prompt.images && prompt.images.length > 0 && (
               <div className={mergeClasses(styles.promptCard, isDark && styles.promptCardDark)}>
                 <Title3 className={styles.sectionTitle}>📤 Example Output</Title3>
+                {prompt.example_output && (
+                  <div className={styles.metadataContent} style={{ marginBottom: '24px' }}>
+                    {prompt.example_output}
+                  </div>
+                )}
                 <div className={styles.imageGallery}>
                   {prompt.images.map((image, index) => (
                     <div key={index} className={styles.imageContainer}>
