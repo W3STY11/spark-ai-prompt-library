@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { API_ENDPOINTS } from '../config';
-import { PROMPT_CATEGORIES, WORKS_IN_OPTIONS } from '../constants/promptFilters';
 import {
   makeStyles,
   mergeClasses,
@@ -165,6 +164,8 @@ export default function BrowsePage({ isDark, toggleTheme }) {
   const [allPrompts, setAllPrompts] = useState([]);
   const [filteredPrompts, setFilteredPrompts] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [promptCategories, setPromptCategories] = useState([]);
+  const [worksInOptions, setWorksInOptions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
@@ -192,15 +193,32 @@ export default function BrowsePage({ isDark, toggleTheme }) {
   const loadData = async () => {
     try {
       // Fetch from SQL API (real-time sync with admin)
-      const response = await fetch(API_ENDPOINTS.PROMPTS);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const data = await response.json();
+      const [promptsRes, categoriesRes, worksInRes] = await Promise.all([
+        fetch(API_ENDPOINTS.PROMPTS),
+        fetch(`${API_ENDPOINTS.API_URL}/api/admin/prompt-categories`),
+        fetch(`${API_ENDPOINTS.API_URL}/api/admin/works-in`)
+      ]);
+
+      if (!promptsRes.ok) throw new Error(`HTTP error! status: ${promptsRes.status}`);
+      const data = await promptsRes.json();
 
       if (data) {
         // All prompts are already filtered (no status field needed)
         const prompts = Array.isArray(data.prompts) ? data.prompts : Array.isArray(data.items) ? data.items : [];
         setAllPrompts(prompts);
         setDepartments(data.departments || []);
+      }
+
+      // Load prompt categories from API
+      if (categoriesRes.ok) {
+        const categories = await categoriesRes.json();
+        setPromptCategories(categories);
+      }
+
+      // Load works-in options from API
+      if (worksInRes.ok) {
+        const worksIn = await worksInRes.json();
+        setWorksInOptions(worksIn);
       }
     } catch (error) {
       console.error('Failed to load prompts:', error);
@@ -718,9 +736,9 @@ export default function BrowsePage({ isDark, toggleTheme }) {
               onOptionSelect={(e, data) => handleCategoryChange(data.optionValue || '')}
             >
               <Option value="">All Categories</Option>
-              {PROMPT_CATEGORIES.map(category => (
-                <Option key={category} value={category}>
-                  {category}
+              {promptCategories.map(category => (
+                <Option key={category.id} value={category.name}>
+                  {category.name}
                 </Option>
               ))}
             </Dropdown>
@@ -731,9 +749,9 @@ export default function BrowsePage({ isDark, toggleTheme }) {
               onOptionSelect={(e, data) => handleWorksInChange(data.optionValue || '')}
             >
               <Option value="">All Platforms</Option>
-              {WORKS_IN_OPTIONS.map(platform => (
-                <Option key={platform} value={platform}>
-                  {platform}
+              {worksInOptions.map(platform => (
+                <Option key={platform.id} value={platform.name}>
+                  {platform.name}
                 </Option>
               ))}
             </Dropdown>
