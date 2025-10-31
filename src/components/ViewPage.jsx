@@ -570,9 +570,22 @@ export default function ViewPage({ isDark, toggleTheme }) {
     }
   };
 
-  const checkFavorite = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    setIsFavorite(favorites.includes(promptId));
+  const checkFavorite = async () => {
+    try {
+      const response = await fetch('/api/favorites', {
+        headers: {
+          'x-user-id': 'anonymous', // TODO: Replace with actual user ID when auth is added
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const favoriteIds = data.favorites || [];
+        setIsFavorite(favoriteIds.includes(promptId));
+      }
+    } catch (error) {
+      console.error('Failed to check favorites:', error);
+    }
   };
 
   const copyToClipboard = async (type) => {
@@ -676,28 +689,34 @@ export default function ViewPage({ isDark, toggleTheme }) {
     }
   };
 
-  const toggleFavorite = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  const toggleFavorite = async () => {
+    try {
+      const method = isFavorite ? 'DELETE' : 'POST';
+      const response = await fetch(`/api/favorites/${promptId}`, {
+        method,
+        headers: {
+          'x-user-id': 'anonymous', // TODO: Replace with actual user ID when auth is added
+        },
+      });
 
-    if (isFavorite) {
-      const newFavorites = favorites.filter(id => id !== promptId);
-      localStorage.setItem('favorites', JSON.stringify(newFavorites));
-      setIsFavorite(false);
+      if (response.ok) {
+        setIsFavorite(!isFavorite);
+        dispatchToast(
+          <Toast>
+            <div>{isFavorite ? 'Removed from favorites' : 'Added to favorites'}</div>
+          </Toast>,
+          { intent: isFavorite ? 'info' : 'success' }
+        );
+      } else {
+        throw new Error('Failed to update favorites');
+      }
+    } catch (error) {
+      console.error('Failed to toggle favorite:', error);
       dispatchToast(
         <Toast>
-          <div>Removed from favorites</div>
+          <div>Failed to update favorites</div>
         </Toast>,
-        { intent: 'info' }
-      );
-    } else {
-      favorites.push(promptId);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      setIsFavorite(true);
-      dispatchToast(
-        <Toast>
-          <div>Added to favorites</div>
-        </Toast>,
-        { intent: 'success' }
+        { intent: 'error' }
       );
     }
   };

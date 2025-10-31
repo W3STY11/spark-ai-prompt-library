@@ -97,23 +97,34 @@ export default function FavoritesPage({ isDark, toggleTheme }) {
 
   const loadFavorites = async () => {
     try {
-      // Get favorite IDs from localStorage
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      // Get favorite IDs from SQL database via API
+      const favoritesResponse = await fetch('/api/favorites', {
+        headers: {
+          'x-user-id': 'anonymous', // TODO: Replace with actual user ID when auth is added
+        },
+      });
 
-      if (favorites.length === 0) {
+      if (!favoritesResponse.ok) {
+        throw new Error(`Failed to fetch favorites: ${favoritesResponse.status}`);
+      }
+
+      const favoritesData = await favoritesResponse.json();
+      const favoriteIds = favoritesData.favorites || [];
+
+      if (favoriteIds.length === 0) {
         setFavoritePrompts([]);
         setLoading(false);
         return;
       }
 
-      // Fetch all prompts from SQL API (real-time sync with admin)
+      // Fetch all prompts from SQL API
       const response = await fetch(API_ENDPOINTS.PROMPTS);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
 
       // Filter to only favorite prompts
       const allPrompts = Array.isArray(data.prompts) ? data.prompts : Array.isArray(data.items) ? data.items : [];
-      const favPrompts = allPrompts.filter(p => favorites.includes(p.id));
+      const favPrompts = allPrompts.filter(p => favoriteIds.includes(p.id));
 
       setFavoritePrompts(favPrompts);
     } catch (error) {
