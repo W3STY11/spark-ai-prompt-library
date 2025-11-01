@@ -14,6 +14,7 @@ import {
   Textarea,
   Dropdown,
   Option,
+  Combobox,
   Label,
   Field,
   Toast,
@@ -66,6 +67,8 @@ export default function CreatePromptModal({ isOpen, onClose, onUpdate }) {
     tags: '',
     icon: '⚡',
     complexity: 'intermediate',
+    promptCategory: '',
+    worksIn: [],
     tips: '',
     additionalTips: '',
     whatItDoes: '',
@@ -133,6 +136,8 @@ export default function CreatePromptModal({ isOpen, onClose, onUpdate }) {
         tags: '',
         icon: '⚡',
         complexity: 'intermediate',
+        promptCategory: '',
+        worksIn: [],
         tips: '',
         additionalTips: '',
         whatItDoes: '',
@@ -247,10 +252,14 @@ export default function CreatePromptModal({ isOpen, onClose, onUpdate }) {
         tips: tipsArray,
         additional_tips: additionalTipsArray,
         what_it_does: formData.whatItDoes.trim() || '',
+        how_to_use: formData.howToUse.trim() || '',
+        example_input: formData.exampleInput.trim() || '',
         example_output: formData.exampleOutput.trim() || '',
         images: imagesArray,
         icon: formData.icon,
         complexity: formData.complexity || 'intermediate',
+        prompt_category: formData.promptCategory || null,
+        works_in_json: formData.worksIn.length > 0 ? JSON.stringify(formData.worksIn) : null,
         word_count: wordCount,
         status: 'approved',
         date: new Date().toISOString().split('T')[0],
@@ -446,6 +455,49 @@ export default function CreatePromptModal({ isOpen, onClose, onUpdate }) {
                   <Option value="intermediate">🟡 Intermediate</Option>
                   <Option value="advanced">🔴 Advanced</Option>
                 </Dropdown>
+              </Field>
+
+              {/* Prompt Category */}
+              <Field
+                label="Prompt Category"
+                hint="Select the prompt category (e.g., Create, Understand)"
+              >
+                <Dropdown
+                  placeholder="Select category"
+                  value={formData.promptCategory}
+                  onOptionSelect={(e, data) => handleChange('promptCategory', data.optionValue || '')}
+                  disabled={isSubmitting}
+                >
+                  {promptCategories.map(cat => (
+                    <Option key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </Option>
+                  ))}
+                </Dropdown>
+              </Field>
+
+              {/* Works In */}
+              <Field
+                label="Works In"
+                className={styles.fullWidth}
+                hint="Select one or more platforms where this prompt works (e.g., Teams, ChatGPT)"
+              >
+                <Combobox
+                  multiselect
+                  placeholder="Select platforms..."
+                  selectedOptions={formData.worksIn}
+                  onOptionSelect={(e, data) => {
+                    const selected = data.selectedOptions || [];
+                    handleChange('worksIn', selected);
+                  }}
+                  disabled={isSubmitting}
+                >
+                  {worksInOptions.map(option => (
+                    <Option key={option.id} value={option.name}>
+                      {option.name}
+                    </Option>
+                  ))}
+                </Combobox>
               </Field>
 
               {/* Tips */}

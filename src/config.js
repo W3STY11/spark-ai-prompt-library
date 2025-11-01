@@ -35,6 +35,14 @@ export const API_ENDPOINTS = {
   ADMIN_SUBCATEGORIES: `${API_BASE_URL}/api/admin/subcategories`,
   ADMIN_SUBCATEGORY_BY_ID: (id) => `${API_BASE_URL}/api/admin/subcategories/${id}`,
 
+  // Admin endpoints - Prompt Categories
+  ADMIN_PROMPT_CATEGORIES: `${API_BASE_URL}/api/admin/prompt-categories`,
+  ADMIN_PROMPT_CATEGORY_BY_ID: (id) => `${API_BASE_URL}/api/admin/prompt-categories/${id}`,
+
+  // Admin endpoints - Works In Platforms
+  ADMIN_WORKS_IN: `${API_BASE_URL}/api/admin/works-in`,
+  ADMIN_WORKS_IN_BY_ID: (id) => `${API_BASE_URL}/api/admin/works-in/${id}`,
+
   // Legacy admin endpoints (not implemented in simplified API yet)
   ADMIN_LOGIN: `${API_BASE_URL}/api/admin/login`,
   ADMIN_LOGOUT: `${API_BASE_URL}/api/admin/logout`,
