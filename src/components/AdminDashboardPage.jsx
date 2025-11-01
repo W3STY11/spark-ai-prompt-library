@@ -50,6 +50,7 @@ import { glass } from '../ui/themeGlass';
 import Header from './Header';
 import AdminNavigation from './AdminNavigation';
 import EditPromptModal from './EditPromptModal';
+import AddPromptModal from './AddPromptModal';
 // TEMPORARILY DISABLED - Missing backend endpoints
 // import PendingPromptsSection from './PendingPromptsSection';
 import { API_ENDPOINTS } from '../config';
@@ -158,17 +159,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DEPARTMENTS = [
-  { name: 'Business', icon: '💼' },
-  { name: 'Marketing', icon: '📢' },
-  { name: 'Sales', icon: '💰' },
-  { name: 'SEO', icon: '🔍' },
-  { name: 'Finance', icon: '💵' },
-  { name: 'Education', icon: '📚' },
-  { name: 'Writing', icon: '✍️' },
-  { name: 'Productivity', icon: '⚡' },
-  { name: 'Solopreneurs', icon: '🚀' },
-];
+// DEPARTMENTS now fetched from SQL API instead of hardcoded
 
 export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const styles = useStyles();
@@ -192,6 +183,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   });
 
   // Modal states
+  const [addModalOpen, setAddModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [bulkDeleteModalOpen, setBulkDeleteModalOpen] = useState(false);
@@ -802,7 +794,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
           <Button
             appearance="primary"
             icon={<Add24Regular />}
-            onClick={() => navigate('/browse')}
+            onClick={() => setAddModalOpen(true)}
           >
             Add Prompt
           </Button>
@@ -1120,6 +1112,16 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
             </DialogBody>
           </DialogSurface>
         </Dialog>
+
+        {/* Add Prompt Modal */}
+        <AddPromptModal
+          isOpen={addModalOpen}
+          onClose={() => setAddModalOpen(false)}
+          onSuccess={() => {
+            setAddModalOpen(false);
+            loadPrompts();
+          }}
+        />
 
         {/* Edit Prompt Modal */}
         <EditPromptModal

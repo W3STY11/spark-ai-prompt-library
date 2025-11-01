@@ -52,18 +52,6 @@ const useStyles = makeStyles({
   },
 });
 
-const DEPARTMENTS = [
-  { name: 'Business', icon: '💼' },
-  { name: 'Marketing', icon: '📢' },
-  { name: 'Sales', icon: '💰' },
-  { name: 'SEO', icon: '🔍' },
-  { name: 'Finance', icon: '💵' },
-  { name: 'Education', icon: '📚' },
-  { name: 'Writing', icon: '✍️' },
-  { name: 'Productivity', icon: '⚡' },
-  { name: 'Solopreneurs', icon: '🚀' },
-];
-
 export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
   const styles = useStyles();
   const toasterId = useId('add-prompt-toaster');
@@ -87,6 +75,49 @@ export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [departments, setDepartments] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+  const [promptCategories, setPromptCategories] = useState([]);
+  const [worksInOptions, setWorksInOptions] = useState([]);
+
+  // Fetch options when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      const loadOptions = async () => {
+        try {
+          const [deptRes, subRes, catRes, worksRes] = await Promise.all([
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/departments`),
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/subcategories`),
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/prompt-categories`),
+            fetch(`${API_ENDPOINTS.API_URL}/api/admin/works-in`)
+          ]);
+
+          if (deptRes.ok) {
+            const depts = await deptRes.json();
+            setDepartments(depts);
+          }
+
+          if (subRes.ok) {
+            const subs = await subRes.json();
+            setSubcategories(subs);
+          }
+
+          if (catRes.ok) {
+            const cats = await catRes.json();
+            setPromptCategories(cats);
+          }
+
+          if (worksRes.ok) {
+            const works = await worksRes.json();
+            setWorksInOptions(works);
+          }
+        } catch (error) {
+          console.error('Error loading options:', error);
+        }
+      };
+      loadOptions();
+    }
+  }, [isOpen]);
 
   // Reset form when modal closes
   useEffect(() => {
@@ -114,12 +145,12 @@ export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
   // Update icon when department changes
   useEffect(() => {
     if (formData.department) {
-      const dept = DEPARTMENTS.find(d => d.name === formData.department);
+      const dept = departments.find(d => d.name === formData.department);
       if (dept) {
         setFormData(prev => ({ ...prev, icon: dept.icon }));
       }
     }
-  }, [formData.department]);
+  }, [formData.department, departments]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -304,8 +335,8 @@ export default function AddPromptModal({ isOpen, onClose, onSubmit }) {
                   onOptionSelect={(e, data) => handleChange('department', data.optionValue || '')}
                   disabled={isSubmitting}
                 >
-                  {DEPARTMENTS.map(dept => (
-                    <Option key={dept.name} value={dept.name}>
+                  {departments.map(dept => (
+                    <Option key={dept.id || dept.name} value={dept.name}>
                       {dept.icon} {dept.name}
                     </Option>
                   ))}
