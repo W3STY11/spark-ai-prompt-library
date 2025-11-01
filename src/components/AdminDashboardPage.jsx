@@ -297,7 +297,7 @@ export default function AdminDashboardPage({ isDark, toggleTheme }) {
   const confirmDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(API_ENDPOINTS.PROMPT_BY_ID(currentPrompt.id), {
+      const response = await fetch(API_ENDPOINTS.ADMIN_DELETE_PROMPT(currentPrompt.id), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
